@@ -3,16 +3,9 @@
 
 html,
 body {
-    height: 100vh !important;
     margin: 0;
 }
 
 body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.view-container {
-    display: flex !important;
-    flex-direction: column;
-    height: 100%;
 }

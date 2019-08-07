@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule } from '@angular/material';
+import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [],
@@ -14,7 +14,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule,
+    FlexLayoutModule,
+    MatMenuModule,
   ]
 })
 export class MaterialModule { }
