@@ -1,0 +1,89 @@
+<mat-nav-list class="sidenav-container" (drag)="onSidenavToggle()">
+    <a mat-list-item (click)="onSidenavToggle()">
+        <span class="example-spacer"></span>
+        <mat-icon *ngIf="sidenavOpen" class="material-icons-round chevron">chevron_left</mat-icon>
+        <mat-icon *ngIf="!sidenavOpen" class="material-icons-round chevron">chevron_right</mat-icon>
+    </a>
+
+    <!-- <a mat-list-item routerLink="/home">
+        <mat-icon class="material-icons-round">network_check</mat-icon><span class="nav-caption">DashBoard</span>
+    </a> -->
+    <div *ngFor="let navitem of sidenavData0">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">network_check</mat-icon><span class="nav-caption">{{navitem.displayName}}</span>
+        </a>
+    </div>
+
+    <div *ngFor="let navitem of sidenavData">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">{{navitem.iconClass}}</mat-icon><span class="nav-caption">{{navitem.displayName}}</span>
+        </a>
+    </div>
+    <div *ngFor="let navitem of sidenavData1">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">store_mall_directory</mat-icon><span class="nav-caption">{{navitem.displayName}}
+            </span>
+        </a>
+    </div>
+    <div *ngFor="let navitem of sidenavData2">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">category</mat-icon><span class="nav-caption">{{navitem.displayName}}
+            </span>
+        </a>
+    </div>
+    <div *ngFor="let navitem of sidenavData3">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">money</mat-icon><span class="nav-caption">{{navitem.displayName}}
+            </span>
+        </a>
+    </div>
+
+    <div *ngFor="let navitem of sidenavData4">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">filter_tilt_shift</mat-icon><span class="nav-caption">{{navitem.displayName}}
+            </span>
+        </a>
+    </div>
+
+    <div *ngFor="let navitem of sidenavData5">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} [matMenuTriggerFor]="menu" (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">device_hub</mat-icon><span class="nav-caption">{{navitem.displayName}}
+            </span>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/inventory-management/capitalitem" class="nav-link">
+                    <mat-icon class="material-icons-round">devices_other</mat-icon>
+                    Capital Item
+                </button>
+                <button mat-menu-item routerLink="/inventory-management/materialmaster" class="nav-link">
+                    <mat-icon class="material-icons-round">developer_board</mat-icon>
+                    Material Master
+                </button>
+            </mat-menu>
+        </a>
+    </div>
+
+    <div *ngFor="let navitem of sidenavData6">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} [matMenuTriggerFor]="menu2" (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">business</mat-icon><span class="nav-caption">{{navitem.displayName}}
+            </span>
+            <mat-menu #menu2="matMenu">
+                <button mat-menu-item routerLink="/purchase-office/materialindent" class="nav-link">
+                    <mat-icon class="material-icons-round">assessment</mat-icon>
+                    Material Indent
+                </button>
+                <button mat-menu-item routerLink="/purchase-office/store" class="nav-link">
+                    <mat-icon class="material-icons-round">local_convenience_store</mat-icon>
+                    Store
+                </button>
+                <button mat-menu-item routerLink="/purchase-office/vendor" class="nav-link">
+                    <mat-icon class="material-icons-round">storage</mat-icon>
+                    Vendor
+                </button>
+                <button mat-menu-item routerLink="/purchase-office/fulfillment" class="nav-link">
+                    <mat-icon class="material-icons-round">done</mat-icon>
+                    Fulfillment
+                </button>
+            </mat-menu>
+        </a>
+    </div>
+</mat-nav-list>
