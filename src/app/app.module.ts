@@ -7,17 +7,22 @@ import { HeaderComponent } from './common/header/header.component';
 import { MaterialModule } from './material/material.module';
 import { SidenavComponent } from './common/sidenav/sidenav.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { AdminPanelModule } from './modules/admin-panel/admin-panel.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidenavComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    AdminPanelModule,
+    DashboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

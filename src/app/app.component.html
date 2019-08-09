@@ -3,10 +3,10 @@
   <app-header></app-header>
   <div class="main-content">
     <div class="main-flex" fxFlexLayout="column">
-      <div fxFlex="20" [@sidenavState]="sidenavState">
+      <div fxFlex="15" [@sidenavState]="sidenavState">
         <app-sidenav (sidenavToggle)="shrinkSidenav()"></app-sidenav>
       </div>
-      <div class="main-content-flex" fxFlex="80" [@mainContentState]="sidenavState">
+      <div class="main-content-flex" fxFlex="85" [@mainContentState]="sidenavState">
         <router-outlet></router-outlet>
       </div>
     </div>
