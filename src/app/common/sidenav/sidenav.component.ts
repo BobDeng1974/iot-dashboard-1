@@ -17,57 +17,16 @@ export class SidenavComponent implements OnInit {
       iconClass: "view_quilt",
       redirectLink: "/dashboard"
     }
-];
+  ];
 
-  sidenavData: Isidenav[] = [
+  sidenavData1: Isidenav[] = [
     {
-      displayName: "Organization",
+      displayName: "Admin Panel",
       iconClass: "view_quilt",
-      redirectLink: "/organization"
-    }
-];
-  sidenavData1: Isidenav[]=[
-    {
-      displayName: "Project Office",
-      iconClass:"view_quilt",
-      redirectLink: "/project-office"
+      redirectLink: "/admin-panel"
     }
   ];
-  sidenavData2: Isidenav[]=[
-    {
-      displayName: "Sales",
-      iconClass:"view_quilt",
-      redirectLink: "/sales"
-    }
-  ];
-  sidenavData3: Isidenav[]=[
-    {
-      displayName: "Budget",
-      iconClass:"view_quilt",
-      redirectLink: "/budget"
-    }
-  ];
-  sidenavData4: Isidenav[]=[
-    {
-      displayName: "Specification",
-      iconClass:"view_quilt",
-      redirectLink: "/specification"
-    }
-  ];
-  sidenavData5: Isidenav[]=[
-    {
-      displayName: "Inventory Management",
-      iconClass:"view_quilt",
-      redirectLink: "/inventory-management"
-    }
-  ];
-  sidenavData6: Isidenav[]=[
-    {
-      displayName: "Purchase Ofiice",
-      iconClass:"view_quilt",
-      redirectLink: "/purchase-office"
-    }
-  ]
+
   constructor() { }
 
   ngOnInit() {
