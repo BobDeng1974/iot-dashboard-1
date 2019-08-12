@@ -62,6 +62,23 @@ body {
 .mat-tab-body-wrapper {
     height: 100%;
 }
+
+.mat-tab-header-pagination {
+    height: 25px;
+    width: 10px;
+    line-height: 20px;
+    padding: 0px;
+}
+
+.mat-tab-label {
+    height: 25px !important;
+    width: 100px !important;
+    line-height: 25px !important;
+    padding: 0px !important;
+    min-height: 1px !important;
+    min-width: 1px !important;
+}
+
 .wide.mat-tab-group>.mat-tab-header>.mat-tab-header-pagination {
     height: 40px !important;
     width: 40px !important;
