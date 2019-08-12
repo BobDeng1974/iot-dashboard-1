@@ -5,7 +5,14 @@
     </mat-tab>
     <mat-tab label="VENDOR">
         <div class="content">
-            <app-vendor-table></app-vendor-table>
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                <div fxFlex="calc(65% - 10px)" fxFlex.lt-sm="100%">
+                    <app-vendor-table></app-vendor-table>
+                </div>
+                <div fxFlex="calc(35% - 10px)" fxFlex.lt-sm="100%">
+                    <app-vendor-details></app-vendor-details>
+                </div>
+            </div>
         </div>
     </mat-tab>
     <mat-tab label="CUSTOMER ASSIGNMENT">

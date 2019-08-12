@@ -1,0 +1,16 @@
+<mat-expansion-panel disabled expanded class="customer-panel">
+    <mat-expansion-panel-header class="panel-header">
+        <mat-panel-title>
+            Vendor Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="main-content">
+        <mat-tab-group [style.height.%]="100" (selectedTabChange)="resizeGrid($event)">
+            <mat-tab label="Address">
+                <ag-grid-angular style="width: 100%; height: 100%;" >
+
+                </ag-grid-angular>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</mat-expansion-panel>
