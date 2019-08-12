@@ -37,6 +37,30 @@ body {
     flex-shrink: 0;
 }
 
+//Expansion Panel Styles
+.mat-expansion-panel-header {
+    height: 40px !important;
+    font-weight: bold;
+}
+
+.mat-expansion-panel-header-title {
+    color: inherit !important;
+}
+
+.mat-expansion-panel-content {
+    height: calc(100% - 40px) !important;
+}
+
+.mat-expansion-panel-body {
+    overflow: auto;
+    height: calc(100% - 20px) !important;
+    padding: 10px 10px 0px 10px !important;
+}
+
+.mat-expansion-panel-content .mat-action-row {
+    padding: 0px 10px 0px 10px !important;
+}
+
 // Tab css start
 .mat-tab-body-wrapper {
     height: 100%;
