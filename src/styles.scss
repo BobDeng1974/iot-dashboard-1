@@ -35,7 +35,9 @@ body {
 }
 
 // Tab css start
-
+.mat-tab-body-wrapper {
+    height: 100%;
+}
 .wide.mat-tab-group>.mat-tab-header>.mat-tab-header-pagination {
     height: 40px !important;
     width: 40px !important;

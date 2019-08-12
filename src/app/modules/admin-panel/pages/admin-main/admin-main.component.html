@@ -1,28 +1,32 @@
 <div class="container">
-    <mat-tab-group class="wide">
+    <mat-tab-group class="wide" [style.height.%]="100">
     <mat-tab label="CUSTOMER">
 
     </mat-tab>
     <mat-tab label="VENDOR">
-        <div class="content">
-            <div fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-                <div fxFlex="calc(65% - 10px)" fxFlex.lt-sm="100%">
-                    <app-vendor-table></app-vendor-table>
-                </div>
-                <div fxFlex="calc(35% - 10px)" fxFlex.lt-sm="100%">
-                    <app-vendor-details></app-vendor-details>
-                </div>
+        <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" [style.height.%]="100">
+            <div fxFlex="calc(65% - 16px)" fxFlex.lt-sm="100%">
+                <app-vendor-table></app-vendor-table>
+            </div>
+            <div fxFlex="calc(35% - 16px)" fxFlex.lt-sm="100%">
+
             </div>
         </div>
     </mat-tab>
     <mat-tab label="CUSTOMER ASSIGNMENT">
+        <div class="content">
 
+        </div>
     </mat-tab>
     <mat-tab label="DEVICE REG.">
+        <div class="content">
 
+        </div>
     </mat-tab>
     <mat-tab label="DEVICE MANAGEMENT">
+        <div class="content">
 
+        </div>
     </mat-tab>
     </mat-tab-group>
 </div>
