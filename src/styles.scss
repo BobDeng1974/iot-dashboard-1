@@ -30,6 +30,9 @@ body {
 .example-spacer{
     flex: 1 1 auto
 }
+.footer {
+    flex-shrink: 0;
+}
 
 // Tab css start
 
