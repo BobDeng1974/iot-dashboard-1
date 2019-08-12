@@ -123,3 +123,108 @@ body {
 }
 
 //End
+
+//Mat-Icon Styles
+
+/* Rules for sizing the icon. */
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-21 {
+    font-size: 21px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.material-icons.md-pink {
+    color: rgba(223, 12, 95, 0.54);
+}
+
+.material-icons.md-pinkV {
+    color: rgba(223, 12, 95, 0.9);
+}
+
+.material-icons.md-cyanV {
+    color: #00CED1;
+}
+
+//End
+//Ag-Grid Styles
+.ag-theme-balham .ag-cell-inline-editing select {
+    height: 100% !important;
+}
+
+//End
+//Scrollbar styles
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2a2e33;
+}
+
+//End
+.cell-wrap-text {
+    white-space: normal !important;
+}
+
+//Table Styles
+tr.mat-header-row {
+    height: 30px !important;
+}
+
+.mat-paginator{
+    min-height: 40px !important;
+    height: 40px !important;
+
+    .mat-paginator-container{
+        min-height: 40px !important;
+        height: 40px !important;
+    }
+    // *{
+    //     min-height: 40px !important;
+    //     height: 40px !important;
+    // }
+}
+//End
