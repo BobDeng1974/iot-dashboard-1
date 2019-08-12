@@ -2,11 +2,11 @@
 <div class="view-container">
   <app-header></app-header>
   <div class="main-content">
-    <div class="main-flex" fxFlexLayout="column">
-      <div fxFlex="15" [@sidenavState]="sidenavState">
+    <div class="main-flex" fxLayout="row" fxLayoutAlign="flex-start">
+      <div [@sidenavState]="sidenavState">
         <app-sidenav (sidenavToggle)="shrinkSidenav()"></app-sidenav>
       </div>
-      <div class="main-content-flex" fxFlex="85" [@mainContentState]="sidenavState">
+      <div class="main-content-flex" [@mainContentState]="sidenavState">
         <router-outlet></router-outlet>
       </div>
     </div>
