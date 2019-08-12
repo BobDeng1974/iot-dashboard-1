@@ -23,7 +23,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatInputModule,
     MatTabsModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
   ]
+
 })
 export class MaterialModule { }

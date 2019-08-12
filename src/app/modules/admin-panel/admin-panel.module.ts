@@ -5,15 +5,18 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { VendorTableComponent } from './components/vendor-table/vendor-table.component';
+import { VendorDetailsComponent } from './components/vendor-details/vendor-details.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
+    MaterialModule,
+    AgGridModule.withComponents([])
   ]
 })
 export class AdminPanelModule { }
