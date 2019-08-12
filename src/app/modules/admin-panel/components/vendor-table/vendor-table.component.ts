@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 export interface PeriodicElement {
   vendor_code: string;
@@ -22,6 +22,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class VendorTableComponent implements OnInit {
 
+  // output the event value
+  @Output() ButtonClicked = new EventEmitter<number>();
+
   displayedColumns: string[] = ['select', 'vendor_code', 'vendor_name', 'vendor_type', 'vendor_tag'];
   dataSource = ELEMENT_DATA;
 
@@ -30,4 +33,8 @@ export class VendorTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  InitializeClick(value : number) {
+    //console.log(value);
+    this.ButtonClicked.emit(value);
+  }
 }

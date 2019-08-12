@@ -12,4 +12,11 @@ export class AdminMainComponent implements OnInit {
   ngOnInit() {
   }
 
+  openPopup(value : number) {
+    switch (value) {
+      case 0:
+          
+      break;
+    }
+  }
 }
