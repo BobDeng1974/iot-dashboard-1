@@ -9,7 +9,7 @@ import { SidenavComponent } from './common/sidenav/sidenav.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { AdminPanelModule } from './modules/admin-panel/admin-panel.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +23,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     MaterialModule,
     AdminPanelModule,
     DashboardModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]

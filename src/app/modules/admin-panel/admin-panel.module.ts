@@ -6,6 +6,7 @@ import { AdminViewComponent } from './components/admin-view/admin-view.component
 import { MaterialModule } from 'src/app/material/material.module';
 import { VendorTableComponent } from './components/vendor-table/vendor-table.component';
 import { VendorDetailsComponent } from './components/vendor-details/vendor-details.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 
@@ -14,7 +15,8 @@ import { VendorDetailsComponent } from './components/vendor-details/vendor-detai
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
+    MaterialModule,
+    AgGridModule.withComponents([])
   ]
 })
 export class AdminPanelModule { }
