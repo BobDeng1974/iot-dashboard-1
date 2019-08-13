@@ -8,11 +8,13 @@ import { VendorTableComponent } from './components/vendor-table/vendor-table.com
 import { VendorDetailsComponent } from './components/vendor-details/vendor-details.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { AddVendorFormComponent } from './components/add-vendor-form/add-vendor-form.component';
+import { CustomerTableComponent } from './components/customer-table/customer-table.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
