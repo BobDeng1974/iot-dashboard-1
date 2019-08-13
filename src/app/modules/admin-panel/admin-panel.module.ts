@@ -11,17 +11,18 @@ import { AddVendorFormComponent } from './components/add-vendor-form/add-vendor-
 import { CustomerTableComponent } from './components/customer-table/customer-table.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { AddCustomerFormComponent } from './components/add-customer-form/add-customer-form.component';
+import { AddCustomerAddressComponent } from './components/add-customer-address/add-customer-address.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
     AgGridModule.withComponents([])
   ],
-  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent ]
+  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent ]
 })
 export class AdminPanelModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Customer } from '../../model/customermodel';
 
 export interface PeriodicElement {
   customer_code: string;
@@ -24,6 +25,10 @@ export class CustomerTableComponent implements OnInit {
 
   @Output() ButtonClick = new EventEmitter<number>();
 
+  selectedCustomer : Customer = {
+    customer_id : 0
+  };
+
   displayedColumns: string[] = ['select', 'customer_code', 'customer_name', 'customer_type', 'customer_tag'];
   dataSource = ELEMENT_DATA;
   constructor() { }
@@ -35,4 +40,14 @@ export class CustomerTableComponent implements OnInit {
     this.ButtonClick.emit(value);
   }
 
+  // view customer details
+  viewDetails(details : Customer) {
+
+  }
+
+  // Click on table row
+  changeSelected(value : Customer) {
+    this.selectedCustomer = value;
+    this.viewDetails(value);
+  }
 }

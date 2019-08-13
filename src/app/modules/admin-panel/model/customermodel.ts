@@ -1,6 +1,6 @@
 export interface AdditionalAttributes {
     addinfo_id? : number;
-    vendor_id? : number;
+    customer_id? : number;
     addinfo_attr? : string;
     addinfo_value? : string;
     addinfo_updated_on? : Date;
@@ -11,7 +11,7 @@ export interface AdditionalAttributes {
 
 export interface LegalInfo {
     legalinfo_id? : number;
-    vendor_id? : number;
+    customer_id? : number;
     legalinfo_type? : string;
     legalinfo_value? : string;
     legalinfo_updated_on? : Date;
@@ -22,7 +22,7 @@ export interface LegalInfo {
 
 export interface Phone {
     ph_id? : number;
-    vendor_id? : number;
+    customer_id? : number;
     ph_isd_code? : string;
     ph_no? : string;
     ph_updated_on? : Date;
@@ -33,7 +33,7 @@ export interface Phone {
 
 export interface Email {
     eml_id? : number;
-    vendor_id? : number;
+    customer_id? : number;
     eml_address? : string;
     eml_updated_on?:Date;
     eml_updated_by?:string;
@@ -43,7 +43,7 @@ export interface Email {
 
 export interface Address {
     add_id? : number;
-    vendor_id? : number;
+    customer_id? : number;
     add_type? : string;
     add_address_line1? : string;
     add_address_line2? : string;
@@ -57,19 +57,35 @@ export interface Address {
     add_effective_to? : Date;
 }
 
-export interface Vendor {
-    vendor_id? : number;
-    vendor_name? : string;
-    vendor_code? : string;
-    vendor_type? : string;
-    vendor_tag? : string;
-    vendor_updated_on? : Date;
-    vendor_updated_by? : string;
-    vendor_effective_from? : Date;
-    vendor_effective_to? : Date;
-    additional_attributes?: AdditionalAttributes[];
-    legal_info?: LegalInfo[];
-    phone?: Phone[];
-    email?: Email[];
-    address?: Address[];
+export interface Branch {
+    branch_id? : number;
+    customer_id? : number;
+    branch_add_line1? : string;
+    branch_add_line2? : string;
+    branch_add_city? : string;
+    branch_add_state? : string;
+    branch_add_pin? : string;
+    branch_add_country? : string;
+    branch_updated_on? : Date;
+    branch_updated_by? : string;
+    branch_effective_from? : Date;
+    branch_effective_to? : Date;
+}
+
+export interface Customer {
+    customer_id? : number;
+    customer_name? : string;
+    customer_code? : string;
+    customer_type? : string;
+    customer_tag? : string;
+    customer_updated_on? : Date;
+    customer_updated_by? : string;
+    customer_effective_from? : Date;
+    customer_effective_to? : Date;
+    additional_attributes? : AdditionalAttributes[];
+    legal_info? : LegalInfo[];
+    phone? : Phone[];
+    email? : Email[];
+    address? : Address[];
+    branch? : Branch[];
 }
