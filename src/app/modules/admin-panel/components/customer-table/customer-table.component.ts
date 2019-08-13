@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 export interface PeriodicElement {
   customer_code: string;
@@ -22,11 +22,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CustomerTableComponent implements OnInit {
 
+  @Output() ButtonClick = new EventEmitter<number>();
+
   displayedColumns: string[] = ['select', 'customer_code', 'customer_name', 'customer_type', 'customer_tag'];
   dataSource = ELEMENT_DATA;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  InitializeClick(value : number) {
+    this.ButtonClick.emit(value);
   }
 
 }

@@ -10,17 +10,18 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AddVendorFormComponent } from './components/add-vendor-form/add-vendor-form.component';
 import { CustomerTableComponent } from './components/customer-table/customer-table.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { AddCustomerFormComponent } from './components/add-customer-form/add-customer-form.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
     AgGridModule.withComponents([])
   ],
-  entryComponents : [ AddVendorFormComponent ]
+  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent ]
 })
 export class AdminPanelModule { }
