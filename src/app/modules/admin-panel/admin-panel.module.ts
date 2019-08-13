@@ -7,16 +7,18 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { VendorTableComponent } from './components/vendor-table/vendor-table.component';
 import { VendorDetailsComponent } from './components/vendor-details/vendor-details.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { AddVendorFormComponent } from './components/add-vendor-form/add-vendor-form.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
     AgGridModule.withComponents([])
-  ]
+  ],
+  entryComponents : [ AddVendorFormComponent ]
 })
 export class AdminPanelModule { }
