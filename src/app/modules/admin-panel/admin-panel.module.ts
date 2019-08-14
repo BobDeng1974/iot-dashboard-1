@@ -17,17 +17,22 @@ import { AddCustomerPhoneComponent } from './components/add-customer-phone/add-c
 import { AddCustomerEmailComponent } from './components/add-customer-email/add-customer-email.component';
 import { AddCustomerAdditionalinfoComponent } from './components/add-customer-additionalinfo/add-customer-additionalinfo.component';
 import { AddCustomerBranchComponent } from './components/add-customer-branch/add-customer-branch.component';
+import { AddVendorAddressComponent } from './components/add-vendor-address/add-vendor-address.component';
+import { AddVendorLegalinfoComponent } from './components/add-vendor-legalinfo/add-vendor-legalinfo.component';
+import { AddVendorPhoneComponent } from './components/add-vendor-phone/add-vendor-phone.component';
+import { AddVendorEmailComponent } from './components/add-vendor-email/add-vendor-email.component';
+import { AddVendorAdditionalinfoComponent } from './components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
     AgGridModule.withComponents([])
   ],
-  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent ]
+  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent ]
 })
 export class AdminPanelModule { }

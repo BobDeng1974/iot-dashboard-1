@@ -8,6 +8,11 @@ import { AddCustomerPhoneComponent } from '../../components/add-customer-phone/a
 import { AddCustomerEmailComponent } from '../../components/add-customer-email/add-customer-email.component';
 import { AddCustomerAdditionalinfoComponent } from '../../components/add-customer-additionalinfo/add-customer-additionalinfo.component';
 import { AddCustomerBranchComponent } from '../../components/add-customer-branch/add-customer-branch.component';
+import { AddVendorAddressComponent } from '../../components/add-vendor-address/add-vendor-address.component';
+import { AddVendorLegalinfoComponent } from '../../components/add-vendor-legalinfo/add-vendor-legalinfo.component';
+import { AddVendorPhoneComponent } from '../../components/add-vendor-phone/add-vendor-phone.component';
+import { AddVendorEmailComponent } from '../../components/add-vendor-email/add-vendor-email.component';
+import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -39,6 +44,21 @@ export class AdminMainComponent implements OnInit {
 
   // Open branch in popup
   customerbranchdialog : MatDialogRef<AddCustomerBranchComponent>;
+
+  // Open vendor address in popup
+  vendoraddressdilog : MatDialogRef<AddVendorAddressComponent>;
+
+  // Open vendor legalinfo in popup
+  vendorlegalinfodialog : MatDialogRef<AddVendorLegalinfoComponent>;
+
+  // Open vendor phone in popup
+  vendorphonedialog : MatDialogRef<AddVendorPhoneComponent>;
+
+  // Open vendor email in popup
+  vendoremaildialog : MatDialogRef<AddVendorEmailComponent>;
+
+  // Open vendor additional info popup
+  vendoraddinfodialog : MatDialogRef<AddVendorAdditionalinfoComponent>;
 
   constructor(public dialog: MatDialog) { }
 
@@ -85,6 +105,31 @@ export class AdminMainComponent implements OnInit {
       // Open customer branch dialog
       case 9:
         this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent);
+      break;
+
+      // Open vendor address dialog
+      case 10:
+        this.vendoraddressdilog = this.dialog.open(AddVendorAddressComponent);
+      break;
+
+      // Open vendor legal info dialog
+      case 11: 
+        this.vendorlegalinfodialog = this.dialog.open(AddVendorLegalinfoComponent);
+      break;
+
+      // Open vendor phone dialog
+      case 12:
+        this.vendorphonedialog = this.dialog.open(AddVendorPhoneComponent);
+      break;
+
+      // Open vendor email dialog
+      case 13:
+        this.vendoremaildialog = this.dialog.open(AddVendorEmailComponent);
+      break;
+
+      // Open vendor additoional information  dialog
+      case 14:
+        this.vendoraddinfodialog = this.dialog.open(AddVendorAdditionalinfoComponent);
       break;
     }
   }

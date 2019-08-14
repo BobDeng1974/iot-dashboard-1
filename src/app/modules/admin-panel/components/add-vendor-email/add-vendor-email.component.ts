@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Email } from '../../model/customermodel';
+import { Email } from '../../model/vendormodel';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-add-customer-email',
-  templateUrl: './add-customer-email.component.html',
-  styleUrls: ['./add-customer-email.component.scss']
+  selector: 'app-add-vendor-email',
+  templateUrl: './add-vendor-email.component.html',
+  styleUrls: ['./add-vendor-email.component.scss']
 })
-export class AddCustomerEmailComponent implements OnInit {
+export class AddVendorEmailComponent implements OnInit {
 
   EmailForm : FormGroup;
   formData : Email;
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerEmailComponent>) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddVendorEmailComponent>) { }
 
   ngOnInit() {
     this.EmailForm=this.fb.group({

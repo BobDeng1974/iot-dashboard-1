@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-vendor-details',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendorDetailsComponent implements OnInit {
 
+  // selected tab value
+  private currentTab = 0;
+  @Output() ButtonClicked = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  resizeGrid(value : any) {
+    this.currentTab = value.index;
+  }
+
+  InitializeClick() {
+    this.ButtonClicked.emit(this.currentTab + 10);
+  }
 }
