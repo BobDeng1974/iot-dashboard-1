@@ -12,7 +12,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
   {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
   {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"}
+  {vendor_code: "002", vendor_name : "Qubematics", vendor_type : "public", vendor_tag : "ven0002"}
 ];
 
 @Component({
@@ -32,8 +32,9 @@ export class CustomerAssignComponent implements OnInit {
   ngOnInit() {
   }
 
-  InitializeClick(value : number) {
+  InitializeClick(element: any,value : number) {
     this.ButtonClicked.emit(value);
+    console.log(element);
   }
 
 }

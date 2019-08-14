@@ -22,7 +22,7 @@
                 <td mat-cell *matCellDef="let element">
                     <!-- <mat-radio-button value="element.customer_id" [checked]="element.customer_id === selectedCustomer.customer_id" (click)="viewDetails(element)">
                     </mat-radio-button> -->
-                    <mat-radio-button></mat-radio-button>
+                    <mat-radio-button (click)="InitializeClick(element,15)"></mat-radio-button>
                 </td>
             </ng-container>
 
@@ -62,7 +62,7 @@
                 delete_outline
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button (click)="InitializeClick(15)">
+        <button mat-icon-button>
             <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>
