@@ -13,6 +13,7 @@ import { AddVendorLegalinfoComponent } from '../../components/add-vendor-legalin
 import { AddVendorPhoneComponent } from '../../components/add-vendor-phone/add-vendor-phone.component';
 import { AddVendorEmailComponent } from '../../components/add-vendor-email/add-vendor-email.component';
 import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
+import { CustomerAssignDialogComponent } from '../../components/customer-assign-dialog/customer-assign-dialog.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -59,6 +60,9 @@ export class AdminMainComponent implements OnInit {
 
   // Open vendor additional info popup
   vendoraddinfodialog : MatDialogRef<AddVendorAdditionalinfoComponent>;
+
+  // Open customer assignment popup
+  customerassigndialog : MatDialogRef<CustomerAssignDialogComponent>;
 
   constructor(public dialog: MatDialog) { }
 
@@ -130,6 +134,11 @@ export class AdminMainComponent implements OnInit {
       // Open vendor additoional information  dialog
       case 14:
         this.vendoraddinfodialog = this.dialog.open(AddVendorAdditionalinfoComponent);
+      break;
+
+      // Open customer assign dialog
+      case 15:
+        this.customerassigndialog = this.dialog.open(CustomerAssignDialogComponent);
       break;
     }
   }

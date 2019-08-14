@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 
 @Component({
   selector: 'app-add-customer-form',
@@ -12,7 +13,7 @@ export class AddCustomerFormComponent implements OnInit {
   // Customer form
   customerForm : FormGroup
 
-  constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<AddCustomerFormComponent>) { }
+  constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<AddCustomerFormComponent>, private _snackBar : MatSnackBar) { }
 
   ngOnInit() {
     this.customerForm = this.fb.group({
@@ -25,6 +26,7 @@ export class AddCustomerFormComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close();
+    //this._snackBar.openFromComponent(SuccessSnackberComponent,{ data : "test success component", duration : 3000 });
   }
 
 }
