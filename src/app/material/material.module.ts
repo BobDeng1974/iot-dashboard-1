@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatExpansionModule, MatRadioButton, MatRadioModule } from '@angular/material';
+import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatExpansionModule, MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [],
@@ -33,6 +34,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatDialogModule,
     FormsModule,
     MatCheckboxModule,
+    NgxSpinnerModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
   ]
 
 })
