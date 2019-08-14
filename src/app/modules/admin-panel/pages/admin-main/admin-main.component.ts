@@ -7,6 +7,7 @@ import { AddCustomerLegalinfoComponent } from '../../components/add-customer-leg
 import { AddCustomerPhoneComponent } from '../../components/add-customer-phone/add-customer-phone.component';
 import { AddCustomerEmailComponent } from '../../components/add-customer-email/add-customer-email.component';
 import { AddCustomerAdditionalinfoComponent } from '../../components/add-customer-additionalinfo/add-customer-additionalinfo.component';
+import { AddCustomerBranchComponent } from '../../components/add-customer-branch/add-customer-branch.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -35,6 +36,9 @@ export class AdminMainComponent implements OnInit {
 
   // Open additional information in popup
   custoeraddinfodialog : MatDialogRef<AddCustomerAdditionalinfoComponent>;
+
+  // Open branch in popup
+  customerbranchdialog : MatDialogRef<AddCustomerBranchComponent>;
 
   constructor(public dialog: MatDialog) { }
 
@@ -76,6 +80,11 @@ export class AdminMainComponent implements OnInit {
       // Open customer additoional information  dialog
       case 8:
         this.custoeraddinfodialog = this.dialog.open(AddCustomerAdditionalinfoComponent);
+      break;
+
+      // Open customer branch dialog
+      case 9:
+        this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent);
       break;
     }
   }
