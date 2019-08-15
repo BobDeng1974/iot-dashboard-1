@@ -18,4 +18,8 @@ export class CustomerAssignDialogComponent implements OnInit {
     });
   }
 
+  CancelOperation() {
+    this.dialogRef.close();
+  }
+
 }

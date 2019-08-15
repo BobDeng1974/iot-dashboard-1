@@ -24,11 +24,12 @@ import { AddVendorEmailComponent } from './components/add-vendor-email/add-vendo
 import { AddVendorAdditionalinfoComponent } from './components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 import { CustomerAssignComponent } from './components/customer-assign/customer-assign.component';
 import { CustomerAssignDialogComponent } from './components/customer-assign-dialog/customer-assign-dialog.component';
+import { DeviceTableComponent } from './components/device-table/device-table.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
