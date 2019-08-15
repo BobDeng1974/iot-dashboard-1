@@ -14,5 +14,10 @@
                 </div>
             </div>
         </div>
+        <div mat-dialog-actions mat-elevation-z6>
+            <button mat-stroked-button type="button" (click)="CancelOperation()" class="cancelbtn">Cancel</button>
+            <span class="example-spacer"></span>
+            <button mat-raised-button [disabled]="customerassignForm.invalid" [class.blank-panel]="customerassignForm.invalid" type="submit" class="savebtn">Save</button>
+        </div>
     </form>
 </div>
