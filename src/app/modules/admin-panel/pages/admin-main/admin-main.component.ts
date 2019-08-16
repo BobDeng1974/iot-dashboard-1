@@ -14,6 +14,8 @@ import { AddVendorPhoneComponent } from '../../components/add-vendor-phone/add-v
 import { AddVendorEmailComponent } from '../../components/add-vendor-email/add-vendor-email.component';
 import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 import { CustomerAssignDialogComponent } from '../../components/customer-assign-dialog/customer-assign-dialog.component';
+import { AddDeviceComponent } from '../../components/add-device/add-device.component';
+import { Device } from '../../model/customermodel';
 
 @Component({
   selector: 'app-admin-main',
@@ -64,6 +66,14 @@ export class AdminMainComponent implements OnInit {
   // Open customer assignment popup
   customerassigndialog : MatDialogRef<CustomerAssignDialogComponent>;
 
+  //device assign dialog
+  deviceAssignDialog : MatDialogRef<AddDeviceComponent>
+
+  selectedTab = 0;
+
+  deviceName: string;
+  deviceId: number;
+  deviceDetail: Device;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -140,6 +150,39 @@ export class AdminMainComponent implements OnInit {
       case 15:
         this.customerassigndialog = this.dialog.open(CustomerAssignDialogComponent);
       break;
+
+      //open add device dialog 
+      case 16:
+        this.deviceAssignDialog = this.dialog.open(AddDeviceComponent)
+      break;
+
+      //open edit device form
+      case 17:
+        this.deviceAssignDialog = this.dialog.open(AddDeviceComponent, {
+          data: this.deviceDetail
+        })
+      break;
     }
+  }
+
+  getDeviceID(value){
+    this.selectedTab = 5;
+    console.log(value)
+    this.deviceId = value
+  }
+
+  getDeviceName(value){
+    console.log(value)
+    this.deviceName = value
+  }
+
+  toDeviceAssign(value){
+    this.selectedTab = 4
+    this.deviceId = value
+  }
+
+  getDeviceDetails(value){
+    this.deviceDetail = value
+    console.log(value)
   }
 }
