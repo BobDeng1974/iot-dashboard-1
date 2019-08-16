@@ -340,11 +340,67 @@ export class AdminMainComponent implements OnInit {
       // Open customer additoional information  dialog
       case 8:
         this.custoeraddinfodialog = this.dialog.open(AddCustomerAdditionalinfoComponent);
+        this.custoeraddinfodialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.customer.attributes.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data) => {
+                if(data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open customer branch dialog
       case 9:
         this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent);
+        this.customerbranchdialog.afterClosed().subscribe( result => {
+          if(result) {
+            this.customer.branches.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data) => {
+                if(data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Branch Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open vendor address dialog
