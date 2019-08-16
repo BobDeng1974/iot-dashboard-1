@@ -161,7 +161,7 @@ export class AdminMainComponent implements OnInit {
 
     this.adminpanelService.getAllVendor().subscribe(
       (data) => {
-        this.vendorData = data;
+        this.vendorData = data.reverse();
         console.log(data);
         
         this.spinner.hide();
@@ -178,6 +178,43 @@ export class AdminMainComponent implements OnInit {
       // Open add vendor dialog
       case 0:
         this.addvendordialog = this.dialog.open(AddVendorFormComponent);
+        this.addvendordialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.spinner.show();
+            this.adminpanelService.getAllVendor().subscribe(
+              (data) => {
+                this.vendorData = data.reverse();
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
+      break;
+
+      // Open edit vengor dialog
+      case 1 :
+        if(this.vendor.vendor_id > 0) {
+          this.addvendordialog = this.dialog.open(AddVendorFormComponent, { data : this.vendor} );
+          this.addvendordialog.afterClosed().subscribe(result => {
+            if(result) {
+              this.spinner.show();
+              this.adminpanelService.getAllVendor().subscribe(
+                (data) => {
+                  this.vendorData = data.reverse();
+                  this.spinner.hide();
+                },
+                (error) => {
+                  console.error(error);
+                  this.spinner.hide();
+                }
+              );
+            }
+          });
+        }
       break;
       
       // Open add customer dialog

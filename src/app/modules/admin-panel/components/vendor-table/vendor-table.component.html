@@ -45,15 +45,7 @@
                 <th mat-header-cell *matHeaderCellDef> Tagging </th>
                 <td mat-cell *matCellDef="let element"> {{element.vendor_tag}} </td>
             </ng-container>
-
-            <!-- <ng-container matColumnDef="customer_project">
-                <th mat-header-cell *matHeaderCellDef> View Projects </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button class='folder' (click)="viewCustomer(element.customer_id,element.customer_name)">
-                    </button>
-                </td>
-            </ng-container> -->
-
+            
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="changeSelected(row)">
             </tr>
