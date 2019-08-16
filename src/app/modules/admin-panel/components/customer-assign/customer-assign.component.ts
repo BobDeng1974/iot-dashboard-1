@@ -32,9 +32,8 @@ export class CustomerAssignComponent implements OnInit {
   ngOnInit() {
   }
 
-  InitializeClick(element: any,value : number) {
+  InitializeClick(value : number) {
     this.ButtonClicked.emit(value);
-    console.log(element);
   }
 
 }
