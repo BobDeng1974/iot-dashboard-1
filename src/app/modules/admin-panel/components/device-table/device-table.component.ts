@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Customer, Device } from '../../model/customermodel';
 import { EventManager } from '@angular/platform-browser';
 
@@ -27,16 +27,19 @@ export class DeviceTableComponent implements OnInit {
   @Output() deviceId2 = new EventEmitter<number>();
   @Output() deviceAssign = new EventEmitter<number>();
 
+  @Input() deviceData: Device[] = null;
   displayedColumns: string[] =['select', 'device_name', 'device_mac', 'device_monitor', 'device_assignment'];
-  dataSource = ELEMENT_DATA;
+  dataSource = this.deviceData;
   selectedDevice: Device = {
-    device_id: 1
+    device_id: 0
   }
   constructor() { }
 
   ngOnInit() {
   }
-
+  ngOnChanges(){
+    console.log(this.deviceData)
+  }
   InitializeClick(value:number){
     this.buttonClicked.emit(value)
   }
