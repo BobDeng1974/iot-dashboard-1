@@ -60,6 +60,6 @@ export class AdminPanelMainService {
   }
 
   updateDevice(form: Device){
-    this.http.put(this.updateDeviceUrl, form);
+    return this.http.put(this.updateDeviceUrl, form);
   }
 }
