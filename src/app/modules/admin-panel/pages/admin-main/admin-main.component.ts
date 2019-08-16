@@ -208,6 +208,7 @@ export class AdminMainComponent implements OnInit {
         this.customeraddressdialog.afterClosed().subscribe(result => {
           if(result) {
             this.customer.addresses.push(result);
+            this.spinner.show();
             this.adminpanelService.updateCustomer(this.customer).subscribe(
               (data) => {
                 //console.log(data);
@@ -217,9 +218,19 @@ export class AdminMainComponent implements OnInit {
                 } else {
                   
                 }
+                this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                  (data) => {
+                    this.customer = data[0];
+                  },
+                  (error) => {
+                    console.error(error);
+                  }
+                );
+                this.spinner.hide();
               },
               (error) => {
                 console.error(error);
+                this.spinner.hide();
               }
             );
           }
@@ -229,11 +240,56 @@ export class AdminMainComponent implements OnInit {
       // Open customer legal info dialog
       case 5: 
         this.customerlegalinfodialog = this.dialog.open(AddCustomerLegalinfoComponent);
+        this.customerlegalinfodialog.afterClosed().subscribe(result=> {
+          if(result) {
+            this.customer.infos.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data) => {
+                //console.log(data);
+                if (data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{ data: "Legal Info Added Successfully",duration: 3000 }); 
+                }
+                this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                  (data) => {
+                    this.customer = data[0];
+                  },
+                  (error) => {
+                    console.error(error);
+                  }
+                );
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open customer phone dialog
       case 6:
         this.customerphonedialog = this.dialog.open(AddCustomerPhoneComponent);
+        this.customerphonedialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.customer.phones.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data)=> {
+                if (data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : " Phone Added Successfully",duration: 3000 }); 
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open customer email dialog

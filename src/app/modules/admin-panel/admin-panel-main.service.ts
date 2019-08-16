@@ -32,8 +32,8 @@ export class AdminPanelMainService {
     return this.http.put(this.updateCustomerUrl, form)
   }
 
-  getACustomer():Observable<Customer>{
-    return this.http.get<Customer>(this.getACustomerUrl)
+  getACustomer(id:number):Observable<Customer>{
+    return this.http.get<Customer>(this.getACustomerUrl+id+'?format=json')
   }
 
   getAddressType() : Observable<Domaindata[]> {

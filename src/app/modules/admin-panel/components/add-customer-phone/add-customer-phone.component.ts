@@ -17,13 +17,21 @@ export class AddCustomerPhoneComponent implements OnInit {
 
   ngOnInit() {
     this.PhoneForm = this.fb.group({
-      ph_isd_code:['', [Validators.required]],
+      ph_isd_code:'',
       ph_no:['', [Validators.required]],
     });
   }
 
   CancelOperation() {
     this.dialogRef.close();
+  }
+
+  onSubmit(form) {
+    this.formData = {
+      ph_isd_code : form.controls.ph_isd_code.value,
+      ph_no : form.controls.ph_no.value,
+    }
+    this.dialogRef.close(this.formData);
   }
 
 }
