@@ -215,17 +215,17 @@ export class AdminMainComponent implements OnInit {
                 if (data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,
                     { data: "Address Added Successfully.", duration: 3000});
-                } else {
-                  
+                } 
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );  
                 }
-                this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
-                  (data) => {
-                    this.customer = data[0];
-                  },
-                  (error) => {
-                    console.error(error);
-                  }
-                );
                 this.spinner.hide();
               },
               (error) => {
@@ -250,14 +250,16 @@ export class AdminMainComponent implements OnInit {
                 if (data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{ data: "Legal Info Added Successfully",duration: 3000 }); 
                 }
-                this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
-                  (data) => {
-                    this.customer = data[0];
-                  },
-                  (error) => {
-                    console.error(error);
-                  }
-                );
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -281,6 +283,16 @@ export class AdminMainComponent implements OnInit {
                 if (data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : " Phone Added Successfully",duration: 3000 }); 
                 }
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -295,6 +307,34 @@ export class AdminMainComponent implements OnInit {
       // Open customer email dialog
       case 7:
         this.customeremaildialog = this.dialog.open(AddCustomerEmailComponent);
+        this.customeremaildialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.customer.emails.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data) => {
+                if(data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open customer additoional information  dialog
