@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-tab-group class="wide" [style.height.%]="100">
+    <mat-tab-group class="wide" [style.height.%]="100" [selectedIndex]="selectedTab">
     <mat-tab label="CUSTOMER">
         <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
             <div fxFlex="calc(65% - 16px)" fxFlex.lt-sm="100%">
@@ -26,13 +26,23 @@
         </div>
     </mat-tab>
     <mat-tab label="DEVICE REG.">
-        <div class="content">
-            <app-device-table></app-device-table>
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+            <div fxFlex="calc(65% - 16px)" fxFlex.lt-sm="100%">
+                <app-device-table (buttonClicked)="openPopup($event)" (deviceId2)="getDeviceID($event)" (deviceId)="getDeviceID($event)" (deviceName)="getDeviceName($event)" (deviceName2)="getDeviceName($event)" (deviceAssign)="toDeviceAssign($event)" (deviceDetails)="getDeviceDetails($event)"></app-device-table>
+            </div>
+            <div fxFlex="calc(35% - 16px)" fxFlex.lt-sm="100%">
+                <app-device-detail [device]="deviceDetails"></app-device-detail>
+            </div>
         </div>
     </mat-tab>
+    <mat-tab label="DEVICE ASSIGNMENT">
+        <div class="content">
+            <app-device-assignment [deviceId]="deviceId" [deviceName]="deviceName"></app-device-assignment>
+        </div>
+        </mat-tab>
     <mat-tab label="DEVICE MANAGEMENT">
         <div class="content">
-
+            <app-device-management [deviceId]="deviceId" [deviceName]="deviceName"></app-device-management>
         </div>
     </mat-tab>
     </mat-tab-group>
