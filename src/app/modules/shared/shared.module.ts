@@ -9,6 +9,7 @@ import { SuccessSnackberComponent } from './components/success-snackber/success-
   declarations: [ErrorSnackberComponent, SuccessSnackberComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [ErrorSnackberComponent, SuccessSnackberComponent]
 })
 export class SharedModule { }

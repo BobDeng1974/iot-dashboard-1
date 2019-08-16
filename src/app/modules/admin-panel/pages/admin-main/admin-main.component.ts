@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatDialog } from '@angular/material';
+import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
 import { AddVendorFormComponent } from '../../components/add-vendor-form/add-vendor-form.component';
 import { AddCustomerFormComponent } from '../../components/add-customer-form/add-customer-form.component';
 import { AddCustomerAddressComponent } from '../../components/add-customer-address/add-customer-address.component';
@@ -16,6 +16,8 @@ import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-ad
 import { CustomerAssignDialogComponent } from '../../components/customer-assign-dialog/customer-assign-dialog.component';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { Customer, Address, Domaindata } from '../../model/customermodel';
+import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admin-main',
@@ -72,17 +74,19 @@ export class AdminMainComponent implements OnInit {
   addresstype : Domaindata[];
   cuntrycode : Domaindata[];
   LegalinfoType : Domaindata[];
+  customerType : Domaindata[];
 
   // value to customer details components
   customer : Customer;
 
-  constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService) { }
+  constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.adminpanelService.getAllCustomer().subscribe(
       (data) => {
         console.log(data);
-        this.customerData = data;
+        this.customerData = data.reverse();
         this.adminpanelService.getAddressType().subscribe(
           (data) => {
             this.addresstype = data;
@@ -92,24 +96,37 @@ export class AdminMainComponent implements OnInit {
                 this.adminpanelService.getLegalInfoType().subscribe(
                   (data) => {
                     this.LegalinfoType = data;
+                    this.adminpanelService.getCustomerType().subscribe(
+                      (data) => {
+                        this.customerType = data;
+                      },
+                      (error) => {
+                        console.error(error);
+                        this.spinner.hide();
+                      }
+                    );
                   },
                   (error) => {
                     console.error(error);
+                    this.spinner.hide();
                   }
                 );
               },
               (error) => {
                 console.error(error);
+                this.spinner.hide();
               }
             );
           },
           (error) => {
             console.error(error);
+            this.spinner.hide();
           }
         );
       },
       (error) => {
         console.error(error);
+        this.spinner.hide();
       }
     );
   }
@@ -124,11 +141,68 @@ export class AdminMainComponent implements OnInit {
       // Open add customer dialog
       case 2:
         this.addcustomerdialog = this.dialog.open(AddCustomerFormComponent);
+
+        this.addcustomerdialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.spinner.show();
+            this.adminpanelService.getAllCustomer().subscribe(
+              (data) => {
+                this.customerData = data.reverse();
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
+      break;
+
+      // Edit customer dialog
+      case 3 :
+        if(this.customer.customer_id > 0) {
+          this.addcustomerdialog = this.dialog.open(AddCustomerFormComponent, {data : this.customer});
+          this.addcustomerdialog.afterClosed().subscribe(result => {
+            if(result) {
+              this.spinner.show();
+              this.adminpanelService.getAllCustomer().subscribe(
+                (data) => {
+                  this.customerData = data.reverse();
+                  this.spinner.hide();
+                },
+                (error) => {
+                  console.error(error);
+                  this.spinner.hide();
+                }
+              );
+            }
+          });
+        }
       break;
 
       // Open customer address dialog
       case 4:
         this.customeraddressdialog = this.dialog.open(AddCustomerAddressComponent);
+        this.customeraddressdialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.customer.addresses.push(result);
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data) => {
+                //console.log(data);
+                if (data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,
+                    { data: "Address Added Successfully.", duration: 3000});
+                } else {
+                  
+                }
+              },
+              (error) => {
+                console.error(error);
+              }
+            );
+          }
+        });
       break;
 
       // Open customer legal info dialog
