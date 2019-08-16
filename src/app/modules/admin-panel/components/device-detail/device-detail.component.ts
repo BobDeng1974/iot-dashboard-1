@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Device, Sensor } from '../../model/customermodel';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
 
 @Component({
   selector: 'app-device-detail',
@@ -12,7 +13,7 @@ export class DeviceDetailComponent implements OnInit {
   private sensorColumnDefs;
   private sensorGridApi;
   private sensorGridColumnApi;
-  constructor() { }
+  constructor(private adminService: AdminPanelMainService) { }
 
   ngOnInit() {
     this.sensorColumnDefs = [
@@ -32,4 +33,15 @@ export class DeviceDetailComponent implements OnInit {
     this.sensorGridColumnApi = params.columnApi
   }
 
+  onCellValueChange(params){
+    console.log(params)
+    this.adminService.updateDevice(this.device).subscribe(
+      (data) => {
+        console.log(data)
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
+  }
 }
