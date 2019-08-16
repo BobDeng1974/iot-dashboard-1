@@ -25,4 +25,11 @@ export class AddVendorEmailComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onSubmit(form) {
+    this.formData = {
+      eml_address : form.controls.eml_address.value,
+    }
+    this.dialogRef.close(this.formData);
+  }
+
 }
