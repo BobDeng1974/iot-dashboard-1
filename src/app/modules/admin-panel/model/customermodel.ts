@@ -60,6 +60,7 @@ export interface Address {
 export interface Branch {
     branch_id? : number;
     customer_id? : number;
+    branch_name? : string;
     branch_add_line1? : string;
     branch_add_line2? : string;
     branch_add_city? : string;

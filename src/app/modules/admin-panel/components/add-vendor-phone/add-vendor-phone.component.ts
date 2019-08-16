@@ -26,4 +26,11 @@ export class AddVendorPhoneComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onSubmit(form) {
+    this.formData = {
+      ph_isd_code : form.controls.ph_isd_code.value,
+      ph_no : form.controls.ph_no.value,
+    }
+    this.dialogRef.close(this.formData);
+  }
 }

@@ -68,8 +68,16 @@ export interface Vendor {
     vendor_effective_from? : Date;
     vendor_effective_to? : Date;
     additional_attributes?: AdditionalAttributes[];
-    legal_info?: LegalInfo[];
-    phone?: Phone[];
-    email?: Email[];
-    address?: Address[];
+    legal_infos?: LegalInfo[];
+    phones?: Phone[];
+    emails?: Email[];
+    addresses?: Address[];
+}
+
+export interface Domaindata {
+    domain_id?: number;
+    domain_type?:string;
+    domain_code?:string;
+    domain_value?:string;
+    domain_data_type?: string;
 }

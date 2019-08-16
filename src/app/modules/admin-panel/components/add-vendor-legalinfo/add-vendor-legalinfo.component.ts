@@ -17,13 +17,21 @@ export class AddVendorLegalinfoComponent implements OnInit {
 
   ngOnInit() {
     this.LegalInfoForm=this.fb.group({
-      legalinfo_type:['', [Validators.required]],
+      legalinfo_type:'',
       legalinfo_value:['', [Validators.required]],
     });
   }
 
   CancelOperation() {
     this.dialogRef.close();
+  }
+
+  onSubmit(form) {
+    this.formData = {
+      legalinfo_type : form.controls.legalinfo_type.value,
+      legalinfo_value : form.controls.legalinfo_value.value,
+    }
+    this.dialogRef.close(this.formData);
   }
 
 }

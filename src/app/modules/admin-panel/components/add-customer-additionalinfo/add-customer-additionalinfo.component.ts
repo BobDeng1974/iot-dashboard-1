@@ -26,4 +26,12 @@ export class AddCustomerAdditionalinfoComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onSubmit(form) {
+    this.formData = {
+      addinfo_attr : form.controls.addinfo_attr.value,
+      addinfo_value : form.controls.addinfo_value.value,
+    }
+    this.dialogRef.close(this.formData);
+  }
+
 }

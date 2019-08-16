@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Customer, Domaindata, Device } from './model/customermodel';
 import { Observable } from 'rxjs';
+import { Vendor } from './model/vendormodel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,16 @@ export class AdminPanelMainService {
   private getAllDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/getall/?format=json";
   private deviceAliveUrl = "http://192.168.0.103:8001/api/qubematics/device/alive/";
   private assignDevice = "http://192.168.0.103:8001/api/qubematics/device/assign/";
+  // private createDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/create/";
+  // private updateDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/update/";
+  // private getAllDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/getall/?format=json";
+  // private deviceAliveUrl = "http://192.168.0.11:8001/api/qubematics/device/alive/";
+  // private assignDevice = "http://192.168.0.11:8001/api/qubematics/device/assign/";
+
+  private getAllVendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/getall/?format=json";
+  private postVendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/create/?format=json";
+  private vendorUpdateUrl = "http://34.93.221.249:8001/api/qubematics/vendor/update/?format=json";
+  private getAvendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/getavendor/";
   constructor(private http: HttpClient) { }
 
   createCustomer(form: Customer){
@@ -61,5 +72,21 @@ export class AdminPanelMainService {
 
   updateDevice(form: Device){
     return this.http.put(this.updateDeviceUrl, form);
+  }
+
+  getAllVendor() : Observable<Vendor[]> {
+    return this.http.get<Vendor[]>(this.getAllVendorUrl);
+  } 
+
+  createVendor(form : Vendor) {
+    return this.http.post(this.postVendorUrl, form);
+  }
+
+  updateVendor(form : Vendor) {
+    return this.http.put(this.vendorUpdateUrl, form);
+  }
+
+  getAVendorDetails(id : number) : Observable<Vendor> {
+    return this.http.get<Vendor>(this.getAvendorUrl+id+'?format=json');
   }
 }

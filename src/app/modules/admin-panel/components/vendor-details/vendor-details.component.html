@@ -7,27 +7,27 @@
     <div class="main-content">
         <mat-tab-group [style.height.%]="100" (selectedTabChange)="resizeGrid($event)">
             <mat-tab label="Address" [style.height.%]="100">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="addressDataCopy" [columnDefs]="addressColumnDefs" (gridReady)="onAddressGridReady($event)" (columnResized)="onColumnResized($event)" [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged($event)">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Legal info">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="legalData" [columnDefs]="legalColumnDefs" (gridReady)="onLegalGridReady($event)">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Phone">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="phoneData" [columnDefs]="phoneColumnDef" (gridReady)="onPhoneGridReady($event)">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Email">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="emailData" [columnDefs]="emailColumnDef" (gridReady)="onEmailGridReady($event)">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Additional info">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="additionalData" [columnDefs]="additionalColumnDefs" (gridReady)="onAdditionalGridReady($event)">
 
                 </ag-grid-angular>
             </mat-tab>
@@ -35,8 +35,8 @@
     </div>
     <mat-action-row>
         <span class="example-spacer"></span>
-        <button mat-icon-button>
-            <mat-icon class="mat-icons-round md-dark md-inactive md-24" *ngIf="(currentTab == 0)">
+        <button mat-icon-button *ngIf="(currentTab == 0)" [disabled]="!selectedRow">
+            <mat-icon class="mat-icons-round md-dark md-inactive md-24">
                 edit
             </mat-icon>
         </button> &nbsp;

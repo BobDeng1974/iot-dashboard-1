@@ -20,6 +20,7 @@ import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AddSensorFormComponent } from '../../components/add-sensor-form/add-sensor-form.component';
+import { Vendor } from '../../model/vendormodel';
 
 @Component({
   selector: 'app-admin-main',
@@ -83,6 +84,10 @@ export class AdminMainComponent implements OnInit {
   deviceDetail: Device;
   // Hold All customer Data
   customerData : Customer[];
+
+  // Hold all vendor data
+  vendorData : Vendor[];
+
   //Hold all the devices 
   deviceData : Device[];
 
@@ -93,6 +98,9 @@ export class AdminMainComponent implements OnInit {
 
   // value to customer details components
   customer : Customer;
+
+  // value to vendor details components
+  vendor : Vendor;
 
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
@@ -153,7 +161,20 @@ export class AdminMainComponent implements OnInit {
       (error) => {
         console.log(error)
       }
-    )
+    );
+
+    this.adminpanelService.getAllVendor().subscribe(
+      (data) => {
+        this.vendorData = data.reverse();
+        console.log(data);
+        
+        this.spinner.hide();
+      },
+      (error) => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    );
   }
 
   openPopup(value : number) {
@@ -161,6 +182,43 @@ export class AdminMainComponent implements OnInit {
       // Open add vendor dialog
       case 0:
         this.addvendordialog = this.dialog.open(AddVendorFormComponent);
+        this.addvendordialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.spinner.show();
+            this.adminpanelService.getAllVendor().subscribe(
+              (data) => {
+                this.vendorData = data.reverse();
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
+      break;
+
+      // Open edit vengor dialog
+      case 1 :
+        if(this.vendor.vendor_id > 0) {
+          this.addvendordialog = this.dialog.open(AddVendorFormComponent, { data : this.vendor} );
+          this.addvendordialog.afterClosed().subscribe(result => {
+            if(result) {
+              this.spinner.show();
+              this.adminpanelService.getAllVendor().subscribe(
+                (data) => {
+                  this.vendorData = data.reverse();
+                  this.spinner.hide();
+                },
+                (error) => {
+                  console.error(error);
+                  this.spinner.hide();
+                }
+              );
+            }
+          });
+        }
       break;
       
       // Open add customer dialog
@@ -344,36 +402,235 @@ export class AdminMainComponent implements OnInit {
       // Open customer additoional information  dialog
       case 8:
         this.custoeraddinfodialog = this.dialog.open(AddCustomerAdditionalinfoComponent);
+        this.custoeraddinfodialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.customer.attributes.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data) => {
+                if(data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open customer branch dialog
       case 9:
         this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent);
+        this.customerbranchdialog.afterClosed().subscribe( result => {
+          if(result) {
+            this.customer.branches.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateCustomer(this.customer).subscribe(
+              (data) => {
+                if(data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Branch Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getACustomer(this.customer.customer_id).subscribe(
+                    (data) => {
+                      this.customer = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open vendor address dialog
       case 10:
         this.vendoraddressdilog = this.dialog.open(AddVendorAddressComponent);
+        this.vendoraddressdilog.afterClosed().subscribe(result => {
+          if(result) {
+            this.vendor.addresses.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateVendor(this.vendor).subscribe(
+              (data) => {
+                //console.log(data);
+                if (data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,
+                    { data: "Address Added Successfully.", duration: 3000});
+                } 
+                else {
+                  this.adminpanelService.getAVendorDetails(this.vendor.vendor_id).subscribe(
+                    (data) => {
+                      this.vendor = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );  
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open vendor legal info dialog
       case 11: 
         this.vendorlegalinfodialog = this.dialog.open(AddVendorLegalinfoComponent);
+        this.vendorlegalinfodialog.afterClosed().subscribe(result=> {
+          if(result) {
+            this.vendor.legal_infos.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateVendor(this.vendor).subscribe(
+              (data) => {
+                //console.log(data);
+                if (data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{ data: "Legal Info Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getAVendorDetails(this.vendor.vendor_id).subscribe(
+                    (data) => {
+                      this.vendor = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open vendor phone dialog
       case 12:
         this.vendorphonedialog = this.dialog.open(AddVendorPhoneComponent);
+        this.vendorphonedialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.vendor.phones.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateVendor(this.vendor).subscribe(
+              (data)=> {
+                if (data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : " Phone Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getAVendorDetails(this.vendor.vendor_id).subscribe(
+                    (data) => {
+                      this.vendor = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open vendor email dialog
       case 13:
         this.vendoremaildialog = this.dialog.open(AddVendorEmailComponent);
+        this.vendoremaildialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.vendor.emails.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateVendor(this.vendor).subscribe(
+              (data) => {
+                if(data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getAVendorDetails(this.vendor.vendor_id).subscribe(
+                    (data) => {
+                      this.vendor = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open vendor additoional information  dialog
       case 14:
         this.vendoraddinfodialog = this.dialog.open(AddVendorAdditionalinfoComponent);
+        this.vendoraddinfodialog.afterClosed().subscribe(result => {
+          if(result) {
+            this.vendor.additional_attributes.push(result);
+            this.spinner.show();
+            this.adminpanelService.updateVendor(this.vendor).subscribe(
+              (data) => {
+                if(data == "001") {
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
+                }
+                else {
+                  this.adminpanelService.getAVendorDetails(this.vendor.vendor_id).subscribe(
+                    (data) => {
+                      this.vendor = data[0];
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                }
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       // Open customer assign dialog
@@ -461,5 +718,9 @@ export class AdminMainComponent implements OnInit {
 
   openAddressEditPopup(address : Address) {
     this.customeraddressdialog = this.dialog.open(AddCustomerAddressComponent,{ data : address});
+  }
+
+  getVendorDetails(value : Vendor) {
+    this.vendor = value;
   }
 }
