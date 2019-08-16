@@ -22,7 +22,7 @@
                 <td mat-cell *matCellDef="let element">
                     <!-- <mat-radio-button value="element.customer_id" [checked]="element.customer_id === selectedCustomer.customer_id" (click)="viewDetails(element)">
                     </mat-radio-button> -->
-                    <mat-radio-button></mat-radio-button>
+                    <mat-radio-button value="element.device_id" [checked]="element.device_id === selectedDevice.device_id" (click)="viewDetails(element)"></mat-radio-button>
                 </td>
             </ng-container>
 
@@ -31,28 +31,40 @@
                 <td mat-cell *matCellDef="let element"> {{element.device_name}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="device_mac_address">
+            <ng-container matColumnDef="device_mac">
                 <th mat-header-cell *matHeaderCellDef> Device Mac Address </th>
-                <td mat-cell *matCellDef="let element"> {{element.device_mac_address}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.device_mac}} </td>
             </ng-container>
 
             <!-- <ng-container matColumnDef="customer_type">
                 <th mat-header-cell *matHeaderCellDef> Type </th>
                 <td mat-cell *matCellDef="let element"> {{element.customer_type}} </td>
             </ng-container>
-
+            
             <ng-container matColumnDef="customer_tag">
                 <th mat-header-cell *matHeaderCellDef> Tagging </th>
                 <td mat-cell *matCellDef="let element"> {{element.customer_tag}} </td>
             </ng-container> -->
+            <ng-container matColumnDef="device_monitor">
+                <th mat-header-cell *matHeaderCellDef>Deice Monitor</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button class="assignment" (click)="gotoDeviceMonitor(element.device_id, element.device_name)"><mat-icon>assessment</mat-icon></button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="device_assignment">
+                <th mat-header-cell *matHeaderCellDef>Deice Assignment</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button class="assignment" (click)="gotoDeviceAssignment(element.device_id, element.device_name)"><mat-icon>assignment</mat-icon></button>
+                </td>
+            </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="changeSelected(row)">
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
             </tr>
         </table>
     </div>
     <mat-action-row class="action-row-content">
         <span class="example-spacer"></span>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="InitializeClick(17)">
             <mat-icon class="mat-icons-round md-dark md-inactive md-24">
                 edit
             </mat-icon>
@@ -62,7 +74,7 @@
                 delete_outline
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button (click)="InitializeClick(2)">
+        <button mat-icon-button (click)="InitializeClick(16)">
             <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>

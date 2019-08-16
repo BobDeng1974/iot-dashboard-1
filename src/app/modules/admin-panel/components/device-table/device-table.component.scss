@@ -39,3 +39,10 @@
 .main-table{
     width: 100%;
 }
+
+.mat-row:nth-child(even) .assignment{
+    color: grey
+}
+.mat-row:nth-child(odd) .assignment {
+    color:  #4FA99F
+}
