@@ -18,8 +18,8 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div mat-dialog-actions></div>
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="5px">
+            <!-- <div mat-dialog-actions></div> -->
+            <!-- <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="5px">
                 <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Sensor Name</mat-label>
@@ -44,11 +44,11 @@
                         <input matInput placeholder="Type Sensor Threshold Max" formControlName="sensor_threshold_max">
                     </mat-form-field>
                 </div>
-            </div>
+            </div> -->
             <div mat-dialog-actions mat-elevation-z6>
                 <button mat-stroked-button type="button" class="cancelbtn" (click)="closeDialog()">Cancel</button>
                 <span class="example-spacer"></span>
-                <button mat-raised-button color="primary" type="submit" class="savebtn" [disabled]="adddeviceForm.invalid" [class.blank-panel]="adddeviceForm.invalid">Save</button>
+                <button mat-raised-button color="primary" type="submit" class="savebtn" [disabled]="adddeviceForm.invalid" [class.blank-panel]="adddeviceForm.invalid" (click)="onSubmit(adddeviceForm)">Save</button>
             </div>
         </div>
 
