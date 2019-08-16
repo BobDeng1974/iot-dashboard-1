@@ -119,21 +119,25 @@ export class AdminMainComponent implements OnInit {
                   },
                   (error) => {
                     console.log(error);
+                    this.spinner.hide();
                   }
                 );
               },
               (error) => {
                 console.log(error);
+                this.spinner.hide();
               }
             );
           },
           (error) => {
             console.log(error);
+            this.spinner.hide();
           }
         );
       },
       (error) => {
         console.log(error);
+        this.spinner.hide();
       }
     );
 
