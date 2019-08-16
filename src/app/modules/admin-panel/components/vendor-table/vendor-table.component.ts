@@ -1,19 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
-export interface PeriodicElement {
-  vendor_code: string;
-  vendor_name: string;
-  vendor_type: string;
-  vendor_tag: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"}
-];
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Vendor } from '../../model/vendormodel';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-vendor-table',
@@ -22,19 +9,42 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class VendorTableComponent implements OnInit {
 
+  @Input() vendorData : Vendor[];
+
   // output the event value
   @Output() ButtonClicked = new EventEmitter<number>();
 
+  // vendor details
+  @Output() vendorDetails = new EventEmitter<Vendor>();
+
+  selectedVendor : Vendor = {
+    vendor_id : 0
+  }
+
   displayedColumns: string[] = ['select', 'vendor_code', 'vendor_name', 'vendor_type', 'vendor_tag'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource<any>();
 
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.data = this.vendorData;
+  }
+
+  ngOnChanges() {
+    this.dataSource.data = this.vendorData;
   }
 
   InitializeClick(value : number) {
     //console.log(value);
     this.ButtonClicked.emit(value);
+  }
+
+  viewDetails(details : Vendor) {
+    this.vendorDetails.emit(details);
+  }
+
+  changeSelected(value : Vendor) {
+    this.selectedVendor = value;
+    this.viewDetails(value);
   }
 }

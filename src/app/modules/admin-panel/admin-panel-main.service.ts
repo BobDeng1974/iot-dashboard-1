@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Customer, Domaindata, Device } from './model/customermodel';
 import { Observable } from 'rxjs';
+import { Vendor } from './model/vendormodel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class AdminPanelMainService {
   private getAllDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/getall/?format=json";
   private deviceAliveUrl = "http://192.168.0.11:8001/api/qubematics/device/alive/";
   private assignDevice = "http://192.168.0.11:8001/api/qubematics/device/assign/";
+  private getAllVendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/getall/?format=json";
   constructor(private http: HttpClient) { }
 
   createCustomer(form: Customer){
@@ -62,4 +64,8 @@ export class AdminPanelMainService {
   updateDevice(form: Device){
     return this.http.put(this.updateDeviceUrl, form);
   }
+
+  getAllVendor() : Observable<Vendor[]> {
+    return this.http.get<Vendor[]>(this.getAllVendorUrl);
+  } 
 }

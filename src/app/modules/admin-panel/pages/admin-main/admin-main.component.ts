@@ -19,6 +19,7 @@ import { Device, Address, Customer, Domaindata } from '../../model/customermodel
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Vendor } from '../../model/vendormodel';
 
 @Component({
   selector: 'app-admin-main',
@@ -79,6 +80,10 @@ export class AdminMainComponent implements OnInit {
   deviceDetail: Device;
   // Hold All customer Data
   customerData : Customer[];
+
+  // Hold all vendor data
+  vendorData : Vendor[];
+
   //Hold all the devices 
   deviceData : Device[];
 
@@ -89,6 +94,9 @@ export class AdminMainComponent implements OnInit {
 
   // value to customer details components
   customer : Customer;
+
+  // value to vendor details components
+  vendor : Vendor;
 
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
@@ -149,7 +157,20 @@ export class AdminMainComponent implements OnInit {
       (error) => {
         console.log(error)
       }
-    )
+    );
+
+    this.adminpanelService.getAllVendor().subscribe(
+      (data) => {
+        this.vendorData = data;
+        console.log(data);
+        
+        this.spinner.hide();
+      },
+      (error) => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    );
   }
 
   openPopup(value : number) {
@@ -473,5 +494,9 @@ export class AdminMainComponent implements OnInit {
 
   openAddressEditPopup(address : Address) {
     this.customeraddressdialog = this.dialog.open(AddCustomerAddressComponent,{ data : address});
+  }
+
+  getVendorDetails(value : Vendor) {
+    this.vendor = value;
   }
 }
