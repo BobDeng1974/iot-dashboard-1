@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
@@ -8,13 +8,18 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./customer-assign-dialog.component.scss']
 })
 export class CustomerAssignDialogComponent implements OnInit {
-  customerassignForm : FormGroup;
+  
+  customerassignForm  : FormGroup;
   constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<CustomerAssignDialogComponent>) { }
 
   ngOnInit() {
     this.customerassignForm = this.fb.group({
-      assign_customer : '',
+      assign_customer : ['',[Validators.required]],
     });
+  }
+
+  CancelOperation() {
+    this.dialogRef.close();
   }
 
 }
