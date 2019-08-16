@@ -57,7 +57,7 @@
             <mat-action-row>
                 <button mat-stroked-button type="button" (click)="closeDialog()" class="cancelbtn">Cancel</button>
                 <span class="example-spacer"></span>
-                <button mat-raised-button class="savebtn" [disabled]="addressForm.invalid" [class.blank-panel]="addressForm.invalid">Save</button>
+                <button mat-raised-button class="savebtn" [disabled]="addressForm.invalid" [class.blank-panel]="addressForm.invalid" (click)="onSubmit(addressForm)">Save</button>
             </mat-action-row>
         </div>
     </form>

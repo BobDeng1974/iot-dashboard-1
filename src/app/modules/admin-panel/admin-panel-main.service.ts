@@ -48,6 +48,9 @@ export class AdminPanelMainService {
     return this.http.get<Domaindata[]>(this.getdomainUrl+'Legal_info');
   }
 
+  getCustomerType() : Observable<Domaindata[]> {
+    return this.http.get<Domaindata[]>(this.getdomainUrl+'Customer_type');
+  }
   getAllDevice():Observable<Device[]>{
     return this.http.get<Device[]>(this.getAllDeviceUrl)
   }
