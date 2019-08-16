@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Device, Sensor } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-device-detail',
@@ -8,12 +9,14 @@ import { AdminPanelMainService } from '../../admin-panel-main.service';
   styleUrls: ['./device-detail.component.scss']
 })
 export class DeviceDetailComponent implements OnInit {
+  @Output() buttonClicked = new EventEmitter<number>();
+
   @Input() device: Device;
   private sensors: Sensor[] = [];
   private sensorColumnDefs;
   private sensorGridApi;
   private sensorGridColumnApi;
-  constructor(private adminService: AdminPanelMainService) { }
+  constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.sensorColumnDefs = [
@@ -34,14 +37,24 @@ export class DeviceDetailComponent implements OnInit {
   }
 
   onCellValueChange(params){
-    console.log(params)
+    this.spinner.show()
     this.adminService.updateDevice(this.device).subscribe(
       (data) => {
         console.log(data)
+        setTimeout(() => {
+          this.spinner.hide()
+        }, 1000)
       },
       (error) => {
         console.log(error)
+        setTimeout(() => {
+          this.spinner.hide()
+        }, 1000);
       }
     );
+  }
+
+  InitializeClick(value){
+    this.buttonClicked.emit(value);
   }
 }
