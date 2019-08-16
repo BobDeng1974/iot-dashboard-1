@@ -82,12 +82,12 @@ export interface Customer {
     customer_updated_by? : string;
     customer_effective_from? : Date;
     customer_effective_to? : Date;
-    additional_attributes? : AdditionalAttributes[];
-    legal_info? : LegalInfo[];
-    phone? : Phone[];
-    email? : Email[];
-    address? : Address[];
-    branch? : Branch[];
+    attributes? : AdditionalAttributes[];
+    infos? : LegalInfo[];
+    phones? : Phone[];
+    emails? : Email[];
+    addresses? : Address[];
+    branches? : Branch[];
 }
 
 export interface Device{
