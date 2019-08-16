@@ -77,6 +77,8 @@ export class AdminMainComponent implements OnInit {
   deviceDetail: Device;
   // Hold All customer Data
   customerData : Customer[];
+  //Hold all the devices 
+  deviceData : Device[];
 
   addresstype : Domaindata[];
   cuntrycode : Domaindata[];
@@ -103,24 +105,34 @@ export class AdminMainComponent implements OnInit {
                     this.LegalinfoType = data;
                   },
                   (error) => {
-                    console.error(error);
+                    console.log(error);
                   }
                 );
               },
               (error) => {
-                console.error(error);
+                console.log(error);
               }
             );
           },
           (error) => {
-            console.error(error);
+            console.log(error);
           }
         );
       },
       (error) => {
-        console.error(error);
+        console.log(error);
       }
     );
+
+    this.adminpanelService.getAllDevice().subscribe(
+      (data) => {
+        console.log(data)
+        this.deviceData = data
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   openPopup(value : number) {
