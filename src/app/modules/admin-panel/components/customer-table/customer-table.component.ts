@@ -1,21 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Customer } from '../../model/customermodel';
+import { MatTableDataSource } from '@angular/material';
 
-export interface PeriodicElement {
-  customer_code: string;
-  customer_name: string;
-  customer_type: string;
-  customer_tag: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { customer_code: "001", customer_name : "Qubematics", customer_type : "Private", customer_tag : "ven001" },
-  { customer_code: "001", customer_name : "Qubematics", customer_type : "Private", customer_tag : "ven001" },
-  { customer_code: "001", customer_name : "Qubematics", customer_type : "Private", customer_tag : "ven001" },
-  { customer_code: "001", customer_name : "Qubematics", customer_type : "Private", customer_tag : "ven001" },
-  { customer_code: "001", customer_name : "Qubematics", customer_type : "Private", customer_tag : "ven001" },
-  { customer_code: "001", customer_name : "Qubematics", customer_type : "Private", customer_tag : "ven001" }
-];
 @Component({
   selector: 'app-customer-table',
   templateUrl: './customer-table.component.html',
@@ -23,17 +9,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CustomerTableComponent implements OnInit {
 
+  @Input() customerData : Customer[];
+
   @Output() ButtonClick = new EventEmitter<number>();
 
+  //Customer details
+  @Output() customerDetails = new EventEmitter<Customer>();
   selectedCustomer : Customer = {
     customer_id : 0
   };
 
   displayedColumns: string[] = ['select', 'customer_code', 'customer_name', 'customer_type', 'customer_tag'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource<any>();
+
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.data = this.customerData;
+  }
+
+  ngOnChanges() {
+    this.dataSource.data = this.customerData;
   }
 
   InitializeClick(value : number) {
@@ -42,7 +38,8 @@ export class CustomerTableComponent implements OnInit {
 
   // view customer details
   viewDetails(details : Customer) {
-
+    //console.log(details);
+    this.customerDetails.emit(details);
   }
 
   // Click on table row

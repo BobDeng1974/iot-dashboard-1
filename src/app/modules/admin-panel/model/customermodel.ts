@@ -82,10 +82,18 @@ export interface Customer {
     customer_updated_by? : string;
     customer_effective_from? : Date;
     customer_effective_to? : Date;
-    additional_attributes? : AdditionalAttributes[];
-    legal_info? : LegalInfo[];
-    phone? : Phone[];
-    email? : Email[];
-    address? : Address[];
-    branch? : Branch[];
+    attributes? : AdditionalAttributes[];
+    infos? : LegalInfo[];
+    phones? : Phone[];
+    emails? : Email[];
+    addresses? : Address[];
+    branches? : Branch[];
+}
+
+export interface Domaindata {
+    domain_id?: number;
+    domain_type?:string;
+    domain_code?:string;
+    domain_value?:string;
+    domain_data_type?: string;
 }
