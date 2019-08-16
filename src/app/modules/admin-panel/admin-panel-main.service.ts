@@ -13,11 +13,11 @@ export class AdminPanelMainService {
   private getAllCustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/getall/?format=json";
   private getACustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/getacustomer/";
   private getdomainUrl = "http://35.200.162.115:8006/qiidomain/get/?format=json";
-  private createDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/create/";
-  private updateDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/update/";
-  private getAllDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/getall/?format=json";
-  private deviceAliveUrl = "http://192.168.0.11:8001/api/qubematics/device/alive/";
-  private assignDevice = "http://192.168.0.11:8001/api/qubematics/device/assign/";
+  private createDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/create/";
+  private updateDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/update/";
+  private getAllDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/getall/?format=json";
+  private deviceAliveUrl = "http://192.168.0.103:8001/api/qubematics/device/alive/";
+  private assignDevice = "http://192.168.0.103:8001/api/qubematics/device/assign/";
   constructor(private http: HttpClient) { }
 
   createCustomer(form: Customer){

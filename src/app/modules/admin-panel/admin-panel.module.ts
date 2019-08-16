@@ -32,11 +32,12 @@ import { SharedModule } from '../shared/shared.module';
 import { DeviceDetailComponent } from './components/device-detail/device-detail.component';
 import { DeviceAssignmentComponent } from './components/device-assignment/device-assignment.component';
 import { DeviceManagementComponent } from './components/device-management/device-management.component';
+import { AddSensorFormComponent } from './components/add-sensor-form/add-sensor-form.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, AddSensorFormComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -44,6 +45,6 @@ import { DeviceManagementComponent } from './components/device-management/device
     MaterialModule,
     AgGridModule.withComponents([])
   ],
-  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent ]
+  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent ]
 })
 export class AdminPanelModule { }
