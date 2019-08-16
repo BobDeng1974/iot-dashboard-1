@@ -1,0 +1,24 @@
+<div mat-dialog-title>
+    Add Additional Information
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="adddeviceForm">
+        <div class="form-container">
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="5px">
+                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
+                    <mat-form-field class="form-field">
+                        <mat-label>Device Name</mat-label>
+                        <input matInput placeholder="Type your Device Name" formControlName="add_device_name">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
+                    <mat-form-field class="form-field">
+                        <mat-label>Device Mac Address</mat-label>
+                        <input matInput placeholder="Type your Device Name" formControlName="add_device_mac_address">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
