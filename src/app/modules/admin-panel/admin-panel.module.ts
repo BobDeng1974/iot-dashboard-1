@@ -32,11 +32,12 @@ import { SharedModule } from '../shared/shared.module';
 import { DeviceDetailComponent } from './components/device-detail/device-detail.component';
 import { DeviceAssignmentComponent } from './components/device-assignment/device-assignment.component';
 import { DeviceManagementComponent } from './components/device-management/device-management.component';
+import { CustomerAssignFormComponent } from './components/customer-assign-form/customer-assign-form.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, CustomerAssignFormComponent],
   imports: [
     CommonModule,
     SharedModule,
