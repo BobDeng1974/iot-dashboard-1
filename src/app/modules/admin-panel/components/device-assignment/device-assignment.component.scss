@@ -14,21 +14,21 @@
 }
 
 .mat-row:nth-child(odd){
-    background-color:rgb(245, 255, 245);
+    background-color:#F0FAFC;
 }
-.customer-panel{
+.device-panel{
     height: 98%;
     //border: 3px solid #00AEC6;
 }
 
 .panel-header {
-    background-color: #4FA99F;
+    background-color: #00AEC6;
     border-radius: 0px;
     color: white !important;
 }
 
 .panel-header:hover {
-    background-color: #4FA99F !important;
+    background-color: #00AEC6 !important;
 }
 
 .main-content {
@@ -38,11 +38,4 @@
 
 .main-table{
     width: 100%;
-}
-
-.mat-row:nth-child(even) .assignment{
-    color: grey
-}
-.mat-row:nth-child(odd) .assignment {
-    color:  #4FA99F
 }

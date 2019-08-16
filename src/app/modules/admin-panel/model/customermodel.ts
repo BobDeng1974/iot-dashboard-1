@@ -90,6 +90,29 @@ export interface Customer {
     branches? : Branch[];
 }
 
+export interface Device{
+    device_id ?: number;
+    device_name ?: string;
+    device_mac ?:string;
+    device_updated_by ?: string;
+    device_updated_on ?: Date;
+    device_effective_from ?: Date;
+    device_effective_to ?: Date;
+    sensors ?:Sensor[];
+}
+
+export interface Sensor {
+    sensor_id ?:number;
+    sensor_name ?: string;
+    sensor_type ?: string;
+    sensor_threshold_max ?:number
+    sensor_threshold_min ?:number
+    sensor_updated_on ?: Date;
+    sensor_updated_by ?: string;
+    sensor_effective_from ?: Date;
+    sensor_effective_to ?: Date;
+}
+
 export interface Domaindata {
     domain_id?: number;
     domain_type?:string;

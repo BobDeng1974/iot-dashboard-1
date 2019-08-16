@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Customer, Domaindata } from './model/customermodel';
+import { Customer, Domaindata, Device } from './model/customermodel';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,12 @@ export class AdminPanelMainService {
   private updateCustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/update/";
   private getAllCustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/getall/?format=json";
   private getACustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/getacustomer/";
-  private getdomainUrl = "http://35.200.162.115:8006/qiidomain/get/";
+  private getdomainUrl = "http://35.200.162.115:8006/qiidomain/get/?format=json";
+  private createDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/create/";
+  private updateDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/update/";
+  private getAllDeviceUrl = "http://192.168.0.11:8001/api/qubematics/device/getall/?format=json";
+  private deviceAliveUrl = "http://192.168.0.11:8001/api/qubematics/device/alive/";
+  private assignDevice = "http://192.168.0.11:8001/api/qubematics/device/assign/";
   constructor(private http: HttpClient) { }
 
   createCustomer(form: Customer){
@@ -45,5 +50,16 @@ export class AdminPanelMainService {
 
   getCustomerType() : Observable<Domaindata[]> {
     return this.http.get<Domaindata[]>(this.getdomainUrl+'Customer_type');
+  }
+  getAllDevice():Observable<Device[]>{
+    return this.http.get<Device[]>(this.getAllDeviceUrl)
+  }
+
+  createDevice(form: Device){
+    return this.http.post(this.createDeviceUrl, form)
+  }
+
+  updateDevice(form: Device){
+    this.http.put(this.updateDeviceUrl, form);
   }
 }
