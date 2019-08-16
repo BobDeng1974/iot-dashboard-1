@@ -27,6 +27,13 @@ export class AddCustomerAddressComponent implements OnInit {
       add_pin: ['',[Validators.required]],
       default_value: '',
     });
+
+    if (this.formData) {
+      this.title = "Edit Address";
+      this.addressForm.patchValue(this.formData);
+    }
+
+
   }
 
   closeDialog() {

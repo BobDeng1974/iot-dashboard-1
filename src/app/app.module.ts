@@ -10,6 +10,7 @@ import { FooterComponent } from './common/footer/footer.component';
 import { AdminPanelModule } from './modules/admin-panel/admin-panel.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AgGridModule } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { AgGridModule } from 'ag-grid-angular';
     MaterialModule,
     AdminPanelModule,
     DashboardModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

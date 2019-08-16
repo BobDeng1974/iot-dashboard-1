@@ -15,7 +15,8 @@ import { AddVendorEmailComponent } from '../../components/add-vendor-email/add-v
 import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 import { CustomerAssignDialogComponent } from '../../components/customer-assign-dialog/customer-assign-dialog.component';
 import { AddDeviceComponent } from '../../components/add-device/add-device.component';
-import { Device } from '../../model/customermodel';
+import { Device, Address, Customer, Domaindata } from '../../model/customermodel';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
 
 @Component({
   selector: 'app-admin-main',
@@ -74,9 +75,52 @@ export class AdminMainComponent implements OnInit {
   deviceName: string;
   deviceId: number;
   deviceDetail: Device;
-  constructor(public dialog: MatDialog) { }
+  // Hold All customer Data
+  customerData : Customer[];
+
+  addresstype : Domaindata[];
+  cuntrycode : Domaindata[];
+  LegalinfoType : Domaindata[];
+
+  // value to customer details components
+  customer : Customer;
+
+  constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService) { }
 
   ngOnInit() {
+    this.adminpanelService.getAllCustomer().subscribe(
+      (data) => {
+        console.log(data);
+        this.customerData = data;
+        this.adminpanelService.getAddressType().subscribe(
+          (data) => {
+            this.addresstype = data;
+            this.adminpanelService.getCountryCode().subscribe(
+              (data) => {
+                this.cuntrycode = data;
+                this.adminpanelService.getLegalInfoType().subscribe(
+                  (data) => {
+                    this.LegalinfoType = data;
+                  },
+                  (error) => {
+                    console.error(error);
+                  }
+                );
+              },
+              (error) => {
+                console.error(error);
+              }
+            );
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   openPopup(value : number) {
@@ -184,5 +228,12 @@ export class AdminMainComponent implements OnInit {
   getDeviceDetails(value){
     this.deviceDetail = value
     console.log(value)
+  }
+  getCustomerDetails(value : Customer) {
+    this.customer = value;
+  }
+
+  openAddressEditPopup(address : Address) {
+    this.customeraddressdialog = this.dialog.open(AddCustomerAddressComponent,{ data : address});
   }
 }

@@ -112,3 +112,11 @@ export interface Sensor {
     sensor_effective_from ?: Date;
     sensor_effective_to ?: Date;
 }
+
+export interface Domaindata {
+    domain_id?: number;
+    domain_type?:string;
+    domain_code?:string;
+    domain_value?:string;
+    domain_data_type?: string;
+}
