@@ -1,104 +1,83 @@
-<mat-expansion-panel disabled expanded class="device-panel">
+<mat-expansion-panel disabled expanded class="customer-panel">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title>
-            <div fxFlex='20' style=" color:#ffffff;">{{deviceName}}</div>
+            <div fxFlex='30' style="padding-top:1%; padding-left:2%; font-weight: regular;">Customer</div>
             <div fxFlex='40' class='searchbar'>
-                <mat-icon fxFlex='10' style="color:white; padding-left:0.5%;">search</mat-icon>
-                <input fxFlex='50' class='filterclass' matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Projects" style="color:white; padding:1%;">
+                <mat-icon fxFlex='10'>search</mat-icon>
+                <input fxFlex='50' class='filterclass' matInput (keyup)="applyFilter($event.target.value)"
+                    placeholder="Search Customer" style="color:white;">
             </div>
             <div fxFlex='28' style="padding-top:2%;"></div>
+            <div fxFlex='2'>
+                <mat-icon fxFlex='100' style="color:white;">get_app</mat-icon>
+            </div>
         </mat-panel-title>
     </mat-expansion-panel-header>
-    <div class="main-content" *ngIf="deviceId">
+    <div class="main-content">
+        <table mat-table [dataSource]="ELEMENT_DATA" class="main-table">
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    Select
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <!-- <mat-radio-button value="element.customer_id" [checked]="element.customer_id === selectedCustomer.customer_id" (click)="viewDetails(element)">
+                    </mat-radio-button> -->
+                    <mat-radio-button value="element.device_id" [checked]="element.device_id === selectedDevice.device_id" (click)="viewDetails(element)"></mat-radio-button>
+                </td>
+            </ng-container>
 
-        <table mat-table [dataSource]="dataSourceProject" class="mat-elevation-z8">
-            <ng-container matColumnDef="Select">
-                <th mat-header-cell *matHeaderCellDef>Selected</th>
-                <td mat-cell *matCellDef="let element">
-                    <mat-radio-button value="element.project_id" [checked]="element.project_id === selectedProject.project_id" (click)="changeSelected(element)"></mat-radio-button>
-                </td>
+            <ng-container matColumnDef="device_name">
+                <th mat-header-cell *matHeaderCellDef> Device Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.device_name}} </td>
             </ng-container>
-            <ng-container matColumnDef="project_name">
-                <th mat-header-cell *matHeaderCellDef>Project Name</th>
-                <td mat-cell *matCellDef="let element">
-                    {{element.project_name}}
-                </td>
+
+            <ng-container matColumnDef="device_mac">
+                <th mat-header-cell *matHeaderCellDef> Device Mac Address </th>
+                <td mat-cell *matCellDef="let element"> {{element.device_mac}} </td>
             </ng-container>
-            <ng-container matColumnDef="project_type">
-                <th mat-header-cell *matHeaderCellDef>Project Type</th>
-                <td mat-cell *matCellDef="let element">
-                    {{element.project_type}}
-                </td>
+
+            <!-- <ng-container matColumnDef="customer_type">
+                <th mat-header-cell *matHeaderCellDef> Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.customer_type}} </td>
             </ng-container>
-            <ng-container matColumnDef="effective_from_date">
-                <th mat-header-cell *matHeaderCellDef>Starting Date</th>
-                <td mat-cell *matCellDef="let element">
-                    {{element.effective_from_date}}
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="effective_to_date">
-                <th mat-header-cell *matHeaderCellDef>Completion Date</th>
-                <td mat-cell *matCellDef="let element">
-                    {{element.effective_to_date}}
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef>Address</th>
-                <td mat-cell *matCellDef="let element">
-                    {{element.address}}
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="project_attribute">
-                <th mat-header-cell *matHeaderCellDef>Project Details</th>
-                <td mat-cell *matCellDef="let element">
-                    {{element.project_attribute}}
-                </td>
-            </ng-container>
-            <!-- <ng-container matColumnDef="View">
-                <th mat-header-cell *matHeaderCellDef>View</th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button class='eye'> -->
-            <!-- <mat-icon class="icons">visibility</mat-icon> -->
-            <!-- </button>
-                </td>
+            
+            <ng-container matColumnDef="customer_tag">
+                <th mat-header-cell *matHeaderCellDef> Tagging </th>
+                <td mat-cell *matCellDef="let element"> {{element.customer_tag}} </td>
             </ng-container> -->
-            <ng-container matColumnDef="Sales_Budget">
-                <th mat-header-cell *matHeaderCellDef>Sales & Budget</th>
+            <ng-container matColumnDef="device_monitor">
+                <th mat-header-cell *matHeaderCellDef>Deice Monitor</th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button class='dollar' (click)="viewProjectId(element.project_id)">
-            <!-- <mat-icon class="icons">monetization_on</mat-icon> -->
-          </button>
+                    <button mat-icon-button class="assignment" (click)="gotoDeviceMonitor(element.device_id, element.device_name)"><mat-icon>assessment</mat-icon></button>
                 </td>
             </ng-container>
-            <ng-container matColumnDef="Planning">
-                <th mat-header-cell *matHeaderCellDef>Planning</th>
+            <ng-container matColumnDef="device_assignment">
+                <th mat-header-cell *matHeaderCellDef>Deice Assignment</th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button class='plans' (click)="viewPlanning(element.project_id)">
-            <!-- <mat-icon class="icons">folder_open</mat-icon> -->
-          </button>
+                    <button mat-icon-button class="assignment" (click)="gotoDeviceAssignment(element.device_id, element.device_name)"><mat-icon>assignment</mat-icon></button>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="changeSelected(row)"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
         </table>
     </div>
-    <mat-action-row class="action-row-content ">
-        <span class="example-spacer "></span>
-        <button mat-icon-button (click)="openedit()" [disabled]="!(selectedProject) || selectedProject.project_id == 0">
-            <mat-icon class="mat-icons-round md-dark md-inactive md-24 ">
+    <mat-action-row class="action-row-content">
+        <span class="example-spacer"></span>
+        <button mat-icon-button (click)="InitializeClick(17)">
+            <mat-icon class="mat-icons-round md-dark md-inactive md-24">
                 edit
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button disabled>
-            <mat-icon class="mat-icons-round md-dark md-inactive md-24 ">
+        <button mat-icon-button>
+            <mat-icon class="mat-icons-round md-dark md-inactive md-24">
                 delete_outline
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button (click)=" openadd() ">
-            <mat-icon class="mat-icons-round " style="color:#e2246f; ">
+        <button mat-icon-button (click)="InitializeClick(16)">
+            <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>
         </button>
     </mat-action-row>
-
 </mat-expansion-panel>
