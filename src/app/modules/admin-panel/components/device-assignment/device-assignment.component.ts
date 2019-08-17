@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Device } from '../../model/customermodel';
 
 const ELEMENT_DATA: Device[] = [
@@ -17,12 +17,23 @@ const ELEMENT_DATA: Device[] = [
   styleUrls: ['./device-assignment.component.scss']
 })
 export class DeviceAssignmentComponent implements OnInit {
+
+  @Output() rowId = new EventEmitter<number>();
+
   @Input()deviceName;
   @Input() deviceId;
-  displayedColumns: string[] =['select', 'device_name', 'device_mac', 'device_monitor', 'device_assignment'];
+  @Input() deviceData: Device[] = null;
+  displayedColumns: string[] =['select', 'device_name', 'device_mac'];
+
+  selectedDevice: Device = {
+    device_id: 0
+  }
   constructor() { }
 
   ngOnInit() {
   }
-
+  viewDetails(value: Device){
+    this.rowId.emit(value.device_id)
+    console.log(value.device_id)
+  }
 }

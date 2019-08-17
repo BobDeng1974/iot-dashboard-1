@@ -102,6 +102,8 @@ export class AdminMainComponent implements OnInit {
   // value to vendor details components
   vendor : Vendor;
 
+  //assignment table rowId
+  rowId : number;
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
@@ -722,5 +724,13 @@ export class AdminMainComponent implements OnInit {
 
   getVendorDetails(value : Vendor) {
     this.vendor = value;
+  }
+
+  getRowId(value){
+    this.rowId = value;
+  }
+
+  getAssignmentInfo(){
+    
   }
 }
