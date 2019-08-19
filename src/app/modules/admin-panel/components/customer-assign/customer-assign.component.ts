@@ -1,18 +1,17 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 export interface PeriodicElement {
-  vendor_code: string;
   vendor_name: string;
-  vendor_type: string;
-  vendor_tag: string;
+  customer_name: string;
+  customer_address: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "001", vendor_name : "Qubematics", vendor_type : "Private", vendor_tag : "ven001"},
-  {vendor_code: "002", vendor_name : "Qubematics", vendor_type : "public", vendor_tag : "ven0002"}
+  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
+  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
+  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
+  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
+  { vendor_name : "Qubematics", customer_name : "public", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"}
 ];
 
 @Component({
@@ -24,7 +23,7 @@ export class CustomerAssignComponent implements OnInit {
 
   @Output() ButtonClicked = new EventEmitter<number>();
 
-  displayedColumns: string[] = ['select', 'vendor_code', 'vendor_name', 'vendor_type', 'vendor_tag'];
+  displayedColumns: string[] = ['select', 'vendor_name', 'customer_name', 'customer_address'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }

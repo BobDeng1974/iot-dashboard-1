@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Customer, Address, LegalInfo, AdditionalAttributes, Email, Phone, Branch, Domaindata } from '../../model/customermodel';
 import * as _ from "lodash";
 
@@ -7,7 +7,7 @@ import * as _ from "lodash";
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.scss']
 })
-export class CustomerDetailsComponent implements OnInit {
+export class CustomerDetailsComponent implements OnChanges {
   // selected tab value
   private currentTab = 0;
   @Output() ButtonClicked = new EventEmitter<number>();
@@ -122,6 +122,9 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   ngOnChanges() {
+    console.log("print legal info type  ");
+    console.log(this.legalinfo_Type);
+    
     if (this.customerData && this.customerData.customer_id != 0) {
       this.addressDataCopy = _.cloneDeep(this.customerData.addresses);
       this.legalData = this.customerData.infos;
@@ -135,13 +138,15 @@ export class CustomerDetailsComponent implements OnInit {
       this.addressDataCopy.map(m => m.add_address_line1 = m.add_address_line1 + ", " + m.add_address_line2 + ", " + m.add_city + ", " + m.add_state + ", " + m.add_country + ", " + m.add_pin);
     }
 
-    if(this.legalinfo_Type && this.isd_code) {
-      this.phoneColumnDef = [
-        { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
-          cellEditor: 'agSelectCellEditor', 
-          cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
-        { headerName: 'Number', field: 'ph_no', editable: true }
-      ];
+    if(this.legalinfo_Type || this.isd_code) {
+      console.log("this is form isd code and legal info type if block  ");
+      console.log(this.legalinfo_Type);
+      // this.phoneColumnDef = [
+      //   { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
+      //     cellEditor: 'agSelectCellEditor', 
+      //     cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
+      //   { headerName: 'Number', field: 'ph_no', editable: true }
+      // ];
       this.legalColumnDefs = [
         { headerName: 'Type', field: 'legalinfo_type', sortable: true, filter: true, editable: true,
           cellEditor : 'agSelectCellEditor',

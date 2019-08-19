@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Phone } from '../../model/customermodel';
+import { Phone, Domaindata } from '../../model/customermodel';
 import { MatDialogRef } from '@angular/material';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
 
 @Component({
   selector: 'app-add-customer-phone',
@@ -12,14 +13,26 @@ export class AddCustomerPhoneComponent implements OnInit {
 
   PhoneForm : FormGroup;
   formData : Phone;
+  phoneisdcode : Domaindata[];
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerPhoneComponent>) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerPhoneComponent>, private adminpnalService : AdminPanelMainService) { }
 
   ngOnInit() {
     this.PhoneForm = this.fb.group({
       ph_isd_code:'',
       ph_no:['', [Validators.required]],
     });
+
+    this.adminpnalService.getCountryCode().subscribe(
+      (data) => {
+        this.phoneisdcode = data;
+        console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
   }
 
   CancelOperation() {
