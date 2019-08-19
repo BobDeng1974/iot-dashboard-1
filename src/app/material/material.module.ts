@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatExpansionModule, MatRadioButton, MatRadioModule, MatProgressSpinnerModule,  } from '@angular/material';
+import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatExpansionModule, MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatDatepickerModule, MatNativeDateModule,  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
@@ -38,6 +38,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     NgxSpinnerModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 
 })

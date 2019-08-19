@@ -27,10 +27,10 @@
     </mat-tab>
     <mat-tab label="DEVICE REG.">
         <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(65% - 16px)" fxFlex.lt-sm="100%">
+            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                 <app-device-table [deviceData]="deviceData" (buttonClicked)="openPopup($event)" (deviceId2)="getDeviceID($event)" (deviceId)="getDeviceID($event)" (deviceName)="getDeviceName($event)" (deviceName2)="getDeviceName($event)" (deviceAssign)="toDeviceAssign($event)" (deviceDetails)="getDeviceDetails($event)"></app-device-table>
             </div>
-            <div fxFlex="calc(35% - 16px)" fxFlex.lt-sm="100%">
+            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                 <app-device-detail [device]="deviceDetail" (buttonClicked)="openPopup($event)"></app-device-detail>
             </div>
         </div>
@@ -38,7 +38,7 @@
     <mat-tab label="DEVICE ASSIGNMENT">
         <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
             <div fxFlex="calc(40% - 16px)" fxFlex.lt-sm="100%">
-                <app-device-assignment [deviceData]="deviceData" (rowId)="getRowId($event)"></app-device-assignment>
+                <app-device-assignment [deviceData]="deviceData" (rowId)="getRowId($event)" (buttonClicked)="openPopup($event)"></app-device-assignment>
             </div>
             <div fxFlex="calc(60% - 16px)" fxFlex.lt-sm="100%">
                 <app-assignment-detial></app-assignment-detial>
@@ -46,8 +46,13 @@
         </div>
         </mat-tab>
     <mat-tab label="DEVICE MANAGEMENT">
-        <div class="content">
-            <app-device-management [deviceId]="deviceId" [deviceName]="deviceName"></app-device-management>
+        <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+            <div fxFlex="calc(40% - 16px)" fxFlex.lt-sm="100%">
+                <app-device-management [deviceHealth]="deviceHealthData"></app-device-management>
+            </div>
+            <div fxFlex="calc(60% - 16px)" fxFlex.lt-sm="100%">
+                <app-device-monitor-details></app-device-monitor-details>
+            </div>
         </div>
     </mat-tab>
     </mat-tab-group>

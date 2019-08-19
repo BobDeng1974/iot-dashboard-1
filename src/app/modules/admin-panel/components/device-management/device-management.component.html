@@ -1,11 +1,11 @@
 <mat-expansion-panel disabled expanded class="customer-panel">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title>
-            <div fxFlex='30' style="padding-top:1%; padding-left:2%; font-weight: regular;">{{deviceName}}</div>
+            <div fxFlex='30' style="padding-top:1%; padding-left:2%; font-weight: regular;">Device</div>
             <div fxFlex='40' class='searchbar'>
                 <mat-icon fxFlex='10'>search</mat-icon>
                 <input fxFlex='50' class='filterclass' matInput (keyup)="applyFilter($event.target.value)"
-                    placeholder="Search Vendor" style="color:white;">
+                    placeholder="Search Device" style="color:white;">
             </div>
             <div fxFlex='28' style="padding-top:2%;"></div>
             <div fxFlex='2'>
@@ -13,8 +13,8 @@
             </div>
         </mat-panel-title>
     </mat-expansion-panel-header>
-    <div class="main-content" *ngIf="deviceId">
-        <table mat-table [dataSource]="dataSource" class="main-table">
+    <div class="main-content">
+        <table mat-table [dataSource]="deviceHealth" class="main-table">
             <ng-container matColumnDef="select">
                 <th mat-header-cell *matHeaderCellDef>
                     Select
@@ -22,29 +22,46 @@
                 <td mat-cell *matCellDef="let element">
                     <!-- <mat-radio-button value="element.customer_id" [checked]="element.customer_id === selectedCustomer.customer_id" (click)="viewDetails(element)">
                     </mat-radio-button> -->
-                    <mat-radio-button (click)="InitializeClick(element,15)"></mat-radio-button>
+                    <mat-radio-button value="element.device_id" [checked]="element.device_id === selectedDevice.device_id" (click)="viewDetails(element)"></mat-radio-button>
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="vendor_code">
-                <th mat-header-cell *matHeaderCellDef> Code </th>
-                <td mat-cell *matCellDef="let element"> {{element.vendor_code}} </td>
+            <!-- <ng-container matColumnDef="device_name">
+                <th mat-header-cell *matHeaderCellDef> Device Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.device_name}} </td>
+            </ng-container> -->
+
+            <ng-container matColumnDef="device_mac">
+                <th mat-header-cell *matHeaderCellDef> Device Mac Address </th>
+                <td mat-cell *matCellDef="let element"> {{element.device_mac}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="vendor_name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.vendor_name}} </td>
+            <ng-container matColumnDef="device_activated">
+                <th mat-header-cell *matHeaderCellDef> Activated </th>
+                <td mat-cell *matCellDef="let element">  
+                    <button mat-icon-button>
+                        <mat-icon *ngIf="element.device_activated" class="activated">check</mat-icon>
+                        <mat-icon *ngIf="element.device_activated === false || element.device_activated === null" class="not-activated">close</mat-icon>
+                    </button>
+                </td>
             </ng-container>
-
-            <ng-container matColumnDef="vendor_type">
-                <th mat-header-cell *matHeaderCellDef> Type </th>
-                <td mat-cell *matCellDef="let element"> {{element.vendor_type}} </td>
+            
+            <ng-container matColumnDef="device_last_heartbeat">
+                <th mat-header-cell *matHeaderCellDef> Device Last Heart Beat </th>
+                <td mat-cell *matCellDef="let element"> {{element.device_last_heartbeat}} </td>
             </ng-container>
-
-            <ng-container matColumnDef="vendor_tag">
-                <th mat-header-cell *matHeaderCellDef> Tagging </th>
-                <td mat-cell *matCellDef="let element"> {{element.vendor_tag}} </td>
+            <!-- <ng-container matColumnDef="device_monitor">
+                <th mat-header-cell *matHeaderCellDef>Device Monitor</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button class="assignment" (click)="gotoDeviceMonitor(element.device_id, element.device_name)"><mat-icon>assessment</mat-icon></button>
+                </td>
             </ng-container>
+            <ng-container matColumnDef="device_assignment">
+                <th mat-header-cell *matHeaderCellDef>Device Assignment</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button class="assignment" (click)="gotoDeviceAssignment(element.device_id, element.device_name)"><mat-icon>assignment</mat-icon></button>
+                </td>
+            </ng-container> -->
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;">
             </tr>
@@ -52,7 +69,7 @@
     </div>
     <mat-action-row class="action-row-content">
         <span class="example-spacer"></span>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="InitializeClick(17)">
             <mat-icon class="mat-icons-round md-dark md-inactive md-24">
                 edit
             </mat-icon>
@@ -62,7 +79,7 @@
                 delete_outline
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button (click)="InitializeClick(15)">
+        <button mat-icon-button (click)="InitializeClick(16)">
             <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>

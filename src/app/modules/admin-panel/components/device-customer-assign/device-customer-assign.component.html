@@ -1,0 +1,56 @@
+<div mat-dialog-title>
+    Device Assignment
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="customerAssignForm">
+        <div class="form-container">
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="10px">
+                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+                    <mat-form-field class="form-field">
+                        <mat-label>Device Name</mat-label>
+                        <input matInput placeholder="Type Device Name" formControlName="device_name">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+                    <mat-form-field>
+                        <mat-label>Select customer</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Select branch</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Allocation start date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker2" placeholder="Allocation end date">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div mat-dialog-actions mat-elevation-z6>
+                <button mat-stroked-button type="button" class="cancelbtn" (click)="closeDialog()">Cancel</button>
+                <span class="example-spacer"></span>
+                <button mat-raised-button type="submit" class="savebtn" [disabled]="customerAssignForm.invalid" [class.blank-panel]="customerAssignForm.invalid" (click)="onSubmit(customerAssignForm)">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
