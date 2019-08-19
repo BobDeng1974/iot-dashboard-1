@@ -1,4 +1,4 @@
-<mat-expansion-panel disabled expanded class="customer-panel">
+<mat-expansion-panel disabled expanded class="customer-panel" [class.blank-panel]="customerData.customer_id === 0">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title>
             Customer Details
@@ -44,8 +44,8 @@
                 edit
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button>
-            <mat-icon class="mat-icons-round md-pinkV md-24" (click)="InitializeClick()">
+        <button mat-icon-button (click)="InitializeClick()" [disabled]="customerData.customer_id === 0">
+            <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>
         </button>

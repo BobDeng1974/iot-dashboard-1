@@ -107,6 +107,14 @@ export class AdminMainComponent implements OnInit {
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
+    this.customer = {
+      customer_id : 0
+    };
+
+    this.vendor = {
+      vendor_id : 0
+    };
+
     this.spinner.show();
     this.adminpanelService.getAllCustomer().subscribe(
       (data) => {
