@@ -21,6 +21,7 @@ import { SuccessSnackberComponent } from 'src/app/modules/shared/components/succ
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AddSensorFormComponent } from '../../components/add-sensor-form/add-sensor-form.component';
 import { Vendor } from '../../model/vendormodel';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-admin-main',
@@ -750,6 +751,10 @@ export class AdminMainComponent implements OnInit {
 
   openAddressEditPopup(address : Address) {
     this.customeraddressdialog = this.dialog.open(AddCustomerAddressComponent,{ data : address});
+  }
+
+  openVendorAdddressEditPopup(address : Address) {
+    this.vendoraddressdilog = this.dialog.open(AddVendorAddressComponent,{ data: address});
   }
 
   getVendorDetails(value : Vendor) {
