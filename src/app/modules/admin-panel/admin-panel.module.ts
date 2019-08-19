@@ -35,6 +35,9 @@ import { DeviceManagementComponent } from './components/device-management/device
 import { AddSensorFormComponent } from './components/add-sensor-form/add-sensor-form.component';
 import { CustomerAssignFormComponent } from './components/customer-assign-form/customer-assign-form.component';
 import { AssignmentDetialComponent } from './components/assignment-detial/assignment-detial.component';
+import { NumericEditorComponent } from '../shared/components/numeric-editor/numeric-editor.component';
+import { NullValueComponent } from '../shared/components/null-value/null-value.component';
+import { EmailEditorComponent } from '../shared/components/email-editor/email-editor.component';
 
 
 
@@ -45,8 +48,8 @@ import { AssignmentDetialComponent } from './components/assignment-detial/assign
     SharedModule,
     AdminRoutingModule,
     MaterialModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([NullValueComponent])
   ],
-  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent ]
+  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent,  ]
 })
 export class AdminPanelModule { }
