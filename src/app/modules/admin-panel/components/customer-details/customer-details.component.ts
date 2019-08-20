@@ -35,14 +35,12 @@ export class CustomerDetailsComponent implements OnChanges {
   private additionalData: AdditionalAttributes[] = [];
   private emailData: Email[] = [];
   private phoneData: Phone[] = [];
-  private branchesData : Branch[] = [];
 
   private addressColumnDefs;
   private legalColumnDefs;
   private additionalColumnDefs;
   private emailColumnDef;
   private phoneColumnDef;
-  private branchesColumnDef;
 
   private addressGridApi;
   private addressGridColumnApi;
@@ -54,8 +52,6 @@ export class CustomerDetailsComponent implements OnChanges {
   private emailGridColumnApi;
   private additionalGridApi;
   private additionalGridColumnApi;
-  private branchGridApi;
-  private branchGridApiColoumnApi;
   private rowSelection : string;
   private selectedRow : Address;
 
@@ -79,7 +75,7 @@ export class CustomerDetailsComponent implements OnChanges {
 
     this.addressColumnDefs = [
       { headerName: 'Type', field: 'add_type', sortable: true, filter: true, width:100, editable: false, resizable:true },
-      { headerName: 'Address', field: 'add_address_line1', editable: false, resizable: true, sortable: true, filter: true, cellStyle: {'white-space': 'normal', 'height': 'auto', 'overflow': 'visible', 'text-overflow': 'clip', 'overflow-wrap': 'break-word'} },
+      { headerName: 'Address', field: 'add_address_line1', editable: false, resizable: true, sortable: true, filter: true, autoHeight: true, cellStyle: {'white-space': 'normal', 'height': 'auto', 'overflow': 'visible', 'text-overflow': 'clip', 'overflow-wrap': 'break-word'} },
     ];
 
     this.legalColumnDefs = [
@@ -105,10 +101,6 @@ export class CustomerDetailsComponent implements OnChanges {
       cellEditorParams: { values: [] } },
       { headerName: 'Number', field: 'ph_no',width:200, editable: true, resizable:true,
       cellEditor: "numericEditor" },
-    ];
-    this.branchesColumnDef = [
-      { headerName: "Branch name", field : 'branch_name',width:100, editable: true,resizable:true, cellEditor: 'nullvalueEditor' },
-      { headerName: "Address", field: 'branch_add_line1', width:100, editable: true,resizable:true, cellEditor: 'nullvalueEditor' }
     ];
     this.rowSelection = 'single';
   }
@@ -136,9 +128,6 @@ export class CustomerDetailsComponent implements OnChanges {
         this.additionalGridApi.sizeColumnsToFit();  
       break;
 
-      case 5:
-        this.branchGridApi.sizeColumnsToFit();  
-      break;
     }
   }
 
@@ -156,7 +145,6 @@ export class CustomerDetailsComponent implements OnChanges {
       this.additionalData = this.customerData.attributes;
       this.phoneData = this.customerData.phones;
       this.emailData = this.customerData.emails;
-      this.branchesData = this.customerData.branches;
     }
 
     if(this.addressDataCopy) {
@@ -185,6 +173,7 @@ export class CustomerDetailsComponent implements OnChanges {
   onAddressGridReady(params) {
     this.addressGridApi = params.api;
     this.addressGridColumnApi = params.columnApi;
+    this.addressGridApi.sizeColumnsToFit();
   }
 
   onLegalGridReady(params) {
@@ -205,11 +194,6 @@ export class CustomerDetailsComponent implements OnChanges {
   onAdditionalGridReady(params) {
     this.additionalGridApi = params.api;
     this.additionalGridColumnApi = params.columnApi;
-  }
-
-  onBranchGridReady(params) {
-    this.branchGridApi = params.api;
-    this.branchGridApiColoumnApi = params.columnApi;
   }
 
   onColumnResized() {

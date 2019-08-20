@@ -6,7 +6,14 @@
                 <app-customer-table (ButtonClick)="openPopup($event)" [customerData]="customerData" (customerDetails)="getCustomerDetails($event)"></app-customer-table>
             </div>
             <div fxFlex="calc(35% - 16px)" fxFlex.lt-sm="100%" >
-                <app-customer-details (ButtonClicked)="openPopup($event)" [customerData]="customer" (editClicked)="openAddressEditPopup($event)" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode"></app-customer-details>
+                <div fxLayout="column" fxLayout.lt-sm="row" [style.height.%]="100" fxLayoutGap="8px">
+                    <div fxFlex="calc(45% - 8px)" fxFlex.lt-sm="100%" [style.height.%]="100">
+                        <app-customer-branch [customerData]="customer" (ButtonClicked)="openPopup($event)"></app-customer-branch>
+                    </div>
+                    <div fxFlex="calc(55% - 8px)" fxFlex.lt-sm="100%">
+                        <app-customer-details (ButtonClicked)="openPopup($event)" [customerData]="customer" (editClicked)="openAddressEditPopup($event)" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode"></app-customer-details>   
+                    </div>
+                </div>
             </div>
         </div>
     </mat-tab>

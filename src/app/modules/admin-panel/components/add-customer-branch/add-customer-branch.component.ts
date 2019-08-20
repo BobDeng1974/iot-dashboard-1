@@ -23,7 +23,7 @@ export class AddCustomerBranchComponent implements OnInit {
       branch_add_city : '',
       branch_add_state : '',
       branch_add_pin : ['',[Validators.required]],
-      branch_add_country : ['',[Validators.required]]
+      branch_add_country : '',
     });
   }
 
