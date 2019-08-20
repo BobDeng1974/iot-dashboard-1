@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, INJECTOR, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Device } from '../../model/customermodel';
 
 @Component({
   selector: 'app-device-customer-assign',
@@ -9,16 +10,24 @@ import { MatDialogRef } from '@angular/material';
 })
 export class DeviceCustomerAssignComponent implements OnInit {
 
+  device: Device;
   customerAssignForm: FormGroup;
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DeviceCustomerAssignComponent>) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DeviceCustomerAssignComponent>, @Inject(MAT_DIALOG_DATA) public data: Device) {
+    this.device = data;  
+  }
 
   ngOnInit() {
     this.customerAssignForm = this.fb.group({
-      device_name:['', [Validators.required]],
+      device_name:'',
       customer_name: '',
-      device_assign_effective_from:[''],
+      branch_name:'',
+      device_assign_effective_from:'',
       device_assign_effective_to: ''
-    })
+    });
+    if (this.device && this.device.device_id > 0) {
+      this.customerAssignForm.patchValue(this.device);
+
+    }
   }
 
   closeDialog(){
