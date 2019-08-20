@@ -103,6 +103,7 @@ export interface Device{
 }
 
 export interface DeviceMonitor{
+    device_name ?: string;
     device_monitor_id ?:number;
     device_id ?: number;                         
     device_mac ?: string;

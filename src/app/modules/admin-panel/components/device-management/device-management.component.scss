@@ -14,7 +14,7 @@
 }
 
 .mat-row:nth-child(odd){
-    background-color:#F0FAFC;
+    background-color:rgb(245, 255, 245);
 }
 .customer-panel{
     height: 98%;
@@ -22,13 +22,13 @@
 }
 
 .panel-header {
-    background-color: #00AEC6;
+    background-color: #4FA99F;
     border-radius: 0px;
     color: white !important;
 }
 
 .panel-header:hover {
-    background-color: #00AEC6 !important;
+    background-color: #4FA99F !important;
 }
 
 .main-content {
@@ -38,12 +38,4 @@
 
 .main-table{
     width: 100%;
-}
-
-.activated{
-    color: green;
-}
-
-.not-activated{
-    color: red;
 }
