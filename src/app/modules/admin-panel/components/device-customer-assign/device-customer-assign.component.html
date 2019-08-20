@@ -4,14 +4,14 @@
 <div mat-dialog-content>
     <form [formGroup]="customerAssignForm">
         <div class="form-container">
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="10px">
-                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="5px">
+                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Device Name</mat-label>
-                        <input matInput placeholder="Type Device Name" formControlName="device_name">
+                        <input matInput placeholder="Type Device Name" [readonly]=true formControlName="device_name">
                     </mat-form-field>
                 </div>
-                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
                     <mat-form-field>
                         <mat-label>Select customer</mat-label>
                         <mat-select>
@@ -31,14 +31,14 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
                     <mat-form-field>
                         <input matInput [matDatepicker]="picker" placeholder="Allocation start date">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
-                <div fxFlex="0 1 calc(33.3% - 10px)" fxFlex.lt-sm="100%">
+                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
                     <mat-form-field>
                         <input matInput [matDatepicker]="picker2" placeholder="Allocation end date">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>

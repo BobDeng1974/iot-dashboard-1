@@ -742,7 +742,9 @@ export class AdminMainComponent implements OnInit {
       break;
       //open device assignment form
       case 19:
-        this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent)
+        this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent,{
+          data:this.deviceDetail
+        })
       break;
     }
   }

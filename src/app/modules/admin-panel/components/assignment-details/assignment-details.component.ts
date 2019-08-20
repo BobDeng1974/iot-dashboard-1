@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Device } from '../../model/customermodel';
 
 @Component({
   selector: 'app-assignment-details',
@@ -8,6 +9,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class AssignmentDetailsComponent implements OnInit {
 
   @Output() buttonClick = new EventEmitter<number>();
+  @Input() device:Device;
   private columnDefs;
   private rowData: any[] = []
   constructor() { }
@@ -23,6 +25,7 @@ export class AssignmentDetailsComponent implements OnInit {
       {customer_name:'Arsalan', customer_branch:'Chinar park', start_date:'20/08/2019', end_date:'20/08/2020'},
     ];
   }
+
   InitializeClick(value){
     this.buttonClick.emit(value)
   }
