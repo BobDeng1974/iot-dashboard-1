@@ -102,6 +102,18 @@ export interface Device{
     sensors ?:Sensor[];
 }
 
+export interface DeviceMonitor{
+    device_monitor_id ?:number;
+    device_id ?: number;                         
+    device_mac ?: string;
+    data_collection_frequency ?: number;  
+    data_sending_frequency ?: number;
+    device_health ?: string;
+    device_frequency_updated_on ?:Date;
+    device_frequency_updated_by ?:string;
+    device_last_heartbeat ?: string; 
+    device_activated ?: boolean;
+}
 export interface Sensor {
     sensor_id ?:number;
     sensor_name ?: string;

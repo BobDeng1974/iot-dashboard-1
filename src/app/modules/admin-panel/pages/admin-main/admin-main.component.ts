@@ -15,12 +15,13 @@ import { AddVendorEmailComponent } from '../../components/add-vendor-email/add-v
 import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 import { CustomerAssignDialogComponent } from '../../components/customer-assign-dialog/customer-assign-dialog.component';
 import { AddDeviceComponent } from '../../components/add-device/add-device.component';
-import { Device, Address, Customer, Domaindata } from '../../model/customermodel';
+import { Device, Address, Customer, Domaindata, DeviceMonitor } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AddSensorFormComponent } from '../../components/add-sensor-form/add-sensor-form.component';
 import { Vendor } from '../../model/vendormodel';
+import { DeviceCustomerAssignComponent } from '../../components/device-customer-assign/device-customer-assign.component';
 import { from } from 'rxjs';
 
 @Component({
@@ -77,6 +78,8 @@ export class AdminMainComponent implements OnInit {
 
   //sensor assign dialog
   sensorAssignDialog: MatDialogRef<AddSensorFormComponent>
+  //assign a device to customer form
+  deviceCustomerDialog : MatDialogRef<DeviceCustomerAssignComponent>
 
   selectedTab = 0;
 
@@ -91,6 +94,9 @@ export class AdminMainComponent implements OnInit {
 
   //Hold all the devices 
   deviceData : Device[];
+
+  //holds all the device health information
+  deviceHealthData: DeviceMonitor[]
 
   addresstype : Domaindata[];
   cuntrycode : Domaindata[];
@@ -206,6 +212,18 @@ export class AdminMainComponent implements OnInit {
       (error) => {
         console.error(error);
         this.spinner.hide();
+      }
+    );
+
+    this.adminpanelService.getDeviceHealth().subscribe(
+      (data) => {
+        console.log(data)
+        this.deviceHealthData = data.reverse()
+        this.spinner.hide()
+      },
+      (error) => {
+        console.log(error)
+        this.spinner.hide()
       }
     );
   }
@@ -721,6 +739,10 @@ export class AdminMainComponent implements OnInit {
             );
           }
         });
+      break;
+      //open device assignment form
+      case 19:
+        this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent)
       break;
     }
   }

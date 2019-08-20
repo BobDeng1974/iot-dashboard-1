@@ -4,17 +4,17 @@
             <div fxFlex='30' style="padding-top:1%; padding-left:2%; font-weight: regular;">Devices</div>
             <div fxFlex='40' class='searchbar'>
                 <mat-icon fxFlex='10'>search</mat-icon>
-                <input fxFlex='50' class='filterclass' matInput (keyup)="applyFilter($event.target.value)"
+                <input fxFlex='60' class='filterclass' matInput (keyup)="applyFilter($event.target.value)"
                     placeholder="Search Device" style="color:white;">
             </div>
             <div fxFlex='28' style="padding-top:2%;"></div>
-            <div fxFlex='2'>
+            <!-- <div fxFlex='2'>
                 <mat-icon fxFlex='100' style="color:white;">get_app</mat-icon>
-            </div>
+            </div> -->
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="main-content">
-        <table mat-table [dataSource]="deviceData" class="main-table">
+        <table mat-table [dataSource]="ELEMENT_DATA" class="main-table">
             <ng-container matColumnDef="select">
                 <th mat-header-cell *matHeaderCellDef>
                     Select

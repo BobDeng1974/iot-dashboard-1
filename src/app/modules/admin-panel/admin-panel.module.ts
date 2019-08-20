@@ -35,6 +35,8 @@ import { DeviceManagementComponent } from './components/device-management/device
 import { AddSensorFormComponent } from './components/add-sensor-form/add-sensor-form.component';
 import { CustomerAssignFormComponent } from './components/customer-assign-form/customer-assign-form.component';
 import { AssignmentDetialComponent } from './components/assignment-detial/assignment-detial.component';
+import { DeviceCustomerAssignComponent } from './components/device-customer-assign/device-customer-assign.component';
+import { DeviceMonitorDetailsComponent } from './components/device-monitor-details/device-monitor-details.component';
 import { NumericEditorComponent } from '../shared/components/numeric-editor/numeric-editor.component';
 import { NullValueComponent } from '../shared/components/null-value/null-value.component';
 import { EmailEditorComponent } from '../shared/components/email-editor/email-editor.component';
@@ -43,7 +45,7 @@ import { CustomerBranchComponent } from './components/customer-branch/customer-b
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, CustomerAssignFormComponent, AddSensorFormComponent, AssignmentDetialComponent, CustomerBranchComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, CustomerAssignFormComponent, AddSensorFormComponent, AssignmentDetialComponent, DeviceCustomerAssignComponent, DeviceMonitorDetailsComponent, CustomerBranchComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -51,6 +53,6 @@ import { CustomerBranchComponent } from './components/customer-branch/customer-b
     MaterialModule,
     AgGridModule.withComponents([NullValueComponent])
   ],
-  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent,  ]
+  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent]
 })
 export class AdminPanelModule { }

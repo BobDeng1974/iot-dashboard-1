@@ -19,7 +19,7 @@ const ELEMENT_DATA: Device[] = [
 export class DeviceAssignmentComponent implements OnInit {
 
   @Output() rowId = new EventEmitter<number>();
-
+  @Output() buttonClicked = new EventEmitter<number>();
   @Input()deviceName;
   @Input() deviceId;
   @Input() deviceData: Device[] = null;
@@ -35,5 +35,9 @@ export class DeviceAssignmentComponent implements OnInit {
   viewDetails(value: Device){
     this.rowId.emit(value.device_id)
     console.log(value.device_id)
+  }
+
+  InitializeClick(){
+    this.buttonClicked.emit(19);
   }
 }
