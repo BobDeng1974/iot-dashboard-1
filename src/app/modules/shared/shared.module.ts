@@ -6,14 +6,19 @@ import { NumericEditorComponent } from './components/numeric-editor/numeric-edit
 import { NullValueComponent } from './components/null-value/null-value.component';
 import { EmailEditorComponent } from './components/email-editor/email-editor.component';
 import { FormsModule } from '@angular/forms';
+import { DeviceActiveRendererComponent } from './components/device-active-renderer/device-active-renderer.component';
+import { MaterialModule } from 'src/app/material/material.module';
+import { DeviceHealthRendererComponent } from './components/device-health-renderer/device-health-renderer.component';
+
 
 
 
 @NgModule({
-  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent],
+  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   exports: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent]
 })
