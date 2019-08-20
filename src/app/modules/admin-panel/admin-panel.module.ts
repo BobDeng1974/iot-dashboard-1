@@ -42,6 +42,8 @@ import { NullValueComponent } from '../shared/components/null-value/null-value.c
 import { EmailEditorComponent } from '../shared/components/email-editor/email-editor.component';
 import { CustomerBranchComponent } from './components/customer-branch/customer-branch.component';
 import { AssignmentDetailsComponent } from './components/assignment-details/assignment-details.component';
+import { DeviceActiveRendererComponent } from '../shared/components/device-active-renderer/device-active-renderer.component';
+import { DeviceHealthRendererComponent } from '../shared/components/device-health-renderer/device-health-renderer.component';
 
 
 
@@ -52,7 +54,7 @@ import { AssignmentDetailsComponent } from './components/assignment-details/assi
     SharedModule,
     AdminRoutingModule,
     MaterialModule,
-    AgGridModule.withComponents([NullValueComponent])
+    AgGridModule.withComponents([NullValueComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent])
   ],
   entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent]
 })
