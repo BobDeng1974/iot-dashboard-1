@@ -130,46 +130,26 @@ export class AdminMainComponent implements OnInit {
         this.adminpanelService.getAddressType().subscribe(
           (data) => {
             this.addresstype = data;
-            // this.adminpanelService.getCountryCode().subscribe(
-            //   (data) => {
-            //     this.cuntrycode = data;
-            //     this.adminpanelService.getLegalInfoType().subscribe(
-            //       (data) => {
-            //         this.LegalinfoType = data;
-            //         console.log("legal info for grid  "+data);
-            //         this.adminpanelService.getCustomerType().subscribe(
-            //           (data) => {
-            //             this.customerType = data;
-            //             console.log("customer type form main  "+data);
-            //           },
-            //           (error) => {
-            //             console.error(error);
-            //             this.spinner.hide();
-            //           }
-            //         );
-            //       },
-            //       (error) => {
-            //         console.log(error);
-            //         this.spinner.hide();
-            //       }
-            //     );
-            //   },
-            //   (error) => {
-            //     console.log(error);
-            //     this.spinner.hide();
-            //   }
-            // );
-            this.adminpanelService.getLegalInfoType().subscribe(
+            this.adminpanelService.getCountryCode().subscribe(
               (data) => {
-                this.LegalinfoType = data;
-                console.log("legal info for grid  "+data);
-                this.adminpanelService.getCustomerType().subscribe(
+                this.cuntrycode = data;
+                this.adminpanelService.getLegalInfoType().subscribe(
                   (data) => {
-                    this.customerType = data;
-                    console.log("customer type form main  "+data);
+                    this.LegalinfoType = data;
+                    console.log("legal info for grid  "+data);
+                    this.adminpanelService.getCustomerType().subscribe(
+                      (data) => {
+                        this.customerType = data;
+                        console.log("customer type form main  "+data);
+                      },
+                      (error) => {
+                        console.error(error);
+                        this.spinner.hide();
+                      }
+                    );
                   },
                   (error) => {
-                    console.error(error);
+                    console.log(error);
                     this.spinner.hide();
                   }
                 );
@@ -179,6 +159,26 @@ export class AdminMainComponent implements OnInit {
                 this.spinner.hide();
               }
             );
+            // this.adminpanelService.getLegalInfoType().subscribe(
+            //   (data) => {
+            //     this.LegalinfoType = data;
+            //     console.log("legal info for grid  "+data);
+            //     this.adminpanelService.getCustomerType().subscribe(
+            //       (data) => {
+            //         this.customerType = data;
+            //         console.log("customer type form main  "+data);
+            //       },
+            //       (error) => {
+            //         console.error(error);
+            //         this.spinner.hide();
+            //       }
+            //     );
+            //   },
+            //   (error) => {
+            //     console.log(error);
+            //     this.spinner.hide();
+            //   }
+            // );
           },
           (error) => {
             console.log(error);

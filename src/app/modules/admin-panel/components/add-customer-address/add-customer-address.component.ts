@@ -15,6 +15,7 @@ export class AddCustomerAddressComponent implements OnInit {
   formData : Address;
   addressForm: FormGroup;
   getAddressType : Domaindata[];
+  countryCode : Domaindata[];
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerAddressComponent>, private adminpnalService : AdminPanelMainService) { }
 
@@ -39,6 +40,16 @@ export class AddCustomerAddressComponent implements OnInit {
       (data) => {
         this.getAddressType = data;
         //console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
+    this.adminpnalService.getCountryCode().subscribe(
+      (data) => {
+        this.countryCode = data;
+        //console.log("Cuntry Code form customer address   "+data);
       },
       (error) => {
         console.error(error);

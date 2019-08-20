@@ -138,6 +138,8 @@ export class CustomerDetailsComponent implements OnChanges {
   ngOnChanges() {
     console.log("print legal info type  ");
     console.log(this.legalinfo_Type);
+    console.log("Phone isd code  "+this.isd_code);
+    
     
     if (this.customerData && this.customerData.customer_id != 0) {
       this.addressDataCopy = _.cloneDeep(this.customerData.addresses);
@@ -151,15 +153,17 @@ export class CustomerDetailsComponent implements OnChanges {
       this.addressDataCopy.map(m => m.add_address_line1 = m.add_address_line1 + ", " + m.add_address_line2 + ", " + m.add_city + ", " + m.add_state + ", " + m.add_country + ", " + m.add_pin);
     }
 
-    if(this.legalinfo_Type || this.isd_code) {
+    if(this.legalinfo_Type && this.isd_code) {
       console.log("this is form isd code and legal info type if block  ");
       console.log(this.legalinfo_Type);
-      // this.phoneColumnDef = [
-      //   { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
-      //     cellEditor: 'agSelectCellEditor', 
-      //     cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
-      //   { headerName: 'Number', field: 'ph_no', editable: true }
-      // ];
+      console.log("this is form isd code and legal info type if block  ");
+      console.log(this.isd_code);
+      this.phoneColumnDef = [
+        { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
+          cellEditor: 'agSelectCellEditor', 
+          cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
+        { headerName: 'Number', field: 'ph_no', editable: true }
+      ];
       this.legalColumnDefs = [
         { headerName: 'Type', field: 'legalinfo_type', sortable: true, filter: true, editable: true,
           cellEditor : 'agSelectCellEditor',
@@ -218,13 +222,34 @@ export class CustomerDetailsComponent implements OnChanges {
     this.adminService.updateCustomer(this.customerData).subscribe(
       (data) => {
         this.spinner.hide();
-        this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Customer Details Updated Successfully", duration : 3000});
+        if(data == "001") {
+          this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Customer Details Updated Successfully", duration : 3000});
+
+          if(params == "reload") {
+            this.addressDataCopy =  _.cloneDeep(this.customerData.addresses);
+            if(this.addressDataCopy) {
+              this.addressDataCopy.map(m => m.add_address_line1 = m.add_address_line1 + ", " + m.add_address_line2 + ", " + m.add_city + ", " + m.add_state + ", " + m.add_country + ", " + m.add_pin );
+            }
+            this.phoneData = _.cloneDeep(this.customerData.phones);
+          }
+        }
       },
       (error) => {
         console.error(error);
         this.spinner.hide();
       }
     );
+  }
+
+  onPhoneValueChange(params) {
+    if(params.newValue && ((params.data.ph_isd_code as string).indexOf(" - ") > 0)) {
+      this.customerData.phones.find(m => m.ph_id == params.data.ph_id).ph_isd_code = params.data.ph_isd_code.split(" - ")[1];
+    }
+
+    else {
+      this.customerData.phones = this.phoneData;
+    }
+    this.onCellValueChange("reload");
   }
 
 }
