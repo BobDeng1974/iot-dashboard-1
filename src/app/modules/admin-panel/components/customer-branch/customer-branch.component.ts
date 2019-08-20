@@ -16,6 +16,7 @@ export class CustomerBranchComponent implements OnChanges {
   // input for customer data
   @Input() customerData : Customer;
   private branchesData : Branch[] = [];
+  @Output() editClicked =  new EventEmitter<Branch>();
 
   @Output() ButtonClicked = new EventEmitter<number>();
 
@@ -67,6 +68,11 @@ export class CustomerBranchComponent implements OnChanges {
 
   InitializeClick() {
     this.ButtonClicked.emit(9);
+  }
+
+  InitializeEdit() {
+    var selectedId = this.branchGridApi.getSelectedRows()[0];
+    this.editClicked.emit(this.customerData.branches.find(m=>m.branch_id == selectedId));
   }
 
 }

@@ -25,6 +25,10 @@ export class AddCustomerBranchComponent implements OnInit {
       branch_add_pin : ['',[Validators.required]],
       branch_add_country : '',
     });
+
+    if(this.formData) {
+      this.branchForm.patchValue(this.formData);
+    }
   }
 
   closeDialog() {
@@ -32,14 +36,26 @@ export class AddCustomerBranchComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.formData = {
-      branch_name : form.controls.branch_name.value,
-      branch_add_line1 : form.controls.branch_add_address_line1.value,
-      branch_add_line2 : form.controls.branch_add_address_line2.value,
-      branch_add_city : form.controls.branch_add_city.value,
-      branch_add_state : form.controls.branch_add_state.value,
-      branch_add_country : form.controls.branch_add_country.value,
-      branch_add_pin : form.controls.branch_add_pin.value,
+    if (this.formData) {
+      this.formData.branch_name = form.controls.branch_name.value,
+      this.formData.branch_add_line1 = form.controls.branch_add_address_line1.value,
+      this.formData.branch_add_line2 = form.controls.branch_add_address_line2.value,
+      this.formData.branch_add_city = form.controls.branch_add_city.value,
+      this.formData.branch_add_state = form.controls.branch_add_state.value,
+      this.formData.branch_add_country = form.controls.branch_add_country.value,
+      this.formData.branch_add_pin = form.controls.branch_add_pin.value
+    } 
+    
+    else {
+      this.formData = {
+        branch_name : form.controls.branch_name.value,
+        branch_add_line1 : form.controls.branch_add_address_line1.value,
+        branch_add_line2 : form.controls.branch_add_address_line2.value,
+        branch_add_city : form.controls.branch_add_city.value,
+        branch_add_state : form.controls.branch_add_state.value,
+        branch_add_country : form.controls.branch_add_country.value,
+        branch_add_pin : form.controls.branch_add_pin.value,
+      }  
     }
     this.dialogRef.close(this.formData);
   }
