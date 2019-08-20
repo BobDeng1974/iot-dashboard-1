@@ -134,3 +134,14 @@ export interface Domaindata {
     domain_value?:string;
     domain_data_type?: string;
 }
+
+export interface DeviceAssignment{
+    device_assign_id ?: number;
+    device_id ?: number;
+    customer_id ?: number;
+    customer_name ?: string;
+    customer_branch_id ?: number;
+    customer_branch_name ?: string;
+    device_assign_effective_from ?: Date;
+    device_assign_effective_to ?: Date;
+}
