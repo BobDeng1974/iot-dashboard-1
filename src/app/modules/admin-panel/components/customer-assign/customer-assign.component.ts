@@ -1,19 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-export interface PeriodicElement {
-  vendor_name: string;
-  customer_name: string;
-  customer_address: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
-  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
-  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
-  { vendor_name : "Qubematics", customer_name : "Private", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"},
-  { vendor_name : "Qubematics", customer_name : "public", customer_address : "kolkata,79A/1,Kolkata,Wb,700005,India"}
-];
-
 @Component({
   selector: 'app-customer-assign',
   templateUrl: './customer-assign.component.html',
@@ -21,18 +7,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CustomerAssignComponent implements OnInit {
 
-  @Output() ButtonClicked = new EventEmitter<number>();
+  private customerColumnDefs;
 
-  displayedColumns: string[] = ['select', 'vendor_name', 'customer_name', 'customer_address'];
-  dataSource = ELEMENT_DATA;
+  private customerGridApi;
+  private customerGridColumnApi;
 
   constructor() { }
 
   ngOnInit() {
+    this.customerColumnDefs =  [
+      { headerName: 'Customer Name',  sortable: true, filter: true, width:200, editable: false, resizable:true },
+      { headerName: 'Customer Address', sortable: true, filter: true, width:200, editable: false, resizable:true },
+      { headerName: 'Vendor Name', sortable: true, filter: true, width:200, editable: false, resizable:true },
+    ];
   }
 
-  InitializeClick(value : number) {
-    this.ButtonClicked.emit(value);
+  onAssignCustomerGridReady(params) {
+    this.customerGridApi = params.api;
+    this.customerGridColumnApi = params.columnApi;
+    this.customerGridApi.sizeColumnsToFit();
   }
 
 }
