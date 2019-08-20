@@ -15,7 +15,7 @@ import { AddVendorEmailComponent } from '../../components/add-vendor-email/add-v
 import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 import { CustomerAssignDialogComponent } from '../../components/customer-assign-dialog/customer-assign-dialog.component';
 import { AddDeviceComponent } from '../../components/add-device/add-device.component';
-import { Device, Address, Customer, Domaindata, DeviceMonitor } from '../../model/customermodel';
+import { Device, Address, Customer, Domaindata, DeviceMonitor, Branch } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -789,5 +789,9 @@ export class AdminMainComponent implements OnInit {
 
   getAssignmentInfo(){
     
+  }
+
+  openCustomerBranchEditPopup(value: Branch) {
+    this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent,{ data: value});
   }
 }

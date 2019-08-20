@@ -9,11 +9,11 @@ import { Vendor } from './model/vendormodel';
 })
 export class AdminPanelMainService {
 
-  private createCustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/create/";
-  private updateCustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/update/";
-  private getAllCustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/getall/?format=json";
-  private getACustomerUrl = "http://192.168.0.11:8000/api/qubematics/customer/getacustomer/";
-  private getdomainUrl = "http://35.200.162.115:8006/qiidomain/get/?format=json";
+  private createCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/create/";
+  private updateCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/update/";
+  private getAllCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/getall/?format=json";
+  private getACustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/getacustomer/";
+  private getdomainUrl = "http://35.200.162.115:8006/qiidomain/get/";
   // private createDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/create/";
   // private updateDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/update/";
   // private getAllDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/getall/?format=json";
