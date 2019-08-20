@@ -1,6 +1,13 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Vendor, Address, LegalInfo, AdditionalAttributes, Email, Phone, Domaindata } from '../../model/vendormodel';
 import * as _ from "lodash";
+import { NumericEditorComponent } from 'src/app/modules/shared/components/numeric-editor/numeric-editor.component';
+import { NullValueComponent } from 'src/app/modules/shared/components/null-value/null-value.component';
+import { EmailEditorComponent } from 'src/app/modules/shared/components/email-editor/email-editor.component';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { MatSnackBar } from '@angular/material';
+import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 
 @Component({
   selector: 'app-vendor-details',
@@ -19,7 +26,11 @@ export class VendorDetailsComponent implements OnInit {
   @Input() legalinfo_Type : Domaindata[];
 
   @Input() isd_code : Domaindata[];
+  @Output() editClicked = new EventEmitter<Address>();
 
+  private nullvalueFrameworkComponents: any;
+  private phoneFrameworkComponents;
+  private emailFrameworkComponents;
   private addressData: Address[] = [];
   private legalData: LegalInfo[] =[];
   private additionalData: AdditionalAttributes[] = [];
@@ -47,9 +58,22 @@ export class VendorDetailsComponent implements OnInit {
 
   private addressDataCopy: Address[] = [];
 
-  constructor() { }
+  constructor(private spinner: NgxSpinnerService, private adminService : AdminPanelMainService, private _sanckBar : MatSnackBar) { }
 
   ngOnInit() {
+
+    this.phoneFrameworkComponents = {
+      numericEditor  : NumericEditorComponent
+    };
+
+    this.nullvalueFrameworkComponents = {
+      nullvalueEditor : NullValueComponent
+    };
+
+    this.emailFrameworkComponents = {
+      emailEditor : EmailEditorComponent
+    };
+
     this.addressColumnDefs = [
       { headerName: 'Type', field: 'add_type', sortable: true, filter: true, width:100, editable: false, resizable:true },
       { headerName: 'Address', field: 'add_address_line1', editable: false, resizable: true, sortable: true, filter: true, cellStyle: {'white-space': 'normal', 'height': 'auto', 'overflow': 'visible', 'text-overflow': 'clip', 'overflow-wrap': 'break-word'} },
@@ -59,23 +83,23 @@ export class VendorDetailsComponent implements OnInit {
       { headerName: 'Type', field: 'legalinfo_type', sortable: true, filter: true, width:100,editable: true,resizable:true,
       cellEditor: 'agSelectCellEditor', 
       cellEditorParams: { values: [] }},
-      { headerName: 'Value', field: 'legalinfo_value', width:200,editable: true,resizable:true},
+      { headerName: 'Value', field: 'legalinfo_value', width:200,editable: true,resizable:true, cellEditor: 'nullvalueEditor'},
     ];
 
     this.additionalColumnDefs = [
-      { headerName: 'Attribute', field: 'addinfo_attr', sortable: true, filter: true, width:100,editable: true,resizable:true},
-      { headerName: 'Value', field: 'addinfo_value', width:200,editable: true,resizable:true},
+      { headerName: 'Attribute', field: 'addinfo_attr', sortable: true, filter: true, width:100,editable: true,resizable:true, cellEditor: 'nullvalueEditor'},
+      { headerName: 'Value', field: 'addinfo_value', width:200,editable: true,resizable:true, cellEditor: 'nullvalueEditor'},
     ];
 
     this.emailColumnDef = [
-      { headerName: 'Email Address', field: 'eml_address', editable: true, resizable:true },
+      { headerName: 'Email Address', field: 'eml_address', editable: true, resizable:true, cellEditor: "emailEditor" },
     ];
 
     this.phoneColumnDef = [
       { headerName: 'ISD Code', field: 'ph_isd_code',width:100, editable: true,resizable:true,
       cellEditor: 'agSelectCellEditor', 
       cellEditorParams: { values: [] } },
-      { headerName: 'Number', field: 'ph_no',width:200, editable: true, resizable:true },
+      { headerName: 'Number', field: 'ph_no',width:200, editable: true, resizable:true, cellEditor: "numericEditor" },
     ];
 
     this.rowSelection = 'single';
@@ -110,6 +134,12 @@ export class VendorDetailsComponent implements OnInit {
     this.ButtonClicked.emit(this.currentTab + 10);
   }
 
+  InitializeVendorEdit() {
+    var selectedId = this.addressGridApi.getSelectedRows()[0];
+    this.editClicked.emit(this.vendorData.addresses.find(m => m.add_id == selectedId));
+    console.log(this.addressGridApi.getSelectedRows()[0]);
+  }
+
   ngOnChanges() {
     if(this.vendorData && this.vendorData.vendor_id != 0) {
       this.addressDataCopy = _.cloneDeep(this.vendorData.addresses);
@@ -123,13 +153,13 @@ export class VendorDetailsComponent implements OnInit {
       this.addressDataCopy.map(m => m.add_address_line1 = m.add_address_line1 + ", " + m.add_address_line2 + ", " + m.add_city + ", " + m.add_state + ", " + m.add_country + ", " + m.add_pin);
     }
 
-    if(this.legalinfo_Type && this.isd_code) {
-      this.phoneColumnDef = [
-        { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
-          cellEditor: 'agSelectCellEditor', 
-          cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
-        { headerName: 'Number', field: 'ph_no', editable: true }
-      ];
+    if(this.legalinfo_Type || this.isd_code) {
+      // this.phoneColumnDef = [
+      //   { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
+      //     cellEditor: 'agSelectCellEditor', 
+      //     cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
+      //   { headerName: 'Number', field: 'ph_no', editable: true }
+      // ];
       this.legalColumnDefs = [
         { headerName: 'Type', field: 'legalinfo_type', sortable: true, filter: true, editable: true,
           cellEditor : 'agSelectCellEditor',
@@ -173,5 +203,19 @@ export class VendorDetailsComponent implements OnInit {
     this.selectedRow = this.addressGridApi.getSelectedRows()[0];
     //console.log(this.selectedRow);
     
+  }
+
+  onCellValueChange(params) {
+    this.spinner.show();
+    this.adminService.updateVendor(this.vendorData).subscribe(
+      (data) => {
+        this.spinner.hide();
+        this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Vendor Details Updated Successfully", duration : 3000});
+      },
+      (error) => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    );
   }
 }

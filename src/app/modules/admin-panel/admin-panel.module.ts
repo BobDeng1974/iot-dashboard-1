@@ -37,6 +37,9 @@ import { CustomerAssignFormComponent } from './components/customer-assign-form/c
 import { AssignmentDetialComponent } from './components/assignment-detial/assignment-detial.component';
 import { DeviceCustomerAssignComponent } from './components/device-customer-assign/device-customer-assign.component';
 import { DeviceMonitorDetailsComponent } from './components/device-monitor-details/device-monitor-details.component';
+import { NumericEditorComponent } from '../shared/components/numeric-editor/numeric-editor.component';
+import { NullValueComponent } from '../shared/components/null-value/null-value.component';
+import { EmailEditorComponent } from '../shared/components/email-editor/email-editor.component';
 
 
 
@@ -47,8 +50,8 @@ import { DeviceMonitorDetailsComponent } from './components/device-monitor-detai
     SharedModule,
     AdminRoutingModule,
     MaterialModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([NullValueComponent])
   ],
-  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, DeviceCustomerAssignComponent ]
+  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent]
 })
 export class AdminPanelModule { }

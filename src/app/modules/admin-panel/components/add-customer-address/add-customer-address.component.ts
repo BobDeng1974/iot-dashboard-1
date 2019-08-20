@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Address } from '../../model/customermodel';
+import { Address, Domaindata } from '../../model/customermodel';
 import { MatDialogRef } from '@angular/material';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
 
 @Component({
   selector: 'app-add-customer-address',
@@ -13,8 +14,9 @@ export class AddCustomerAddressComponent implements OnInit {
   title: string = "Add New Address";
   formData : Address;
   addressForm: FormGroup;
+  getAddressType : Domaindata[];
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerAddressComponent>) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerAddressComponent>, private adminpnalService : AdminPanelMainService) { }
 
   ngOnInit() {
     this.addressForm = this.fb.group({
@@ -33,6 +35,15 @@ export class AddCustomerAddressComponent implements OnInit {
       this.addressForm.patchValue(this.formData);
     }
 
+    this.adminpnalService.getAddressType().subscribe(
+      (data) => {
+        this.getAddressType = data;
+        //console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
 
   }
 

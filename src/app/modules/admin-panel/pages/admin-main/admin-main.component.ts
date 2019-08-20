@@ -22,6 +22,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AddSensorFormComponent } from '../../components/add-sensor-form/add-sensor-form.component';
 import { Vendor } from '../../model/vendormodel';
 import { DeviceCustomerAssignComponent } from '../../components/device-customer-assign/device-customer-assign.component';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-admin-main',
@@ -113,6 +114,14 @@ export class AdminMainComponent implements OnInit {
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
+    this.customer = {
+      customer_id : 0
+    };
+
+    this.vendor = {
+      vendor_id : 0
+    };
+
     this.spinner.show();
     this.adminpanelService.getAllCustomer().subscribe(
       (data) => {
@@ -121,24 +130,46 @@ export class AdminMainComponent implements OnInit {
         this.adminpanelService.getAddressType().subscribe(
           (data) => {
             this.addresstype = data;
-            this.adminpanelService.getCountryCode().subscribe(
+            // this.adminpanelService.getCountryCode().subscribe(
+            //   (data) => {
+            //     this.cuntrycode = data;
+            //     this.adminpanelService.getLegalInfoType().subscribe(
+            //       (data) => {
+            //         this.LegalinfoType = data;
+            //         console.log("legal info for grid  "+data);
+            //         this.adminpanelService.getCustomerType().subscribe(
+            //           (data) => {
+            //             this.customerType = data;
+            //             console.log("customer type form main  "+data);
+            //           },
+            //           (error) => {
+            //             console.error(error);
+            //             this.spinner.hide();
+            //           }
+            //         );
+            //       },
+            //       (error) => {
+            //         console.log(error);
+            //         this.spinner.hide();
+            //       }
+            //     );
+            //   },
+            //   (error) => {
+            //     console.log(error);
+            //     this.spinner.hide();
+            //   }
+            // );
+            this.adminpanelService.getLegalInfoType().subscribe(
               (data) => {
-                this.cuntrycode = data;
-                this.adminpanelService.getLegalInfoType().subscribe(
+                this.LegalinfoType = data;
+                console.log("legal info for grid  "+data);
+                this.adminpanelService.getCustomerType().subscribe(
                   (data) => {
-                    this.LegalinfoType = data;
-                    this.adminpanelService.getCustomerType().subscribe(
-                      (data) => {
-                        this.customerType = data;
-                      },
-                      (error) => {
-                        console.error(error);
-                        this.spinner.hide();
-                      }
-                    );
+                    this.customerType = data;
+                    console.log("customer type form main  "+data);
                   },
                   (error) => {
-                    console.log(error);
+                    console.error(error);
                     this.spinner.hide();
                   }
                 );
@@ -742,6 +773,10 @@ export class AdminMainComponent implements OnInit {
 
   openAddressEditPopup(address : Address) {
     this.customeraddressdialog = this.dialog.open(AddCustomerAddressComponent,{ data : address});
+  }
+
+  openVendorAdddressEditPopup(address : Address) {
+    this.vendoraddressdilog = this.dialog.open(AddVendorAddressComponent,{ data: address});
   }
 
   getVendorDetails(value : Vendor) {

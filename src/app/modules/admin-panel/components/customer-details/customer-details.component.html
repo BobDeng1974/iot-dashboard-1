@@ -1,4 +1,4 @@
-<mat-expansion-panel disabled expanded class="customer-panel">
+<mat-expansion-panel disabled expanded class="customer-panel" [class.blank-panel]="customerData.customer_id === 0">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title>
             Customer Details
@@ -7,31 +7,31 @@
     <div class="main-content">
         <mat-tab-group [style.height.%]="100" (selectedTabChange)="resizeGrid($event)">
             <mat-tab label="Address" [style.height.%]="100">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="addressDataCopy" [columnDefs]="addressColumnDefs" (gridReady)="onAddressGridReady($event)" (columnResized)="onColumnResized($event)" [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged($event)">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="addressDataCopy" [columnDefs]="addressColumnDefs" (gridReady)="onAddressGridReady($event)" (columnResized)="onColumnResized($event)" [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged($event)" (cellValueChanged)="onCellValueChange($event)">
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Legal info">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="legalData" [columnDefs]="legalColumnDefs" (gridReady)="onLegalGridReady($event)">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="legalData" [columnDefs]="legalColumnDefs" (gridReady)="onLegalGridReady($event)" (cellValueChanged)="onCellValueChange($event)" [frameworkComponents]="nullvalueFrameworkComponents">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Phone">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="phoneData" [columnDefs]="phoneColumnDef" (gridReady)="onPhoneGridReady($event)">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="phoneData" [columnDefs]="phoneColumnDef" (gridReady)="onPhoneGridReady($event)" (cellValueChanged)="onCellValueChange($event)" [frameworkComponents]="phoneFrameworkComponents">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Email">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="emailData" [columnDefs]="emailColumnDef" (gridReady)="onEmailGridReady($event)">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="emailData" [columnDefs]="emailColumnDef" (gridReady)="onEmailGridReady($event)" (cellValueChanged)="onCellValueChange($event)" [frameworkComponents]="emailFrameworkComponents">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Additional info">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="additionalData" [columnDefs]="additionalColumnDefs" (gridReady)="onAdditionalGridReady($event)">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="additionalData" [columnDefs]="additionalColumnDefs" (gridReady)="onAdditionalGridReady($event)" (cellValueChanged)="onCellValueChange($event)" [frameworkComponents]="nullvalueFrameworkComponents">
 
                 </ag-grid-angular>
             </mat-tab>
             <mat-tab label="Branches">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="branchesData" [columnDefs]="branchesColumnDef" (gridReady)="onBranchGridReady($event)">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="branchesData" [columnDefs]="branchesColumnDef" (gridReady)="onBranchGridReady($event)" (cellValueChanged)="onCellValueChange($event)" [frameworkComponents]="nullvalueFrameworkComponents">
 
                 </ag-grid-angular>
             </mat-tab>
@@ -44,8 +44,8 @@
                 edit
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button>
-            <mat-icon class="mat-icons-round md-pinkV md-24" (click)="InitializeClick()">
+        <button mat-icon-button (click)="InitializeClick()" [disabled]="customerData.customer_id === 0">
+            <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>
         </button>

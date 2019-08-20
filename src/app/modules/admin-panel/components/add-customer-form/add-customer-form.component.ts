@@ -22,6 +22,7 @@ export class AddCustomerFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.customerForm = this.fb.group({
       customer_name : ['',[Validators.required]],
       customer_code : ['',[Validators.required]],
