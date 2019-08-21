@@ -19,7 +19,7 @@ export class CustomerTableComponent implements OnInit {
     customer_id : 0
   };
 
-  displayedColumns: string[] = ['select', 'customer_code', 'customer_name', 'customer_type', 'customer_tag'];
+  displayedColumns: string[] = ['select', 'customer_code', 'customer_name', 'customer_type' ];
   dataSource = new MatTableDataSource<any>();
 
   constructor() { }

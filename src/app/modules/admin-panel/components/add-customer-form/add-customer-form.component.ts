@@ -27,7 +27,6 @@ export class AddCustomerFormComponent implements OnInit {
       customer_name : ['',[Validators.required]],
       customer_code : ['',[Validators.required]],
       customer_type : ['',[Validators.required]],
-      customer_tag : '',
     });
 
     if(this.formData && this.formData.customer_id > 0) {
@@ -54,7 +53,6 @@ export class AddCustomerFormComponent implements OnInit {
       this.formData.customer_name = form.controls.customer_name.value,
       this.formData.customer_code = form.controls.customer_code.value,
       this.formData.customer_type = form.controls.customer_type.value,
-      this.formData.customer_tag = form.controls.customer_tag.value,
       this.adminpnalService.updateCustomer(this.formData).subscribe(
         (data) => {
           //console.log(data);
@@ -75,7 +73,6 @@ export class AddCustomerFormComponent implements OnInit {
         customer_name : form.controls.customer_name.value,
         customer_code : form.controls.customer_code.value,
         customer_type : form.controls.customer_type.value,
-        customer_tag : form.controls.customer_tag.value,
         attributes : [],
         infos : [],
         phones : [],

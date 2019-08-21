@@ -1,4 +1,4 @@
-<mat-expansion-panel disabled expanded class="customer-panel" [class.blank-panel]="vendorData.vendor_id === 0">
+<mat-expansion-panel disabled expanded class="customer-panel" [class.blank-panel]="vendorData && vendorData.vendor_id == 0">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title>
             Vendor Details
@@ -40,7 +40,7 @@
                 edit
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button (click)="InitializeClick()" [disabled]="vendorData.vendor_id === 0">
+        <button mat-icon-button (click)="InitializeClick()" [disabled]="vendorData && vendorData.vendor_id == 0">
             <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>
