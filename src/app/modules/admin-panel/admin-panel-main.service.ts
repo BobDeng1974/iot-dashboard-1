@@ -15,8 +15,8 @@ export class AdminPanelMainService {
   private getACustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/getacustomer/";
   private getdomainUrl = "http://35.200.162.115:8006/qiidomain/get/";
   //////////////////////////////////////////////////////////////////////////
-  private getCustomerBranchUrl = "http://34.93.221.249:8001/api/qubematics/customer/getbranch/";
-  private getCustomerandIdUrl = "http://34.93.221.249:8001/api/qubematics/customer/getcustomerandid/";
+  private getCustomerBranchUrl = "http://34.93.221.249:8000/api/qubematics/customer/getbranch/";
+  private getCustomerandIdUrl = "http://34.93.221.249:8000/api/qubematics/customer/getcustomerandid/";
   //////////////////////////////////////////////////////////////////////////
   // private createDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/create/";
   // private updateDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/update/";
