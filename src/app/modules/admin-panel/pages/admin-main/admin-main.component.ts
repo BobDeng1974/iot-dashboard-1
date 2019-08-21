@@ -15,7 +15,7 @@ import { AddVendorEmailComponent } from '../../components/add-vendor-email/add-v
 import { AddVendorAdditionalinfoComponent } from '../../components/add-vendor-additionalinfo/add-vendor-additionalinfo.component';
 import { CustomerAssignDialogComponent } from '../../components/customer-assign-dialog/customer-assign-dialog.component';
 import { AddDeviceComponent } from '../../components/add-device/add-device.component';
-import { Device, Address, Customer, Domaindata, DeviceMonitor, Branch } from '../../model/customermodel';
+import { Device, Address, Customer, Domaindata, DeviceMonitor, Branch, DeviceAssignment } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -111,6 +111,10 @@ export class AdminMainComponent implements OnInit {
 
   //assignment table rowId
   rowId : number;
+
+  //device assign info
+  deviceAssignInfo: DeviceAssignment[];
+
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
@@ -744,6 +748,32 @@ export class AdminMainComponent implements OnInit {
       case 19:
         this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent,{
           data:this.deviceDetail
+        });
+        this.deviceCustomerDialog.afterClosed().subscribe(result => {
+          if (result) {
+            console.log(result)
+            this.spinner.show()
+            this.adminpanelService.updatedDeviceAssign(result).subscribe(
+              (data) => {
+                if (data === "001") {
+                  alert('updated successfully')
+                  this.adminpanelService.getAssignInfo(result.device_id).subscribe(
+                    (data) => {
+                      this.deviceAssignInfo = data;
+                      console.log(data)
+                    }
+                  );
+                } else {
+                  console.log('erro occured')
+                }
+                this.spinner.hide()
+              },
+              (error) => {
+                console.log(error)
+                this.spinner.hide()
+              }
+            );
+          }
         })
       break;
     }
@@ -795,5 +825,9 @@ export class AdminMainComponent implements OnInit {
 
   openCustomerBranchEditPopup(value: Branch) {
     this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent,{ data: value});
+  }
+
+  openAssignEditPopup(value: DeviceAssignment){
+    this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent);
   }
 }
