@@ -5,14 +5,10 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="main-content">
-        <mat-tab-group [style.height.%]="100" (selectedTabChange)="resizeGrid($event)">
-            <mat-tab label="Sensors" [style.height.%]="100">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true"
-                [rowData]="sensors"[columnDefs]="sensorColumnDefs" (gridReady)="onSensorGridReady($event)" (cellValueChanged)="onCellValueChange($event)">
+        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true"
+        [rowData]="sensors"[columnDefs]="sensorColumnDefs" (gridReady)="onSensorGridReady($event)" (cellValueChanged)="onCellValueChange($event)">
 
-                </ag-grid-angular>
-            </mat-tab>
-        </mat-tab-group>
+        </ag-grid-angular>
     </div>
     <mat-action-row>
         <span class="example-spacer"></span>
