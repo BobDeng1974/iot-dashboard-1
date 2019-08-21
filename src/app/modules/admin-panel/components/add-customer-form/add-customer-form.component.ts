@@ -59,7 +59,9 @@ export class AddCustomerFormComponent implements OnInit {
         (data) => {
           //console.log(data);
           this.dialogRef.close("success");
+          //console.log("This is form add customer edit form  "+data);
           if(data == "001") {
+            //console.log("This is form add customer edit form if block  "+data);
             this._snackBar.openFromComponent(SuccessSnackberComponent, {data : "Customer Updated Successfully.", duration : 3000 });
           }
         },
@@ -85,6 +87,10 @@ export class AddCustomerFormComponent implements OnInit {
       this.adminpnalService.createCustomer(this.formData).subscribe(
         (data) => {
           this.dialogRef.close("success");
+          //console.log("This is form add customer add form  "+data);
+          if(data == "001") {
+            this._snackBar.openFromComponent(SuccessSnackberComponent, {data : "Customer Add Successfully.", duration : 3000 });
+          }
         },
         (error) => {
           console.error(error);

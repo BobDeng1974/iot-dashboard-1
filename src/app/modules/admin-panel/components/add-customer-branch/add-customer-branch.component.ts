@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Branch } from '../../model/customermodel';
-import { MatDialogRef } from '@angular/material';
+import { Branch, Domaindata } from '../../model/customermodel';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
 
 @Component({
   selector: 'app-add-customer-branch',
@@ -12,8 +13,11 @@ export class AddCustomerBranchComponent implements OnInit {
 
   branchForm: FormGroup;
   formData: Branch;
+  countryCode : Domaindata[];
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerBranchComponent>) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerBranchComponent>, private adminpnalService : AdminPanelMainService, @Inject(MAT_DIALOG_DATA) public data: Branch) {
+    this.formData = data;
+  }
 
   ngOnInit() {
     this.branchForm = this.fb.group({
@@ -25,6 +29,15 @@ export class AddCustomerBranchComponent implements OnInit {
       branch_add_pin : ['',[Validators.required]],
       branch_add_country : '',
     });
+
+    this.adminpnalService.getCountryCode().subscribe(
+      (data) => {
+        this.countryCode = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
 
     if(this.formData) {
       this.branchForm.patchValue(this.formData);

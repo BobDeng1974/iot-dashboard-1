@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Address, Domaindata } from '../../model/customermodel';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 
 @Component({
@@ -17,7 +17,9 @@ export class AddCustomerAddressComponent implements OnInit {
   getAddressType : Domaindata[];
   countryCode : Domaindata[];
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerAddressComponent>, private adminpnalService : AdminPanelMainService) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerAddressComponent>, private adminpnalService : AdminPanelMainService, @Inject(MAT_DIALOG_DATA) public data: Address) { 
+    this.formData = data;
+  }
 
   ngOnInit() {
     this.addressForm = this.fb.group({
@@ -63,14 +65,25 @@ export class AddCustomerAddressComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.formData = {
-      add_type : form.controls.add_type.value,
-      add_address_line1 : form.controls.add_address_line1.value,
-      add_address_line2 : form.controls.add_address_line2.value,
-      add_city : form.controls.add_city.value,
-      add_state : form.controls.add_state.value,
-      add_country : form.controls.add_country.value,
-      add_pin : form.controls.add_pin.value,
+    if(this.formData){
+        this.formData.add_type = form.controls.add_type.value,
+        this.formData.add_address_line1 = form.controls.add_address_line1.value,
+        this.formData.add_address_line2 = form.controls.add_address_line2.value,
+        this.formData.add_city = form.controls.add_city.value,
+        this.formData.add_state = form.controls.add_state.value,
+        this.formData.add_country = form.controls.add_country.value,
+        this.formData.add_pin = form.controls.add_pin.value
+    }
+    else {
+      this.formData = {
+        add_type : form.controls.add_type.value,
+        add_address_line1 : form.controls.add_address_line1.value,
+        add_address_line2 : form.controls.add_address_line2.value,
+        add_city : form.controls.add_city.value,
+        add_state : form.controls.add_state.value,
+        add_country : form.controls.add_country.value,
+        add_pin : form.controls.add_pin.value,
+      }
     }
     this.dialogRef.close(this.formData);
   }
