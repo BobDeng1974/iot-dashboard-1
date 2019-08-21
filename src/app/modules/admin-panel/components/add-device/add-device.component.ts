@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Device } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 
 @Component({
   selector: 'app-add-device',
@@ -13,7 +14,7 @@ export class AddDeviceComponent implements OnInit {
 
   adddeviceForm : FormGroup;
   device: Device;
-  constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<AddDeviceComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminService: AdminPanelMainService) { 
+  constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<AddDeviceComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminService: AdminPanelMainService, private _snackBar : MatSnackBar) { 
     this.device = data;
   }
 
@@ -44,7 +45,8 @@ export class AddDeviceComponent implements OnInit {
         (data) => {
           this.dialogRef.close("success");
           if (data == "001") {
-            alert('update successfull')
+            //alert('update successfull')
+            this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Device Update Successfully", duration: 3000 });
           }
         },
         (error) => {
@@ -61,8 +63,10 @@ export class AddDeviceComponent implements OnInit {
       this.adminService.createDevice(this.device).subscribe(
         (data) => {
           this.dialogRef.close("success");
+          console.log("Add device  "+data);
           if (data == "001") {
             alert('post successful')
+            // this._snackBar.openFromComponent(SuccessSnackberComponent, {data : "Device Add Successfully.", duration : 3000 });
           }
         },
         (error) => {
