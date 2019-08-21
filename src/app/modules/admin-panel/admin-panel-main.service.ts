@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Customer, Domaindata, Device, DeviceMonitor } from './model/customermodel';
+import { Customer, Domaindata, Device, DeviceMonitor, DeviceAssignment } from './model/customermodel';
 import { Observable } from 'rxjs';
 import { Vendor } from './model/vendormodel';
 
@@ -14,17 +14,22 @@ export class AdminPanelMainService {
   private getAllCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/getall/?format=json";
   private getACustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/getacustomer/";
   private getdomainUrl = "http://35.200.162.115:8006/qiidomain/get/";
+  //////////////////////////////////////////////////////////////////////////
+  private getCustomerBranchUrl = "http://34.93.221.249:8001/api/qubematics/customer/getbranch/";
+  private getCustomerandIdUrl = "http://34.93.221.249:8001/api/qubematics/customer/getcustomerandid/";
+  //////////////////////////////////////////////////////////////////////////
   // private createDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/create/";
   // private updateDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/update/";
   // private getAllDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/getall/?format=json";
   // private deviceAliveUrl = "http://192.168.0.103:8001/api/qubematics/device/alive/";
   // private assignDevice = "http://192.168.0.103:8001/api/qubematics/device/assign/";
-  private createDeviceUrl = "http://192.168.0.11:8000/api/qubematics/device/create/";
-  private updateDeviceUrl = "http://192.168.0.11:8000/api/qubematics/device/update/";
-  private getAllDeviceUrl = "http://192.168.0.11:8000/api/qubematics/device/getall/?format=json";
-  private deviceAliveUrl = "http://192.168.0.11:8000/api/qubematics/device/alive/";
-  private assignDevice = "http://192.168.0.11:8000/api/qubematics/device/assign/";
-  private getDeviceHealthUrl = "http://192.168.0.11:8000/api/qubematics/device/getdevicehealth/?format=json";
+  private createDeviceUrl = "http://34.93.221.249:8002/api/qubematics/device/create/";
+  private updateDeviceUrl = "http://34.93.221.249:8002/api/qubematics/device/update/";
+  private getAllDeviceUrl = "http://34.93.221.249:8002/api/qubematics/device/getall/?format=json";
+  private getAssignInfoUrl = "http://34.93.221.249:8002/api/qubematics/device/assignInfo/";
+  private deviceAliveUrl = "http://34.93.221.249:8002/api/qubematics/device/alive/";
+  private assignDevice = "http://34.93.221.249:8002/api/qubematics/device/assign/";
+  private getDeviceHealthUrl = "http://34.93.221.249:8002/api/qubematics/device/getdevicehealth/?format=json";
   // private createCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/create/";
   // private updateCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/update/";
   // private getAllCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/getall/?format=json";
@@ -108,5 +113,21 @@ export class AdminPanelMainService {
 
   getDeviceHealth() : Observable<DeviceMonitor[]>{
     return this.http.get<DeviceMonitor[]>(this.getDeviceHealthUrl)
+  }
+
+  getCustomerBranch(id: number) : Observable<any[]>{
+    return this.http.get<any[]>(this.getCustomerBranchUrl+id+'?format=json');
+  }
+
+  getCustomerNameandId() : Observable<any[]>{
+    return this.http.get<any[]>(this.getCustomerandIdUrl+'?format=json');
+  }
+
+  updatedDeviceAssign(form: DeviceAssignment) {
+    return this.http.put(this.assignDevice, form)
+  }
+
+  getAssignInfo(id:number): Observable<DeviceAssignment[]>{
+    return this.http.get<DeviceAssignment[]>(this.getAssignInfoUrl+id+'?format=json');
   }
 }
