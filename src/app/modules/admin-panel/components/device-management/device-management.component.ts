@@ -25,7 +25,7 @@ export class DeviceManagementComponent implements OnInit {
     { headerName: 'Active', field:'device_activated', sortable:true, cellRenderer:'activeRenderer'},
     { headerName: 'Health', field:'device_health', cellRenderer:'healthRenderer'},
     { headerName: 'Last Heart Beat', field:'device_last_heartbeat'},
-    { headerName: 'Data Colletion Frequency', field:'data_collection_frequency', editable:true},
+    { headerName: 'Data Collection Frequency', field:'data_collection_frequency', editable:true},
     { headerName: 'Data Sending Frequency', field:'data_sending_frequency', editable:true, resizable:true}
   ];
   

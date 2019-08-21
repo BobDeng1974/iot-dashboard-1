@@ -138,6 +138,7 @@ export interface Domaindata {
 export interface DeviceAssignment{
     device_assign_id ?: number;
     device_id ?: number;
+    device_name ?: string;
     customer_id ?: number;
     customer_name ?: string;
     customer_branch_id ?: number;

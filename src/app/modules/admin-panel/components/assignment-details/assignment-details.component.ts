@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Device } from '../../model/customermodel';
+import { Device, DeviceAssignment } from '../../model/customermodel';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-assignment-details',
@@ -7,26 +9,56 @@ import { Device } from '../../model/customermodel';
   styleUrls: ['./assignment-details.component.scss']
 })
 export class AssignmentDetailsComponent implements OnInit {
-
+  @Output() editClicked = new EventEmitter<DeviceAssignment>();
   @Output() buttonClick = new EventEmitter<number>();
   @Input() device:Device;
+  @Input() assignInfo: DeviceAssignment[] = [];
+  private rowSelection: string;
   private columnDefs;
-  private rowData: any[] = []
-  constructor() { }
+  private selectedRow: DeviceAssignment;
+  private assignmentGridApi;
+  private assignmentGridColumnApi;
+
+  constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.columnDefs = [
       { headerName:'Customer Name', field:'customer_name'},
-      { headerName:'Customer Name', field:'customer_branch'},
-      { headerName: 'Start Date', field:'start_date', sortable:true},
-      { headerName: 'End Date', field:'end_date', sortable:true},
+      { headerName:'Branch Name', field:'customer_branch_name'},
+      { headerName: 'Start Date', field:'device_assign_effective_from', sortable:true},
+      { headerName: 'End Date', field:'device_assign_effective_to', sortable:true},
     ];
-    this.rowData = [
-      {customer_name:'Arsalan', customer_branch:'Chinar park', start_date:'20/08/2019', end_date:'20/08/2020'},
-    ];
+    this.rowSelection = 'single';
   }
-
+  ngOnChanges(){
+    if (this.device && this.device.device_id > 0) {
+      this.spinner.show();
+      this.adminService.getAssignInfo(this.device.device_id).subscribe(
+        (data) => {
+          this.assignInfo = data
+          console.log(data)
+          this.spinner.hide();
+        },
+        (error) => {
+          console.log(error);
+          this.spinner.hide()
+        }
+      ); 
+    }
+  }
   InitializeClick(value){
     this.buttonClick.emit(value)
+  }
+  onAssignmentGridReady(params){
+    this.assignmentGridApi = params.api;
+    this.assignmentGridColumnApi = params.columnApi;
+  }
+  onSelectionChanged(value){
+    this.selectedRow = this.assignmentGridApi.getSelectedRows()[0];
+    console.log(this.selectedRow);
+  }
+
+  InitializeEdit(){
+    this.editClicked.emit(this.selectedRow)
   }
 }
