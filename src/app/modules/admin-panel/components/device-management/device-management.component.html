@@ -14,8 +14,8 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="main-content">
-        <ag-grid-angular style="width: 100%; height: 100%;" [columnDefs]="columnDefs" [rowData]="rowData" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" 
-        (gridReady)="onDeviceGridReady($event)" (cellValueChanged)="onCellValueChange($event)" [frameworkComponents]="frameworkComponents">
+        <ag-grid-angular style="width: 100%; height: 100%;" [columnDefs]="columnDefs" [rowData]="rowData" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [defaultColDef]="defaultcolDefs"
+        (gridReady)="onDeviceGridReady($event)" (cellValueChanged)="onCellValueChange($event)" [frameworkComponents]="frameworkComponents" >
 
         </ag-grid-angular>
     </div>
