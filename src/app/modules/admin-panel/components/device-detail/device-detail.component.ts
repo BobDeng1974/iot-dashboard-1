@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Device, Sensor } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatSnackBar } from '@angular/material';
+import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 
 @Component({
   selector: 'app-device-detail',
@@ -16,7 +18,7 @@ export class DeviceDetailComponent implements OnInit {
   private sensorColumnDefs;
   private sensorGridApi;
   private sensorGridColumnApi;
-  constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService) { }
+  constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService, private _sanckBar : MatSnackBar) { }
 
   ngOnInit() {
     this.sensorColumnDefs = [
@@ -40,16 +42,15 @@ export class DeviceDetailComponent implements OnInit {
     this.spinner.show()
     this.adminService.updateDevice(this.device).subscribe(
       (data) => {
-        console.log(data)
-        setTimeout(() => {
-          this.spinner.hide()
-        }, 1000)
+        console.log(data);
+        this.spinner.hide();
+        if(data == "001"){
+          this._sanckBar.openFromComponent(SuccessSnackberComponent, {data: "Update Device Details", duration: 3000});
+        }
       },
       (error) => {
         console.log(error)
-        setTimeout(() => {
-          this.spinner.hide()
-        }, 1000);
+        this.spinner.hide();
       }
     );
   }
