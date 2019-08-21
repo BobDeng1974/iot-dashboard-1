@@ -9,8 +9,8 @@
                     <mat-form-field class="form-field">
                         <mat-label>Phone ISD Code</mat-label>
                         <mat-select placeholder="Choose your ISD Code" formControlName="ph_isd_code">
-                            <mat-option *ngFor="let phnisdcode of phoneisdcode" [value]="phnisdcode.phonecode">
-                                {{phnisdcode.name}} - {{phnisdcode.phonecode}}
+                            <mat-option *ngFor="let phnisdcode of phoneisdcode" [value]="phnisdcode.domain_code">
+                                {{phnisdcode.domain_code}} - {{phnisdcode.domain_value}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>

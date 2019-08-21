@@ -585,6 +585,7 @@ export class AdminMainComponent implements OnInit {
             this.spinner.show();
             this.adminpanelService.updateVendor(this.vendor).subscribe(
               (data) => {
+                console.log("add vendor email:  "+data);
                 if(data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
                   this.getVendorData(this.vendor.vendor_id);
@@ -609,6 +610,7 @@ export class AdminMainComponent implements OnInit {
             this.spinner.show();
             this.adminpanelService.updateVendor(this.vendor).subscribe(
               (data) => {
+                console.log("Vendor Additional information:  "+data);
                 if(data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
                   this.getVendorData(this.vendor.vendor_id);
