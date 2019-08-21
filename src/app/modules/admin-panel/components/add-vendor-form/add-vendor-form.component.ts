@@ -26,7 +26,6 @@ export class AddVendorFormComponent implements OnInit {
       vendor_name : ['',[Validators.required]],
       vendor_code : ['',[Validators.required]],
       vendor_type : ['',[Validators.required]],
-      vendor_tag : '',
     });
 
     if(this.formData && this.formData.vendor_id > 0) {
@@ -39,9 +38,9 @@ export class AddVendorFormComponent implements OnInit {
       this.formData.vendor_name = form.controls.vendor_name.value,
       this.formData.vendor_code = form.controls.vendor_code.value,
       this.formData.vendor_type = form.controls.vendor_type.value,
-      this.formData.vendor_tag = form.controls.vendor_tag.value,
       this.adminMainService.updateVendor(this.formData).subscribe(
         (data)=> {
+          console.log("this is form add vendor form:  "+data);
           this.dialogRef.close("success");
           this._snackBar.openFromComponent(SuccessSnackberComponent, {data : "Vendor Updated Successfully.", duration : 3000 });
         },
@@ -56,7 +55,6 @@ export class AddVendorFormComponent implements OnInit {
         vendor_name : form.controls.vendor_name.value,
         vendor_code : form.controls.vendor_code.value,
         vendor_type : form.controls.vendor_type.value,
-        vendor_tag : form.controls.vendor_tag.value,
         additional_attributes : [],
         legal_infos : [],
         phones : [],

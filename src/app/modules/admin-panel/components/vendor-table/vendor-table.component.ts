@@ -21,7 +21,7 @@ export class VendorTableComponent implements OnInit {
     vendor_id : 0
   }
 
-  displayedColumns: string[] = ['select', 'vendor_code', 'vendor_name', 'vendor_type', 'vendor_tag'];
+  displayedColumns: string[] = ['select', 'vendor_code', 'vendor_name', 'vendor_type'];
   dataSource = new MatTableDataSource<any>();
 
   constructor() { }

@@ -40,11 +40,6 @@
                 <th mat-header-cell *matHeaderCellDef> Type </th>
                 <td mat-cell *matCellDef="let element"> {{element.vendor_type}} </td>
             </ng-container>
-
-            <ng-container matColumnDef="vendor_tag">
-                <th mat-header-cell *matHeaderCellDef> Tagging </th>
-                <td mat-cell *matCellDef="let element"> {{element.vendor_tag}} </td>
-            </ng-container>
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="changeSelected(row)">

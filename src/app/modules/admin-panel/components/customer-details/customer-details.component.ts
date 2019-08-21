@@ -211,9 +211,9 @@ export class CustomerDetailsComponent implements OnChanges {
   }
 
   InitializeEdit() {
-    var selectedId = this.addressGridApi.getSelectedRows()[0];
+    var selectedId = this.addressGridApi.getSelectedRows()[0].add_id;
     this.editClicked.emit(this.customerData.addresses.find(m => m.add_id == selectedId));
-    //console.log(this.addressGridApi.getSelectedRows()[0]);
+    console.log("form customer details  "+this.addressGridApi.getSelectedRows()[0]);
     
   }
 

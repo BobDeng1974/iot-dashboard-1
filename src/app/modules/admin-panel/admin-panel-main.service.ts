@@ -48,7 +48,7 @@ export class AdminPanelMainService {
 
   private getAllVendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/getall/?format=json";
   private postVendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/create/?format=json";
-  private vendorUpdateUrl = "http://34.93.221.249:8001/api/qubematics/vendor/update/?format=json";
+  private vendorUpdateUrl = "http://34.93.221.249:8001/api/qubematics/vendor/update/";
   private getAvendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/getavendor/";
   constructor(private http: HttpClient) { }
 

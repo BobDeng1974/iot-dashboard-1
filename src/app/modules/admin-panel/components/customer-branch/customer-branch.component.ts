@@ -71,7 +71,7 @@ export class CustomerBranchComponent implements OnChanges {
   }
 
   InitializeEdit() {
-    var selectedId = this.branchGridApi.getSelectedRows()[0];
+    var selectedId = this.branchGridApi.getSelectedRows()[0].branch_id;
     this.editClicked.emit(this.customerData.branches.find(m=>m.branch_id == selectedId));
   }
 
