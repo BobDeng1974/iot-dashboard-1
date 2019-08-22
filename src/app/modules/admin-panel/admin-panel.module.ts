@@ -44,6 +44,8 @@ import { CustomerBranchComponent } from './components/customer-branch/customer-b
 import { AssignmentDetailsComponent } from './components/assignment-details/assignment-details.component';
 import { DeviceActiveRendererComponent } from '../shared/components/device-active-renderer/device-active-renderer.component';
 import { DeviceHealthRendererComponent } from '../shared/components/device-health-renderer/device-health-renderer.component';
+import { ErrorDirective } from '../shared/directives/error/error.directive';
+import { MatErrorComponent } from '../shared/components/mat-error/mat-error.component';
 
 
 
@@ -54,8 +56,8 @@ import { DeviceHealthRendererComponent } from '../shared/components/device-healt
     SharedModule,
     AdminRoutingModule,
     MaterialModule,
-    AgGridModule.withComponents([NullValueComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent])
+    AgGridModule.withComponents([NullValueComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, NumericEditorComponent])
   ],
-  entryComponents : [ AddVendorFormComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent]
+  entryComponents : [ AddVendorFormComponent, MatErrorComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent]
 })
 export class AdminPanelModule { }
