@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { Customer } from '../../model/customermodel';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-customer-assign',
@@ -11,18 +12,19 @@ export class CustomerAssignComponent implements OnInit {
 
   @Output() buttonClicked = new EventEmitter<number>();
   @Output() customer = new EventEmitter<Customer>();
-  customerData: any [] = []
+  customerData = new MatTableDataSource<any>();
   displayedColumns: string[] =['select', 'customer_name'];
   selectedCustomer = {
     customer_id: 0
   }
+  
   constructor(private adminService: AdminPanelMainService) { }
 
   ngOnInit() {
     this.adminService.getCustomerNameandId().subscribe(
       (data) => {
         console.log(data);
-        this.customerData = data;
+        this.customerData.data = data;
       },
       (error) => {
         console.log(error)
@@ -36,6 +38,10 @@ export class CustomerAssignComponent implements OnInit {
 
   viewDetails(value){
     this.customer.emit(value);
-    console.log(value)
+    console.log(value);
+  }
+
+  applyFilter(filterValue: string) {
+    this.customerData.filter = filterValue.trim().toLowerCase();
   }
 }
