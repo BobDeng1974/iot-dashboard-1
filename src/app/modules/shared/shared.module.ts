@@ -11,12 +11,13 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { DeviceHealthRendererComponent } from './components/device-health-renderer/device-health-renderer.component';
 import { MatErrorComponent } from './components/mat-error/mat-error.component';
 import { ErrorDirective } from './directives/error/error.directive';
+import { DateTimeRendererComponent } from './components/date-time-renderer/date-time-renderer.component';
 
 
 
 
 @NgModule({
-  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, MatErrorComponent, ErrorDirective],
+  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, MatErrorComponent, ErrorDirective, DateTimeRendererComponent],
   imports: [
     CommonModule,
     FormsModule,
