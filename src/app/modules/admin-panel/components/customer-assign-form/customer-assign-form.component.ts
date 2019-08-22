@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { CustomerAssignment, Customer } from '../../model/customermodel';
+import { DateTimeRendererComponent } from 'src/app/modules/shared/components/date-time-renderer/date-time-renderer.component';
 
 @Component({
   selector: 'app-customer-assign-form',
@@ -17,12 +18,14 @@ export class CustomerAssignFormComponent implements OnInit {
   rowData: CustomerAssignment[] = []
   @Input() customer: Customer;
   constructor(private spinner: NgxSpinnerService, private adminService: AdminPanelMainService) { }
-
+  frameworkComponents = {
+    dateRenderer: DateTimeRendererComponent
+  }
   ngOnInit() {
     this.customerColumnDefs = [
       { headerName: 'Vendor Name', field:'vendor_name', sortable: true, filter: true, width:200, editable: false, resizable:true },
-      { headerName: 'Assigned From', field:'assign_effective_from', sortable: true, filter: true, width:200, editable: false, resizable:true },
-      { headerName: 'Assigned To', field:'assign_effective_to', sortable: true, filter: true, width:200, editable: false, resizable:true },
+      { headerName: 'Assigned From', field:'assign_effective_from', sortable: true, filter: true, width:200, editable: false, resizable:true, cellRenderer:'dateRenderer' },
+      { headerName: 'Assigned To', field:'assign_effective_to', sortable: true, filter: true, width:200, editable: false, resizable:true, cellRenderer:'dateRenderer' },
     ];
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Device, DeviceAssignment } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DateTimeRendererComponent } from 'src/app/modules/shared/components/date-time-renderer/date-time-renderer.component';
 
 @Component({
   selector: 'app-assignment-details',
@@ -21,12 +22,15 @@ export class AssignmentDetailsComponent implements OnInit {
 
   constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService) { }
 
+  frameworkComponents = {
+    dateRenderer: DateTimeRendererComponent
+  }
   ngOnInit() {
     this.columnDefs = [
       { headerName:'Customer Name', field:'customer_name'},
       { headerName:'Branch Name', field:'customer_branch_name'},
-      { headerName: 'Start Date', field:'device_assign_effective_from', sortable:true},
-      { headerName: 'End Date', field:'device_assign_effective_to', sortable:true},
+      { headerName: 'Start Date', field:'device_assign_effective_from', sortable:true, cellRenderer:'dateRenderer'},
+      { headerName: 'End Date', field:'device_assign_effective_to', sortable:true, cellRenderer:'dateRenderer'},
     ];
     this.rowSelection = 'single';
   }

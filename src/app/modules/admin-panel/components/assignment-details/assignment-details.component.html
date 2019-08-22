@@ -6,7 +6,7 @@
     </mat-expansion-panel-header>
     <div class="main-content">
         <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true"
-        [rowData]="assignInfo"[columnDefs]="columnDefs" [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged($event)" (gridReady)="onAssignmentGridReady($event)">
+        [rowData]="assignInfo"[columnDefs]="columnDefs" [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged($event)" (gridReady)="onAssignmentGridReady($event)" [frameworkComponents]="frameworkComponents">
         </ag-grid-angular>
     </div>
     <mat-action-row>

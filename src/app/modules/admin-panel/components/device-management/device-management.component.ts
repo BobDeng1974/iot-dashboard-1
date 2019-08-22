@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { DeviceActiveRendererComponent } from 'src/app/modules/shared/components/device-active-renderer/device-active-renderer.component';
 import { DeviceHealthRendererComponent } from 'src/app/modules/shared/components/device-health-renderer/device-health-renderer.component';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { DateTimeRendererComponent } from 'src/app/modules/shared/components/date-time-renderer/date-time-renderer.component';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class DeviceManagementComponent implements OnInit {
     { headerName: 'Device ID', field:'device', sortable:true, filter:'agNumberColumnFilter' },
     { headerName: 'Active', field:'device_activated', sortable:true, cellRenderer:'activeRenderer'},
     { headerName: 'Health', field:'device_health', cellRenderer:'healthRenderer'},
-    { headerName: 'Last Heart Beat', field:'device_last_heartbeat',  sortable:true},
+    { headerName: 'Last Heart Beat', field:'device_last_heartbeat',  sortable:true, cellRenderer:'dateRenderer'},
     { headerName: 'Data Collection Frequency', field:'data_collection_frequency', editable:true, valueParser:numberParser},
     { headerName: 'Data Sending Frequency', field:'data_sending_frequency', editable:true, resizable:true, valueParser:numberParser}
   ];
@@ -42,7 +43,8 @@ export class DeviceManagementComponent implements OnInit {
   
   frameworkComponents = {
     activeRenderer: DeviceActiveRendererComponent,
-    healthRenderer: DeviceHealthRendererComponent
+    healthRenderer: DeviceHealthRendererComponent,
+    dateRenderer: DateTimeRendererComponent
   }
 
   ngOnInit() {
