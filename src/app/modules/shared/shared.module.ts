@@ -9,17 +9,19 @@ import { FormsModule } from '@angular/forms';
 import { DeviceActiveRendererComponent } from './components/device-active-renderer/device-active-renderer.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { DeviceHealthRendererComponent } from './components/device-health-renderer/device-health-renderer.component';
+import { MatErrorComponent } from './components/mat-error/mat-error.component';
+import { ErrorDirective } from './directives/error/error.directive';
 
 
 
 
 @NgModule({
-  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent],
+  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, MatErrorComponent, ErrorDirective],
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule
   ],
-  exports: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent]
+  exports: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, ErrorDirective, MatErrorComponent ]
 })
 export class SharedModule { }

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Address, Domaindata } from '../../model/vendormodel';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-vendor-address',
@@ -26,10 +27,10 @@ export class AddVendorAddressComponent implements OnInit {
       add_type: '',
       add_address_line1: ['',[Validators.required, Validators.maxLength(40)]],
       add_address_line2: ['', [Validators.maxLength(40)]],
-      add_city: '',
-      add_state: '',
-      add_country: '',
-      add_pin: ['',[Validators.required]],
+      add_city: ['',[Validators.required]],
+      add_state: ['',[Validators.required]],
+      add_country: ['',[Validators.required]],
+      add_pin: ['',[Validators.required, Validation.pincode]],
       default_value: '',
     });
 

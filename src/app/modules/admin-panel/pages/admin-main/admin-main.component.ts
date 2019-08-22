@@ -366,8 +366,11 @@ export class AdminMainComponent implements OnInit {
                 if (data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,
                     { data: "Address Added Successfully.", duration: 3000});
-                    this.getCustomerData(this.customer.customer_id);
-                } 
+                  this.getCustomerData(this.customer.customer_id);
+                }
+                else {
+                  this.adminpanelService.getError(data);
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -393,6 +396,9 @@ export class AdminMainComponent implements OnInit {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{ data: "Legal Info Added Successfully",duration: 3000 }); 
                   this.getCustomerData(this.customer.customer_id);
                 }
+                else {
+                  this.adminpanelService.getError(data);
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -417,6 +423,9 @@ export class AdminMainComponent implements OnInit {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : " Phone Added Successfully",duration: 3000 }); 
                   this.getCustomerData(this.customer.customer_id);
                 }
+                else {
+                  this.adminpanelService.getError(data);
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -440,6 +449,9 @@ export class AdminMainComponent implements OnInit {
                 if(data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
                   this.getCustomerData(this.customer.customer_id);
+                }
+                else {
+                  this.adminpanelService.getError(data);
                 }
                 this.spinner.hide();
               },
@@ -466,6 +478,9 @@ export class AdminMainComponent implements OnInit {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Additional Attribute Added Successfully",duration: 3000 }); 
                   this.getCustomerData(this.customer.customer_id);
                 }
+                else {
+                  this.adminpanelService.getError(data);
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -491,6 +506,9 @@ export class AdminMainComponent implements OnInit {
                 if(data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Branch Added Successfully",duration: 3000 }); 
                   this.getCustomerData(this.customer.customer_id);
+                }
+                else {
+                  this.adminpanelService.getError(data);
                 }
                 this.spinner.hide();
               },
@@ -520,7 +538,10 @@ export class AdminMainComponent implements OnInit {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,
                     { data: "Address Added Successfully.", duration: 3000});
                   this.getVendorData(this.vendor.vendor_id);
-                } 
+                }
+                else {
+                  this.adminpanelService.getError(data);
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -546,6 +567,9 @@ export class AdminMainComponent implements OnInit {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{ data: "Legal Info Added Successfully",duration: 3000 }); 
                   this.getVendorData(this.vendor.vendor_id);
                 }
+                else {
+                  this.adminpanelService.getError(data);
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -569,6 +593,9 @@ export class AdminMainComponent implements OnInit {
                 if (data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : " Phone Added Successfully",duration: 3000 }); 
                   this.getVendorData(this.vendor.vendor_id);
+                }
+                else {
+                  this.adminpanelService.getError(data);
                 }
                 this.spinner.hide();
               },
@@ -595,6 +622,9 @@ export class AdminMainComponent implements OnInit {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
                   this.getVendorData(this.vendor.vendor_id);
                 }
+                else {
+                  this.adminpanelService.getError(data);
+                }
                 this.spinner.hide();
               },
               (error) => {
@@ -619,6 +649,9 @@ export class AdminMainComponent implements OnInit {
                 if(data == "001") {
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
                   this.getVendorData(this.vendor.vendor_id);
+                }
+                else {
+                  this.adminpanelService.getError(data);
                 }
                 this.spinner.hide();
               },
@@ -693,9 +726,11 @@ export class AdminMainComponent implements OnInit {
             this.adminpanelService.updateDevice(this.deviceDetail).subscribe(
               (data) => {
                 if (data == "001") {
-                  alert('updated successfully')
-                }else{
-                  console.log('error occured')
+                  //alert('updated successfully')
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Sensor Add successfully", duration: 3000});
+                }
+                else {
+                  this.adminpanelService.getError(data);
                 }
                 this.spinner.hide()
               },
@@ -719,15 +754,17 @@ export class AdminMainComponent implements OnInit {
             this.adminpanelService.updatedDeviceAssign(result).subscribe(
               (data) => {
                 if (data === "001") {
-                  alert('updated successfully')
+                  //alert('updated successfully')
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Device Add successfully", duration: 3000});
                   this.adminpanelService.getAssignInfo(result.device_id).subscribe(
                     (data) => {
                       this.deviceAssignInfo = data;
-                      console.log(data)
+                      //console.log(data)
                     }
                   );
-                } else {
-                  console.log('erro occured')
+                } 
+                else {
+                  this.adminpanelService.getError(data);
                 }
                 this.spinner.hide()
               },
@@ -780,6 +817,9 @@ export class AdminMainComponent implements OnInit {
               this._snackBar.openFromComponent(SuccessSnackberComponent, { data: "Address Updated Successfully.", duration: 3000 });
               this.getCustomerData(this.customer.customer_id);
             }
+            else {
+              this.adminpanelService.getError(data);
+            }
           },
           (error) => {
             console.error(error);
@@ -801,6 +841,9 @@ export class AdminMainComponent implements OnInit {
             if(data == "001") {
               this._snackBar.openFromComponent(SuccessSnackberComponent, { data: "Address Updated Successfully.", duration: 3000 });
               this.getVendorData(this.vendor.vendor_id);
+            }
+            else {
+              this.adminpanelService.getError(data);
             }
           },
           (error) => {
@@ -826,6 +869,26 @@ export class AdminMainComponent implements OnInit {
 
   openCustomerBranchEditPopup(value: Branch) {
     this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent,{ data: value});
+    this.customerbranchdialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.spinner.show();
+        this.adminpanelService.updateCustomer(this.customer).subscribe(
+          (data) => {
+            if(data == "001"){
+              this._snackBar.openFromComponent(SuccessSnackberComponent, { data: "Branch Updated Successfully.", duration: 3000 });
+              this.getCustomerData(this.customer.customer_id);
+            }
+            else {
+              this.adminpanelService.getError(data);
+            }
+          },
+          (error) =>  {
+            console.error(error);
+            this.spinner.hide();
+          }
+        );
+      }
+    });
   }
 
   openAssignEditPopup(value: DeviceAssignment){

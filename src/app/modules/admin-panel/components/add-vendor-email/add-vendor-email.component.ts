@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Email } from '../../model/vendormodel';
 import { MatDialogRef } from '@angular/material';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-vendor-email',
@@ -17,7 +18,7 @@ export class AddVendorEmailComponent implements OnInit {
 
   ngOnInit() {
     this.EmailForm=this.fb.group({
-      eml_address:['', [Validators.required]],
+      eml_address:['', [Validators.required, Validation.email]],
     });
   }
 

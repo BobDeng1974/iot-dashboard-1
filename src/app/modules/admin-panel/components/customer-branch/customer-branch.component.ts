@@ -36,7 +36,7 @@ export class CustomerBranchComponent implements OnChanges {
 
   ngOnInit() {
     this.branchesColumnDef = [
-      { headerName: "Branch name", field : 'branch_name',width:100, editable: false,resizable:true,  },
+      { headerName: "Branch name", field : 'branch_name',width:100, editable: false,resizable:true, sortable: true, filter: true  },
       { headerName: "Address", field: 'branch_add_line1', width:100, editable: false,resizable:true, autoHeight: true, cellStyle: {'white-space': 'normal', 'height': 'auto', 'overflow': 'visible', 'text-overflow': 'clip', 'overflow-wrap': 'break-word'} }
     ];
     this.rowSelection = 'single';

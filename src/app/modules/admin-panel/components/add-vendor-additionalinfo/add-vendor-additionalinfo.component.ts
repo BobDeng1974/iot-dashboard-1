@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AdditionalAttributes } from '../../model/vendormodel';
 import { MatDialogRef } from '@angular/material';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-vendor-additionalinfo',
@@ -17,8 +18,8 @@ export class AddVendorAdditionalinfoComponent implements OnInit {
 
   ngOnInit() {
     this.Additionalinfoform = this.fb.group({
-      addinfo_attr:['', [Validators.required]],
-      addinfo_value:['', [Validators.required]],
+      addinfo_attr:['', [Validators.required, Validation.nonleadingspace]],
+      addinfo_value:['', [Validators.required, Validation.nonleadingspace]],
     });
   }
 

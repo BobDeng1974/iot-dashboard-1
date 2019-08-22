@@ -48,6 +48,9 @@ export class AddDeviceComponent implements OnInit {
             //alert('update successfull')
             this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Device Update Successfully", duration: 3000 });
           }
+          else {
+            this.adminService.getError(data);
+          }
         },
         (error) => {
           console.log(error)
@@ -65,8 +68,11 @@ export class AddDeviceComponent implements OnInit {
           this.dialogRef.close("success");
           console.log("Add device  "+data);
           if (data == "001") {
-            alert('post successful')
-            // this._snackBar.openFromComponent(SuccessSnackberComponent, {data : "Device Add Successfully.", duration : 3000 });
+            //alert('post successful')
+            this._snackBar.openFromComponent(SuccessSnackberComponent, {data : "Device Add Successfully.", duration : 3000 });
+          }
+          else {
+            this.adminService.getError(data);
           }
         },
         (error) => {

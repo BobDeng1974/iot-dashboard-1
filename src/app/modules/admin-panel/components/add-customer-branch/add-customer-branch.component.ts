@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Branch, Domaindata } from '../../model/customermodel';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-customer-branch',
@@ -22,12 +23,12 @@ export class AddCustomerBranchComponent implements OnInit {
   ngOnInit() {
     this.branchForm = this.fb.group({
       branch_name : ['',[Validators.required]],
-      branch_add_address_line1 : ['',[Validators.required, Validators.maxLength(40)]],
-      branch_add_address_line2 : ['',[Validators.required, Validators.maxLength(40)]],
-      branch_add_city : '',
-      branch_add_state : '',
+      branch_add_line1 : ['',[Validators.required, Validators.maxLength(40)]],
+      branch_add_line2 : ['',[Validators.required, Validators.maxLength(40)]],
+      branch_add_city : ['',[Validators.required]],
+      branch_add_state : ['',[Validators.required]],
       branch_add_pin : ['',[Validators.required]],
-      branch_add_country : '',
+      branch_add_country : ['',[Validators.required, Validation.pincode]],
     });
 
     this.adminpnalService.getCountryCode().subscribe(
@@ -51,8 +52,8 @@ export class AddCustomerBranchComponent implements OnInit {
   onSubmit(form) {
     if (this.formData) {
       this.formData.branch_name = form.controls.branch_name.value,
-      this.formData.branch_add_line1 = form.controls.branch_add_address_line1.value,
-      this.formData.branch_add_line2 = form.controls.branch_add_address_line2.value,
+      this.formData.branch_add_line1 = form.controls.branch_add_line1.value,
+      this.formData.branch_add_line2 = form.controls.branch_add_line2.value,
       this.formData.branch_add_city = form.controls.branch_add_city.value,
       this.formData.branch_add_state = form.controls.branch_add_state.value,
       this.formData.branch_add_country = form.controls.branch_add_country.value,
@@ -62,8 +63,8 @@ export class AddCustomerBranchComponent implements OnInit {
     else {
       this.formData = {
         branch_name : form.controls.branch_name.value,
-        branch_add_line1 : form.controls.branch_add_address_line1.value,
-        branch_add_line2 : form.controls.branch_add_address_line2.value,
+        branch_add_line1 : form.controls.branch_add_line1.value,
+        branch_add_line2 : form.controls.branch_add_line2.value,
         branch_add_city : form.controls.branch_add_city.value,
         branch_add_state : form.controls.branch_add_state.value,
         branch_add_country : form.controls.branch_add_country.value,

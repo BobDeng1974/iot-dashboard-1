@@ -2,15 +2,15 @@
     <mat-tab-group class="wide" [style.height.%]="100" [selectedIndex]="selectedTab">
     <mat-tab label="CUSTOMER">
         <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(65% - 16px)" fxFlex.lt-sm="100%">
+            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                 <app-customer-table (ButtonClick)="openPopup($event)" [customerData]="customerData" (customerDetails)="getCustomerDetails($event)"></app-customer-table>
             </div>
-            <div fxFlex="calc(35% - 16px)" fxFlex.lt-sm="100%" >
+            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
                 <div fxLayout="column" fxLayout.lt-sm="row" [style.height.%]="100" fxLayoutGap="8px">
-                    <div fxFlex="calc(45% - 8px)" fxFlex.lt-sm="100%" [style.height.%]="100">
+                    <div fxFlex="calc(55% - 8px)" fxFlex.lt-sm="100%" [style.height.%]="100">
                         <app-customer-branch [customerData]="customer" (ButtonClicked)="openPopup($event)" (editClicked)="openCustomerBranchEditPopup($event)"></app-customer-branch>
                     </div>
-                    <div fxFlex="calc(55% - 8px)" fxFlex.lt-sm="100%">
+                    <div fxFlex="calc(45% - 8px)" fxFlex.lt-sm="100%">
                         <app-customer-details (ButtonClicked)="openPopup($event)" [customerData]="customer" (editClicked)="openAddressEditPopup($event)" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode"></app-customer-details>   
                     </div>
                 </div>
@@ -19,10 +19,10 @@
     </mat-tab>
     <mat-tab label="VENDOR">
         <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(65% - 16px)" fxFlex.lt-sm="100%">
+            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                 <app-vendor-table (ButtonClicked)="openPopup($event)" [vendorData]="vendorData" (vendorDetails)="getVendorDetails($event)"></app-vendor-table>
             </div>
-            <div fxFlex="calc(35% - 16px)" fxFlex.lt-sm="100%" >
+            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
                 <app-vendor-details (ButtonClicked)="openPopup($event)" [vendorData]="vendor" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode" (editClicked)="openVendorAdddressEditPopup($event)"></app-vendor-details>
             </div>
         </div>

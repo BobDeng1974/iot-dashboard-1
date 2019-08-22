@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LegalInfo, Domaindata } from '../../model/customermodel';
 import { MatDialogRef } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-customer-legalinfo',
@@ -21,8 +22,8 @@ export class AddCustomerLegalinfoComponent implements OnInit {
 
   ngOnInit() {
     this.LegalInfoForm=this.fb.group({
-      legalinfo_type:'',
-      legalinfo_value:['', [Validators.required]],
+      legalinfo_type:['', [Validators.required]],
+      legalinfo_value:['', [Validators.required, Validation.nonleadingspace]],
     });
     this.adminpnalService.getLegalInfoType().subscribe(
       (data) => {
