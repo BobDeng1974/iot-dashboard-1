@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Customer, Domaindata, Device, DeviceMonitor, DeviceAssignment } from './model/customermodel';
 import { Observable } from 'rxjs';
 import { Vendor } from './model/vendormodel';
+import { MatSnackBar } from '@angular/material';
+import { ErrorSnackberComponent } from '../shared/components/error-snackber/error-snackber.component';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +52,7 @@ export class AdminPanelMainService {
   private postVendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/create/?format=json";
   private vendorUpdateUrl = "http://34.93.221.249:8001/api/qubematics/vendor/update/";
   private getAvendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/getavendor/";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
   createCustomer(form: Customer){
     return this.http.post(this.createCustomerUrl, form);
@@ -129,5 +131,63 @@ export class AdminPanelMainService {
 
   getAssignInfo(id:number): Observable<DeviceAssignment[]>{
     return this.http.get<DeviceAssignment[]>(this.getAssignInfoUrl+id+'?format=json');
+  }
+
+  // get error in snackbar
+  getError(value : any) {
+    switch (value) {
+      case "301":
+        this._snackBar.openFromComponent(ErrorSnackberComponent, 
+          { data: "Getting Error From Database..", duration : 3000 });
+      break;
+      case "101":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data : "Duplicate Entry", duration : 3000 });
+      break;
+      case "501":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data:"Data Error", duration : 3000 });
+      break;
+      case "502":
+        this._snackBar.openFromComponent(ErrorSnackberComponent, 
+          { data:"Data Error", duration : 3000 });
+      break;
+      case "503":
+        this._snackBar.openFromComponent(ErrorSnackberComponent, 
+          { data:"Data Error", duration : 3000 });
+      break;
+      case "504":
+        this._snackBar.openFromComponent(ErrorSnackberComponent, 
+          { data : "Attribute Error", duration : 3000});
+      break;
+      case "505":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data : "Indentation Error", duration : 3000});
+      break;
+      case "404":
+        this._snackBar.openFromComponent(ErrorSnackberComponent, 
+          { data : "Not Fouund Error", duration : 3000 });
+      break;
+      case "405":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data : "File Not found Error", duration : 3000 });
+      break;
+      case "406":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data : "File Exist Error", duration : 3000 });
+      break;
+      case "601":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data : "Syntax Error", duration : 3000 });
+      break;
+      case "701":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data : "Broken Pipe Error", duration : 3000 });
+      break;
+      case "506":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data : "Invalid Data", duration : 3000 });
+      break;
+    }
   }
 }

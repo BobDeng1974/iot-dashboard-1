@@ -44,7 +44,6 @@ import { CustomerBranchComponent } from './components/customer-branch/customer-b
 import { AssignmentDetailsComponent } from './components/assignment-details/assignment-details.component';
 import { DeviceActiveRendererComponent } from '../shared/components/device-active-renderer/device-active-renderer.component';
 import { DeviceHealthRendererComponent } from '../shared/components/device-health-renderer/device-health-renderer.component';
-import { ErrorDirective } from '../shared/directives/error/error.directive';
 import { MatErrorComponent } from '../shared/components/mat-error/mat-error.component';
 
 
