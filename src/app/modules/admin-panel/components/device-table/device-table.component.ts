@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Customer, Device } from '../../model/customermodel';
 import { EventManager } from '@angular/platform-browser';
+import { MatTableDataSource } from '@angular/material';
 
 
 const ELEMENT_DATA: Device[] = [
@@ -27,18 +28,20 @@ export class DeviceTableComponent implements OnInit {
   @Output() deviceId2 = new EventEmitter<number>();
   @Output() deviceAssign = new EventEmitter<number>();
 
-  @Input() deviceData: Device[] = null;
+  @Input() deviceData: Device[];
   displayedColumns: string[] =['select', 'device_name', 'device_mac', 'device_monitor', 'device_assignment'];
-  dataSource = this.deviceData;
+  dataSource = new MatTableDataSource<any>();
   selectedDevice: Device = {
     device_id: 0
   }
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.data = this.deviceData;
   }
   ngOnChanges(){
-    console.log(this.deviceData)
+    //console.log(this.deviceData)
+    this.dataSource.data = this.deviceData;
   }
   InitializeClick(value:number){
     this.buttonClicked.emit(value)
@@ -57,5 +60,9 @@ export class DeviceTableComponent implements OnInit {
 
   viewDetails(value: Device){
     this.deviceDetails.emit(value)
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

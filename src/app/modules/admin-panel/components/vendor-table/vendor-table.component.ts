@@ -47,4 +47,8 @@ export class VendorTableComponent implements OnInit {
     this.selectedVendor = value;
     this.viewDetails(value);
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

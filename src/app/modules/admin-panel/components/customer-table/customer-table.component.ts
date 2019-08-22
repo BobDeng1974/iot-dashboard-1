@@ -47,4 +47,8 @@ export class CustomerTableComponent implements OnInit {
     this.selectedCustomer = value;
     this.viewDetails(value);
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
