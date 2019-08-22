@@ -45,6 +45,7 @@ import { AssignmentDetailsComponent } from './components/assignment-details/assi
 import { DeviceActiveRendererComponent } from '../shared/components/device-active-renderer/device-active-renderer.component';
 import { DeviceHealthRendererComponent } from '../shared/components/device-health-renderer/device-health-renderer.component';
 import { MatErrorComponent } from '../shared/components/mat-error/mat-error.component';
+import { DateTimeRendererComponent } from '../shared/components/date-time-renderer/date-time-renderer.component';
 
 
 
@@ -55,7 +56,7 @@ import { MatErrorComponent } from '../shared/components/mat-error/mat-error.comp
     SharedModule,
     AdminRoutingModule,
     MaterialModule,
-    AgGridModule.withComponents([NullValueComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, NumericEditorComponent])
+    AgGridModule.withComponents([NullValueComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, NumericEditorComponent, DateTimeRendererComponent])
   ],
   entryComponents : [ AddVendorFormComponent, MatErrorComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent]
 })
