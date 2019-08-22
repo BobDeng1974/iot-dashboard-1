@@ -33,6 +33,7 @@ export class CustomerAssignFormComponent implements OnInit {
       this.adminService.getAssignmentHistory(this.customer.customer_id).subscribe(
         (data) => {
           console.log(data);
+          console.log(data.length);
           if (data.length > 0) {
             this.rowData = data
           }else{
