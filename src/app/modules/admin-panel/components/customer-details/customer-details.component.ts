@@ -75,7 +75,7 @@ export class CustomerDetailsComponent implements OnChanges {
 
     this.addressColumnDefs = [
       { headerName: 'Type', field: 'add_type', sortable: true, filter: true, width:100, editable: false, resizable:true },
-      { headerName: 'Address', field: 'add_address_line1', editable: false, resizable: true, sortable: true, filter: true, autoHeight: true, cellStyle: {'white-space': 'normal', 'height': 'auto', 'overflow': 'visible', 'text-overflow': 'clip', 'overflow-wrap': 'break-word'} },
+      { headerName: 'Address', field: 'add_address_line1', width:200, editable: false, resizable: true, sortable: true, filter: true, autoHeight: true, cellStyle: {'white-space': 'normal', 'height': 'auto', 'overflow': 'visible', 'text-overflow': 'clip', 'overflow-wrap': 'break-word'} },
     ];
 
     this.legalColumnDefs = [

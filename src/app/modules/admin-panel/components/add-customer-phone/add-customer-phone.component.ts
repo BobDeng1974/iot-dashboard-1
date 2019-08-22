@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Phone, Domaindata } from '../../model/customermodel';
 import { MatDialogRef } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-customer-phone',
@@ -19,8 +20,8 @@ export class AddCustomerPhoneComponent implements OnInit {
 
   ngOnInit() {
     this.PhoneForm = this.fb.group({
-      ph_isd_code:'',
-      ph_no:['', [Validators.required]],
+      ph_isd_code:['', [Validators.required]],
+      ph_no:['', [Validators.required, Validation.phonenumber]],
     });
 
     this.adminpnalService.getCountryCode().subscribe(

@@ -801,6 +801,23 @@ export class AdminMainComponent implements OnInit {
 
   openCustomerBranchEditPopup(value: Branch) {
     this.customerbranchdialog = this.dialog.open(AddCustomerBranchComponent,{ data: value});
+    this.customerbranchdialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.spinner.show();
+        this.adminpanelService.updateCustomer(this.customer).subscribe(
+          (data) => {
+            if(data == "001"){
+              this._snackBar.openFromComponent(SuccessSnackberComponent, { data: "Branch Updated Successfully.", duration: 3000 });
+              this.getCustomerData(this.customer.customer_id);
+            }
+          },
+          (error) =>  {
+            console.error(error);
+            this.spinner.hide();
+          }
+        );
+      }
+    });
   }
 
   openAssignEditPopup(value: DeviceAssignment){

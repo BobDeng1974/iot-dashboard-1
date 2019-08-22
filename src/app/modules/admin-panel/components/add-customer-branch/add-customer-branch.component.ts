@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Branch, Domaindata } from '../../model/customermodel';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-customer-branch',
@@ -24,10 +25,10 @@ export class AddCustomerBranchComponent implements OnInit {
       branch_name : ['',[Validators.required]],
       branch_add_line1 : ['',[Validators.required, Validators.maxLength(40)]],
       branch_add_line2 : ['',[Validators.required, Validators.maxLength(40)]],
-      branch_add_city : '',
-      branch_add_state : '',
+      branch_add_city : ['',[Validators.required]],
+      branch_add_state : ['',[Validators.required]],
       branch_add_pin : ['',[Validators.required]],
-      branch_add_country : '',
+      branch_add_country : ['',[Validators.required, Validation.pincode]],
     });
 
     this.adminpnalService.getCountryCode().subscribe(

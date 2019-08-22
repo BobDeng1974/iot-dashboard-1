@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Address, Domaindata } from '../../model/customermodel';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { Validation } from 'src/app/modules/shared/validators/validation';
 
 @Component({
   selector: 'app-add-customer-address',
@@ -23,13 +24,13 @@ export class AddCustomerAddressComponent implements OnInit {
 
   ngOnInit() {
     this.addressForm = this.fb.group({
-      add_type: '',
+      add_type: ['',[Validators.required]],
       add_address_line1: ['',[Validators.required, Validators.maxLength(40)]],
       add_address_line2: ['', [Validators.maxLength(40)]],
-      add_city: '',
-      add_state: '',
-      add_country: '',
-      add_pin: ['',[Validators.required]],
+      add_city: ['',[Validators.required]],
+      add_state: ['',[Validators.required]],
+      add_country: ['',[Validators.required]],
+      add_pin: ['',[Validators.required, Validation.pincode]],
       default_value: '',
     });
 
