@@ -131,6 +131,14 @@ export class AdminMainComponent implements OnInit {
       vendor_id : 0
     };
 
+    this.deviceDetail = {
+      device_id :  0
+    };
+
+    this.customerNameandId = {
+      customer_id : 0
+    }
+
     this.spinner.show();
     this.adminpanelService.getAllCustomer().subscribe(
       (data) => {
@@ -675,14 +683,16 @@ export class AdminMainComponent implements OnInit {
             this.adminpanelService.postVendorManage(result).subscribe(
               (data) => {
                 if (data == "001") {
-                  this.spinner.hide()
-                } else {
-                  console.log(error);
-                  this.spinner.hide()
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Vendor Assign Successfully",duration: 3000 });  
+                } 
+                else {
+                  this.adminpanelService.getError(data);
                 }
+                this.spinner.hide();
               },
               (error) => {
-                console.log(error)
+                console.error(error);
+                this.spinner.hide();
               }
             );
           }

@@ -1,4 +1,4 @@
-<mat-expansion-panel disabled expanded class="device-panel">
+<mat-expansion-panel disabled expanded class="device-panel" [class.blank-panel]="device.device_id === 0">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title>
             Assign Customer
@@ -16,8 +16,8 @@
                 edit
             </mat-icon>
         </button> &nbsp;
-        <button mat-icon-button>
-            <mat-icon class="mat-icons-round md-pinkV md-24" (click)="InitializeClick(19)">
+        <button mat-icon-button (click)="InitializeClick(19)" [disabled]="device.device_id === 0">
+            <mat-icon class="mat-icons-round md-pinkV md-24">
                 add_circle
             </mat-icon>
         </button>
