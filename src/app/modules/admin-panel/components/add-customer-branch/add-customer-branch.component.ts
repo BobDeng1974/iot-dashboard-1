@@ -12,6 +12,7 @@ import { Validation } from 'src/app/modules/shared/validators/validation';
 })
 export class AddCustomerBranchComponent implements OnInit {
 
+  title: string = "Add New Branch";
   branchForm: FormGroup;
   formData: Branch;
   countryCode : Domaindata[];
@@ -27,8 +28,8 @@ export class AddCustomerBranchComponent implements OnInit {
       branch_add_line2 : ['',[Validators.required, Validators.maxLength(40)]],
       branch_add_city : ['',[Validators.required]],
       branch_add_state : ['',[Validators.required]],
-      branch_add_pin : ['',[Validators.required]],
-      branch_add_country : ['',[Validators.required, Validation.pincode]],
+      branch_add_pin : ['',[Validators.required,Validation.pincode]],
+      branch_add_country : ['',[Validators.required]],
     });
 
     this.adminpnalService.getCountryCode().subscribe(
@@ -41,6 +42,7 @@ export class AddCustomerBranchComponent implements OnInit {
     );
 
     if(this.formData) {
+      this.title= "Edit Branch";
       this.branchForm.patchValue(this.formData);
     }
   }

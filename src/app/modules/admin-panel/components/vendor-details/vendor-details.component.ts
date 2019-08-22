@@ -210,7 +210,6 @@ export class VendorDetailsComponent implements OnInit {
       (data) => {
         if(data == "001") {
 
-          this.spinner.hide();
           this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Vendor Details Updated Successfully", duration : 3000});
 
           if(params == "reload") {
@@ -221,6 +220,10 @@ export class VendorDetailsComponent implements OnInit {
             this.phoneData = _.cloneDeep(this.vendorData.phones);
           }
         }
+        else {
+          this.adminService.getError(data);
+        }
+        this.spinner.hide();
       },
       (error) => {
         console.error(error);

@@ -655,7 +655,7 @@ export class AdminMainComponent implements OnInit {
               (data) => {
                 console.log("Vendor Additional information:  "+data);
                 if(data == "001") {
-                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Email Added Successfully",duration: 3000 }); 
+                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data : "Additional Attribute Added Successfully",duration: 3000 }); 
                   this.getVendorData(this.vendor.vendor_id);
                 }
                 else {
