@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Customer, Domaindata, Device, DeviceMonitor, DeviceAssignment } from './model/customermodel';
+import { Customer, Domaindata, Device, DeviceMonitor, DeviceAssignment, CustomerAssignment } from './model/customermodel';
 import { Observable } from 'rxjs';
 import { Vendor } from './model/vendormodel';
 
@@ -50,6 +50,9 @@ export class AdminPanelMainService {
   private postVendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/create/?format=json";
   private vendorUpdateUrl = "http://34.93.221.249:8001/api/qubematics/vendor/update/";
   private getAvendorUrl = "http://34.93.221.249:8001/api/qubematics/vendor/getavendor/";
+  private getVendorNameIdUrl = "http://34.93.221.249:8001/api/qubematics/vendor/vendornameid/?format=json"
+  private createVendorManage = "http://34.93.221.249:8001/api/qubematics/vendor/vendormanage/"
+  private assignMentHistory = "http://34.93.221.249:8001/api/qubematics/vendor/gethistory/"
   constructor(private http: HttpClient) { }
 
   createCustomer(form: Customer){
@@ -129,5 +132,16 @@ export class AdminPanelMainService {
 
   getAssignInfo(id:number): Observable<DeviceAssignment[]>{
     return this.http.get<DeviceAssignment[]>(this.getAssignInfoUrl+id+'?format=json');
+  }
+  getVendorNameId(): Observable<any[]>{
+    return this.http.get<any[]>(this.getVendorNameIdUrl);
+  }
+
+  postVendorManage(form: CustomerAssignment){
+    return this.http.post(this.createVendorManage, form)
+  }
+
+  getAssignmentHistory(id: number) : Observable<CustomerAssignment[]>{
+    return this.http.get<CustomerAssignment[]>(this.assignMentHistory+id+'?format=json')
   }
 }

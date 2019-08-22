@@ -23,6 +23,7 @@ import { AddSensorFormComponent } from '../../components/add-sensor-form/add-sen
 import { Vendor } from '../../model/vendormodel';
 import { DeviceCustomerAssignComponent } from '../../components/device-customer-assign/device-customer-assign.component';
 import { from } from 'rxjs';
+import { error } from 'util';
 
 @Component({
   selector: 'app-admin-main',
@@ -80,6 +81,10 @@ export class AdminMainComponent implements OnInit {
   sensorAssignDialog: MatDialogRef<AddSensorFormComponent>
   //assign a device to customer form
   deviceCustomerDialog : MatDialogRef<DeviceCustomerAssignComponent>
+
+  //customer name and id object
+  customerNameandId: Customer;
+  customerName: string;
 
   selectedTab = 0;
 
@@ -628,7 +633,27 @@ export class AdminMainComponent implements OnInit {
 
       // Open customer assign dialog
       case 15:
-        this.customerassigndialog = this.dialog.open(CustomerAssignDialogComponent);
+        this.customerassigndialog = this.dialog.open(CustomerAssignDialogComponent, {
+          data:this.customerNameandId
+        });
+        this.customerassigndialog.afterClosed().subscribe(result => { 
+          if (result) {
+            this.spinner.show();
+            this.adminpanelService.postVendorManage(result).subscribe(
+              (data) => {
+                if (data == "001") {
+                  this.spinner.hide()
+                } else {
+                  console.log(error);
+                  this.spinner.hide()
+                }
+              },
+              (error) => {
+                console.log(error)
+              }
+            );
+          }
+        });
       break;
 
       //open add device dialog 
@@ -805,5 +830,10 @@ export class AdminMainComponent implements OnInit {
 
   openAssignEditPopup(value: DeviceAssignment){
     this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent);
+  }
+
+  getCustomerName(value){
+    this.customerNameandId = value;
+    console.log(this.customerNameandId)
   }
 }

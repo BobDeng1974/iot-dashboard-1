@@ -146,3 +146,12 @@ export interface DeviceAssignment{
     device_assign_effective_from ?: Date;
     device_assign_effective_to ?: Date;
 }
+
+export interface CustomerAssignment{
+    customer_manage_id ?: number;
+    customer_id ?: number;
+    vendor_id ?: number;
+    vendor_name ?: string;
+    assign_effective_from ?: Date;
+    assign_effective_to ?: Date;
+}

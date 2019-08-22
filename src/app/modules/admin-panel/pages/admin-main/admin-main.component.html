@@ -30,10 +30,10 @@
     <mat-tab label="CUSTOMER ASSIGNMENT">
         <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
             <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
-                <app-customer-assign (ButtonClicked)="openPopup($event)"></app-customer-assign>
+                <app-customer-assign (buttonClicked)="openPopup($event)" (customer)="getCustomerName($event)"></app-customer-assign>
             </div>
             <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
-                <app-customer-assign-form></app-customer-assign-form>
+                <app-customer-assign-form [customer]="customerNameandId"></app-customer-assign-form>
             </div>
             <!-- <app-customer-assign (ButtonClicked)="openPopup($event)"></app-customer-assign> -->
         </div>
