@@ -131,6 +131,14 @@ export class AdminMainComponent implements OnInit {
       vendor_id : 0
     };
 
+    this.deviceDetail = {
+      device_id :  0
+    };
+
+    this.customerNameandId = {
+      customer_id : 0
+    }
+
     this.spinner.show();
     this.adminpanelService.getAllCustomer().subscribe(
       (data) => {

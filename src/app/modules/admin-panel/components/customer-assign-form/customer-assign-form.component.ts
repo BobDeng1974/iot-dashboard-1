@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
-import { CustomerAssignment } from '../../model/customermodel';
+import { CustomerAssignment, Customer } from '../../model/customermodel';
 
 @Component({
   selector: 'app-customer-assign-form',
@@ -15,7 +15,7 @@ export class CustomerAssignFormComponent implements OnInit {
   private customerGridApi;
   private customerGridColumnApi;
   rowData: CustomerAssignment[] = []
-  @Input() customer: any;
+  @Input() customer: Customer;
   constructor(private spinner: NgxSpinnerService, private adminService: AdminPanelMainService) { }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-<mat-expansion-panel disabled expanded class="customer-panel">
+<mat-expansion-panel disabled expanded class="customer-panel" [class.blank-panel]="customer.customer_id === 0">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title>
             Customer Assignment History
