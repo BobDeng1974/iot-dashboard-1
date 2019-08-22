@@ -161,15 +161,15 @@ export class CustomerDetailsComponent implements OnChanges {
       this.phoneColumnDef = [
         { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
           cellEditor: 'agSelectCellEditor', 
-          cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
-        { headerName: 'Number', field: 'ph_no', editable: true }
+          cellEditorParams : { values : this.isd_code.map(m => m.domain_value + " - " + m.domain_code) } },
+        { headerName: 'Number', field: 'ph_no', editable: true, cellEditor: 'numericEditor' }
       ];
       this.legalColumnDefs = [
         { headerName: 'Type', field: 'legalinfo_type', sortable: true, filter: true, editable: true,
           cellEditor : 'agSelectCellEditor',
           cellEditorParams : { values : this.legalinfo_Type.map(m => m.domain_value)}},
         
-        { headerName: 'Value', field: 'legalinfo_value',editable : true }
+        { headerName: 'Value', field: 'legalinfo_value',editable : true, cellEditor: 'nullvalueEditor' }
       ];
     }
   }

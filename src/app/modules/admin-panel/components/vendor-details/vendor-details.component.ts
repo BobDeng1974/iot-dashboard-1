@@ -135,9 +135,8 @@ export class VendorDetailsComponent implements OnInit {
   }
 
   InitializeVendorEdit() {
-    var selectedId = this.addressGridApi.getSelectedRows()[0];
+    var selectedId = this.addressGridApi.getSelectedRows()[0].add_id;
     this.editClicked.emit(this.vendorData.addresses.find(m => m.add_id == selectedId));
-    console.log(this.addressGridApi.getSelectedRows()[0]);
   }
 
   ngOnChanges() {
@@ -153,19 +152,19 @@ export class VendorDetailsComponent implements OnInit {
       this.addressDataCopy.map(m => m.add_address_line1 = m.add_address_line1 + ", " + m.add_address_line2 + ", " + m.add_city + ", " + m.add_state + ", " + m.add_country + ", " + m.add_pin);
     }
 
-    if(this.legalinfo_Type || this.isd_code) {
-      // this.phoneColumnDef = [
-      //   { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
-      //     cellEditor: 'agSelectCellEditor', 
-      //     cellEditorParams : { values : this.isd_code.map(m => m.domain_code + "-" + m.domain_value) } },
-      //   { headerName: 'Number', field: 'ph_no', editable: true }
-      // ];
+    if(this.legalinfo_Type && this.isd_code) {
+      this.phoneColumnDef = [
+        { headerName: 'ISD Code', field: 'ph_isd_code', editable: true,
+          cellEditor: 'agSelectCellEditor', 
+          cellEditorParams : { values : this.isd_code.map(m => m.domain_value + " - " + m.domain_code) } },
+        { headerName: 'Number', field: 'ph_no', editable: true, cellEditor: 'numericEditor' }
+      ];
       this.legalColumnDefs = [
         { headerName: 'Type', field: 'legalinfo_type', sortable: true, filter: true, editable: true,
           cellEditor : 'agSelectCellEditor',
           cellEditorParams : { values : this.legalinfo_Type.map(m => m.domain_value)}},
         
-        { headerName: 'Value', field: 'legalinfo_value',editable : true }
+        { headerName: 'Value', field: 'legalinfo_value',editable : true, cellEditor: 'nullvalueEditor' }
       ];
     }
   }
@@ -209,13 +208,35 @@ export class VendorDetailsComponent implements OnInit {
     this.spinner.show();
     this.adminService.updateVendor(this.vendorData).subscribe(
       (data) => {
-        this.spinner.hide();
-        this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Vendor Details Updated Successfully", duration : 3000});
+        if(data == "001") {
+
+          this.spinner.hide();
+          this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Vendor Details Updated Successfully", duration : 3000});
+
+          if(params == "reload") {
+            this.addressDataCopy =  _.cloneDeep(this.vendorData.addresses);
+            if(this.addressDataCopy) {
+              this.addressDataCopy.map(m => m.add_address_line1 = m.add_address_line1 + ", " + m.add_address_line2 + ", " + m.add_city + ", " + m.add_state + ", " + m.add_country + ", " + m.add_pin );
+            }
+            this.phoneData = _.cloneDeep(this.vendorData.phones);
+          }
+        }
       },
       (error) => {
         console.error(error);
         this.spinner.hide();
       }
     );
+  }
+
+  onPhoneValueChange(params) {
+    if(params.newValue && ((params.data.ph_isd_code as string).indexOf(" - ") > 0)) {
+      this.vendorData.phones.find(m => m.ph_id == params.data.ph_id).ph_isd_code = params.data.ph_isd_code.split(" - ")[1];
+    }
+
+    else {
+      this.vendorData.phones = this.phoneData;
+    }
+    this.onCellValueChange("reload");
   }
 }
