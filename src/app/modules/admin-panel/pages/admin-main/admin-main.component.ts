@@ -634,7 +634,9 @@ export class AdminMainComponent implements OnInit {
         this.vendoremaildialog = this.dialog.open(AddVendorEmailComponent);
         this.vendoremaildialog.afterClosed().subscribe(result => {
           if(result) {
+            console.log(result);
             this.vendor.emails.push(result);
+            console.log(this.vendor);
             this.spinner.show();
             this.adminpanelService.updateVendor(this.vendor).subscribe(
               (data) => {
@@ -905,6 +907,7 @@ export class AdminMainComponent implements OnInit {
             else {
               this.adminpanelService.getError(data);
             }
+            this.spinner.hide();
           },
           (error) =>  {
             console.error(error);

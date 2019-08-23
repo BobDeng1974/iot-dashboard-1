@@ -171,15 +171,15 @@ export class AdminPanelMainService {
       break;
       case "501":
         this._snackBar.openFromComponent(ErrorSnackberComponent,
-          { data:"Data Error", duration : 3000 });
+          { data:"Type Error", duration : 3000 });
       break;
       case "502":
         this._snackBar.openFromComponent(ErrorSnackberComponent, 
-          { data:"Data Error", duration : 3000 });
+          { data:"Key Error", duration : 3000 });
       break;
       case "503":
         this._snackBar.openFromComponent(ErrorSnackberComponent, 
-          { data:"Data Error", duration : 3000 });
+          { data:"Value Error", duration : 3000 });
       break;
       case "504":
         this._snackBar.openFromComponent(ErrorSnackberComponent, 

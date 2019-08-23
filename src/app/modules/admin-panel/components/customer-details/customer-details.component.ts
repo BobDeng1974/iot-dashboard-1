@@ -222,6 +222,7 @@ export class CustomerDetailsComponent implements OnChanges {
     this.adminService.updateCustomer(this.customerData).subscribe(
       (data) => {
         this.spinner.hide();
+        console.log("data form oncelvalue change methid in customer:  "+data);
         if(data == "001") {
           this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Customer Details Updated Successfully", duration : 3000});
 
@@ -232,6 +233,9 @@ export class CustomerDetailsComponent implements OnChanges {
             }
             this.phoneData = _.cloneDeep(this.customerData.phones);
           }
+        }
+        else {
+          this.adminService.getError(data);
         }
       },
       (error) => {
