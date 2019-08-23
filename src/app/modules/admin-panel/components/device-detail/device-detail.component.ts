@@ -4,6 +4,7 @@ import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatSnackBar } from '@angular/material';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
+import { NullValueComponent } from 'src/app/modules/shared/components/null-value/null-value.component';
 
 @Component({
   selector: 'app-device-detail',
@@ -18,14 +19,19 @@ export class DeviceDetailComponent implements OnInit {
   private sensorColumnDefs;
   private sensorGridApi;
   private sensorGridColumnApi;
+
+  private nullvalueFrameworkComponents: any;
   constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService, private _sanckBar : MatSnackBar) { }
 
   ngOnInit() {
+    this.nullvalueFrameworkComponents = {
+      nullvalueEditor : NullValueComponent
+    };
     this.sensorColumnDefs = [
       {headerName:'Sensor Name', field:'sensor_name'},
       {headerName:'Sensor Type', field:'sensor_type', resizable:true},
-      {headerName:'Sensor Threshold Max', field:'sensor_threshold_max', editable:true, sortable:true},
-      {headerName:'Sensor Threshold Min', field:'sensor_threshold_min', editable:true, sortable:true},
+      {headerName:'Sensor Threshold Max', field:'sensor_threshold_max', editable:true, sortable:true, cellEditor: 'nullvalueEditor'},
+      {headerName:'Sensor Threshold Min', field:'sensor_threshold_min', editable:true, sortable:true, cellEditor: 'nullvalueEditor'},
     ]
   }
   ngOnChanges(){

@@ -24,7 +24,7 @@
                 <div>
                     <mat-form-field>
                         <mat-label>Select branch</mat-label>
-                        <mat-select formControlName="branch_name">
+                        <mat-select formControlName="customer_branch_name">
                             <mat-option *ngFor="let branch of branchData" [value]="branch.branch_name">
                             {{branch.branch_name}}
                             </mat-option>

@@ -274,6 +274,19 @@ export class AdminMainComponent implements OnInit {
     ); 
   }
 
+  getSensorData(Id : number) {
+    this.adminpanelService.getAdevice(Id).subscribe(
+      (data) => {
+        console.log("Form get sensor data method:  "+data);
+        this.deviceDetail = data[0];
+      },
+      (error) => {
+        console.error(error);
+      
+      }
+    );
+  }
+
   openPopup(value : number) {
     switch (value) {
       // Open add vendor dialog
@@ -738,6 +751,7 @@ export class AdminMainComponent implements OnInit {
                 if (data == "001") {
                   //alert('updated successfully')
                   this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Sensor Add successfully", duration: 3000});
+                  this.getSensorData(this.deviceDetail.device_id);
                 }
                 else {
                   this.adminpanelService.getError(data);
@@ -902,10 +916,10 @@ export class AdminMainComponent implements OnInit {
   }
 
   openAssignEditPopup(value: DeviceAssignment){
-    this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent);
+    this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent, {data : value});
   }
 
-  getCustomerName(value){
+  getCustomerName(value : Customer){
     this.customerNameandId = value;
     console.log(this.customerNameandId)
   }

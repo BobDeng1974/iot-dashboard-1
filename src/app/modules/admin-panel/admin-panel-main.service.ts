@@ -25,14 +25,15 @@ export class AdminPanelMainService {
   // private getAllDeviceUrl = "http://192.168.0.103:8001/api/qubematics/device/getall/?format=json";
   // private deviceAliveUrl = "http://192.168.0.103:8001/api/qubematics/device/alive/";
   // private assignDevice = "http://192.168.0.103:8001/api/qubematics/device/assign/";
-  private createDeviceUrl = "http://192.168.0.11:8002/api/qubematics/device/create/";
-  private updateDeviceUrl = "http://192.168.0.11:8002/api/qubematics/device/update/";
-  private getAllDeviceUrl = "http://192.168.0.11:8002/api/qubematics/device/getall/?format=json";
-  private getAssignInfoUrl = "http://192.168.0.11:8002/api/qubematics/device/assignInfo/";
-  private deviceAliveUrl = "http://192.168.0.11:8002/api/qubematics/device/alive/";
-  private assignDevice = "http://192.168.0.11:8002/api/qubematics/device/assign/";
-  private getDeviceHealthUrl = "http://192.168.0.11:8002/api/qubematics/device/getdevicehealth/?format=json";
-  private updateFreqUrl = "http://192.168.0.11:8002/api/qubematics/device/updatefreq/"
+  private createDeviceUrl = "http://34.93.221.249:8002/api/qubematics/device/create/";
+  private updateDeviceUrl = "http://34.93.221.249:8002/api/qubematics/device/update/";
+  private getAllDeviceUrl = "http://34.93.221.249:8002/api/qubematics/device/getall/?format=json";
+  private getAssignInfoUrl = "http://34.93.221.249:8002/api/qubematics/device/assignInfo/";
+  private deviceAliveUrl = "http://34.93.221.249:8002/api/qubematics/device/alive/";
+  private assignDevice = "http://34.93.221.249:8002/api/qubematics/device/assign/";
+  private getDeviceHealthUrl = "http://34.93.221.249:8002/api/qubematics/device/getdevicehealth/?format=json";
+  private updateFreqUrl = "http://34.93.221.249:8002/api/qubematics/device/updatefreq/";
+  private getADevice =  "http://34.93.221.249:8002/api/qubematics/device/get/";
   // private createCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/create/";
   // private updateCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/update/";
   // private getAllCustomerUrl = "http://34.93.221.249:8000/api/qubematics/customer/getall/?format=json";
@@ -152,6 +153,11 @@ export class AdminPanelMainService {
   updateFrequency(form: DeviceMonitor){
     return this.http.put(this.updateFreqUrl, form)
   }
+
+  getAdevice(id: number) : Observable<Device[]> {
+    return this.http.get<Device[]>(this.getADevice+id+'?format=json');
+  }
+
   // get error in snackbar
   getError(value : any) {
     switch (value) {
