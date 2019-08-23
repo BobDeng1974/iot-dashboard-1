@@ -24,7 +24,8 @@ export class DeviceManagementComponent implements OnInit {
    }
 
   columnDefs = [
-    { headerName: 'Device ID', field:'device', sortable:true, filter:'agNumberColumnFilter' },
+    { headerName: 'Device Name', field:'device_name', sortable:true, filter:'agTextColumnFilter' },
+    { headerName: 'Device MAC Address', field:'device_mac', sortable:true, filter:'agTextColumnFilter' },
     { headerName: 'Active', field:'device_activated', sortable:true, cellRenderer:'activeRenderer'},
     { headerName: 'Health', field:'device_health', cellRenderer:'healthRenderer'},
     { headerName: 'Last Heart Beat', field:'device_last_heartbeat',  sortable:true, cellRenderer:'dateRenderer'},
