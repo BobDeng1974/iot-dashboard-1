@@ -5,6 +5,9 @@ import { DeviceActiveRendererComponent } from 'src/app/modules/shared/components
 import { DeviceHealthRendererComponent } from 'src/app/modules/shared/components/device-health-renderer/device-health-renderer.component';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { DateTimeRendererComponent } from 'src/app/modules/shared/components/date-time-renderer/date-time-renderer.component';
+import { NullValueComponent } from 'src/app/modules/shared/components/null-value/null-value.component';
+import { MatSnackBar } from '@angular/material';
+import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 
 
 @Component({
@@ -19,7 +22,8 @@ export class DeviceManagementComponent implements OnInit {
   private defaultcolDefs;
   private deviceMonitorGridApi;
   private deviceMonitorColumnApi;
-  constructor(private spinner: NgxSpinnerService, private adminService: AdminPanelMainService) {
+
+  constructor(private spinner: NgxSpinnerService, private adminService: AdminPanelMainService,  private _sanckBar : MatSnackBar) {
     this.defaultcolDefs = { resizable: true }
    }
 
@@ -29,8 +33,8 @@ export class DeviceManagementComponent implements OnInit {
     { headerName: 'Active', field:'device_activated', sortable:true, cellRenderer:'activeRenderer'},
     { headerName: 'Health', field:'device_health', cellRenderer:'healthRenderer'},
     { headerName: 'Last Heart Beat', field:'device_last_heartbeat',  sortable:true, cellRenderer:'dateRenderer'},
-    { headerName: 'Data Collection Frequency', field:'data_collection_frequency', editable:true, valueParser:numberParser},
-    { headerName: 'Data Sending Frequency', field:'data_sending_frequency', editable:true, resizable:true, valueParser:numberParser}
+    { headerName: 'Data Collection Frequency', field:'data_collection_frequency', editable:true, valueParser:numberParser, cellEditor: 'nullvalueEditor'},
+    { headerName: 'Data Sending Frequency', field:'data_sending_frequency', editable:true, resizable:true, valueParser:numberParser, cellEditor: 'nullvalueEditor'}
   ];
   
   // rowData = [
@@ -45,10 +49,12 @@ export class DeviceManagementComponent implements OnInit {
   frameworkComponents = {
     activeRenderer: DeviceActiveRendererComponent,
     healthRenderer: DeviceHealthRendererComponent,
-    dateRenderer: DateTimeRendererComponent
+    dateRenderer: DateTimeRendererComponent,
+    nullvalueEditor : NullValueComponent
   }
 
   ngOnInit() {
+
     this.adminService.getDeviceHealth().subscribe(
       (data) => {
         this.spinner.show();
@@ -72,7 +78,13 @@ export class DeviceManagementComponent implements OnInit {
     this.adminService.updateFrequency(params.data).subscribe(
       (data) => {
         console.log(data)
-        alert('updated successfully')
+        // alert('updated successfully')
+        if (data == "001") {
+          this._sanckBar.openFromComponent(SuccessSnackberComponent,{data: "Update Device Monitor", duration: 3000});
+        } 
+        else {
+          this.adminService.getError(data);
+        }
         this.spinner.hide()
       },
       (error) => {

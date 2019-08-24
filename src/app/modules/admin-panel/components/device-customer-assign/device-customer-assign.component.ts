@@ -20,25 +20,30 @@ export class DeviceCustomerAssignComponent implements OnInit {
   formData: DeviceAssignment;
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DeviceCustomerAssignComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminMainService: AdminPanelMainService, private spinner: NgxSpinnerService) {
-    this.device = data;  
+    this.device = data;
   }
 
   ngOnInit() {
     this.customerAssignForm = this.fb.group({
-      device_name:'',
+      device_name: '',
       customer_name: '',
-      branch_name:'',
-      device_assign_effective_from:'',
+      customer_branch_name: '',
+      device_assign_effective_from: '',
       device_assign_effective_to: ''
     });
-    if (this.device && this.device.device_id > 0) {
-      this.customerAssignForm.patchValue(this.device);
 
-    }
 
     this.adminMainService.getCustomerNameandId().subscribe(
       (data) => {
         this.customerData = data
+        if (this.device && this.device.device_id > 0) {
+          console.log("hi");
+          this.customerAssignForm.patchValue(this.device);
+
+        }
+        else {
+          this.customerAssignForm.patchValue(this.device);
+        }
       },
       (error) => {
         console.log(error)
@@ -47,23 +52,23 @@ export class DeviceCustomerAssignComponent implements OnInit {
 
   }
 
-  closeDialog(){
+  closeDialog() {
     this.dialogRef.close();
   }
 
-  onSubmit(form){
+  onSubmit(form) {
     this.formData = {
       device_id: this.device.device_id,
       device_name: form.controls.device_name.value,
       customer_name: form.controls.customer_name.value.customer_name,
-      customer_branch_name: form.controls.branch_name.value,
+      customer_branch_name: form.controls.customer_branch_name.value,
       device_assign_effective_from: form.controls.device_assign_effective_from.value,
       device_assign_effective_to: form.controls.device_assign_effective_to.value
     };
     this.dialogRef.close(this.formData)
   }
 
-  onSelectionChange(value){
+  onSelectionChange(value) {
     console.log(value)
     this.customerId = value.value.customer_id;
     this.spinner.show()

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { CustomerAssignment, Customer } from '../../model/customermodel';
@@ -9,13 +9,13 @@ import { DateTimeRendererComponent } from 'src/app/modules/shared/components/dat
   templateUrl: './customer-assign-form.component.html',
   styleUrls: ['./customer-assign-form.component.scss']
 })
-export class CustomerAssignFormComponent implements OnInit {
+export class CustomerAssignFormComponent implements OnInit, OnChanges{
 
   private customerColumnDefs;
 
   private customerGridApi;
   private customerGridColumnApi;
-  rowData: CustomerAssignment[] = []
+  rowData: CustomerAssignment[] = [];
   @Input() customer: Customer;
   constructor(private spinner: NgxSpinnerService, private adminService: AdminPanelMainService) { }
   frameworkComponents = {
@@ -35,13 +35,9 @@ export class CustomerAssignFormComponent implements OnInit {
       this.spinner.show()
       this.adminService.getAssignmentHistory(this.customer.customer_id).subscribe(
         (data) => {
-          console.log(data);
-          console.log(data.length);
-          if (data.length > 0) {
-            this.rowData = data
-          }else{
-            console.log('no rows to show')
-          }
+          console.log("data:  "+data);
+          console.log("data length:  "+data.length);
+          this.rowData = data;
           this.spinner.hide();
         },
         (error) => {

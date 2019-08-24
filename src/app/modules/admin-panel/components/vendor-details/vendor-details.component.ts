@@ -208,6 +208,8 @@ export class VendorDetailsComponent implements OnInit {
     this.spinner.show();
     this.adminService.updateVendor(this.vendorData).subscribe(
       (data) => {
+        console.log(data);
+        
         if(data == "001") {
 
           this._sanckBar.openFromComponent(SuccessSnackberComponent, {data : "Vendor Details Updated Successfully", duration : 3000});

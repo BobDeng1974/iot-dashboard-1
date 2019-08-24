@@ -36,7 +36,7 @@ export class CustomerAssignComponent implements OnInit {
     this.buttonClicked.emit(value)
   }
 
-  viewDetails(value){
+  viewDetails(value : Customer){
     this.customer.emit(value);
     console.log(value);
   }
