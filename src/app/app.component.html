@@ -1,6 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
+<div class="view-container">
   <app-header></app-header>
-  <router-outlet></router-outlet>
+  <div class="main-content">
+    <div class="main-flex" fxLayout="row" fxLayoutAlign="flex-strat">
+      <div class="main-content-flex">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
   <app-footer class="footer"></app-footer>
 </div>
