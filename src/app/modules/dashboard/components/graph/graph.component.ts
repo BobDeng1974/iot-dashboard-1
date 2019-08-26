@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashbordMainService } from '../dashbord-main.service';
+import { DashbordMainService } from '../../dashbord-main.service';
 
 @Component({
   selector: 'app-graph',
@@ -58,6 +58,7 @@ export class GraphComponent implements OnInit {
 
   onSelect(event) {
     console.log(event);
+
   }
 
 }
