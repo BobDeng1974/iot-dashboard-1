@@ -1,2 +1,14 @@
-<p>dashboard-main works!</p>
-<app-graph></app-graph>
+<div class="container" [style.height.%]=100>
+    <div fxLayout="row wrap" fxLayoutGap="10px">
+        <div fxFlex="0 1 calc(50% - 10px)">
+            <app-customer-branch-details></app-customer-branch-details>
+        </div>
+        <div fxFlex="0 1 calc(50% - 10px)">
+            <app-customer-branch-device-details></app-customer-branch-device-details>
+        </div>
+        <div fxFlex="0 1 calc(100% - 10px)">
+            <!-- <app-graph></app-graph> -->
+        </div>
+    </div>
+</div>
+<!-- <app-graph></app-graph> -->
