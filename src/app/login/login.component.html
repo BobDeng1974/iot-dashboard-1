@@ -1,12 +1,52 @@
-<div class="container" fxLayout="row" fxLayoutAlign="start">
-    <div fxFlex="50%">
+<div fxLayout="row" fxLayoutAlign="start" [style.height.%]="100">
+    <div fxFlex="50%" class="photo-container">
         <div class="image-container">
-
+            
         </div>
     </div>
     <div fxFlex="50%">
-        <mat-card>
-
-        </mat-card>
+        <div class="login-panel" [style.height.%]="100">
+            <div fxLayout="column" fxLayoutGap=10px fxLayoutAlign="start" [style.height.%]="100">
+                <div fxFlex="0 1 calc(30% - 10px)">
+                    <div class="login-banner">
+                        <img src="../../assets/images/loginlogo.png" alt="banner">
+                    </div>
+                </div>
+                <div fxFlex="0 1 calc(70% - 10px)">
+                    <div class="container" fxLayout="column">
+                        <div fxFlex="30%" class="avatar-container">
+                            <div class="avatar">
+                            </div>
+                        </div>
+                        <div fxFlex="70%">
+                            <form [formGroup]="loginForm">
+                                <div class="form-container">
+                                    <div fxLayout="column" fxLayoutGap="10px">
+                                        <div fxFlex="20%">
+                                            <mat-form-field class="form-field">
+                                                <mat-label>User Name</mat-label>
+                                                <input type="text" matInput placeholder="Type user name here" formControlName="user_name">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="20%">
+                                            <mat-form-field class="form-field">
+                                                <mat-label>Password</mat-label>
+                                                <input type="password" matInput placeholder="Type password here" formControlName="password">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex=20%>
+                                            <button mat-flat-button class="login-button" [disabled]="loginForm.invalid" [class.blank-panel]="loginForm.invalid" (click)="onSubmit(loginForm)">Login</button>
+                                        </div>
+                                        <div fxFlex="10%">
+                                            <p style="color: #00aec6">Forgot Password?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
