@@ -11,12 +11,14 @@ import { AdminPanelModule } from './modules/admin-panel/admin-panel.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidenavComponent,
     FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
