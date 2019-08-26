@@ -1,82 +1,82 @@
-<div class="container">
-    <mat-tab-group class="wide" [style.height.%]="100" [selectedIndex]="selectedTab">
-    <mat-tab label="CUSTOMER">
-        <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
-                <app-customer-table (ButtonClick)="openPopup($event)" [customerData]="customerData" (customerDetails)="getCustomerDetails($event)"></app-customer-table>
+<div class="view-container">
+    <div class="main-content">
+        <div class="main-flex" fxLayout="row" fxLayoutAlign="flex-start">
+            <div [@sidenavState]="sidenavState">
+                <app-sidenav (sidenavToggle)="shrinkSidenav()"></app-sidenav>
             </div>
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
-                <div fxLayout="column" fxLayout.lt-sm="row" [style.height.%]="100" fxLayoutGap="8px">
-                    <div fxFlex="calc(55% - 8px)" fxFlex.lt-sm="100%" [style.height.%]="100">
-                        <app-customer-branch [customerData]="customer" (ButtonClicked)="openPopup($event)" (editClicked)="openCustomerBranchEditPopup($event)"></app-customer-branch>
-                    </div>
-                    <div fxFlex="calc(45% - 8px)" fxFlex.lt-sm="100%">
-                        <app-customer-details (ButtonClicked)="openPopup($event)" [customerData]="customer" (editClicked)="openAddressEditPopup($event)" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode"></app-customer-details>   
-                    </div>
+            <div class="main-content-flex" [@mainContentState]="sidenavState">
+                <div class="container">
+                    <mat-tab-group class="wide" [style.height.%]="100" [selectedIndex]="selectedTab">
+                        <mat-tab label="CUSTOMER">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
+                                    <app-customer-table (ButtonClick)="openPopup($event)" [customerData]="customerData" (customerDetails)="getCustomerDetails($event)"></app-customer-table>
+                                </div>
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
+                                    <div fxLayout="column" fxLayout.lt-sm="row" [style.height.%]="100" fxLayoutGap="8px">
+                                        <div fxFlex="calc(55% - 8px)" fxFlex.lt-sm="100%" [style.height.%]="100">
+                                            <app-customer-branch [customerData]="customer" (ButtonClicked)="openPopup($event)" (editClicked)="openCustomerBranchEditPopup($event)"></app-customer-branch>
+                                        </div>
+                                        <div fxFlex="calc(45% - 8px)" fxFlex.lt-sm="100%">
+                                            <app-customer-details (ButtonClicked)="openPopup($event)" [customerData]="customer" (editClicked)="openAddressEditPopup($event)" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode"></app-customer-details>   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="VENDOR">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
+                                    <app-vendor-table (ButtonClicked)="openPopup($event)" [vendorData]="vendorData" (vendorDetails)="getVendorDetails($event)"></app-vendor-table>
+                                </div>
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
+                                    <app-vendor-details (ButtonClicked)="openPopup($event)" [vendorData]="vendor" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode" (editClicked)="openVendorAdddressEditPopup($event)"></app-vendor-details>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="CUSTOMER ASSIGNMENT">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
+                                    <app-customer-assign (buttonClicked)="openPopup($event)" (customer)="getCustomerName($event)"></app-customer-assign>
+                                </div>
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
+                                    <app-customer-assign-form [customer]="customerNameandId"></app-customer-assign-form>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="DEVICE REGISTRY">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
+                                    <app-device-table [deviceData]="deviceData" (buttonClicked)="openPopup($event)" (deviceId2)="getDeviceID($event)" (deviceId)="getDeviceID($event)" (deviceName)="getDeviceName($event)" (deviceName2)="getDeviceName($event)" (deviceAssign)="toDeviceAssign($event)" (deviceDetails)="getDeviceDetails($event)"></app-device-table>
+                                </div>
+                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
+                                    <div fxLayout="column" fxLayout.lt-sm="row" [style.height.%]="100">
+                                        <div fxFlex="50%" fxFlex.lt-sm="100%" [style.height.%]="100">
+                                            <app-device-detail [device]="deviceDetail" (buttonClicked)="openPopup($event)"></app-device-detail>
+                                        </div>
+                                        <div fxFlex="50%" fxFlex.lt-sm="100%">
+                                        <app-assignment-details (buttonClick)="openPopup($event)" [assignInfo]="deviceAssignInfo" [device]="deviceDetail" (editClicked)="openAssignEditPopup($event)"></app-assignment-details>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="DEVICE MANAGEMENT">
+                            <div class="content">
+                                <div>
+                                    <app-device-management [deviceHealth]="deviceHealthData"></app-device-management>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <app-graph></app-graph>
+                        </mat-tab>
+                    </mat-tab-group>
                 </div>
             </div>
         </div>
-    </mat-tab>
-    <mat-tab label="VENDOR">
-        <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
-                <app-vendor-table (ButtonClicked)="openPopup($event)" [vendorData]="vendorData" (vendorDetails)="getVendorDetails($event)"></app-vendor-table>
-            </div>
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
-                <app-vendor-details (ButtonClicked)="openPopup($event)" [vendorData]="vendor" [legalinfo_Type]="LegalinfoType" [isd_code]="cuntrycode" (editClicked)="openVendorAdddressEditPopup($event)"></app-vendor-details>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="CUSTOMER ASSIGNMENT">
-        <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
-                <app-customer-assign (buttonClicked)="openPopup($event)" (customer)="getCustomerName($event)"></app-customer-assign>
-            </div>
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%" >
-                <app-customer-assign-form [customer]="customerNameandId"></app-customer-assign-form>
-            </div>
-            <!-- <app-customer-assign (ButtonClicked)="openPopup($event)"></app-customer-assign> -->
-        </div>
-    </mat-tab>
-    <mat-tab label="DEVICE REGISTRY">
-        <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
-                <app-device-table [deviceData]="deviceData" (buttonClicked)="openPopup($event)" (deviceId2)="getDeviceID($event)" (deviceId)="getDeviceID($event)" (deviceName)="getDeviceName($event)" (deviceName2)="getDeviceName($event)" (deviceAssign)="toDeviceAssign($event)" (deviceDetails)="getDeviceDetails($event)"></app-device-table>
-            </div>
-            <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
-                <div fxLayout="column" fxLayout.lt-sm="row" [style.height.%]="100">
-                    <div fxFlex="50%" fxFlex.lt-sm="100%" [style.height.%]="100">
-                        <app-device-detail [device]="deviceDetail" (buttonClicked)="openPopup($event)"></app-device-detail>
-                    </div>
-                    <div fxFlex="50%" fxFlex.lt-sm="100%">
-                       <app-assignment-details (buttonClick)="openPopup($event)" [assignInfo]="deviceAssignInfo" [device]="deviceDetail" (editClicked)="openAssignEditPopup($event)"></app-assignment-details>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </mat-tab>
-    <!-- <mat-tab label="DEVICE ASSIGNMENT">
-        <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
-            <div fxFlex="calc(40% - 16px)" fxFlex.lt-sm="100%">
-                <app-device-assignment [deviceData]="deviceData" (rowId)="getRowId($event)" (buttonClicked)="openPopup($event)"></app-device-assignment>
-            </div>
-            <div fxFlex="calc(60% - 16px)" fxFlex.lt-sm="100%">
-                <app-assignment-detial></app-assignment-detial>
-            </div>
-        </div>
-    </mat-tab> -->
-    <mat-tab label="DEVICE MANAGEMENT">
-        <div class="content">
-            <div>
-                <app-device-management [deviceHealth]="deviceHealthData"></app-device-management>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab>
-        <app-graph></app-graph>
-    </mat-tab>
-    </mat-tab-group>
+    </div>
 </div>
 <ngx-spinner color="rgba(223,12,95,0.9)" bdOpacity="0.9" type="timer">
     <p style="color:#00CED1"> Loading... </p>
