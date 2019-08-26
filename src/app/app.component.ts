@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class AppComponent {
   title = 'iot-dashboard';
   sidenavState: string = 'open';
+  router: string;
   shrinkSidenav(){
     this.sidenavState = this.sidenavState === 'open' ? 'shrunk' : 'open';
+  }
+
+  constructor(private _router: Router){
+    this.router = _router.url;
+    console.log(this.router)
   }
 }

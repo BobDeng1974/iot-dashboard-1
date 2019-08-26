@@ -1,12 +1,22 @@
 .photo-container{
     height: 100%;
+    background-color: white;
 }
-.image-container{
-    background-image: url("../../assets/images/login.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: inherit;
+// .image-container{
+//     background-image: url("../../assets/images/login.png");
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-position: center;
+//     width: 100%;
+//     height: inherit;
+// }
+
+.login-photo{
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: calc(100vh - 90px) !important;
 }
 
 .login-panel{
