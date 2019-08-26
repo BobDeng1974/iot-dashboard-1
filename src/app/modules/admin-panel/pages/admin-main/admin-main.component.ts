@@ -24,14 +24,40 @@ import { Vendor } from '../../model/vendormodel';
 import { DeviceCustomerAssignComponent } from '../../components/device-customer-assign/device-customer-assign.component';
 import { from } from 'rxjs';
 import { error } from 'util';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-main.component.html',
-  styleUrls: ['./admin-main.component.scss']
+  styleUrls: ['./admin-main.component.scss'],
+  animations: [
+    trigger('sidenavState', [
+      state('open', style({
+        flex:"0 1 calc(18% - 5px)"
+      })),
+      state('shrunk', style({
+        flex:"0 1 calc(4% - 5px)",
+        fontSize: "0px"
+      })),
+      transition('shrunk => open', animate('500ms ease-in')),
+      transition('open => shrunk', animate('500ms ease-out'))
+    ]),
+    trigger('mainContentState', [
+      state('shrunk', style({
+        flex:"0 1 calc(96% - 5px)"
+      })),
+      state('open', style({
+        flex:"0 1 calc(82% -5px)"
+      })),
+      transition('shrunk => open', animate('500ms ease-in')),
+      transition('open => shrunk', animate('500ms ease-out'))
+    ]),
+  ]
 })
 export class AdminMainComponent implements OnInit {
 
+  //  togol side nav 
+  sidenavState: string = 'open';
   //open add vendor in popup
   addvendordialog :  MatDialogRef<AddVendorFormComponent>;
 
@@ -925,5 +951,9 @@ export class AdminMainComponent implements OnInit {
   getCustomerName(value : Customer){
     this.customerNameandId = value;
     console.log(this.customerNameandId)
+  }
+
+  shrinkSidenav(){
+    this.sidenavState = this.sidenavState === 'open' ? 'shrunk' : 'open';
   }
 }

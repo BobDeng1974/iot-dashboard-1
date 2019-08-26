@@ -1,15 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="view-container">
+<div>
   <app-header></app-header>
-  <div class="main-content">
-    <div class="main-flex" fxLayout="row" fxLayoutAlign="flex-start">
-      <div [@sidenavState]="sidenavState">
-        <app-sidenav (sidenavToggle)="shrinkSidenav()"></app-sidenav>
-      </div>
-      <div class="main-content-flex" [@mainContentState]="sidenavState">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
   <app-footer class="footer"></app-footer>
 </div>
