@@ -3,6 +3,9 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-material.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova-dark/theme.css";
+@import "~primeng/resources/primeng.min.css";
 
 html,
 body {
@@ -269,4 +272,36 @@ tr.mat-header-row {
 
 input::placeholder {
     font-size: 0.7em;
+}
+
+.ui-datepicker table td {
+    padding: 0px !important;
+}
+
+.ui-datepicker table th {
+    padding: 0px !important;
+}
+
+.ui-datepicker .ui-timepicker{
+    padding: 0px !important;
+}
+
+.ui-datepicker .ui-timepicker{
+    padding: 0px !important;
+}
+
+.ui-datepicker{
+    padding: 0px !important;
+}
+
+.ui-datepicker table td > span {
+    padding: 0px !important;
+}
+
+.ui-datepicker table th > span {
+    padding: 0px !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    padding: 0px !important;
 }

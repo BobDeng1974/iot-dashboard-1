@@ -11,6 +11,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { TempPipePipe } from './pipes/temp-pipe.pipe';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [TempPipePipe],
@@ -44,7 +45,8 @@ import { TempPipePipe } from './pipes/temp-pipe.pipe';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    CalendarModule,
   ]
 
 })

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DashbordMainService {
-  private dataGraphUrl = "http://192.168.0.14:8086/query?db=sensor&q=select * from DeviceSensorReading";
+  private dataGraphUrl = "http://34.93.150.203:8086/query?db=sensorReading&q=select * from DeviceSensorReading";
   constructor(private http: HttpClient) { }
 
   getGraphData():Observable<any>{

@@ -19,7 +19,8 @@ export class GraphComponent implements OnInit {
   single: any[];
   multi: any[];
   view: any[] = [900, 200];
-
+  minDate = new Date(2019, 7, 27, 20);
+  maxDate = new Date(2019, 7, 27, 21);
   // options
   showXAxis = true;
   showYAxis = true;
@@ -33,11 +34,10 @@ export class GraphComponent implements OnInit {
   trimXAxisTicks = true;
   autoScale = true;
   roundDomains = true;
-  xScaleMax = new Date(2019, 7, 27, 20);
-  xScaleMin = new Date(2019, 7, 27, 19);
+  xScaleMax = this.maxDate;
+  xScaleMin = this.minDate;
   yScaleMin = 14;
   yScaleMax = 28;
-
   referenceLines = [
     {
       name: "minimum",
