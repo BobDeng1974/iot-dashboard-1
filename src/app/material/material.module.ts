@@ -10,14 +10,16 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NgxSpinnerModule } from "ngx-spinner";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { TempPipePipe } from './pipes/temp-pipe.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [TempPipePipe],
   imports: [
     CommonModule
   ],
   exports:[
     BrowserAnimationsModule,
+    TempPipePipe,
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,

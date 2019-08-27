@@ -1,6 +1,19 @@
 .graph {
-    color: #797EA6;
-    text{
-        color: white;
-    }
+    height: 100%;
+    width: 100%;
+}
+
+.customer-panel {
+    height: 100% !important;
+    //border: 3px solid #66CEDD;
+}
+
+.panel-header {
+    background-color: #66CEDD;
+    border-radius: 0px;
+    color: white;
+}
+
+.panel-header:hover {
+    background-color: #66CEDD !important;
 }

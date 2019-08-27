@@ -1,6 +1,6 @@
 .customer-panel {
-    height: 98% !important;
-    border: 3px solid #66CEDD;
+    height: 100% !important;
+    //border: 3px solid #66CEDD;
 }
 
 .panel-header {
@@ -70,13 +70,8 @@ table {
 //     width: 100%;
 // }
 
-// th {
-//     color: white !important;
-//     background-color: #00AEC6;
-// }
-
-// .mat-row:nth-child(odd){
-//     background-color:#F0FAFC;
-// }
+.mat-row:nth-child(odd){
+    background-color:rgb(207, 241, 247);
+}
 
 

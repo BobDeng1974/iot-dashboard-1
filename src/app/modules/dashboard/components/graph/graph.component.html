@@ -1,25 +1,16 @@
-<div class="graph">
-  <ngx-charts-line-chart
-    [view]="view"
-    [scheme]="colorScheme"
-    [results]="single"
-    [gradient]="gradient"
-    [xAxis]="showXAxis"
-    [yAxis]="showYAxis"
-    [legend]="showLegend"
-    [trimXAxisTicks] = "trimXAxisTicks"
-    [maxXAxisTickLength] = "maxXAxisTickLength"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
-    [referenceLines] = "referenceLines"
-    [showRefLines] = "showRefLines"
-    [showRefLabels] = "showRefLabels"
-    [autoScale] = "autoScale"
-    [roundDomains] = "roundDomains"
-    [xScaleMax] = "xScaleMax"
-    [xScaleMin] = "xScaleMin"
-    (select)="onSelect($event)">
-  </ngx-charts-line-chart>
-</div>
+<mat-expansion-panel disabled expanded class="customer-panel">
+  <mat-expansion-panel-header class="panel-header">
+    <mat-panel-title class="panel-title">
+      Sensor Readings
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="graph">
+    <ngx-charts-line-chart [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
+      [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
+      [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLines"
+      [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
+      [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" (select)="onSelect($event)">
+    </ngx-charts-line-chart>
+  </div>
+</mat-expansion-panel>

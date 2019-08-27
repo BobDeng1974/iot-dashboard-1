@@ -6,30 +6,30 @@
     </mat-expansion-panel-header>
     <div>
         <div>
-            <div class="main-content" fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="center"
+            <div class="main-content" fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="start"
                 style="padding-left: 2%; padding-top: 2%;">
                 <div fxFlex="100%">
-                    <div fxFlex='100' style="font-weight: bold;"><h1>QM_DNM_004</h1></div>
+                    <div fxFlex='100' style="font-weight: bold;">QM_DNM_004</div>
                 </div>
                 <div fxFlex="100%" style="font-size:85%;">
-                    <span fxFlex='50' ms3DisplayError><h3>Sensor ID</h3></span>
-                    <span fxFlex='2'><h3>:</h3></span>
-                    <span fxFlex='48'><b><h3>QM_DNM_004_01</h3></b></span>
+                    <span fxFlex='50' ms3DisplayError>Sensor ID</span>
+                    <span fxFlex='2'>:</span>
+                    <span fxFlex='48'><b>QM_DNM_004_01</b></span>
                 </div>
                 <div ms3DisplayError fxFlex="100%" style="font-size:85%;">
-                    <span fxFlex='50'><h3>Type</h3></span>
-                    <span fxFlex='2'><h3>:</h3></span>
-                    <span fxFlex='48'><b><h3>Teperature</h3></b></span>
+                    <span fxFlex='50'>Type</span>
+                    <span fxFlex='2'>:</span>
+                    <span fxFlex='48'><b>Teperature</b></span>
                 </div>
                 <div fxFlex="100%" style="font-size:85%;">
-                    <span fxFlex='50'><h3>Reading</h3></span>
-                    <span fxFlex='2'><h3>:</h3></span>
-                    <span fxFlex='48'><b><h3 style="color: red"> 6 C</h3></b></span>
+                    <span fxFlex='50'>Reading</span>
+                    <span fxFlex='2'>:</span>
+                    <span fxFlex='48'><b>{{temp | tempPipe}}</b></span>
                 </div>
                 <div fxFlex="100%" style="font-size:85%;">
-                    <span fxFlex='50'><h3>Timestamp</h3></span>
-                    <span fxFlex='2'><h3>:</h3></span>
-                    <span fxFlex='48'><b><h3></h3></b></span>
+                    <span fxFlex='50'>Timestamp</span>
+                    <span fxFlex='2'>:</span>
+                    <span fxFlex='48'><b></b></span>
                 </div>
             </div>
         </div>
