@@ -7,6 +7,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CustomerBranchDetailsComponent } from './components/customer-branch-details/customer-branch-details.component';
 import { CustomerBranchDeviceDetailsComponent } from './components/customer-branch-device-details/customer-branch-device-details.component';
 import { MaterialModule } from 'src/app/material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MaterialModule } from 'src/app/material/material.module';
     CommonModule,
     NgxChartsModule,
     DashboardRoutingModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }
