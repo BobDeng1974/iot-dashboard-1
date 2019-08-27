@@ -1,4 +1,4 @@
-<div>
+<div class="graph">
   <ngx-charts-line-chart
     [view]="view"
     [scheme]="colorScheme"
@@ -7,10 +7,19 @@
     [xAxis]="showXAxis"
     [yAxis]="showYAxis"
     [legend]="showLegend"
+    [trimXAxisTicks] = "trimXAxisTicks"
+    [maxXAxisTickLength] = "maxXAxisTickLength"
     [showXAxisLabel]="showXAxisLabel"
     [showYAxisLabel]="showYAxisLabel"
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
+    [referenceLines] = "referenceLines"
+    [showRefLines] = "showRefLines"
+    [showRefLabels] = "showRefLabels"
+    [autoScale] = "autoScale"
+    [roundDomains] = "roundDomains"
+    [xScaleMax] = "xScaleMax"
+    [xScaleMin] = "xScaleMin"
     (select)="onSelect($event)">
   </ngx-charts-line-chart>
 </div>

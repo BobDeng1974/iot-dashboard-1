@@ -15,7 +15,7 @@ export class GraphComponent implements OnInit {
   single: any[];
   multi: any[];
 
-  view: any[] = [700, 400];
+  view: any[] = [900, 200];
 
   // options
   showXAxis = true;
@@ -26,6 +26,25 @@ export class GraphComponent implements OnInit {
   xAxisLabel = 'timestamp';
   showYAxisLabel = true;
   yAxisLabel = 'value';
+  maxXAxisTickLength = 16;
+  trimXAxisTicks = true;
+  autoScale = true;
+  roundDomains = true;
+  xScaleMax = new Date(2019,7,24,16,30);
+  xScaleMin = new Date(2019,7,24,16);
+
+  referenceLines = [
+    {
+      name: "minimum",
+      value: 15
+    },
+    {
+      name: "maximum",
+      value: 25
+    }
+  ]
+  showRefLines = true;
+  showRefLabels = true;
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -36,10 +55,9 @@ export class GraphComponent implements OnInit {
     this.dashBoardService.getGraphData().subscribe(
       (data) => {
         this.graphData = data.results[0].series[0].values;
-
         this.graphData.forEach(element => {
           this.formattedData.push({
-            name: element[0],
+            name: new Date(element[0]),
             value: element[element.length - 1]
           });
         });
