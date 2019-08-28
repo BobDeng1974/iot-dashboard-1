@@ -10,9 +10,9 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {branch_id: 'KBL_NT_001', device_id: 'QM_DNM_001', status: '♥', recorded_at: 'Today'},
-  {branch_id: 'KBL_NT_002', device_id: 'QM_DNM_003', status: '♥', recorded_at: 'Today'},
-  {branch_id: 'KBL_NT_003', device_id: 'QM_DNM_004', status: '♥', recorded_at: 'Today'},
+  {branch_id: 'KBL_NT_001', device_id: 'QM_DNM_001', status: 'ok', recorded_at: 'Today'},
+  {branch_id: 'KBL_NT_002', device_id: 'QM_DNM_003', status: 'ok', recorded_at: 'Today'},
+  {branch_id: 'KBL_NT_003', device_id: 'QM_DNM_004', status: 'ok', recorded_at: 'Today'},
   {branch_id: 'KBL_GA_001', device_id: 'QM_DNM_007', status: '', recorded_at: 'Yesterday'},
   {branch_id: 'KBL_GA_002', device_id: 'QM_DNM_009', status: '', recorded_at: 'Yesterday'},
 ];
