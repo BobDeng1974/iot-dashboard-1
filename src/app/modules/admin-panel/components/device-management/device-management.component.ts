@@ -19,7 +19,7 @@ export class DeviceManagementComponent implements OnInit {
   @Input()deviceName:string;
   @Input()deviceId:number;
   @Input()deviceHealth: DeviceMonitor[] = []
-  private defaultcolDefs;
+  public defaultcolDefs;
   private deviceMonitorGridApi;
   private deviceMonitorColumnApi;
 

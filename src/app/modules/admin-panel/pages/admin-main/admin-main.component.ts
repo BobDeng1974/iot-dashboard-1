@@ -58,6 +58,8 @@ export class AdminMainComponent implements OnInit {
 
   //  togol side nav 
   sidenavState: string = 'open';
+
+  selectedTabIndex : number = 0;
   //open add vendor in popup
   addvendordialog :  MatDialogRef<AddVendorFormComponent>;
 
@@ -955,5 +957,9 @@ export class AdminMainComponent implements OnInit {
 
   shrinkSidenav(){
     this.sidenavState = this.sidenavState === 'open' ? 'shrunk' : 'open';
+  }
+
+  TabSelectionChange(value: any) {
+    this.selectedTabIndex = value.index;
   }
 }
