@@ -9,7 +9,7 @@ export const environment = {
    updateCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/update/",
    getAllCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/getall/?format=json",
    getACustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/getacustomer/",
-   getdomainUrl : "http://35.200.22.112:8006/qiidomain/get/",
+   getdomainUrl : "http://35.200.162.115:8006/qiidomain/get/",
   //////////////////////////////////////////////////////////////////////////
    getCustomerBranchUrl : "http://34.93.22.112:8000/api/qubematics/customer/getbranch/",
    getCustomerandIdUrl : "http://34.93.22.112:8000/api/qubematics/customer/getcustomerandid/",
