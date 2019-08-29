@@ -1,19 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-
-export interface PeriodicElement {
-  code: string;
-  name?: string;
-  type?: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {code: 'KBL_NT_001', name: 'QM_DNM_001', type: 'Private', },
-  {code: 'KBL_NT_002', name: 'QM_DNM_003', type: 'restaurant', },
-  {code: 'KBL_NT_003', name: 'QM_DNM_004', type: 'Government', },
-  {code: 'KBL_GA_001', name: 'QM_DNM_007', type: 'Private', },
-  {code: 'KBL_GA_002', name: 'QM_DNM_009', type: 'Private', },
-];
+import { ICustomerAssignmenrInfo } from 'src/app/modules/admin-panel/model/vendormodel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-vendor-customer',
@@ -22,23 +10,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ShowVendorCustomerComponent implements OnInit {
 
+  @Input() assignInfo: ICustomerAssignmenrInfo[];
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  displayedColumns: string[] = ['select', 'code', 'name', 'type', 'view'];
-  dataSource = new MatTableDataSource<PeriodicElement>();
-  SelectedCustomer: PeriodicElement;
-  constructor() { }
+  displayedColumns: string[] = ['select', 'customer_code', 'customer_name', 'customer_type', 'view'];
+  dataSource = new MatTableDataSource<ICustomerAssignmenrInfo>();
+  SelectedCustomer: ICustomerAssignmenrInfo = {
+    customer_id:0
+  };
+  
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.dataSource.data = ELEMENT_DATA;
-
-    this.SelectedCustomer = {
-      code: "0"
-    }
-
+    // this.dataSource.data = ELEMENT_DATA;
   }
-
+  ngOnChanges(){
+    console.log(this.assignInfo)
+    this.dataSource.data = this.assignInfo;
+  }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -50,6 +40,10 @@ export class ShowVendorCustomerComponent implements OnInit {
 
   SelectBranch(value: any) {
     this.SelectedCustomer = value;
+    // console.log(this.SelectedCustomer)
   }
-
+  goTo(id:number){
+    console.log(id);
+    this.router.navigate(['/dashboard']);
+  }
 }

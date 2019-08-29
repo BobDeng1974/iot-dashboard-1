@@ -8,6 +8,8 @@ import { DateTimeRendererComponent } from 'src/app/modules/shared/components/dat
 import { NullValueComponent } from 'src/app/modules/shared/components/null-value/null-value.component';
 import { MatSnackBar } from '@angular/material';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -18,7 +20,7 @@ import { SuccessSnackberComponent } from 'src/app/modules/shared/components/succ
 export class DeviceManagementComponent implements OnInit {
   @Input()deviceName:string;
   @Input()deviceId:number;
-  @Input()deviceHealth: DeviceMonitor[] = []
+  deviceHealth: DeviceMonitor[] = []
   public defaultcolDefs;
   private deviceMonitorGridApi;
   private deviceMonitorColumnApi;
@@ -37,14 +39,6 @@ export class DeviceManagementComponent implements OnInit {
     { headerName: 'Data Sending Frequency', field:'data_sending_frequency', editable:true, resizable:true, valueParser:numberParser, cellEditor: 'nullvalueEditor'}
   ];
   
-  // rowData = [
-  //   { device_name:'dvc_001', device_mac:'00:e0:4a:0a:ae:e3', device_activated:true, device_health:'ok', device_last_heartbeat:'20/08/2019' },
-  //   { device_name:'dvc_002', device_mac:'00:e0:4a:0a:ae:e3', device_activated:true, device_health:'ok', device_last_heartbeat:'20/08/2019' },
-  //   { device_name:'dvc_003', device_mac:'00:e0:4a:0a:ae:e3', device_activated:false, device_health:'', device_last_heartbeat:'' },
-  //   { device_name:'dvc_004', device_mac:'00:e0:4a:0a:ae:e3', device_activated:false, device_health:'', device_last_heartbeat:'' },
-  //   { device_name:'dvc_005', device_mac:'00:e0:4a:0a:ae:e3', device_activated:false, device_health:'', device_last_heartbeat:'' },
-  //   { device_name:'dvc_006', device_mac:'00:e0:4a:0a:ae:e3', device_activated:true, device_health:'ok', device_last_heartbeat:'20/08/2019' },
-  // ]
   
   frameworkComponents = {
     activeRenderer: DeviceActiveRendererComponent,
@@ -55,16 +49,31 @@ export class DeviceManagementComponent implements OnInit {
 
   ngOnInit() {
 
-    this.adminService.getDeviceHealth().subscribe(
-      (data) => {
-        this.spinner.show();
-        console.log(data)
-        this.spinner.hide();
-      },
-      (error) => {
-        console.log(error)
-      }
-    );
+    interval(30000)
+      .pipe(
+        startWith(0),
+        switchMap( () => this.adminService.getDeviceHealth())
+      ).subscribe(
+        (data) => {
+          console.log(1)
+          this.deviceHealth = data
+        },
+        (error) => {
+          console.log(error)
+        }
+      );
+
+    // this.adminService.getDeviceHealth().subscribe(
+    //   (data) => {
+    //     this.spinner.show();
+    //     console.log(data)
+    //     this.deviceHealth = data
+    //     this.spinner.hide();
+    //   },
+    //   (error) => {
+    //     console.log(error)
+    //   }
+    // );
   }
 
   onDeviceGridReady(params){
