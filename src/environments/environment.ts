@@ -49,7 +49,7 @@ export const environment = {
    vendorUpdateUrl : "http://34.93.22.112:8001/api/qubematics/vendor/update/",
    getAvendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/getavendor/",
    getVendorNameIdUrl : "http://34.93.22.112:8001/api/qubematics/vendor/vendornameid/?format=json",
-   createVendorManage : "http://34.93.22.114:8001/api/qubematics/vendor/vendormanage/",
+   createVendorManage : "http://34.93.22.112:8001/api/qubematics/vendor/vendormanage/",
    assignMentHistory : "http://34.93.22.112:8001/api/qubematics/vendor/gethistory/",
    //graphUrl : "http://127.22.112:8086/query?db=sensor&q=select*from",
    dataGraphUrl : "http://34.93.150.203:8086/query?db=sensorReading&q=select * from DeviceSensorReading",
