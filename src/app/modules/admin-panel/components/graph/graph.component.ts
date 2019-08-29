@@ -12,14 +12,14 @@ export class GraphComponent implements OnInit {
 
   ngOnInit() {
 
-    this.adminService.getGraphData().subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    // this.adminService.getGraphData().subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
 
   }
 
