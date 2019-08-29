@@ -1,18 +1,14 @@
 <mat-expansion-panel disabled expanded class="customer-panel">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title class="panel-title">
-            Branches
+            Materials
         </mat-panel-title>
         <mat-panel-description>
             <div class="search-bar-container">
                 <mat-icon class="search-icon">search</mat-icon>
-                <input class="search-bar" autocomplete="off" matInput (keyup)="applyFilter($event.target.value)"
-                    placeholder="Search Branch">
+                <input class="search-bar" matInput placeholder="Search Materials">
             </div>
             <span class="example-spacer"></span>
-            <!-- <div class="download-icon">
-                <mat-icon>get_app</mat-icon>
-            </div> -->
         </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="main-content">
