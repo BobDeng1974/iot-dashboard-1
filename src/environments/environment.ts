@@ -53,6 +53,8 @@ export const environment = {
    assignMentHistory : "http://34.93.22.112:8001/api/qubematics/vendor/gethistory/",
    //graphUrl : "http://127.22.112:8086/query?db=sensor&q=select*from",
    dataGraphUrl : "http://34.93.150.203:8086/query?db=sensorReading&q=select * from DeviceSensorReading",
+   //login url
+   postLoginUrl : "http://192.168.0.14:8003/api/qubematics/authuser/"
 };
 
 /*
