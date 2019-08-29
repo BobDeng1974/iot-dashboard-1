@@ -16,4 +16,8 @@ export class DashbordMainService {
   getCustomerAssignData(id : number) : Observable<CustomerDashBoard[]> {
     return this.http.get<CustomerDashBoard[]>(environment.customerdeviceAssignUrl+id+'?format=json');
   }
+
+  getSensorData(id : number) : Observable<any[]> {
+    return this.http.get<any[]>(environment.getADevice+id+'?format=json');
+  }
 }

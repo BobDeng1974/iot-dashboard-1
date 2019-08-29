@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { CustomerDashBoard } from '../../model/customerDashboard';
 
@@ -10,6 +10,8 @@ import { CustomerDashBoard } from '../../model/customerDashboard';
 export class CustomerBranchDetailsComponent implements OnInit {
 
   @Input() customerAssignData : CustomerDashBoard[]; 
+
+  @Output() ButtonClick = new EventEmitter<number>();
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -41,7 +43,9 @@ export class CustomerBranchDetailsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  SelectBranch(value: any) {
+  SelectBranch(value: any, id:number) {
     this.SelectedBranch = value;
+    console.log("thisis form click on branch:  "+id);
+    this.ButtonClick.emit(id);
   }
 }

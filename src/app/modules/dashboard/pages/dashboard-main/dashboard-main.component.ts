@@ -12,6 +12,10 @@ export class DashboardMainComponent implements OnInit {
 
   customerAssignData : CustomerDashBoard[];
 
+  sensorValue : any[];
+
+  deviceName : string;
+
   constructor(private dashbordmainService : DashbordMainService) { }
 
   ngOnInit() {
@@ -28,6 +32,22 @@ export class DashboardMainComponent implements OnInit {
 
   ShowReading(data: SensorData) {
     this.currentReading =  data;
+  }
+
+  getDeviceId(id : number) {
+    this.dashbordmainService.getSensorData(id).subscribe(
+      (data) => {
+        console.log(data[0].sensors);
+        this.sensorValue = data[0].sensors;
+        this.deviceName = data[0].device_name;
+
+        //console.log("sensor value form main:  "+this.sensorValue);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    // console.log('from dashboard main ' + id)
   }
 }
 

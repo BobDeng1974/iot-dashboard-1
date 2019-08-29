@@ -9,6 +9,9 @@ import { SensorData } from '../../pages/dashboard-main/dashboard-main.component'
 export class CustomerBranchDeviceDetailsComponent implements OnInit {
 
   @Input() CurrentReading: SensorData;
+
+  @Input() sensordata : any[];
+  @Input() deviceName : string;
   temp: string = "6";
   time: Date = null;
   constructor() { }
@@ -21,6 +24,12 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
       this.temp = this.CurrentReading.value.toString();
       this.time = this.CurrentReading.name;
     }
+
+    console.log("this is form customer branch device component:  "+this.sensordata+"  Device Name:  "+this.deviceName);
+  }
+
+  getSensorId(sensorId : number) {
+    console.log("sensor id after click button:  "+sensorId);
   }
 
 }
