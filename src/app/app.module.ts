@@ -12,6 +12,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { VendorPanelModule } from './modules/vendor-panel/vendor-panel.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     AdminPanelModule,
     DashboardModule,
     AgGridModule.withComponents([]),
-    HttpClientModule
+    HttpClientModule,
+    VendorPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
