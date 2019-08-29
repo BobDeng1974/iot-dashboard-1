@@ -1,21 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-
-
-export interface PeriodicElement {
-  branch_id: string;
-  device_id?: string;
-  status?: string;
-  recorded_at?: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {branch_id: 'KBL_NT_001', device_id: 'QM_DNM_001', status: 'ok', recorded_at: 'Today'},
-  {branch_id: 'KBL_NT_002', device_id: 'QM_DNM_003', status: 'ok', recorded_at: 'Today'},
-  {branch_id: 'KBL_NT_003', device_id: 'QM_DNM_004', status: 'ok', recorded_at: 'Today'},
-  {branch_id: 'KBL_GA_001', device_id: 'QM_DNM_007', status: '', recorded_at: 'Yesterday'},
-  {branch_id: 'KBL_GA_002', device_id: 'QM_DNM_009', status: '', recorded_at: 'Yesterday'},
-];
+import { CustomerDashBoard } from '../../model/customerDashboard';
 
 @Component({
   selector: 'app-customer-branch-details',
@@ -24,20 +9,29 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CustomerBranchDetailsComponent implements OnInit {
 
+  @Input() customerAssignData : CustomerDashBoard[]; 
+
+  @Output() ButtonClick = new EventEmitter<number>();
+
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   
-  displayedColumns: string[] = ['select', 'branch_id', 'device_id', 'status', 'recorded_at'];
-  dataSource = new MatTableDataSource<PeriodicElement>();
-  SelectedBranch: PeriodicElement;
+  displayedColumns: string[] = ['select', 'customer_branch_name', 'device_name', 'device_health', 'device_last_heartbeat'];
+  dataSource = new MatTableDataSource<CustomerDashBoard>();
+  SelectedBranch: CustomerDashBoard = {
+    device_id : 0
+  };
 
   constructor() { }
 
   ngOnInit() {
-    this.dataSource.data = ELEMENT_DATA;
-    this.SelectedBranch = {
-      branch_id: "0"
-    }
+    // this.dataSource.data = this.customerAssignData;
+    // console.log("this is form branches:  "+this.customerAssignData);
+  }
+
+  ngOnChanges() {
+    this.dataSource.data =  this.customerAssignData;
+    console.log("this is form branches:  "+ this.customerAssignData[0]);
   }
 
   ngAfterViewInit() {
@@ -49,7 +43,9 @@ export class CustomerBranchDetailsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  SelectBranch(value: any) {
+  SelectBranch(value: any, id:number) {
     this.SelectedBranch = value;
+    console.log("thisis form click on branch:  "+id);
+    this.ButtonClick.emit(id);
   }
 }

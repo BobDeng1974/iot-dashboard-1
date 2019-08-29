@@ -172,6 +172,7 @@ export class VendorDetailsComponent implements OnInit {
   onAddressGridReady(params) {
     this.addressGridApi = params.api;
     this.addressGridColumnApi = params.columnApi;
+    this.addressGridApi.sizeColumnsToFit();
   }
 
   onLegalGridReady(params) {
