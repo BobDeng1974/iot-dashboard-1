@@ -86,3 +86,17 @@ table {
     color: #FF185E;
 }
 
+.mat-row:nth-child(odd) .checkin {
+    background-image: url('../../../../../assets/images/checkin.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    color:blueviolet;
+}
+.mat-row:nth-child(even) .checkin {
+    background-image: url('../../../../../assets/images/checkin2.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    color:blueviolet;
+}
