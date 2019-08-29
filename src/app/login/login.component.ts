@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { IUser } from '../modules/admin-panel/model/usermodel';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   formData: IUser;
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -30,7 +31,17 @@ export class LoginComponent implements OnInit {
     this.loginService.postUserCredential(this.formData).subscribe(
       (data) => {
         console.log(data)
-        this.router.navigate(['/dashboard'])
+        this.spinner.show()
+        if (data.user_type == 'customer') {
+          this.router.navigate(['/dashboard']);
+          this.spinner.hide()
+        } else if (data.user_type == 'vendor'){
+          this.router.navigate(['/vendor-panel']);
+          this.spinner.hide()
+        }else{
+          this.router.navigate(['/admin-panel']);
+          this.spinner.hide()
+        }
       },
       (error) =>{
         console.log(error)
