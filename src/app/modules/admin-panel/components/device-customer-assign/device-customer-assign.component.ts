@@ -25,6 +25,7 @@ export class DeviceCustomerAssignComponent implements OnInit {
 
   ngOnInit() {
     this.customerAssignForm = this.fb.group({
+      customer_id:'',
       device_name: '',
       customer_name: '',
       customer_branch_name: '',
@@ -60,6 +61,7 @@ export class DeviceCustomerAssignComponent implements OnInit {
     this.formData = {
       device_id: this.device.device_id,
       device_name: form.controls.device_name.value,
+      customer_id: form.controls.customer_name.value.customer_id,
       customer_name: form.controls.customer_name.value.customer_name,
       customer_branch_name: form.controls.customer_branch_name.value,
       device_assign_effective_from: form.controls.device_assign_effective_from.value,
