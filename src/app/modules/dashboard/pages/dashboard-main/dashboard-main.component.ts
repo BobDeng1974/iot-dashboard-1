@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashbordMainService } from '../../dashbord-main.service';
+import { CustomerDashBoard } from '../../model/customerDashboard';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -8,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardMainComponent implements OnInit {
   currentReading: SensorData;
 
-  constructor() { }
+  customerAssignData : CustomerDashBoard[];
+
+  constructor(private dashbordmainService : DashbordMainService) { }
 
   ngOnInit() {
+    this.dashbordmainService.getCustomerAssignData(15).subscribe(
+      (data) => {
+        console.log(data);
+        this.customerAssignData = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   ShowReading(data: SensorData) {
