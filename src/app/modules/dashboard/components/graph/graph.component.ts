@@ -36,8 +36,17 @@ export class GraphComponent implements OnChanges {
   roundDomains = true;
   xScaleMax = this.maxDate;
   xScaleMin = this.minDate;
+  //temperature y scale
   yScaleMin = 14;
   yScaleMax = 28;
+  //humidity y scale
+  yScaleMinHumidity = 50;
+  yScaleMaxHumidity = 100;
+
+  //alcohol y scale
+  yScaleMinAlcohol = 1;
+  yScaleMaxAlcohol = 5;
+
   referenceLines = [
     {
       name: "minimum",
@@ -48,13 +57,31 @@ export class GraphComponent implements OnChanges {
       value: 25
     }
   ]
+  //reference lines
+  referenceLinesHumidity = [
+    {
+      name: "minimum",
+      value: 60
+    },
+    {
+      name: "maximum",
+      value: 80
+    }
+  ]
   showRefLines = true;
   showRefLabels = true;
 
   colorScheme = {
     domain: ['#EC6D9F', '#A10A28', '#C7B42C', '#AAAAAA']
   };
-
+  //colorScheme for humidity
+  colorScheme2 = {
+    domain: ['#5203fc']
+  } 
+  //colorScheme for humidity
+  colorScheme3 = {
+    domain: ['#2fe01f']
+  }
   ngOnChanges() {
 
     interval(20000)
