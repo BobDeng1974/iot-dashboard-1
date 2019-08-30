@@ -16,6 +16,8 @@ export class DashboardMainComponent implements OnInit {
 
   deviceName : string;
 
+  deviceData : CustomerDashBoard;
+
   constructor(private dashbordmainService : DashbordMainService) { }
 
   ngOnInit() {
@@ -48,6 +50,10 @@ export class DashboardMainComponent implements OnInit {
       }
     );
     // console.log('from dashboard main ' + id)
+  }
+
+  getDeviceData(value : CustomerDashBoard) {
+    this.deviceData = value;
   }
 }
 

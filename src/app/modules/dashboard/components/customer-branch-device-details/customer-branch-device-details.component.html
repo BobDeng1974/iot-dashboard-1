@@ -17,7 +17,7 @@
                         <div fxFlex="20">sensor_type : <b>{{sensor.sensor_type}}</b></div>
                         <div fxFlex="20">temperature : <b>{{temp | tempPipe}}</b></div>
                         <div fxFlex="20">Timestamp : <b>{{ time | date }}</b></div>
-                        <div fxFlex="20"><button mat-icon-button class="viewGraph" (click)="getSensorId(sensor.sensor_id)"></button></div>
+                        <div fxFlex="20"><button mat-icon-button class="viewGraph" (click)="getSensorId(sensor.sensor_type,deviceData.device_mac)"></button></div>
                         <br>
                         <br>
                     </div>

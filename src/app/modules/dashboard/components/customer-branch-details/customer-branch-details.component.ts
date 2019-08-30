@@ -13,6 +13,8 @@ export class CustomerBranchDetailsComponent implements OnInit {
 
   @Output() ButtonClick = new EventEmitter<number>();
 
+  @Output() DeviceData = new EventEmitter<CustomerDashBoard>();
+
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   
@@ -45,7 +47,8 @@ export class CustomerBranchDetailsComponent implements OnInit {
 
   SelectBranch(value: any, id:number) {
     this.SelectedBranch = value;
-    console.log("thisis form click on branch:  "+id);
+    console.log("thisis form click on branch:  "+value);
+    this.DeviceData.emit(value);
     this.ButtonClick.emit(id);
   }
 }
