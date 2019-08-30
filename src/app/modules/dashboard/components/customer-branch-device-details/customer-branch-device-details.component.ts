@@ -16,24 +16,43 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   @Input() deviceData : CustomerDashBoard;
   @Output() sensorType = new EventEmitter<string>();
   @Output() deviceMac = new EventEmitter<string>();
-  temp: string = "6";
+  temp: string = "";
+  humidity: string = "";
+  alcohol: string = "";
   time: Date = null;
-  color= 'red';
+  time2: Date = null;
+  time3: Date = null;
+  color= 'accent';
+  //sensor type
+  type: string = "";
+  reading1: string = "";
   constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
+    console.log(this.type)
     if (this.CurrentReading) {
-      this.temp = this.CurrentReading.value.toString();
-      this.time = this.CurrentReading.name;
+      if (this.type == 'temperature') {
+        this.temp = this.CurrentReading.value.toString();
+        this.time = this.CurrentReading.name;
+      } else if (this.type == 'humidity'){
+        this.humidity = this.CurrentReading.value.toString();
+        this.time = this.CurrentReading.name;
+      }else{
+        this.alcohol = this.CurrentReading.value.toString();
+        this.time = this.CurrentReading.name;
+      }
+      
     }
 
     console.log("this is form customer branch device component:  "+this.sensordata+"  Device Name:  "+this.deviceName+"  DeviceData  "+this.deviceData);
   }
 
   getSensorId(sensorType : string) {
+    this.type = sensorType;
+    this.type = this.type.toLowerCase();
     this.sensorType.emit(sensorType);
     this.deviceMac.emit(this.deviceData.device_mac);
   }

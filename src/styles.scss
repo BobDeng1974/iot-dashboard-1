@@ -305,3 +305,22 @@ input::placeholder {
 .ui-datepicker .ui-datepicker-header {
     padding: 0px !important;
 }
+
+.ui-datepicker-title{
+    padding: 10px !important
+}
+
+.ui-datepicker-calender table td > a{
+    padding: 0 !important
+}
+
+.ui-state-default{
+    padding-bottom: 5px !important;
+    padding-top: 5px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.ui-datepicker-touch-ui, .ui-calendar .ui-datepicker-touch-ui{
+    min-width: 475px;
+}

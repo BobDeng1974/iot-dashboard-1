@@ -20,8 +20,8 @@
                             [disabled]="disabled" class="toggle" (change)="getSensorId(sensor.sensor_type)">
                         </mat-slide-toggle></div>
                         <div fxFlex="20">Sensor Name : <b>{{sensor.sensor_name}}</b></div>
-                        <div fxFlex="20">sensor_type : <b>{{sensor.sensor_type}}</b></div>
-                        <div fxFlex="20">temperature : <b>{{temp | tempPipe}}</b></div>
+                        <div fxFlex="20">Sensor type : <b>{{sensor.sensor_type}}</b></div>
+                        <div fxFlex="20">Reading : <b>{{reading1}}</b></div>
                         <div fxFlex="20">Timestamp : <b>{{ time | date:'medium' }}</b></div>
                         <br>
                         <br>

@@ -5,6 +5,7 @@ import { LoginService } from '../login.service';
 import { IUser } from '../modules/admin-panel/model/usermodel';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ApplicationStateService } from '../service/application-state.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   formData: IUser;
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService) { }
+  constructor(private fb: FormBuilder, private appState: ApplicationStateService, private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -34,12 +35,20 @@ export class LoginComponent implements OnInit {
         this.spinner.show()
         if (data.user_type == 'customer') {
           this.router.navigate(['/dashboard']);
+          this.appState.userLoggedIn = true;
+          this.appState.userType = data.user_type;
+          this.appState.userId = data.user_id;
           this.spinner.hide()
         } else if (data.user_type == 'vendor'){
           this.router.navigate(['/vendor-panel']);
+          this.appState.userLoggedIn = true;
+          this.appState.userType = data.user_type;
+          this.appState.userId = data.user_id;
           this.spinner.hide()
         }else{
           this.router.navigate(['/admin-panel']);
+          this.appState.userLoggedIn = true;
+          this.appState.userType = data.user_type;
           this.spinner.hide()
         }
       },
