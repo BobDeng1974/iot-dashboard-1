@@ -81,3 +81,10 @@ export interface Domaindata {
     domain_value?:string;
     domain_data_type?: string;
 }
+
+export interface ICustomerAssignmenrInfo{
+    customer_name ?: string;
+    customer_type ?: string;
+    customer_code ?: string;
+    customer_id ?: number;
+}

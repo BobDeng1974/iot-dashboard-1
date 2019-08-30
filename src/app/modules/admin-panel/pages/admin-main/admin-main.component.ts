@@ -22,9 +22,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AddSensorFormComponent } from '../../components/add-sensor-form/add-sensor-form.component';
 import { Vendor } from '../../model/vendormodel';
 import { DeviceCustomerAssignComponent } from '../../components/device-customer-assign/device-customer-assign.component';
-import { from } from 'rxjs';
+import { from, interval } from 'rxjs';
 import { error } from 'util';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { startWith, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-main',
@@ -259,18 +260,17 @@ export class AdminMainComponent implements OnInit {
         this.spinner.hide();
       }
     );
-
-    this.adminpanelService.getDeviceHealth().subscribe(
-      (data) => {
-        console.log(data)
-        this.deviceHealthData = data.reverse()
-        this.spinner.hide()
-      },
-      (error) => {
-        console.log(error)
-        this.spinner.hide()
-      }
-    );
+    // this.adminpanelService.getDeviceHealth().subscribe(
+    //   (data) => {
+    //     console.log(data)
+    //     this.deviceHealthData = data.reverse()
+    //     this.spinner.hide()
+    //   },
+    //   (error) => {
+    //     console.log(error)
+    //     this.spinner.hide()
+    //   }
+    // );
   }
 
   getCustomerData(Id : number) {
