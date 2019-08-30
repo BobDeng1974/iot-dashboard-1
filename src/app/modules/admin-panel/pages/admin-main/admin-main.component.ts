@@ -26,6 +26,7 @@ import { from, interval } from 'rxjs';
 import { error } from 'util';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { startWith, switchMap } from 'rxjs/operators';
+import { ViewVendorCustomerComponent } from '../../components/view-vendor-customer/view-vendor-customer.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -104,12 +105,15 @@ export class AdminMainComponent implements OnInit {
   customerassigndialog : MatDialogRef<CustomerAssignDialogComponent>;
 
   //device assign dialog
-  deviceAssignDialog : MatDialogRef<AddDeviceComponent>
+  deviceAssignDialog : MatDialogRef<AddDeviceComponent>;
 
   //sensor assign dialog
-  sensorAssignDialog: MatDialogRef<AddSensorFormComponent>
+  sensorAssignDialog: MatDialogRef<AddSensorFormComponent>;
   //assign a device to customer form
-  deviceCustomerDialog : MatDialogRef<DeviceCustomerAssignComponent>
+  deviceCustomerDialog : MatDialogRef<DeviceCustomerAssignComponent>;
+
+  // view all customer and vendor after click go to dashboard button
+  viewVendorCustomer : MatDialogRef<ViewVendorCustomerComponent>;
 
   //customer name and id object
   customerNameandId: Customer;
@@ -961,5 +965,9 @@ export class AdminMainComponent implements OnInit {
 
   TabSelectionChange(value: any) {
     this.selectedTabIndex = value.index;
+  }
+
+  VievModal() {
+    this.viewVendorCustomer = this.dialog.open(ViewVendorCustomerComponent);
   }
 }

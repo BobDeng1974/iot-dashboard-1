@@ -69,17 +69,20 @@
                                 </div>
                             </div>
                         </mat-tab>
-                        <mat-tab>
+                        <!-- <mat-tab>
                             <div *ngIf="selectedTabIndex == 5">
                                 <app-graph></app-graph>
                             </div>
-                        </mat-tab>
+                        </mat-tab> -->
                     </mat-tab-group>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<button mat-flat-button color="warn" class='dashboardbtn' (click)="VievModal()">Go To DashBoard</button>
 <ngx-spinner color="rgba(223,12,95,0.9)" bdOpacity="0.9" type="timer">
     <p style="color:#00CED1"> Loading... </p>
 </ngx-spinner>
+
