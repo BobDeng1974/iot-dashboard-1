@@ -4,4 +4,5 @@ export interface CustomerDashBoard {
     customer_branch_name? : string;
     device_health? : string;
     device_last_heartbeat? : Date;
+    device_mac? : string;
 }

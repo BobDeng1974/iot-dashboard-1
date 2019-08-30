@@ -33,4 +33,14 @@
 .sensor-details {
     border:1px solid black; 
     padding: 10px;
+    padding-right: -5px;
+}
+
+.viewGraph {
+    background-image: url("../../../../../assets/images/bar-chart.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    position: relative;
+    margin-left: 500px;
 }

@@ -11,13 +11,13 @@
                 <div fxFlex="100%">
                     <div fxFlex='100' style="font-weight: bold;">Device Name : <b>{{deviceName}}</b></div><br>
                 </div>
-                <div *ngFor="let sensor of sensordata">
+                <div *ngFor="let sensor of sensordata" style="padding-right: 20px;">
                     <div fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="start" class="sensor-details">
                         <div fxFlex="20">Sensor Name : <b>{{sensor.sensor_name}}</b></div>
                         <div fxFlex="20">sensor_type : <b>{{sensor.sensor_type}}</b></div>
                         <div fxFlex="20">temperature : <b>{{temp | tempPipe}}</b></div>
                         <div fxFlex="20">Timestamp : <b>{{ time | date }}</b></div>
-                        <div fxFlex="20"><button style="margin-left: 500px;" mat-raised-button color="primary" (click)="getSensorId(sensor.sensor_id)">Show Sensor Data</button></div>
+                        <div fxFlex="20"><button mat-icon-button class="viewGraph" (click)="getSensorId(sensor.sensor_type,deviceData.device_mac)"></button></div>
                         <br>
                         <br>
                     </div>
