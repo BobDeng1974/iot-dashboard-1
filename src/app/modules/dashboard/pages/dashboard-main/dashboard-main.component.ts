@@ -18,6 +18,10 @@ export class DashboardMainComponent implements OnInit {
 
   deviceData : CustomerDashBoard;
 
+  //deviceType and MAC from output
+  sensorType: string;
+  deviceMac: string;
+
   constructor(private dashbordmainService : DashbordMainService) { }
 
   ngOnInit() {
@@ -54,6 +58,16 @@ export class DashboardMainComponent implements OnInit {
 
   getDeviceData(value : CustomerDashBoard) {
     this.deviceData = value;
+  }
+
+  getType(value){
+    this.sensorType = value;
+    this.sensorType = this.sensorType.toLowerCase();
+    console.log(this.sensorType)
+  }
+  getMac(value){
+    console.log(value)
+    this.deviceMac = value
   }
 }
 

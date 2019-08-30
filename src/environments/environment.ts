@@ -31,9 +31,9 @@ export const environment = {
    getVendorNameIdUrl : "http://34.93.22.112:8001/api/qubematics/vendor/vendornameid/?format=json",
    createVendorManage : "http://34.93.22.112:8001/api/qubematics/vendor/vendormanage/",
    assignMentHistory : "http://34.93.22.112:8001/api/qubematics/vendor/gethistory/",
-   customerManageUrl : "http://127.0.0.1:8000/api/qubematics/vendor/customerassign/",
+   customerManageUrl : "http://34.93.22.112:8001/api/qubematics/vendor/customerassign/",
    //graphUrl : "http://127.22.112:8086/query?db=sensor&q=select*from",
-   dataGraphUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=select * from DeviceSensorReading where sensor_type='\"temperature\"'",
+   dataGraphUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=select * from DeviceSensorReading where sensor_type='\"",
    //login url
    postLoginUrl : "http://34.93.22.112:8003/api/qubematics/authuser/",
 

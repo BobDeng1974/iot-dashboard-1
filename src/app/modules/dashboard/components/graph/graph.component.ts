@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
@@ -8,10 +8,10 @@ import { SensorData } from './../../pages/dashboard-main/dashboard-main.componen
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.scss']
 })
-export class GraphComponent implements OnInit {
+export class GraphComponent implements OnChanges {
 
   @Output() NewReading = new EventEmitter<SensorData>();
-
+  @Input() sensorType: string;
   constructor(private dashBoardService: DashbordMainService) { }
 
   graphData: any[][];
@@ -55,12 +55,12 @@ export class GraphComponent implements OnInit {
     domain: ['#EC6D9F', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  ngOnInit() {
+  ngOnChanges() {
 
     interval(20000)
       .pipe(
         startWith(0),
-        switchMap(() => this.dashBoardService.getGraphData())
+        switchMap(() => this.dashBoardService.getGraphData(this.sensorType))
       ).subscribe(
         (data) => {
           console.log(data);

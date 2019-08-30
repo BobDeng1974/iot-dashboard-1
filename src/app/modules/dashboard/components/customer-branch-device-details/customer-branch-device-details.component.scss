@@ -36,11 +36,8 @@
     padding-right: -5px;
 }
 
-.viewGraph {
-    background-image: url("../../../../../assets/images/bar-chart.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-    position: relative;
-    margin-left: 500px;
+.toggle {
+    // padding-left: 50px;
+    float: right;
+    color: red
 }

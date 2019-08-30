@@ -6,12 +6,12 @@
                     <app-customer-branch-details [customerAssignData]="customerAssignData" (ButtonClick)="getDeviceId($event)" (DeviceData)="getDeviceData($event)"></app-customer-branch-details>
                 </div>
                 <div fxFlex="40" fxFlex.lt-sm="100%">
-                    <app-customer-branch-device-details [CurrentReading]="currentReading" [sensordata] = "sensorValue" [deviceName] = "deviceName" [deviceData]="deviceData"></app-customer-branch-device-details>
+                    <app-customer-branch-device-details [CurrentReading]="currentReading" [sensordata] = "sensorValue" [deviceName] = "deviceName" [deviceData]="deviceData" (sensorType)="getType($event)" (deviceMac)="getMac($event)"></app-customer-branch-device-details>
                 </div>
             </div>
         </div>
         <div fxFlex="50" class="graph">
-            <app-graph (NewReading)="ShowReading($event)"></app-graph>
+            <app-graph (NewReading)="ShowReading($event)" [sensorType]="sensorType"></app-graph>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
 import { CustomerDashBoard } from '../../model/customerDashboard';
 
@@ -14,8 +14,11 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   @Input() sensordata : any[];
   @Input() deviceName : string;
   @Input() deviceData : CustomerDashBoard;
+  @Output() sensorType = new EventEmitter<string>();
+  @Output() deviceMac = new EventEmitter<string>();
   temp: string = "6";
   time: Date = null;
+  color= 'red';
   constructor() { }
 
   ngOnInit() {
@@ -30,8 +33,11 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     console.log("this is form customer branch device component:  "+this.sensordata+"  Device Name:  "+this.deviceName+"  DeviceData  "+this.deviceData);
   }
 
-  getSensorId(sensorType : string, mac : string) {
-    console.log("sensor id after click button:  "+sensorType+"  mac address:  "+mac);
+  getSensorId(sensorType : string) {
+    this.sensorType.emit(sensorType);
+    this.deviceMac.emit(this.deviceData.device_mac);
   }
-
+  change(value){
+    console.log(value)
+  }
 }

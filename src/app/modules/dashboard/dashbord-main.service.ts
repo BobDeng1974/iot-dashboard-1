@@ -9,8 +9,9 @@ import { CustomerDashBoard } from './model/customerDashboard';
 export class DashbordMainService {
   constructor(private http: HttpClient) { }
 
-  getGraphData():Observable<any>{
-    return this.http.get<any>(environment.dataGraphUrl);
+  getGraphData(type):Observable<any>{
+    console.log(environment.dataGraphUrl+type+"\"'")
+    return this.http.get<any>(environment.dataGraphUrl+type+"\"'");
   }
 
   getCustomerAssignData(id : number) : Observable<CustomerDashBoard[]> {

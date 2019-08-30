@@ -5,6 +5,7 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div fxLayout="row" fxLayotGap="5px" [style.height.%]="100">
+    <div *ngIf=" sensorType == 'temperature'">
     <div class="graph" fxFlex="calc(60% - 5px)" [style.height.%]="100">
       <ngx-charts-line-chart [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
@@ -15,6 +16,7 @@
         [yScaleMax]="yScaleMax" (select)="onSelect($event)">
       </ngx-charts-line-chart>
     </div>
+    
     <div fxFlex="40">
       <div class="ui-g-12 ui-md-4">
         <span>Start Time</span>
@@ -25,6 +27,7 @@
         <span class="calendar">End Time</span>
         <p-calendar class="calendar" [(ngModel)]="xScaleMax" [inline]="true" [showTime]="true"></p-calendar>
       </div>
+    </div>
     </div>
   </div>
 </mat-expansion-panel>
