@@ -37,24 +37,24 @@ export class GraphComponent implements OnChanges {
   xScaleMax = this.maxDate;
   xScaleMin = this.minDate;
   //temperature y scale
-  yScaleMin = 14;
-  yScaleMax = 28;
-  //humidity y scale
-  yScaleMinHumidity = 50;
-  yScaleMaxHumidity = 100;
+  yScaleMin = null;
+  // yScaleMax = 28;
+  // //humidity y scale
+  // yScaleMinHumidity = 50;
+  // yScaleMaxHumidity = 100;
 
   //alcohol y scale
-  yScaleMinAlcohol = 1;
-  yScaleMaxAlcohol = 5;
+  yScaleMinAlcohol = null;
+  // yScaleMaxAlcohol = 5;
 
   referenceLines = [
     {
       name: "minimum",
-      value: 15
+      value: -5
     },
     {
       name: "maximum",
-      value: 25
+      value: 10
     }
   ]
   //reference lines
@@ -66,6 +66,17 @@ export class GraphComponent implements OnChanges {
     {
       name: "maximum",
       value: 80
+    }
+  ]
+  //reference line
+  referenceLinesAlcohol = [
+    {
+      name: "minimum",
+      value: 1
+    },
+    {
+      name: "maximun",
+      value: 2
     }
   ]
   showRefLines = true;
@@ -120,5 +131,11 @@ export class GraphComponent implements OnChanges {
 
   }
 
+  setYMinTemperature(){
+    this.yScaleMin = -5
+  }
+  setYMinAlcohol(){
+    this.yScaleMinAlcohol = 1
+  }
 }
 

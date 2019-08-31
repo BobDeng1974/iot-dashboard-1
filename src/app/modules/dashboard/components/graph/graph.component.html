@@ -13,11 +13,13 @@
         [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLines"
         [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
         [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMin"
-        [yScaleMax]="yScaleMax" (select)="onSelect($event)">
+         (select)="onSelect($event)">
       </ngx-charts-line-chart>
     </div>
     
     <div fxFlex="30">
+      <div fxLayout="column" [style.height.%]="100">
+      <div fxFlex="30">
       <div class="ui-g-12 ui-md-4">
         <span>Start Time</span>
         <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
@@ -26,6 +28,11 @@
       <div class="ui-g-12 ui-md-4">
         <span class="calendar">End Time</span>
         <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
+      </div>
+      </div>
+      <div fxFlex="70">
+        <button mat-raised-button (click)="setYMinTemperature()">Full View</button>
+      </div>
       </div>
     </div>
     </div>
@@ -36,11 +43,12 @@
         [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
         [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesHumidity"
         [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
-        [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMinHumidity"
-        [yScaleMax]="yScaleMaxHumidity" (select)="onSelect($event)">
+        [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" (select)="onSelect($event)">
         </ngx-charts-line-chart>
       </div>
       <div fxFlex="30">
+        <div fxLayout="column" [style.height.%]="100">
+        <div fxFlex="30">
         <div class="ui-g-12 ui-md-4">
           <span>Start Time</span>
           <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
@@ -50,6 +58,11 @@
           <span class="calendar">End Time</span>
           <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
         </div>
+      </div>
+      <div fxFlex="70">
+        <button mat-raised-button (click)="setYMinHumid()">Full View</button>
+      </div>
+      </div>
     </div>
     </div>
     <div *ngIf=" sensorType == 'alcohol'">
@@ -57,13 +70,15 @@
           <ngx-charts-line-chart [scheme]="colorScheme3" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
           [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
           [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesHumidity"
+          [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesAlcohol"
           [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
-          [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMinAlcohol"
-          [yScaleMax]="yScaleMaxAlcohol" (select)="onSelect($event)">
+          [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMinAlcohol" 
+           (select)="onSelect($event)">
           </ngx-charts-line-chart>
       </div>
       <div fxFlex="30">
+        <div fxLayout="column" [style.height.%]="100">
+        <div fxFlex=30>
         <div class="ui-g-12 ui-md-4">
           <span>Start Time</span>
           <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
@@ -71,6 +86,11 @@
         <div class="ui-g-12 ui-md-4">
           <span class="calendar">End Time</span>
           <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
+        </div>
+        </div>
+        <div fxFlex=70>
+          <button mat-raised-button (click)="setYMinAlcohol()">Full View</button>
+        </div>
         </div>
       </div>
     </div>
