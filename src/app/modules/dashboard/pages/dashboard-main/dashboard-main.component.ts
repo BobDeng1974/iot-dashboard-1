@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { CustomerDashBoard } from '../../model/customerDashboard';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -22,16 +23,19 @@ export class DashboardMainComponent implements OnInit {
   sensorType: string;
   deviceMac: string;
 
-  constructor(private dashbordmainService : DashbordMainService) { }
+  constructor(private dashbordmainService : DashbordMainService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.dashbordmainService.getCustomerAssignData(15).subscribe(
       (data) => {
         console.log(data);
         this.customerAssignData = data;
+        this.spinner.hide()
       },
       (error) => {
         console.error(error);
+        this.spinner.hide()
       }
     );
   }
@@ -43,14 +47,16 @@ export class DashboardMainComponent implements OnInit {
   getDeviceId(id : number) {
     this.dashbordmainService.getSensorData(id).subscribe(
       (data) => {
+        this.spinner.show()
         console.log(data[0].sensors);
         this.sensorValue = data[0].sensors;
         this.deviceName = data[0].device_name;
-
+        this.spinner.hide()
         //console.log("sensor value form main:  "+this.sensorValue);
       },
       (error) => {
         console.error(error);
+        this.spinner.hide()
       }
     );
     // console.log('from dashboard main ' + id)
