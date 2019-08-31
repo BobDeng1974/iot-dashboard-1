@@ -84,7 +84,8 @@ export class GraphComponent implements OnChanges {
   }
   ngOnChanges() {
 
-    interval(20000)
+    if (this.sensorType) {
+      interval(20000)
       .pipe(
         startWith(0),
         switchMap(() => this.dashBoardService.getGraphData(this.sensorType))
@@ -110,7 +111,8 @@ export class GraphComponent implements OnChanges {
         (error) => {
           console.log(error);
         }
-      )
+      ) 
+    }
   }
 
   onSelect(event) {

@@ -50,11 +50,17 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     console.log("this is form customer branch device component:  "+this.sensordata+"  Device Name:  "+this.deviceName+"  DeviceData  "+this.deviceData);
   }
 
-  getSensorId(sensorType : string) {
-    this.type = sensorType;
-    this.type = this.type.toLowerCase();
-    this.sensorType.emit(sensorType);
-    this.deviceMac.emit(this.deviceData.device_mac);
+  getSensorId(value, sensorType : string) {
+    console.log(value)
+    if (value.checked) {
+      this.type = sensorType;
+      this.type = this.type.toLowerCase();
+      this.sensorType.emit(sensorType);
+      this.deviceMac.emit(this.deviceData.device_mac);
+    } else {
+      this.sensorType.emit(null);
+    }
+    
   }
   change(value){
     console.log(value)
