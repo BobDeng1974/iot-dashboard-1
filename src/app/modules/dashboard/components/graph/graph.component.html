@@ -5,7 +5,8 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div fxLayout="row" fxLayotGap="5px" [style.height.%]="100">
-    <div class="graph" fxFlex="calc(60% - 5px)" [style.height.%]="100">
+    <div *ngIf=" sensorType == 'temperature'">
+    <div class="graph" fxFlex="calc(70% - 5px)" [style.height.%]="100">
       <ngx-charts-line-chart [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
         [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
@@ -15,15 +16,62 @@
         [yScaleMax]="yScaleMax" (select)="onSelect($event)">
       </ngx-charts-line-chart>
     </div>
-    <div fxFlex="40">
+    
+    <div fxFlex="30">
       <div class="ui-g-12 ui-md-4">
         <span>Start Time</span>
-        <p-calendar [(ngModel)]="xScaleMin" [inline]="true" [showTime]="true"></p-calendar>
+        <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
       </div>
 
       <div class="ui-g-12 ui-md-4">
         <span class="calendar">End Time</span>
-        <p-calendar class="calendar" [(ngModel)]="xScaleMax" [inline]="true" [showTime]="true"></p-calendar>
+        <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="sensorType == 'humidity'">
+      <div class="graph" fxFlex="calc(70% - 5px)" [style.height.%]="100">
+        <ngx-charts-line-chart [scheme]="colorScheme2" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
+        [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
+        [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesHumidity"
+        [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
+        [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMinHumidity"
+        [yScaleMax]="yScaleMaxHumidity" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </div>
+      <div fxFlex="30">
+        <div class="ui-g-12 ui-md-4">
+          <span>Start Time</span>
+          <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+          <span class="calendar">End Time</span>
+          <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
+        </div>
+    </div>
+    </div>
+    <div *ngIf=" sensorType == 'alcohol'">
+      <div class="graph" fxFlex="calc(70% - 5px)" [style.height.%]="100">
+          <ngx-charts-line-chart [scheme]="colorScheme3" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
+          [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
+          [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesHumidity"
+          [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
+          [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMinAlcohol"
+          [yScaleMax]="yScaleMaxAlcohol" (select)="onSelect($event)">
+          </ngx-charts-line-chart>
+      </div>
+      <div fxFlex="30">
+        <div class="ui-g-12 ui-md-4">
+          <span>Start Time</span>
+          <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <span class="calendar">End Time</span>
+          <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
+        </div>
       </div>
     </div>
   </div>

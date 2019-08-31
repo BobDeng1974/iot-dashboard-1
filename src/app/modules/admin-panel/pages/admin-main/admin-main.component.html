@@ -6,9 +6,9 @@
             </div>
             <div class="main-content-flex" [@mainContentState]="sidenavState">
                 <div class="container">
-                    <mat-tab-group class="wide" [style.height.%]="100" [selectedIndex]="selectedTab">
+                    <mat-tab-group class="wide" [style.height.%]="100" [selectedIndex]="selectedTab" (selectedTabChange)="TabSelectionChange($event)">
                         <mat-tab label="CUSTOMER">
-                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 0">
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <app-customer-table (ButtonClick)="openPopup($event)" [customerData]="customerData" (customerDetails)="getCustomerDetails($event)"></app-customer-table>
                                 </div>
@@ -25,7 +25,7 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="VENDOR">
-                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 1">
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <app-vendor-table (ButtonClicked)="openPopup($event)" [vendorData]="vendorData" (vendorDetails)="getVendorDetails($event)"></app-vendor-table>
                                 </div>
@@ -35,7 +35,7 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="CUSTOMER ASSIGNMENT">
-                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 2">
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <app-customer-assign (buttonClicked)="openPopup($event)" (customer)="getCustomerName($event)"></app-customer-assign>
                                 </div>
@@ -45,7 +45,7 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="DEVICE REGISTRY">
-                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100">
+                            <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 3">
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <app-device-table [deviceData]="deviceData" (buttonClicked)="openPopup($event)" (deviceId2)="getDeviceID($event)" (deviceId)="getDeviceID($event)" (deviceName)="getDeviceName($event)" (deviceName2)="getDeviceName($event)" (deviceAssign)="toDeviceAssign($event)" (deviceDetails)="getDeviceDetails($event)"></app-device-table>
                                 </div>
@@ -64,20 +64,25 @@
                         </mat-tab>
                         <mat-tab label="DEVICE MANAGEMENT">
                             <div class="content">
-                                <div>
-                                    <app-device-management [deviceHealth]="deviceHealthData"></app-device-management>
+                                <div *ngIf="selectedTabIndex == 4">
+                                    <app-device-management></app-device-management>
                                 </div>
                             </div>
                         </mat-tab>
-                        <mat-tab>
-                            <app-graph></app-graph>
-                        </mat-tab>
+                        <!-- <mat-tab>
+                            <div *ngIf="selectedTabIndex == 5">
+                                <app-graph></app-graph>
+                            </div>
+                        </mat-tab> -->
                     </mat-tab-group>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<button mat-flat-button color="warn" class='dashboardbtn' (click)="VievModal()">Go To DashBoard</button>
 <ngx-spinner color="rgba(223,12,95,0.9)" bdOpacity="0.9" type="timer">
     <p style="color:#00CED1"> Loading... </p>
 </ngx-spinner>
+

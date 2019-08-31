@@ -3,7 +3,41 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+   createCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/create/",
+   updateCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/update/",
+   getAllCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/getall/?format=json",
+   getACustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/getacustomer/",
+   getdomainUrl : "http://35.200.162.115:8006/qiidomain/get/",
+  //////////////////////////////////////////////////////////////////////////
+   getCustomerBranchUrl : "http://34.93.22.112:8000/api/qubematics/customer/getbranch/",
+   getCustomerandIdUrl : "http://34.93.22.112:8000/api/qubematics/customer/getcustomerandid/",
+  //////////////////////////////////////////////////////////////////////////
+   createDeviceUrl : "http://34.93.22.112:8002/api/qubematics/device/create/",
+   updateDeviceUrl : "http://34.93.22.112:8002/api/qubematics/device/update/",
+   getAllDeviceUrl : "http://34.93.22.112:8002/api/qubematics/device/getall/?format=json",
+   getAssignInfoUrl : "http://34.93.22.112:8002/api/qubematics/device/assignInfo/",
+   deviceAliveUrl : "http://34.93.22.112:8002/api/qubematics/device/alive/",
+   assignDevice : "http://34.93.22.112:8002/api/qubematics/device/assign/",
+   getDeviceHealthUrl : "http://34.93.22.112:8002/api/qubematics/device/getdevicehealth/?format=json",
+   updateFreqUrl : "http://34.93.22.112:8002/api/qubematics/device/updatefreq/",
+   getADevice :  "http://34.93.22.112:8002/api/qubematics/device/get/",
+
+   getAllVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/getall/?format=json",
+   postVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/create/?format=json",
+   vendorUpdateUrl : "http://34.93.22.112:8001/api/qubematics/vendor/update/",
+   getAvendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/getavendor/",
+   getVendorNameIdUrl : "http://34.93.22.112:8001/api/qubematics/vendor/vendornameid/?format=json",
+   createVendorManage : "http://34.93.22.112:8001/api/qubematics/vendor/vendormanage/",
+   assignMentHistory : "http://34.93.22.112:8001/api/qubematics/vendor/gethistory/",
+   customerManageUrl : "http://34.93.22.112:8001/api/qubematics/vendor/customerassign/",
+   //graphUrl : "http://127.22.112:8086/query?db=sensor&q=select*from",
+   dataGraphUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=select * from DeviceSensorReading where sensor_type='\"",
+   //login url
+   postLoginUrl : "http://34.93.22.112:8003/api/qubematics/authuser/",
+
+   customerdeviceAssignUrl : "http://34.93.22.112:8002/api/qubematics/device/deviceassign/",
 };
 
 /*

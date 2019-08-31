@@ -49,11 +49,12 @@ import { DateTimeRendererComponent } from '../shared/components/date-time-render
 import { GraphComponent } from './components/graph/graph.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ViewVendorCustomerComponent } from './components/view-vendor-customer/view-vendor-customer.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, CustomerAssignFormComponent, AddSensorFormComponent, AssignmentDetialComponent, DeviceCustomerAssignComponent, DeviceMonitorDetailsComponent, CustomerBranchComponent, AssignmentDetailsComponent, GraphComponent, SidenavComponent, FooterComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, CustomerAssignFormComponent, AddSensorFormComponent, AssignmentDetialComponent, DeviceCustomerAssignComponent, DeviceMonitorDetailsComponent, CustomerBranchComponent, AssignmentDetailsComponent, GraphComponent, SidenavComponent, FooterComponent, ViewVendorCustomerComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -61,6 +62,6 @@ import { FooterComponent } from './components/footer/footer.component';
     MaterialModule,
     AgGridModule.withComponents([NullValueComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, NumericEditorComponent, DateTimeRendererComponent])
   ],
-  entryComponents : [ AddVendorFormComponent, MatErrorComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent]
+  entryComponents : [ AddVendorFormComponent, MatErrorComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignDialogComponent, AddDeviceComponent, SuccessSnackberComponent, ErrorSnackberComponent, AddSensorFormComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceCustomerAssignComponent, ViewVendorCustomerComponent ]
 })
 export class AdminPanelModule { }

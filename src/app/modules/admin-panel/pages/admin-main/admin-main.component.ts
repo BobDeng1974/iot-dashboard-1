@@ -22,9 +22,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AddSensorFormComponent } from '../../components/add-sensor-form/add-sensor-form.component';
 import { Vendor } from '../../model/vendormodel';
 import { DeviceCustomerAssignComponent } from '../../components/device-customer-assign/device-customer-assign.component';
-import { from } from 'rxjs';
+import { from, interval } from 'rxjs';
 import { error } from 'util';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { startWith, switchMap } from 'rxjs/operators';
+import { ViewVendorCustomerComponent } from '../../components/view-vendor-customer/view-vendor-customer.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -58,6 +60,8 @@ export class AdminMainComponent implements OnInit {
 
   //  togol side nav 
   sidenavState: string = 'open';
+
+  selectedTabIndex : number = 0;
   //open add vendor in popup
   addvendordialog :  MatDialogRef<AddVendorFormComponent>;
 
@@ -101,12 +105,15 @@ export class AdminMainComponent implements OnInit {
   customerassigndialog : MatDialogRef<CustomerAssignDialogComponent>;
 
   //device assign dialog
-  deviceAssignDialog : MatDialogRef<AddDeviceComponent>
+  deviceAssignDialog : MatDialogRef<AddDeviceComponent>;
 
   //sensor assign dialog
-  sensorAssignDialog: MatDialogRef<AddSensorFormComponent>
+  sensorAssignDialog: MatDialogRef<AddSensorFormComponent>;
   //assign a device to customer form
-  deviceCustomerDialog : MatDialogRef<DeviceCustomerAssignComponent>
+  deviceCustomerDialog : MatDialogRef<DeviceCustomerAssignComponent>;
+
+  // view all customer and vendor after click go to dashboard button
+  viewVendorCustomer : MatDialogRef<ViewVendorCustomerComponent>;
 
   //customer name and id object
   customerNameandId: Customer;
@@ -257,18 +264,17 @@ export class AdminMainComponent implements OnInit {
         this.spinner.hide();
       }
     );
-
-    this.adminpanelService.getDeviceHealth().subscribe(
-      (data) => {
-        console.log(data)
-        this.deviceHealthData = data.reverse()
-        this.spinner.hide()
-      },
-      (error) => {
-        console.log(error)
-        this.spinner.hide()
-      }
-    );
+    // this.adminpanelService.getDeviceHealth().subscribe(
+    //   (data) => {
+    //     console.log(data)
+    //     this.deviceHealthData = data.reverse()
+    //     this.spinner.hide()
+    //   },
+    //   (error) => {
+    //     console.log(error)
+    //     this.spinner.hide()
+    //   }
+    // );
   }
 
   getCustomerData(Id : number) {
@@ -955,5 +961,13 @@ export class AdminMainComponent implements OnInit {
 
   shrinkSidenav(){
     this.sidenavState = this.sidenavState === 'open' ? 'shrunk' : 'open';
+  }
+
+  TabSelectionChange(value: any) {
+    this.selectedTabIndex = value.index;
+  }
+
+  VievModal() {
+    this.viewVendorCustomer = this.dialog.open(ViewVendorCustomerComponent);
   }
 }

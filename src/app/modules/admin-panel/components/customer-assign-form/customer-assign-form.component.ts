@@ -11,7 +11,7 @@ import { DateTimeRendererComponent } from 'src/app/modules/shared/components/dat
 })
 export class CustomerAssignFormComponent implements OnInit, OnChanges{
 
-  private customerColumnDefs;
+  public customerColumnDefs;
 
   private customerGridApi;
   private customerGridColumnApi;

@@ -74,4 +74,17 @@ table {
     background-color:rgb(207, 241, 247);
 }
 
+// .mat-row:nth-child(odd) .mat-icon{
+//     color: #FF185E
+// }
+
+.mat-row .mat-icon{
+    color: orange;
+    font-size: 40px;
+}
+
+.mat-row .notok{
+    color: black;
+    font-size: 40px;
+}
 
