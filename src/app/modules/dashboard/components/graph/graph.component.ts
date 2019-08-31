@@ -19,8 +19,8 @@ export class GraphComponent implements OnChanges {
   single: any[];
   multi: any[];
   view: any[] = [900, 200];
-  minDate = new Date(2019, 7, 27, 20);
-  maxDate = new Date(2019, 7, 27, 21);
+  minDate = new Date(); //2019, 7, 27, 20
+  maxDate = new Date(); //2019, 7, 27, 21
   // options
   showXAxis = true;
   showYAxis = true;
@@ -40,7 +40,7 @@ export class GraphComponent implements OnChanges {
   yScaleMin = null;
   // yScaleMax = 28;
   // //humidity y scale
-  // yScaleMinHumidity = 50;
+  yScaleMinHumidity = null;
   // yScaleMaxHumidity = 100;
 
   //alcohol y scale
@@ -61,7 +61,7 @@ export class GraphComponent implements OnChanges {
   referenceLinesHumidity = [
     {
       name: "minimum",
-      value: 60
+      value: 40
     },
     {
       name: "maximum",
@@ -132,10 +132,13 @@ export class GraphComponent implements OnChanges {
   }
 
   setYMinTemperature(){
-    this.yScaleMin = -5
+    this.yScaleMin = -5;
   }
   setYMinAlcohol(){
-    this.yScaleMinAlcohol = 1
+    this.yScaleMinAlcohol = 1;
+  }
+  setYMinHumid(){
+    this.yScaleMinHumidity = 30;
   }
 }
 

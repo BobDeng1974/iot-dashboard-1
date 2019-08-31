@@ -59,6 +59,8 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
       this.deviceMac.emit(this.deviceData.device_mac);
     } else {
       this.sensorType.emit(null);
+      this.temp =  "";
+      this.time = null;
     }
     
   }
