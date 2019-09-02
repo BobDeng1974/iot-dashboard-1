@@ -112,7 +112,7 @@ export interface DeviceMonitor{
     device_health ?: string;
     device_frequency_updated_on ?:Date;
     device_frequency_updated_by ?:string;
-    device_last_heartbeat ?: string; 
+    device_last_heartbeat ?: Date; 
     device_activated ?: boolean;
 }
 export interface Sensor {

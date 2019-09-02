@@ -57,6 +57,15 @@ export class DeviceManagementComponent implements OnInit {
         (data) => {
           console.log(1)
           this.deviceHealth = data
+          this.deviceHealth.forEach( element => {
+            console.log(element.device_last_heartbeat)
+            if (element.device_last_heartbeat != null) {
+              let present_date = new Date();
+              let diff_date: number;
+              diff_date = present_date.getTime() - new Date(element.device_last_heartbeat).getTime();
+              console.log(diff_date)
+            }
+          })
         },
         (error) => {
           console.log(error)

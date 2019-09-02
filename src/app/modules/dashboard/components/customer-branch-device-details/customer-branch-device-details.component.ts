@@ -45,7 +45,6 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
         this.alcohol = this.CurrentReading.value.toString();
         this.time = this.CurrentReading.name;
       }
-      
     }
 
     console.log("this is form customer branch device component:  "+this.sensordata+"  Device Name:  "+this.deviceName+"  DeviceData  "+this.deviceData);
