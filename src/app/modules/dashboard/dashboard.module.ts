@@ -8,16 +8,18 @@ import { CustomerBranchDetailsComponent } from './components/customer-branch-det
 import { CustomerBranchDeviceDetailsComponent } from './components/customer-branch-device-details/customer-branch-device-details.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { VideoWindowComponent } from './components/video-window/video-window.component';
 
 
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent],
   imports: [
     CommonModule,
     NgxChartsModule,
     DashboardRoutingModule,
     MaterialModule,
     SharedModule
-  ]
+  ],
+  entryComponents: [VideoWindowComponent]
 })
 export class DashboardModule { }

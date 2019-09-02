@@ -8,7 +8,7 @@
         <div>
             <div class="main-content" fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="start"
                 style="padding-left: 2%; padding-top: 2%;">
-                <div fxFlex="100%">
+                <div fxFlex="70%">
                     <div fxFlex='100' style="font-weight: bold;">Device Name : <b>{{deviceName}}</b></div><br>
                 </div>
                 <div *ngFor="let sensor of sensordata" style="padding-right: 20px;">
@@ -26,114 +26,11 @@
                         <br>
                         <br>
                     </div>
-                    <!-- <div fxFlex="100%" style="font-size:85%;">
-                        <span fxFlex='50' ms3DisplayError>Sensor Name</span>
-                        <span fxFlex='2'>:</span>
-                        <span fxFlex='48'><b>{{sensor.sensor_name}}</b></span>
-                    </div>
-                    <br>
-                    <div ms3DisplayError fxFlex="100%" style="font-size:85%;">
-                        <span fxFlex='50'>Type</span>
-                        <span fxFlex='2'>:</span>
-                        <span fxFlex='48'><b>{{sensor.sensor_type}}</b></span>
-                    </div>
-                    <br>
-                    <div fxFlex="100%" style="font-size:85%;">
-                        <span fxFlex='50'>Reading</span>
-                        <span fxFlex='2'>:</span>
-                        <span fxFlex='48'><b>{{temp | tempPipe}}</b></span>
-                    </div>
-                    <br>
-                    <div fxFlex="100%" style="font-size:85%;">
-                        <span fxFlex='50'>Timestamp</span>
-                        <span fxFlex='2'>:</span>
-                        <span fxFlex='48'><b>{{ time | date }}</b></span>
-                    </div>
-                    <br> -->
+                </div>
+                <div fxFlex="30">
+                    <button mat-icon-button (click)="openVideo()"><mat-icon class="video">videocam</mat-icon></button>
                 </div>
             </div>
         </div>
-        <!-- <div *ngIf="OperationMode">
-            <form [formGroup]="OrganizationForm" (ngSubmit)="onSubmit(OrganizationForm)">
-                <div class="main-content" fxLayout="column">
-                    <div fxFlex="100%">
-                        <mat-form-field class="form-field">
-                            <mat-label>Organization Level</mat-label>
-                            <mat-select formControlName="org_level">
-                                <mat-option *ngFor="let level of Org_Levels" [value]="level.domain_code">
-                                    {{level.domain_value}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="100%">
-                        <mat-form-field class="form-field">
-                            <mat-label>Company Code</mat-label>
-                            <input matInput placeholder="Type your Company Code" formControlName="org_code">
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="100%">
-                        <mat-form-field class="form-field">
-                            <mat-label>Company Name</mat-label>
-                            <input matInput #org_name placeholder="Type your Company Name" formControlName="org_name">
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="100%">
-                        <mat-form-field class="form-field">
-                            <mat-label>Country Code</mat-label>
-                            <mat-select placeholder="Choose your Country Code" formControlName="org_country">
-                                <mat-option *ngFor="let code of country_codes"
-                                    [value]="code.name + ' - ' + code.phonecode">
-                                    {{code.name}} - {{code.phonecode}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="100%">
-                        <mat-form-field class="form-field">
-                            <mat-label>Default Currency</mat-label>
-                            <mat-select placeholder="Choose your Default Currency" formControlName="org_currency">
-                                <mat-option *ngFor="let currency of default_currencies" [value]="currency.currency">
-                                    {{currency.code}} - {{currency.currency}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="100%">
-                        <mat-form-field class="form-field">
-                            <mat-label>Default Language</mat-label>
-                            <mat-select placeholder="Choose your Default Language" formControlName="org_language">
-                                <mat-option *ngFor="let lang of default_languages" [value]="lang.name">
-                                    {{lang.name}} - {{lang.iso_639_1}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-
-
-                </div>
-            </form>
-        </div> -->
     </div>
-    <!-- <mat-action-row class="action-row-content">
-        <span class="example-spacer"></span>
-        <button mat-icon-button *ngIf="!OperationMode" class="add-button" [disabled]="CompanyData.org_id === 0"
-            (click)="ChangeMode()">
-            <mat-icon class="mat-icons-round md-dark md-inactive md-24">
-                edit
-            </mat-icon>
-        </button> &nbsp;
-        <button mat-icon-button *ngIf="OperationMode" type="submit"
-            [disabled]="CompanyData.org_id === 0 || OrganizationForm.invalid" class="add-button" (click)="submitForm()">
-            <mat-icon class="mat-icons-round md-cyanV md-24">
-                check_circle
-            </mat-icon>
-        </button> &nbsp;
-        <button mat-icon-button *ngIf="OperationMode" type="button" [disabled]="CompanyData.org_id === 0"
-            class="add-button" (click)="ChangeMode()">
-            <mat-icon class="mat-icons-round md-pinkV md-24">
-                cancel
-            </mat-icon>
-        </button>
-    </mat-action-row> -->
 </mat-expansion-panel>

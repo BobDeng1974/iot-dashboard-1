@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { CustomerDashBoard } from '../../model/customerDashboard';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { VideoWindowComponent } from '../../components/video-window/video-window.component';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -23,7 +25,10 @@ export class DashboardMainComponent implements OnInit {
   sensorType: string;
   deviceMac: string;
 
-  constructor(private dashbordmainService : DashbordMainService, private spinner: NgxSpinnerService) { }
+  //dialogRef
+  videoDialogRef: MatDialogRef<VideoWindowComponent>;
+
+  constructor(private dashbordmainService : DashbordMainService, private spinner: NgxSpinnerService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.spinner.show();
@@ -74,6 +79,13 @@ export class DashboardMainComponent implements OnInit {
   getMac(value){
     console.log(value)
     this.deviceMac = value
+  }
+  openVideo(value: number){
+    switch(value) {
+      case 1:
+        this.videoDialogRef = this.dialog.open(VideoWindowComponent);
+      break;
+    }
   }
 }
 

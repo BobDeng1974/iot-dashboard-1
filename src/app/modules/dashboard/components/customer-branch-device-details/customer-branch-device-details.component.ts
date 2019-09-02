@@ -16,6 +16,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   @Input() deviceData : CustomerDashBoard;
   @Output() sensorType = new EventEmitter<string>();
   @Output() deviceMac = new EventEmitter<string>();
+  @Output() videoClicked = new EventEmitter<number>();
   temp: string = "";
   humidity: string = "";
   alcohol: string = "";
@@ -66,5 +67,8 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
   change(value){
     console.log(value)
+  }
+  openVideo(){
+    this.videoClicked.emit(1);
   }
 }
