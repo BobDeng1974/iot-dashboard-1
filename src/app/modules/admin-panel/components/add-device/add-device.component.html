@@ -4,47 +4,20 @@
 <div mat-dialog-content>
     <form [formGroup]="adddeviceForm">
         <div class="form-container">
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="5px">
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="35px">
+                <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Device Name</mat-label>
                         <input matInput placeholder="Type Device Name" formControlName="device_name">
                     </mat-form-field>
                 </div>
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
+                <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Device Mac Address</mat-label>
                         <input matInput placeholder="Type Deice MAC Address Here" formControlName="device_mac">
                     </mat-form-field>
                 </div>
             </div>
-            <!-- <div mat-dialog-actions></div> -->
-            <!-- <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="5px">
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
-                    <mat-form-field class="form-field">
-                        <mat-label>Sensor Name</mat-label>
-                        <input matInput placeholder="Type sensor Name Here" formControlName="sensor_name">
-                    </mat-form-field>
-                </div>
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
-                    <mat-form-field class="form-field">
-                        <mat-label>Sensor Type</mat-label>
-                        <input matInput placeholder="Type Sensor Type" formControlName="sensor_type">
-                    </mat-form-field>
-                </div>
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
-                    <mat-form-field class="form-field">
-                        <mat-label>Sensor Threshold Min</mat-label>
-                        <input matInput placeholder="Type Sensor Threshold Min" formControlName="sensor_threshold_min">
-                    </mat-form-field>
-                </div>
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
-                    <mat-form-field class="form-field">
-                        <mat-label>Sensor Threshold Max</mat-label>
-                        <input matInput placeholder="Type Sensor Threshold Max" formControlName="sensor_threshold_max">
-                    </mat-form-field>
-                </div>
-            </div> -->
             <div mat-dialog-actions mat-elevation-z6>
                 <button mat-stroked-button type="button" class="cancelbtn" (click)="closeDialog()">Cancel</button>
                 <span class="example-spacer"></span>

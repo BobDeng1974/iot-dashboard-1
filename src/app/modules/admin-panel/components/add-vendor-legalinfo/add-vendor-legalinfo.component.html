@@ -4,8 +4,8 @@
 <div mat-dialog-content>
     <form [formGroup]="LegalInfoForm" (ngSubmit)="onSubmit(LegalInfoForm)">
         <div class="form-container">
-            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="5px">
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="35px">
+                <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Legal Info Type</mat-label>
                         <mat-select placeholder="Choose your Legal Info Type" formControlName="legalinfo_type">
@@ -15,7 +15,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div fxFlex="0 1 calc(33.3% - 5px)" fxFlex.lt-sm="100%">
+                <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Value</mat-label>
                         <input matInput placeholder="Type your Legal Info Value" formControlName="legalinfo_value">
