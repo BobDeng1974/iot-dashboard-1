@@ -175,7 +175,7 @@ export class AdminMainComponent implements OnInit {
     this.spinner.show();
     this.adminpanelService.getAllCustomer().subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.customerData = data.reverse();
         this.adminpanelService.getAddressType().subscribe(
           (data) => {
@@ -186,11 +186,11 @@ export class AdminMainComponent implements OnInit {
                 this.adminpanelService.getLegalInfoType().subscribe(
                   (data) => {
                     this.LegalinfoType = data;
-                    console.log("legal info for grid  "+data);
+                    // console.log("legal info for grid  "+data);
                     this.adminpanelService.getCustomerType().subscribe(
                       (data) => {
                         this.customerType = data;
-                        console.log("customer type form main  "+data);
+                        // console.log("customer type form main  "+data);
                       },
                       (error) => {
                         console.error(error);
@@ -244,7 +244,7 @@ export class AdminMainComponent implements OnInit {
 
     this.adminpanelService.getAllDevice().subscribe(
       (data) => {
-        console.log(data)
+        // console.log(data)
         this.deviceData = data.reverse()
       },
       (error) => {
@@ -255,9 +255,11 @@ export class AdminMainComponent implements OnInit {
     this.adminpanelService.getAllVendor().subscribe(
       (data) => {
         this.vendorData = data.reverse();
-        console.log(data);
-        
-        this.spinner.hide();
+        // console.log(data);
+        setTimeout(()=>{
+          this.spinner.hide()
+        }, 5000);
+        // this.spinner.hide();
       },
       (error) => {
         console.error(error);
@@ -282,7 +284,7 @@ export class AdminMainComponent implements OnInit {
     this.spinner.show();
     this.adminpanelService.getACustomer(Id).subscribe(
       (data) => {
-        console.log("get a customer "+ data);
+        // console.log("get a customer "+ data);
         this.customer = data;
         this.spinner.hide();
       },
@@ -294,14 +296,14 @@ export class AdminMainComponent implements OnInit {
   }
 
   getVendorData(Id : number) {
-    console.log('from get vemdor data ' + Id);
+    // console.log('from get vemdor data ' + Id);
     this.adminpanelService.getAVendorDetails(Id).subscribe(
       (data) => {
         this.vendor = data;
-        console.log("Data form get vendor data function:  "+data);
+        // console.log("Data form get vendor data function:  "+data);
       },
       (error) => {
-        console.error(error);
+        // console.error(error);
       }
     ); 
   }
@@ -309,7 +311,7 @@ export class AdminMainComponent implements OnInit {
   getSensorData(Id : number) {
     this.adminpanelService.getAdevice(Id).subscribe(
       (data) => {
-        console.log("Form get sensor data method:  "+data);
+        // console.log("Form get sensor data method:  "+data);
         this.deviceDetail = data[0];
       },
       (error) => {
@@ -839,12 +841,12 @@ export class AdminMainComponent implements OnInit {
 
   getDeviceID(value){
     this.selectedTab = 5;
-    console.log(value)
+    // console.log(value)
     this.deviceId = value
   }
 
   getDeviceName(value){
-    console.log(value)
+    // console.log(value)
     this.deviceName = value
   }
 
@@ -855,7 +857,7 @@ export class AdminMainComponent implements OnInit {
 
   getDeviceDetails(value){
     this.deviceDetail = value
-    console.log(value)
+    // console.log(value)
   }
   getCustomerDetails(value : Customer) {
     this.customer = value;

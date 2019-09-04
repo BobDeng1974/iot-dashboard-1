@@ -19,7 +19,10 @@ export class VendorMainComponent implements OnInit {
       (data) => {
         console.log(data);
         this.customer = data;
-        this.spinner.hide();
+        setTimeout(()=>{
+          this.spinner.hide()
+        }, 3000);
+        // this.spinner.hide();
       },
       (error) => {
         console.log(error);

@@ -36,7 +36,10 @@ export class DashboardMainComponent implements OnInit {
       (data) => {
         console.log(data);
         this.customerAssignData = data;
-        this.spinner.hide()
+        setTimeout(()=> {
+          this.spinner.hide()
+        }, 3000);
+        // this.spinner.hide()
       },
       (error) => {
         console.error(error);
@@ -56,7 +59,9 @@ export class DashboardMainComponent implements OnInit {
         console.log(data[0].sensors);
         this.sensorValue = data[0].sensors;
         this.deviceName = data[0].device_name;
-        this.spinner.hide()
+        setTimeout(()=>{
+          this.spinner.hide();
+        }, 3000);
         //console.log("sensor value form main:  "+this.sensorValue);
       },
       (error) => {
