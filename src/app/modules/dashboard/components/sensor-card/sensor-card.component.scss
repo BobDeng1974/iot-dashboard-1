@@ -1,0 +1,57 @@
+.temp_sensor {
+    background: url("../../../../../assets/images/temp_sensor_logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+}
+
+.ph_sensor {   
+    background: url("../../../../../assets/images/Group_67.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.humidity_sensor {
+    background: url("../../../../../assets/images/Group_65.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.alcohol_sensor {
+    
+    background: url("../../../../../assets/images/Group_66.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.temp_logo{
+    background: url('../../../../../assets/images/TemperatureSensor.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+    width: auto;   
+}
+
+.image_container{
+    min-height: 10vh;
+}
+
+.mat-card{
+    padding: 0px !important;
+}
+
+.toggle-style {
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-top: 5px;
+}
+
+.sensor-style {
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-left: 16px;
+}

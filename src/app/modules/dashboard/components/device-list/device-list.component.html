@@ -1,18 +1,15 @@
 <mat-expansion-panel disabled expanded class="customer-panel">
     <mat-expansion-panel-header class="panel-header">
         <mat-panel-title class="panel-title">
-            Branches
+            Device List
         </mat-panel-title>
         <mat-panel-description>
             <div class="search-bar-container">
                 <mat-icon class="search-icon">search</mat-icon>
                 <input class="search-bar" autocomplete="off" matInput (keyup)="applyFilter($event.target.value)"
-                    placeholder="Search Branch">
+                    placeholder="Search Device">
             </div>
             <span class="example-spacer"></span>
-            <!-- <div class="download-icon">
-                <mat-icon>get_app</mat-icon>
-            </div> -->
         </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="main-content">
@@ -22,39 +19,35 @@
                     Selected
                 </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-radio-button value="element.device_id" [checked]="element.device_id === SelectedBranch.device_id"
-                        (click)="SelectBranch(element,element.device_id)">
+                    <mat-radio-button value="element.device_id"
+                        [checked]="element.device_id === SelectedDevice.device_id"
+                        (click)="SelectDevice(element,element.device_id)">
                     </mat-radio-button>
                 </td>
             </ng-container>
-            <ng-container matColumnDef="customer_branch_name">
-                <th mat-header-cell *matHeaderCellDef>Branch Name</th>
-                <td mat-cell *matCellDef="let element"> {{element.customer_branch_name}} </td>
-            </ng-container>
-            <ng-container matColumnDef="no_device">
-                <th mat-header-cell *matHeaderCellDef>No. of Device</th>
-                <td mat-cell *matCellDef="let element"> {{element.no_device}} </td>
-            </ng-container>
-            <!-- <ng-container matColumnDef="device_name">
+            <ng-container matColumnDef="device_name">
                 <th mat-header-cell *matHeaderCellDef> Device Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.device_name}} </td>
-            </ng-container>
-            <ng-container matColumnDef="device_health">
-                <th mat-header-cell *matHeaderCellDef> Status </th>
-                <td mat-cell *matCellDef="let element"> <p *ngIf="element.device_health == 'ok'"><mat-icon>wb_sunny</mat-icon></p> <p *ngIf="element.device_health != 'ok'"><mat-icon class="notok">nights_stay</mat-icon></p> </td>
             </ng-container>
             <ng-container matColumnDef="device_last_heartbeat">
                 <th mat-header-cell *matHeaderCellDef> Recorded At </th>
                 <td mat-cell *matCellDef="let element"> {{element.device_last_heartbeat | date:'medium'}} </td>
             </ng-container>
-            <ng-container matColumnDef="follow">
-                <th mat-header-cell *matHeaderCellDef> Follow </th>
+            <ng-container matColumnDef="device_health">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button class="view"></button>
+                    <div *ngIf="element.device_health == 'ok'">
+                        <!-- <mat-icon>wb_sunny</mat-icon> -->
+                        <div class="healthOk" [style.height.px]="16" [style.width.px]="16"></div>
+                    </div>
+                    <div *ngIf="element.device_health != 'ok'">
+                        <!-- <mat-icon class="notok">nights_stay</mat-icon> -->
+                        <div class="healthNotOk" [style.height.px]="16" [style.width.px]="16"></div>
+                    </div>
                 </td>
-            </ng-container> -->
+            </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="SelectBranch(row,row.device_id)"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="SelectDevice(row,row.device_id)"></tr>
         </table>
     </div>
     <mat-action-row class="action-row-content">

@@ -5,4 +5,5 @@ export interface CustomerDashBoard {
     device_health? : string;
     device_last_heartbeat? : Date;
     device_mac? : string;
+    no_device?: number;
 }

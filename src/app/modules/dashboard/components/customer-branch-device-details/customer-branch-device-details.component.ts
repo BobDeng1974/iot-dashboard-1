@@ -14,16 +14,18 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   @Input() sensordata : any[];
   @Input() deviceName : string;
   @Input() deviceData : CustomerDashBoard;
-  @Output() sensorType = new EventEmitter<string>();
-  @Output() deviceMac = new EventEmitter<string>();
+  @Input() deviceMac: string;
   @Output() videoClicked = new EventEmitter<number>();
-  temp: string = "";
-  humidity: string = "";
-  alcohol: string = "";
-  time: Date = null;
-  time2: Date = null;
-  time3: Date = null;
-  color= 'accent';
+  // @Output() sensorType = new EventEmitter<string>();
+  // @Output() deviceMac = new EventEmitter<string>();
+  // temp: string = "";
+  // humidity: string = "";
+  // alcohol: string = "";
+  // time: Date = null;
+  // time2: Date = null;
+  // time3: Date = null;
+  // color= 'accent';
+  
   //sensor type
   type: string = "";
   reading1: string = "";
@@ -33,35 +35,35 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log(this.type)
-    if (this.CurrentReading) {
-      if (this.type == 'temperature') {
-        this.temp = this.CurrentReading.value.toString();
-        this.time = this.CurrentReading.name;
-      } else if (this.type == 'humidity'){
-        this.humidity = this.CurrentReading.value.toString();
-        this.time = this.CurrentReading.name;
-      }else{
-        this.alcohol = this.CurrentReading.value.toString();
-        this.time = this.CurrentReading.name;
-      }
-    }
-
-    console.log("this is form customer branch device component:  "+this.sensordata+"  Device Name:  "+this.deviceName+"  DeviceData  "+this.deviceData);
+    // console.log(this.type)
+    // if (this.CurrentReading) {
+    //   if (this.type == 'temperature') {
+    //     this.temp = this.CurrentReading.value.toString();
+    //     this.time = this.CurrentReading.name;
+    //   } else if (this.type == 'humidity'){
+    //     this.humidity = this.CurrentReading.value.toString();
+    //     this.time = this.CurrentReading.name;
+    //   }else{
+    //     this.alcohol = this.CurrentReading.value.toString();
+    //     this.time = this.CurrentReading.name;
+    //   }
+    // }
+    console.log("this is form customer branch device details");
+    console.log(this.sensordata);
   }
 
   getSensorId(value, sensorType : string) {
-    console.log(value)
-    if (value.checked) {
-      this.type = sensorType;
-      this.type = this.type.toLowerCase();
-      this.sensorType.emit(sensorType);
-      this.deviceMac.emit(this.deviceData.device_mac);
-    } else {
-      this.sensorType.emit(null);
-      this.temp =  "";
-      this.time = null;
-    }
+    // console.log(value)
+    // if (value.checked) {
+    //   this.type = sensorType;
+    //   this.type = this.type.toLowerCase();
+    //   this.sensorType.emit(sensorType);
+    //   this.deviceMac.emit(this.deviceData.device_mac);
+    // } else {
+    //   this.sensorType.emit(null);
+    //   this.temp =  "";
+    //   this.time = null;
+    // }
     
   }
   change(value){

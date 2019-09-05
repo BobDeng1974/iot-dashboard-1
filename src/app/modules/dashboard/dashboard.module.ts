@@ -9,10 +9,12 @@ import { CustomerBranchDeviceDetailsComponent } from './components/customer-bran
 import { MaterialModule } from 'src/app/material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { VideoWindowComponent } from './components/video-window/video-window.component';
+import { DeviceListComponent } from './components/device-list/device-list.component';
+import { SensorCardComponent } from './components/sensor-card/sensor-card.component';
 
 
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent],
   imports: [
     CommonModule,
     NgxChartsModule,
@@ -20,6 +22,6 @@ import { VideoWindowComponent } from './components/video-window/video-window.com
     MaterialModule,
     SharedModule
   ],
-  entryComponents: [VideoWindowComponent]
+  entryComponents: [VideoWindowComponent, GraphComponent]
 })
 export class DashboardModule { }

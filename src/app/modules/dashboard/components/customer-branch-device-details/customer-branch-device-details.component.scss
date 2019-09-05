@@ -3,13 +3,13 @@
 }
 
 .panel-header {
-    background-color: #EC6D9F;
+    background-color: #7772A1;
     border-radius: 0px;
     color: white;
 }
 
 .panel-header:hover {
-    background-color: #EC6D9F !important;
+    background-color: #7772A1 !important;
 }
 
 .main-content {
@@ -38,10 +38,34 @@
 
 .toggle {
     // padding-left: 50px;
-    float: right;
-    color: red
+    float: left;
+    color: red;
+    padding-left: 8px
 }
 .video{
     color: red;
-    padding-right: 10px;
+    //padding-right: 16px;
+}
+.device-name-video {
+    background-color:#EDEDF3; 
+    color: #7671A0; 
+    font-weight:bold ; 
+    font-size: 16px;
+}
+
+.video-button {
+    padding-right: 16px;
+}
+
+.device-name {
+    font-weight: bold; 
+    padding-top: 10px; 
+    padding-left: 16px;
+}
+
+.video-icon {
+    background: url('../../../../../assets/images/Path300.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }

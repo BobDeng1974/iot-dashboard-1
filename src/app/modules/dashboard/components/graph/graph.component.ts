@@ -1,18 +1,22 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, Inject } from '@angular/core';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 import { SensorData } from './../../pages/dashboard-main/dashboard-main.component';
+import { MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.scss']
 })
-export class GraphComponent implements OnChanges {
+export class GraphComponent implements OnInit {
 
   @Output() NewReading = new EventEmitter<SensorData>();
-  @Input() sensorType: string;
-  constructor(private dashBoardService: DashbordMainService) { }
+  sensorType: string;
+  constructor(private dashBoardService: DashbordMainService, @Inject(MAT_DIALOG_DATA) public data: string) { 
+    this.sensorType = data;
+    console.log(this.sensorType)
+  }
 
   graphData: any[][];
   formattedData: SensorData[] = [];
@@ -93,7 +97,7 @@ export class GraphComponent implements OnChanges {
   colorScheme3 = {
     domain: ['#2fe01f']
   }
-  ngOnChanges() {
+  ngOnInit() {
 
     if (this.sensorType) {
       interval(20000)
@@ -110,6 +114,7 @@ export class GraphComponent implements OnChanges {
               name: new Date(element[0]),
               value: element[element.length - 2]
             });
+            console.log(this.formattedData)
           });
 
           this.single = [{

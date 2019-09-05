@@ -18,7 +18,7 @@ export class CustomerBranchDetailsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   
-  displayedColumns: string[] = ['select', 'customer_branch_name', 'device_name', 'device_health', 'device_last_heartbeat'];
+  displayedColumns: string[] = ['select', 'customer_branch_name', 'no_device'];
   dataSource = new MatTableDataSource<CustomerDashBoard>();
   SelectedBranch: CustomerDashBoard = {
     device_id : 0

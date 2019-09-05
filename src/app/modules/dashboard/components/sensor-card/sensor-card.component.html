@@ -1,0 +1,22 @@
+<mat-card class="example_card">
+    <mat-card-content>
+        <div fxLayout="row" class="image_container">
+            <div fxFlex="45">
+                <div class="sensor-style">
+                    <div [class.temp_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[0].toLowerCase()" [class.ph_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()" [class.humidity_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()" [class.alcohol_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()"
+                    [style.width.px]="40" [style.height.px]="40"></div>
+                </div>
+            </div>
+            <div fxFlex="55">
+                <div>
+                    <p>Sensor Id: {{sensor.sensor_id}}</p>
+                    
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+    <div class="toggle-style" style="background-color: #F6A74B">
+        <mat-slide-toggle (change)="getSensorId(sensor.sensor_type)">
+        </mat-slide-toggle>
+    </div>
+</mat-card>

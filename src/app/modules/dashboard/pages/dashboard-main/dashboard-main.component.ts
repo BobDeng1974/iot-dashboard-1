@@ -82,6 +82,7 @@ export class DashboardMainComponent implements OnInit {
     console.log(this.sensorType)
   }
   getMac(value){
+    console.log("this is form main: ");
     console.log(value)
     this.deviceMac = value
   }
@@ -92,6 +93,7 @@ export class DashboardMainComponent implements OnInit {
       break;
     }
   }
+
 }
 
 export interface SensorData {

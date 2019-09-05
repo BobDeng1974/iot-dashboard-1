@@ -6,9 +6,10 @@
     </mat-expansion-panel-header>
     <div>
         <div>
-            <div class="main-content" fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="start"
-                style="padding-left: 2%; padding-top: 2%;">
-                <div fxFlex="70%">
+            <div fxLayout="column" fxLayoutGap="5px">
+            <!-- <div class="main-content" fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="start"
+                style="padding-left: 2%; padding-top: 2%;"> -->
+                <!-- <div fxFlex="70%">
                     <div fxFlex='100' style="font-weight: bold;">Device Name : <b>{{deviceName}}</b></div><br>
                     <button mat-icon-button (click)="openVideo()"><mat-icon class="video">videocam</mat-icon></button>
                 </div>
@@ -30,6 +31,29 @@
                 </div>
                 <div fxFlex="30">
                     
+                </div> -->
+                <div fxFlex="10" class="device-name-video">
+                    <div fxFlex='100' class="device-name">Device Name : <b>{{deviceName}}</b></div><br>
+                    <div class="video-button">
+                        <button mat-icon-button (click)="openVideo()"><div class="video-icon" [style.height.px]="24" [style.width.px]="24"></div></button>
+                    </div>
+                </div>
+                <div fxFlex="90" style="padding: 20px">
+                    <span style="padding-bottom: 16px">Sensors</span>
+                    <div fxLayout="row wrap" fxLayoutGap="10px">
+                        <div fxFlex="0 1 calc(25% - 10px)" *ngFor="let sensor of sensordata">
+                            <app-sensor-card [sensor]="sensor" [deviceMac]="deviceMac"></app-sensor-card>
+                        </div>
+                        <!-- <div fxFlex="calc(25 - 10px)">
+
+                        </div>
+                        <div fxFlex="calc(25 - 10px)">
+                            
+                        </div>
+                        <div fxFlex="calc(25 - 10px)">
+                            
+                        </div> -->
+                    </div>
                 </div>
             </div>
         </div>
