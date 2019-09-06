@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { GraphComponent } from '../graph/graph.component';
 import { DashbordMainService } from '../../dashbord-main.service';
@@ -26,6 +26,7 @@ export class SensorCardComponent implements OnInit {
   graphData: any[][];
   checked: boolean = false;
   newReadding: SensorData;
+  @Output() PinValue = new EventEmitter<string>();
   constructor(private dialog: MatDialog, private dashBoardService: DashbordMainService) { }
 
   ngOnInit() {
@@ -74,6 +75,12 @@ export class SensorCardComponent implements OnInit {
         }     
       });
     }
+  }
+
+  pinSensorType(value: string) {
+    console.log("sensor value form pin");
+    console.log(value);
+    this.PinValue.emit(value);
   }
 
 }

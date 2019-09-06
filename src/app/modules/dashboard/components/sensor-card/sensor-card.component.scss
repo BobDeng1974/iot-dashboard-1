@@ -48,6 +48,7 @@
     padding-bottom: 5px;
     padding-left: 8px;
     padding-top: 5px;
+    padding-right: 8px;
 }
 
 .sensor-style {
@@ -102,4 +103,29 @@
 
 .alcohol_header {
     border: 1px #94B966 solid;
+}
+
+.pin {
+    float: right;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-top: 5px;
+}
+
+.pin-logo {
+    background: url('../../../../../assets/images/Path299.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    float: right;
+}
+
+.mat-icon-button {
+    padding: 0;
+    min-width: 0;
+    width: 30px !important;
+    height: 30px !important;
+    flex-shrink: 0;
+    line-height: 40px;
+    border-radius: 50%;
 }

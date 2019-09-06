@@ -24,23 +24,29 @@
             </div>
         </div>
     </mat-card-content>
-    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[0].toLowerCase()" class="toggle-style" style="background-color: #F6A74B">
-        <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
-        </mat-slide-toggle>
-    </div>
+    <div>
+        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[0].toLowerCase()" class="toggle-style" style="background-color: #F6A74B">
+            <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
+            </mat-slide-toggle>
+            <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
+        </div>
 
-    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()" class="toggle-style" style="background-color: #28BACF">
-        <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
-        </mat-slide-toggle>
-    </div>
+        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()" class="toggle-style" style="background-color: #28BACF">
+            <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
+            </mat-slide-toggle>
+            <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
+        </div>
 
-    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()" class="toggle-style" style="background-color: #AD79B4">
-        <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
-        </mat-slide-toggle>
-    </div>
+        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()" class="toggle-style" style="background-color: #AD79B4">
+            <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
+            </mat-slide-toggle>
+            <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
+        </div>
 
-    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()" class="toggle-style" style="background-color: #94B966">
-        <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
-        </mat-slide-toggle>
+        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()" class="toggle-style" style="background-color: #94B966">
+            <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
+            </mat-slide-toggle>
+            <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
+        </div>
     </div>
 </mat-card>

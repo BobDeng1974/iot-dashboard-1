@@ -38,10 +38,10 @@
                         <button mat-icon-button (click)="openVideo()"><div class="video-icon" [style.height.px]="24" [style.width.px]="24"></div></button>
                     </div>
                 </div>
-                <div fxFlex="90" style="padding: 20px">
+                <div fxFlex="80" style="padding: 20px">
                     <div fxLayout="row wrap" fxLayoutGap="10px">
                         <div fxFlex="0 1 calc(25% - 10px)" *ngFor="let sensor of sensordata; let i=index"  class="mat-elevation-z5">
-                            <app-sensor-card [sensor]="sensor" [deviceMac]="deviceMac" [cardNo]="i"></app-sensor-card>
+                            <app-sensor-card [sensor]="sensor" [deviceMac]="deviceMac" [cardNo]="i" (PinValue)="pinValue($event)"></app-sensor-card>
                         </div>
                         <!-- <div fxFlex="calc(25 - 10px)">
 
@@ -53,6 +53,14 @@
                             
                         </div> -->
                     </div>
+                </div>
+                <div fxFlex="10">
+                    <mat-chip-list #chipList aria-label="Fruit selection">
+                        <mat-chip *ngFor="let sensoptype of listOfPinValue" [removable]="removable" [selectable]="selectable" (removed)="remove(sensoptype)">
+                            {{sensoptype}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                    </mat-chip-list>
                 </div>
             </div>
         </div>
