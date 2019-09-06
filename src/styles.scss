@@ -244,13 +244,14 @@ tr.mat-header-row {
 .mat-dialog-content {
     padding: 10px !important;
     margin: 0px !important;
+    max-height: 80vh !important;
 }
 
 .mat-dialog-title {
     text-align: center;
     background-color: #00CED1;
     color: white;
-    height: 40px;
+    height: 50px;
     padding-top: 10px;
 }
 

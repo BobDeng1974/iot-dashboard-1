@@ -39,10 +39,9 @@
                     </div>
                 </div>
                 <div fxFlex="90" style="padding: 20px">
-                    <span style="padding-bottom: 16px">Sensors</span>
                     <div fxLayout="row wrap" fxLayoutGap="10px">
-                        <div fxFlex="0 1 calc(25% - 10px)" *ngFor="let sensor of sensordata">
-                            <app-sensor-card [sensor]="sensor" [deviceMac]="deviceMac"></app-sensor-card>
+                        <div fxFlex="0 1 calc(25% - 10px)" *ngFor="let sensor of sensordata; let i=index"  class="mat-elevation-z5">
+                            <app-sensor-card [sensor]="sensor" [deviceMac]="deviceMac" [cardNo]="i"></app-sensor-card>
                         </div>
                         <!-- <div fxFlex="calc(25 - 10px)">
 

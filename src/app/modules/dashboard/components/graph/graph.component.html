@@ -1,98 +1,184 @@
-<mat-expansion-panel disabled expanded class="customer-panel">
-  <mat-expansion-panel-header class="panel-header">
-    <mat-panel-title class="panel-title">
-      Sensor Readings
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <div fxLayout="row" fxLayotGap="5px" [style.height.%]="100">
-    <div *ngIf=" sensorType == 'temperature'">
-    <div class="graph" fxFlex="calc(70% - 5px)" [style.height.%]="100">
+<div mat-dialog-title>
+  Sensor Readings
+  <span class="modal-close-button">
+    <button mat-icon-button type="button" (click)="CancelOperation()">
+      <mat-icon class="mat-icons-round md-24">clear</mat-icon>
+    </button>
+  </span>
+</div>
+<div mat-dialog-content>
+  <div *ngIf=" sensorType == 'temperature'" fxLayout="row" fxLayoutGap="10px">
+    <div class="graph" fxFlex="70">
       <ngx-charts-line-chart [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
         [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
         [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLines"
         [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
         [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMin"
-         (select)="onSelect($event)">
+        (select)="onSelect($event)" [legendPosition]="legendPosition">
       </ngx-charts-line-chart>
     </div>
-    
     <div fxFlex="30">
       <div fxLayout="column" [style.height.%]="100">
-      <div fxFlex="30">
-      <div class="ui-g-12 ui-md-4">
-        <span>Start Time</span>
-        <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
-      </div>
-
-      <div class="ui-g-12 ui-md-4">
-        <span class="calendar">End Time</span>
-        <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
-      </div>
-      </div>
-      <div fxFlex="70">
-        <button mat-raised-button (click)="setYMinTemperature()">Full View</button>
-      </div>
-      </div>
-    </div>
-    </div>
-    <div *ngIf="sensorType == 'humidity'">
-      <div class="graph" fxFlex="calc(70% - 5px)" [style.height.%]="100">
-        <ngx-charts-line-chart [scheme]="colorScheme2" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
-        [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
-        [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesHumidity"
-        [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale" [yScaleMin]="yScaleMinHumidity"
-        [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" (select)="onSelect($event)">
-        </ngx-charts-line-chart>
-      </div>
-      <div fxFlex="30">
-        <div fxLayout="column" [style.height.%]="100">
         <div fxFlex="30">
-        <div class="ui-g-12 ui-md-4">
-          <span>Start Time</span>
-          <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
+          <div class="calendar" fxLayout="row">
+            <div fxFlex="35">Start Time</div>
+            <div fxFlex="65">
+              <p-calendar [(ngModel)]="xScaleMin" [showTime]="true"></p-calendar>
+            </div>
+          </div>
+          <div class="calendar" fxLayout="row">
+            <div fxFlex="35">End Time</div>
+            <div fxFlex="65">
+              <p-calendar [(ngModel)]="xScaleMax" [showTime]="true"></p-calendar>
+            </div>
+          </div>
         </div>
-
-        <div class="ui-g-12 ui-md-4">
-          <span class="calendar">End Time</span>
-          <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
+        <div fxFlex="50" class="sensor-details">
+          <div fxLayout="column">
+            <div fxFlex="25%" style="font-size:85%;">
+                <span fxFlex='40' ms3DisplayError>Sensor Name</span>
+                <span fxFlex='2'>:</span>
+                <span fxFlex='58'><b>{{sensorValue.sensor_name}}</b></span>
+            </div><br>
+            <div fxFlex="25%" style="font-size:85%;">
+                <span fxFlex='40' ms3DisplayError>Sensor Type</span>
+                <span fxFlex='2'>:</span>
+                <span fxFlex='58'><b>{{sensorValue.sensor_type}}</b></span>
+            </div><br>
+            <div fxFlex="25%" style="font-size:85%;">
+                <span fxFlex='40' ms3DisplayError>Reading</span>
+                <span fxFlex='2'>:</span>
+                <span fxFlex='58'><b>{{newReading.value | tempPipe}}</b></span>
+            </div><br>
+            <div fxFlex="25%" style="font-size:85%;">
+                <span fxFlex='40' ms3DisplayError>Time</span>
+                <span fxFlex='2'>:</span>
+                <span fxFlex='58'><b>{{newReading.name | date:'medium'}}</b></span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div fxFlex="70">
-        <button mat-raised-button (click)="setYMinHumid()">Full View</button>
-      </div>
-      </div>
-    </div>
-    </div>
-    <div *ngIf=" sensorType == 'alcohol'">
-      <div class="graph" fxFlex="calc(70% - 5px)" [style.height.%]="100">
-          <ngx-charts-line-chart [scheme]="colorScheme3" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
-          [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
-          [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesAlcohol"
-          [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
-          [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMinAlcohol" 
-           (select)="onSelect($event)">
-          </ngx-charts-line-chart>
-      </div>
-      <div fxFlex="30">
-        <div fxLayout="column" [style.height.%]="100">
-        <div fxFlex=30>
-        <div class="ui-g-12 ui-md-4">
-          <span>Start Time</span>
-          <p-calendar [(ngModel)]="xScaleMin" [touchUI]="true" [showTime]="true"></p-calendar>
-        </div>
-        <div class="ui-g-12 ui-md-4">
-          <span class="calendar">End Time</span>
-          <p-calendar class="calendar" [(ngModel)]="xScaleMax" [touchUI]="true" [showTime]="true"></p-calendar>
-        </div>
-        </div>
-        <div fxFlex=70>
-          <button mat-raised-button (click)="setYMinAlcohol()">Full View</button>
-        </div>
+        <div fxFlex="20">
+          <hr>
+          <button mat-raised-button (click)="setYMinTemperature()" class="button-view">Full View</button>
         </div>
       </div>
     </div>
   </div>
-</mat-expansion-panel>
+  <div *ngIf="sensorType == 'humidity'" fxLayout="row" fxLayoutGap="10px">
+    <div class="graph" fxFlex="70">
+      <ngx-charts-line-chart [scheme]="colorScheme2" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
+        [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
+        [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesHumidity"
+        [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
+        [yScaleMin]="yScaleMinHumidity" [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin"
+        (select)="onSelect($event)" [legendPosition]="legendPosition">
+      </ngx-charts-line-chart>
+    </div>
+    <div fxFlex="30">
+      <div fxLayout="column" [style.height.%]="100">
+        <div fxFlex="30">
+          <div class="calendar" fxLayout="row">
+            <div fxFlex="35">Start Time</div>
+            <div fxFlex="65">
+              <p-calendar [(ngModel)]="xScaleMin" [showTime]="true"></p-calendar>
+            </div>
+          </div>
+          <div class="calendar" fxLayout="row">
+            <div fxFlex="35">End Time</div>
+            <div fxFlex="65">
+              <p-calendar [(ngModel)]="xScaleMax" [showTime]="true"></p-calendar>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="50" class="sensor-details">
+            <div fxLayout="column">
+              <div fxFlex="25%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Sensor Name</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{sensorValue.sensor_name}}</b></span>
+              </div><br>
+              <div fxFlex="25%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Sensor Type</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{sensorValue.sensor_type}}</b></span>
+              </div><br>
+              <div fxFlex="25%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Reading</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{newReading.value}}%</b></span>
+              </div><br>
+              <div fxFlex="25%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Time</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{newReading.name | date:'medium'}}</b></span>
+              </div>
+            </div>
+          </div>
+        <div fxFlex="20">
+          <hr>
+          <button mat-raised-button (click)="setYMinTemperature()" class="button-view">Full View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf=" sensorType == 'alcohol'" fxLayout="row" fxLayoutGap="10px">
+    <div class="graph" fxFlex="70">
+      <ngx-charts-line-chart [scheme]="colorScheme3" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
+        [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
+        [maxXAxisTickLength]="maxXAxisTickLength" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [referenceLines]="referenceLinesAlcohol"
+        [showRefLines]="showRefLines" [showRefLabels]="showRefLabels" [autoScale]="autoScale"
+        [roundDomains]="roundDomains" [xScaleMax]="xScaleMax" [xScaleMin]="xScaleMin" [yScaleMin]="yScaleMinAlcohol"
+        (select)="onSelect($event)" [legendPosition]="legendPosition">
+      </ngx-charts-line-chart>
+    </div>
+    <div fxFlex="30">
+      <div fxLayout="column" [style.height.%]="100">
+        <div fxFlex="30">
+          <div class="calendar" fxLayout="row">
+            <div fxFlex="35">Start Time</div>
+            <div fxFlex="65">
+              <p-calendar [(ngModel)]="xScaleMin" [showTime]="true"></p-calendar>
+            </div>
+          </div>
+          <div class="calendar" fxLayout="row">
+            <div fxFlex="35">End Time</div>
+            <div fxFlex="65">
+              <p-calendar [(ngModel)]="xScaleMax" [showTime]="true"></p-calendar>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="50" class="sensor-details">
+            <div fxLayout="column">
+              <div fxFlex="20%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Sensor Name</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{sensorValue.sensor_name}}</b></span>
+              </div><br>
+              <div fxFlex="25%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Sensor Type</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{sensorValue.sensor_type}}</b></span>
+              </div><br>
+              <div fxFlex="25%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Reading</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{newReading.value}}%</b></span>
+              </div><br>
+              <div fxFlex="30%" style="font-size:85%;">
+                  <span fxFlex='40' ms3DisplayError>Time</span>
+                  <span fxFlex='2'>:</span>
+                  <span fxFlex='58'><b>{{newReading.name | date:'medium'}}</b></span>
+              </div>
+            </div>
+          </div>
+        <div fxFlex="20">
+          <hr>
+            <button mat-raised-button (click)="setYMinTemperature()" class="button-view">Full View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

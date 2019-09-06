@@ -3,7 +3,8 @@ import { DashbordMainService } from '../../dashbord-main.service';
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 import { SensorData } from './../../pages/dashboard-main/dashboard-main.component';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
@@ -12,10 +13,15 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 export class GraphComponent implements OnInit {
 
   @Output() NewReading = new EventEmitter<SensorData>();
+  newReading: any;
   sensorType: string;
-  constructor(private dashBoardService: DashbordMainService, @Inject(MAT_DIALOG_DATA) public data: string) { 
-    this.sensorType = data;
-    console.log(this.sensorType)
+  sensorValue: any;
+  constructor(private dashBoardService: DashbordMainService, @Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<GraphComponent>) { 
+    //this.sensorType = data.;
+    console.log("form graph component:  ");
+    console.log(data);
+    this.sensorType = data.sensor_type.toLowerCase();
+    this.sensorValue = data;
   }
 
   graphData: any[][];
@@ -23,7 +29,7 @@ export class GraphComponent implements OnInit {
   single: any[];
   multi: any[];
   view: any[] = [900, 200];
-  minDate = new Date(); //2019, 7, 27, 20
+  minDate = new Date(2019, 7, 27, 20); //2019, 7, 27, 20
   maxDate = new Date(); //2019, 7, 27, 21
   // options
   showXAxis = true;
@@ -31,6 +37,7 @@ export class GraphComponent implements OnInit {
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
+  legendPosition = "below"
   xAxisLabel = 'timestamp';
   showYAxisLabel = true;
   yAxisLabel = 'value';
@@ -87,15 +94,15 @@ export class GraphComponent implements OnInit {
   showRefLabels = true;
 
   colorScheme = {
-    domain: ['#EC6D9F', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#F6A74B', '#A10A28', '#C7B42C', '#AAAAAA']
   };
   //colorScheme for humidity
   colorScheme2 = {
-    domain: ['#5203fc']
+    domain: ['#AD79B4']
   } 
   //colorScheme for humidity
   colorScheme3 = {
-    domain: ['#2fe01f']
+    domain: ['#94B966']
   }
   ngOnInit() {
 
@@ -103,6 +110,7 @@ export class GraphComponent implements OnInit {
       interval(20000)
       .pipe(
         startWith(0),
+        untilDestroyed(this),
         switchMap(() => this.dashBoardService.getGraphData(this.sensorType))
       ).subscribe(
         (data) => {
@@ -114,15 +122,16 @@ export class GraphComponent implements OnInit {
               name: new Date(element[0]),
               value: element[element.length - 2]
             });
-            console.log(this.formattedData)
+            // console.log(this.formattedData)
           });
 
           this.single = [{
-            name: "QM_DNM_004_01",
+            name: this.sensorValue.sensor_name,
             series: this.formattedData
           }];
 
           this.NewReading.emit(this.formattedData[this.formattedData.length - 1]);
+          this.newReading = this.formattedData[this.formattedData.length - 1];
         },
         (error) => {
           console.log(error);
@@ -144,6 +153,14 @@ export class GraphComponent implements OnInit {
   }
   setYMinHumid(){
     this.yScaleMinHumidity = 30;
+  }
+
+  CancelOperation() {
+    this.dialogRef.close('result');
+  }
+
+  ngOnDestroy() {
+
   }
 }
 

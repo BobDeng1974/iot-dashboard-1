@@ -55,3 +55,51 @@
     padding-right: 16px;
     padding-left: 16px;
 }
+
+.color-temp {
+    color: #F6A74B;
+    font-weight: 600;
+    font-size: 2.5em;
+}
+
+.reading-header{
+    padding-top: 5px;
+}
+
+.color-humidity {
+    color: #AD79B4;
+    font-weight: 600;
+    font-size: 2.5em;
+}
+
+.color-ph {
+    color: #28BACF;
+    font-weight: 600;
+    font-size: 2.5em;
+}
+
+.color-alcohol {
+    color: #94B966;
+    font-weight: 600;
+    font-size: 2.5em;
+}
+
+.example-card {
+    border-radius: 5px;
+}
+
+.temp_header{
+    border: 1px #F6A74B solid;
+}
+
+.ph_header {
+    border: 1px #28BACF solid;
+}
+
+.humidity_header {
+    border: 1px #AD79B4 solid;
+}
+
+.alcohol_header {
+    border: 1px #94B966 solid;
+}
