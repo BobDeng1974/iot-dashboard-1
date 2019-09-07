@@ -12,10 +12,12 @@ import { VideoWindowComponent } from './components/video-window/video-window.com
 import { DeviceListComponent } from './components/device-list/device-list.component';
 import { SensorCardComponent } from './components/sensor-card/sensor-card.component';
 import { ViewPinGraphComponent } from './components/view-pin-graph/view-pin-graph.component';
+import { PinViewSensorCardComponent } from './components/pin-view-sensor-card/pin-view-sensor-card.component';
+import { AllPinGraphComponent } from './components/all-pin-graph/all-pin-graph.component';
 
 
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent],
   imports: [
     CommonModule,
     NgxChartsModule,

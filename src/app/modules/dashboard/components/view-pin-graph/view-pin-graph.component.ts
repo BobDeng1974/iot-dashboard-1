@@ -9,9 +9,17 @@ import { ApplicationStateService } from 'src/app/service/application-state.servi
 })
 export class ViewPinGraphComponent implements OnInit {
 
+  sensorType: any;
+  sensor_type: string;
   constructor(private router: Router, private appSate: ApplicationStateService) { }
 
   ngOnInit() {
     console.log(this.appSate.pinnedSensors);
+    this.sensorType = this.appSate.pinnedSensors;
+    // this.sensorType.forEach(element => {
+    //   console.log(element.toLowerCase());
+    //   this.sensor_type = element.toLowerCase();
+    // });
+    //console.log(this.sensor_type);
   }
 }
