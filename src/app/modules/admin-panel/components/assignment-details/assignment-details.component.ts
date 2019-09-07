@@ -29,6 +29,7 @@ export class AssignmentDetailsComponent implements OnInit {
     this.columnDefs = [
       { headerName:'Customer Name', field:'customer_name'},
       { headerName:'Branch Name', field:'customer_branch_name'},
+      { headerName:'Unit Name', field:'branch_unit'},
       { headerName: 'Start Date', field:'device_assign_effective_from', sortable:true, cellRenderer:'dateRenderer'},
       { headerName: 'End Date', field:'device_assign_effective_to', sortable:true, cellRenderer:'dateRenderer'},
     ];
