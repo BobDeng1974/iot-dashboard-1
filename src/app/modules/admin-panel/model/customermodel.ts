@@ -141,6 +141,7 @@ export interface DeviceAssignment{
     device_name ?: string;
     customer_id ?: number;
     customer_name ?: string;
+    branch_unit?: string;
     customer_branch_id ?: number;
     customer_branch_name ?: string;
     device_assign_effective_from ?: Date;
