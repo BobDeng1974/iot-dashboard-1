@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef, MatDialog } from '@angular/material';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { MatDialogRef, MatDialog, MatRipple } from '@angular/material';
 import { GraphComponent } from '../graph/graph.component';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sensor-card',
@@ -27,15 +29,19 @@ export class SensorCardComponent implements OnInit {
   checked: boolean = false;
   newReadding: SensorData;
   @Output() PinValue = new EventEmitter<string>();
+
   constructor(private dialog: MatDialog, private dashBoardService: DashbordMainService) { }
 
   ngOnInit() {
     console.log(this.sensor);
-    //console.log("this is form on init of graph component");
-    this.dashBoardService.getGraphData(this.sensor.sensor_type.toLowerCase()).subscribe(
+  }
+  ngOnChanges(){
+    
+    interval(20000).pipe(
+      startWith(0),
+      switchMap(()=> this.dashBoardService.getGraphData(this.sensor.sensor_type.toLowerCase()))
+    ).subscribe(
       (data) => {
-        //console.log("This data form on init of graph component");
-        //console.log(data);
         this.formattedData = [];
         this.graphData = data.results[0].series[0].values;
         this.graphData.forEach(element => {
@@ -44,19 +50,14 @@ export class SensorCardComponent implements OnInit {
             value: element[element.length - 2]
           });
         });
-
-        //console.log(this.formattedData[this.formattedData.length - 1]);
         this.newReadding = this.formattedData[this.formattedData.length - 3];
-        console.log("this is form .......");
-        console.log(this.newReadding.value);
-        console.log(this.cardNo);
       },
       (error) => {
-        console.error(error);
+        console.log(error)
       }
     );
-  }
 
+  }
   getSensorId(toggle: boolean, value: string) {
     //console.log(value);
     if (toggle == true) {
@@ -66,7 +67,8 @@ export class SensorCardComponent implements OnInit {
         {
           //data: value.toLowerCase(),
           data:this.sensor,
-          width: "90%"
+          width: "90%",
+          disableClose: true
         }
       );
       this.graphPopup.afterClosed().subscribe(result => {
@@ -82,5 +84,4 @@ export class SensorCardComponent implements OnInit {
     console.log(value);
     this.PinValue.emit(value);
   }
-
 }
