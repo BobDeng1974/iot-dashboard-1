@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
 import { CustomerDashBoard } from '../../model/customerDashboard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-branch-device-details',
@@ -34,7 +35,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   //sensor type
   type: string = "";
   reading1: string = "";
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -87,7 +88,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     // }
     if (this.pinValueSet.size != 4) {
       this.pinValueSet.add(value);
-      console.log(this.pinValueSet)
+      console.log(this.pinValueSet.values());
     }
   }
 
@@ -105,5 +106,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     // this.EmitSenseorValue = value;
     // console.log("Emit Value:  ");
     // console.log(this.EmitSenseorValue);
+    this.router.navigate(['/allGraph'], {state:value});
+    console.log(value)
   }
 }

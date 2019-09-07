@@ -11,10 +11,11 @@ import { SharedModule } from '../shared/shared.module';
 import { VideoWindowComponent } from './components/video-window/video-window.component';
 import { DeviceListComponent } from './components/device-list/device-list.component';
 import { SensorCardComponent } from './components/sensor-card/sensor-card.component';
+import { ViewPinGraphComponent } from './components/view-pin-graph/view-pin-graph.component';
 
 
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent],
   imports: [
     CommonModule,
     NgxChartsModule,
