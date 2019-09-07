@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
 import { CustomerDashBoard } from '../../model/customerDashboard';
 import { Router } from '@angular/router';
+import { ApplicationStateService } from 'src/app/service/application-state.service';
 
 @Component({
   selector: 'app-customer-branch-device-details',
@@ -35,7 +36,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   //sensor type
   type: string = "";
   reading1: string = "";
-  constructor(private router: Router) { }
+  constructor(private router: Router, private appState: ApplicationStateService) { }
 
   ngOnInit() {
   }
@@ -103,10 +104,8 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   viewAllSensorvalue(value) {
     //console.log(value);
     this.EmitSenseorValue.emit(value);
-    // this.EmitSenseorValue = value;
-    // console.log("Emit Value:  ");
-    // console.log(this.EmitSenseorValue);
-    this.router.navigate(['/allGraph'], {state:value});
+    this.router.navigate(['/allGraph']);
     console.log(value)
+    this.appState.pinnedSensors = value;
   }
 }

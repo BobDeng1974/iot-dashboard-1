@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApplicationStateService } from 'src/app/service/application-state.service';
 
 @Component({
   selector: 'app-view-pin-graph',
@@ -8,10 +9,9 @@ import { Router } from '@angular/router';
 })
 export class ViewPinGraphComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private appSate: ApplicationStateService) { }
 
   ngOnInit() {
-    const navigation  = this.router.getCurrentNavigation(); 
-    console.log(navigation.extras.state);
+    console.log(this.appSate.pinnedSensors);
   }
 }
