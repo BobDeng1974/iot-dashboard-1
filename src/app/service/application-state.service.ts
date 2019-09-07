@@ -8,6 +8,6 @@ export class ApplicationStateService {
   userLoggedIn: boolean = false;
   userId: number;
   userType: string;
-
+  pinnedSensors: any; 
   constructor() { }
 }

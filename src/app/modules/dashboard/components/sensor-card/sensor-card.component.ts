@@ -5,6 +5,7 @@ import { DashbordMainService } from '../../dashbord-main.service';
 import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
+import { ApplicationStateService } from 'src/app/service/application-state.service';
 
 @Component({
   selector: 'app-sensor-card',
@@ -29,8 +30,8 @@ export class SensorCardComponent implements OnInit {
   checked: boolean = false;
   newReadding: SensorData;
   @Output() PinValue = new EventEmitter<string>();
-
-  constructor(private dialog: MatDialog, private dashBoardService: DashbordMainService) { }
+  @ViewChild(MatRipple, {static: false})ripple:MatRipple;
+  constructor(private dialog: MatDialog, private dashBoardService: DashbordMainService, private appState: ApplicationStateService) { }
 
   ngOnInit() {
     console.log(this.sensor);
@@ -50,6 +51,7 @@ export class SensorCardComponent implements OnInit {
             value: element[element.length - 2]
           });
         });
+        
         this.newReadding = this.formattedData[this.formattedData.length - 3];
       },
       (error) => {

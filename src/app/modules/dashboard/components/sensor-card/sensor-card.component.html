@@ -2,7 +2,7 @@
 [class.ph_header]="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()"
 [class.humidity_header]="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()"
 [class.alcohol_header]="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()">
-    <mat-card-content>
+    <mat-card-content  matRipple #ripple>
         <div fxLayout="row" class="image_container">
             <div fxFlex="45">
                 <div class="sensor-style">
