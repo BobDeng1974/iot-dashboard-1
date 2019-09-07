@@ -55,12 +55,15 @@
                     </div>
                 </div>
                 <div fxFlex="10">
-                    <mat-chip-list #chipList aria-label="Fruit selection">
-                        <mat-chip *ngFor="let sensoptype of listOfPinValue" [removable]="removable" [selectable]="selectable" (removed)="remove(sensoptype)">
-                            {{sensoptype}}
-                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                        </mat-chip>
-                    </mat-chip-list>
+                    <div class="chip">
+                        <mat-chip-list #chipList aria-label="Fruit selection">
+                            <mat-chip *ngFor="let sensoptype of listOfPinValue" [removable]="removable" [selectable]="selectable" (removed)="remove(sensoptype)">
+                                {{sensoptype}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <button mat-raised-button class="view-all-button" *ngIf="listOfPinValue.length > 0">View All</button>
+                        </mat-chip-list>
+                    </div>
                 </div>
             </div>
         </div>

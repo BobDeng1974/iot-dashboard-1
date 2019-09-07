@@ -88,5 +88,6 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     if (index >= 0) {
       this.listOfPinValue.splice(index, 1);
     }
+    //console.log(this.listOfPinValue);
   }
 }
