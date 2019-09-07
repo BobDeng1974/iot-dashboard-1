@@ -28,6 +28,7 @@ export class DeviceCustomerAssignComponent implements OnInit {
       customer_id:'',
       device_name: '',
       customer_name: '',
+      branch_unit:'',
       customer_branch_name: '',
       device_assign_effective_from: '',
       device_assign_effective_to: ''
@@ -61,6 +62,7 @@ export class DeviceCustomerAssignComponent implements OnInit {
     this.formData = {
       device_id: this.device.device_id,
       device_name: form.controls.device_name.value,
+      branch_unit: form.controls.branch_unit.value,
       customer_id: form.controls.customer_name.value.customer_id,
       customer_name: form.controls.customer_name.value.customer_name,
       customer_branch_name: form.controls.customer_branch_name.value,
