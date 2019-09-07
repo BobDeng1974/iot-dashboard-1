@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
 import { CustomerDashBoard } from '../../model/customerDashboard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-branch-device-details',
@@ -16,7 +17,9 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   @Input() deviceData : CustomerDashBoard;
   @Input() deviceMac: string;
   @Output() videoClicked = new EventEmitter<number>();
+  @Output() EmitSenseorValue = new EventEmitter();
   listOfPinValue: string[] = [];
+  pinValueSet = new Set();
   selectable = true;
   removable = true;
   // @Output() sensorType = new EventEmitter<string>();
@@ -32,7 +35,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   //sensor type
   type: string = "";
   reading1: string = "";
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -54,7 +57,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     console.log("this is form customer branch device details");
     console.log(this.sensordata);
     console.log("List of pin value:  ");
-    console.log(this.listOfPinValue);
+    //console.log(this.listOfPinValue);
   }
 
   getSensorId(value, sensorType : string) {
@@ -79,15 +82,31 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   pinValue(value){
-    this.listOfPinValue.push(value);
-    console.log(this.listOfPinValue);
+    // if (this.listOfPinValue.length != 4) {
+    //   this.listOfPinValue.push(value);
+    //   console.log(this.listOfPinValue);
+    // }
+    if (this.pinValueSet.size != 4) {
+      this.pinValueSet.add(value);
+      console.log(this.pinValueSet.values());
+    }
   }
 
   remove(value)  {
-    const index = this.listOfPinValue.indexOf(value);
-    if (index >= 0) {
-      this.listOfPinValue.splice(index, 1);
-    }
+    this.pinValueSet.delete(value);
+    // if (index >= 0) {
+    //   this.listOfPinValue.splice(index, 1);
+    // }
     //console.log(this.listOfPinValue);
+  }
+
+  viewAllSensorvalue(value) {
+    //console.log(value);
+    this.EmitSenseorValue.emit(value);
+    // this.EmitSenseorValue = value;
+    // console.log("Emit Value:  ");
+    // console.log(this.EmitSenseorValue);
+    this.router.navigate(['/allGraph'], {state:value});
+    console.log(value)
   }
 }

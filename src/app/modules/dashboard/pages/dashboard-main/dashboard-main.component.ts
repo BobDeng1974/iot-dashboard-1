@@ -94,6 +94,11 @@ export class DashboardMainComponent implements OnInit {
     }
   }
 
+  sensorDetails(value) {
+    console.log("form main: ");
+    console.log(value);
+  }
+
 }
 
 export interface SensorData {
