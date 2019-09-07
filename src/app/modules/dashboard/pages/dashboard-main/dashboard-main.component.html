@@ -13,7 +13,7 @@
         </div>
         <div fxFlex="50" class="graph">
             <!-- <app-graph (NewReading)="ShowReading($event)" [sensorType]="sensorType"></app-graph> -->
-            <app-customer-branch-device-details [CurrentReading]="currentReading" [sensordata] = "sensorValue" [deviceName] = "deviceName" [deviceData]="deviceData" [deviceMac]="deviceMac" (sensorType)="getType($event)"  (videoClicked)="openVideo($event)"></app-customer-branch-device-details>
+            <app-customer-branch-device-details [CurrentReading]="currentReading" [sensordata] = "sensorValue" [deviceName] = "deviceName" [deviceData]="deviceData" [deviceMac]="deviceMac" (sensorType)="getType($event)"  (videoClicked)="openVideo($event)" (EmitSenseorValue)="sensorDetails($event)"></app-customer-branch-device-details>
         </div>
     </div>
 </div>

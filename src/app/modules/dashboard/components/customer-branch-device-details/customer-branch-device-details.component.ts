@@ -16,6 +16,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   @Input() deviceData : CustomerDashBoard;
   @Input() deviceMac: string;
   @Output() videoClicked = new EventEmitter<number>();
+  @Output() EmitSenseorValue = new EventEmitter();
   listOfPinValue: string[] = [];
   pinValueSet = new Set();
   selectable = true;
@@ -55,7 +56,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     console.log("this is form customer branch device details");
     console.log(this.sensordata);
     console.log("List of pin value:  ");
-    console.log(this.listOfPinValue);
+    //console.log(this.listOfPinValue);
   }
 
   getSensorId(value, sensorType : string) {
@@ -91,14 +92,18 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   remove(value)  {
-    const index = this.listOfPinValue.indexOf(value);
-    if (index >= 0) {
-      this.listOfPinValue.splice(index, 1);
-    }
+    this.pinValueSet.delete(value);
+    // if (index >= 0) {
+    //   this.listOfPinValue.splice(index, 1);
+    // }
     //console.log(this.listOfPinValue);
   }
 
   viewAllSensorvalue(value) {
-    console.log(value);
+    //console.log(value);
+    this.EmitSenseorValue.emit(value);
+    // this.EmitSenseorValue = value;
+    // console.log("Emit Value:  ");
+    // console.log(this.EmitSenseorValue);
   }
 }
