@@ -17,6 +17,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   @Input() deviceMac: string;
   @Output() videoClicked = new EventEmitter<number>();
   listOfPinValue: string[] = [];
+  pinValueSet = new Set();
   selectable = true;
   removable = true;
   // @Output() sensorType = new EventEmitter<string>();
@@ -79,8 +80,14 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   pinValue(value){
-    this.listOfPinValue.push(value);
-    console.log(this.listOfPinValue);
+    // if (this.listOfPinValue.length != 4) {
+    //   this.listOfPinValue.push(value);
+    //   console.log(this.listOfPinValue);
+    // }
+    if (this.pinValueSet.size != 4) {
+      this.pinValueSet.add(value);
+      console.log(this.pinValueSet)
+    }
   }
 
   remove(value)  {
@@ -89,5 +96,9 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
       this.listOfPinValue.splice(index, 1);
     }
     //console.log(this.listOfPinValue);
+  }
+
+  viewAllSensorvalue(value) {
+    console.log(value);
   }
 }
