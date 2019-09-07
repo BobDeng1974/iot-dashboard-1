@@ -1,30 +1,21 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, Inject } from '@angular/core';
-import { DashbordMainService } from '../../dashbord-main.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
-import { SensorData } from './../../pages/dashboard-main/dashboard-main.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { DashbordMainService } from '../../dashbord-main.service';
+
 @Component({
-  selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.scss']
+  selector: 'app-all-pin-graph',
+  templateUrl: './all-pin-graph.component.html',
+  styleUrls: ['./all-pin-graph.component.scss']
 })
-export class GraphComponent implements OnInit {
+export class AllPinGraphComponent implements OnInit {
 
-  @Output() NewReading = new EventEmitter<SensorData>();
+  @Input() sensor: string;
   newReading: any;
-  sensorType: string;
+  // sensorType: string;
   sensorValue: any;
-  @Input() type: string;
-  constructor(private dashBoardService: DashbordMainService, @Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<GraphComponent>) { 
-    //this.sensorType = data.;
-    console.log("form graph component:  ");
-    console.log(data);
-    this.sensorType = data.sensor_type.toLowerCase();
-    this.sensorValue = data;
-  }
-
   graphData: any[][];
   formattedData: SensorData[] = [];
   single: any[];
@@ -105,14 +96,16 @@ export class GraphComponent implements OnInit {
   colorScheme3 = {
     domain: ['#94B966']
   }
+  constructor(private dashBoardService: DashbordMainService) { }
+
   ngOnInit() {
 
-    if (this.sensorType) {
+    if (this.sensor) {
       interval(20000)
       .pipe(
         startWith(0),
         untilDestroyed(this),
-        switchMap(() => this.dashBoardService.getGraphData(this.sensorType))
+        switchMap(() => this.dashBoardService.getGraphData(this.sensor))
       ).subscribe(
         (data) => {
           console.log(data);
@@ -131,7 +124,7 @@ export class GraphComponent implements OnInit {
             series: this.formattedData
           }];
 
-          this.NewReading.emit(this.formattedData[this.formattedData.length - 1]);
+          //this.NewReading.emit(this.formattedData[this.formattedData.length - 1]);
           this.newReading = this.formattedData[this.formattedData.length - 1];
         },
         (error) => {
@@ -139,8 +132,6 @@ export class GraphComponent implements OnInit {
         }
       ) 
     }
-
-    console.log(this.type);
   }
 
   onSelect(event) {
@@ -158,12 +149,8 @@ export class GraphComponent implements OnInit {
     this.yScaleMinHumidity = 30;
   }
 
-  CancelOperation() {
-    this.dialogRef.close('result');
-  }
-
   ngOnDestroy() {
 
   }
-}
 
+}
