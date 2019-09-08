@@ -6,6 +6,7 @@ import { SensorData } from '../../pages/dashboard-main/dashboard-main.component'
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 import { ApplicationStateService } from 'src/app/service/application-state.service';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-sensor-card',
@@ -40,6 +41,7 @@ export class SensorCardComponent implements OnInit {
     
     interval(20000).pipe(
       startWith(0),
+      untilDestroyed(this),
       switchMap(()=> this.dashBoardService.getGraphData(this.sensor.sensor_type.toLowerCase()))
     ).subscribe(
       (data) => {
@@ -85,5 +87,8 @@ export class SensorCardComponent implements OnInit {
     console.log("sensor value form pin");
     console.log(value);
     this.PinValue.emit(value);
+  }
+  ngOnDestroy() {
+
   }
 }

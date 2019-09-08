@@ -91,5 +91,7 @@ export class PinViewSensorCardComponent implements OnInit {
     console.log(event);
 
   }
+  ngOnDestroy() {
 
+  }
 }

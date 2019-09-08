@@ -1,5 +1,4 @@
 <div style="padding: 16px">
-    <!-- <app-graph [type]="sensor_type"></app-graph> -->
     <div fxLayout="row wrap" fxLayoutGap="10px">
         <div *ngFor="let sensor of sensorType" fxFlex="0 1 calc(50% - 10px)">
             <app-pin-view-sensor-card [sensor]="sensor.toLowerCase()"></app-pin-view-sensor-card><br>
