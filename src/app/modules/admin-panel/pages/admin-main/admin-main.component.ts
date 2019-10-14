@@ -843,6 +843,7 @@ export class AdminMainComponent implements OnInit {
         this.addNodeForm = this.dialog.open(AddNodeComponent)
       break;
       case 21:
+        this.addNodeForm = this.dialog.open(AddNodeComponent)
       break;
     }
   }
