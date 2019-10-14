@@ -14,13 +14,13 @@
                 <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Data Collection Frequency</mat-label>
-                        <input matInput placeholder="Type Data Collection Frequency Here">
+                        <input matInput placeholder="Type Data Collection Frequency Here" formControlName="data_collection_frequency">
                     </mat-form-field>
                 </div>
                 <div fxFlex="0 1 cal(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Data Sending Frequency</mat-label>
-                        <input matInput placeholder="Type Data Sending Frequency Here">
+                        <input matInput placeholder="Type Data Sending Frequency Here" formControlName="data_sending_frequency">
                     </mat-form-field>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         <div mat-dialog-actions mat-elevation-z6>
             <button mat-stroked-button type="button" class="cancelbtn" (click)="closeDialog()">Cancel</button>
             <span class="example-spacer"></span>
-            <button mat-stroked-button color="primary" type="submit" class="savebtn" [disabled]="" [class.blank-panel]="" (click)="saveNode(nodeForm)">Save</button>
+            <button mat-stroked-button color="primary" type="submit" class="savebtn" [disabled]="nodeForm.invalid" [class.blank-panel]="nodeForm.invalid" (click)="saveNode(nodeForm)">Save</button>
         </div>
     </form>
 </div>

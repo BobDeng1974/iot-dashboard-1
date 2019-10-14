@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { node } from '../../model/gateway';
 
 @Component({
   selector: 'app-node-table',
@@ -6,7 +7,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./node-table.component.scss']
 })
 export class NodeTableComponent implements OnInit {
-  @Output() buttonClicker = new EventEmitter<number>()
+  @Output() buttonClicker = new EventEmitter<number>();
+  displayedColumns : string[] = ['select', 'uid', 'data_collection_frequency', 'data_sending_frequency'];
+  selectedNode : node = {
+    node_id : 0
+  }
   constructor() { }
 
   ngOnInit() {

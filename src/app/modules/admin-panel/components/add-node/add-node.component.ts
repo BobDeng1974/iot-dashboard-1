@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
@@ -13,7 +13,7 @@ export class AddNodeComponent implements OnInit {
 
   ngOnInit() {
     this.nodeForm = this.fb.group({
-      uid:'',
+      uid:['', [Validators.required]],
       data_collection_frequency:'',
       data_sending_frequency:''
     })
