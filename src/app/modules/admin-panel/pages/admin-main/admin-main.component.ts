@@ -27,6 +27,7 @@ import { error } from 'util';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { startWith, switchMap } from 'rxjs/operators';
 import { ViewVendorCustomerComponent } from '../../components/view-vendor-customer/view-vendor-customer.component';
+import { AddNodeComponent } from '../../components/add-node/add-node.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -115,6 +116,8 @@ export class AdminMainComponent implements OnInit {
   // view all customer and vendor after click go to dashboard button
   viewVendorCustomer : MatDialogRef<ViewVendorCustomerComponent>;
 
+  //node create form
+  addNodeForm : MatDialogRef<AddNodeComponent>;
   //customer name and id object
   customerNameandId: Customer;
   customerName: string;
@@ -835,6 +838,11 @@ export class AdminMainComponent implements OnInit {
             );
           }
         })
+      break;
+      case 20:
+        this.addNodeForm = this.dialog.open(AddNodeComponent)
+      break;
+      case 21:
       break;
     }
   }
