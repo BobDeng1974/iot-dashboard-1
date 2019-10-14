@@ -73,8 +73,11 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="SENSOR REGISTRY">
-                            <div class="content">
-                                <div *ngIf="selectedTabIndex == 5">
+                            <div class="content" fxlayout="row" fxLayourGap="10px" fxLayout.lt.sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 5">
+                                <div fxFlex="calc(50% - 10px)" fxFlex.lt-sm="100%">
+                                    <app-sensor-table></app-sensor-table>
+                                </div>
+                                <div fxFlex="calc(50% - 10px)" fxFlex.lt-sm="100%">
                                     
                                 </div>
                             </div>
