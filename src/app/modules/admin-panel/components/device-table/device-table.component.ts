@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Customer, Device } from '../../model/customermodel';
 import { EventManager } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material';
+import { gateway } from '../../model/gateway';
 
 
 const ELEMENT_DATA: Device[] = [
@@ -29,10 +30,10 @@ export class DeviceTableComponent implements OnInit {
   @Output() deviceAssign = new EventEmitter<number>();
 
   @Input() deviceData: Device[];
-  displayedColumns: string[] =['select', 'device_name', 'device_mac', 'device_monitor', 'device_assignment'];
+  displayedColumns: string[] =['select', 'gateway_name', 'uid' ];
   dataSource = new MatTableDataSource<any>();
-  selectedDevice: Device = {
-    device_id: 0
+  selectedDevice: gateway = {
+    gateway_id: 0
   }
   constructor() { }
 

@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                         </mat-tab>
-                        <mat-tab label="DEVICE REGISTRY">
+                        <mat-tab label="GATEWAY REGISTRY">
                             <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 3">
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <app-device-table [deviceData]="deviceData" (buttonClicked)="openPopup($event)" (deviceId2)="getDeviceID($event)" (deviceId)="getDeviceID($event)" (deviceName)="getDeviceName($event)" (deviceName2)="getDeviceName($event)" (deviceAssign)="toDeviceAssign($event)" (deviceDetails)="getDeviceDetails($event)"></app-device-table>
@@ -62,10 +62,17 @@
                                 </div>
                             </div>
                         </mat-tab>
-                        <mat-tab label="DEVICE MANAGEMENT">
+                        <mat-tab label="NODE REGISTRY">
                             <div class="content">
                                 <div *ngIf="selectedTabIndex == 4">
                                     <app-device-management></app-device-management>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="SENSOR REGISTRY">
+                            <div class="content">
+                                <div *ngIf="selectedTabIndex == 5">
+                                    
                                 </div>
                             </div>
                         </mat-tab>

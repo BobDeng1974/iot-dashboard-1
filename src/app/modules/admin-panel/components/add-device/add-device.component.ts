@@ -20,8 +20,8 @@ export class AddDeviceComponent implements OnInit {
 
   ngOnInit() {
     this.adddeviceForm = this.fb.group({
-      device_name : ['',[Validators.required]],
-      device_mac : ['',[Validators.required]],
+      gateway_name : ['',[Validators.required]],
+      uid : ['',[Validators.required]],
       // sensor_name: ['', Validators.required],
       // sensor_type: ['', Validators.required],
       // sensor_threshold_max: ['', Validators.required],
