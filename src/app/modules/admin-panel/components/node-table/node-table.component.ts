@@ -7,7 +7,7 @@ import { node } from '../../model/gateway';
   styleUrls: ['./node-table.component.scss']
 })
 export class NodeTableComponent implements OnInit {
-  @Output() buttonClicker = new EventEmitter<number>();
+  @Output() buttonClicked = new EventEmitter<number>();
   displayedColumns : string[] = ['select', 'uid', 'data_collection_frequency', 'data_sending_frequency'];
   selectedNode : node = {
     node_id : 0
@@ -21,6 +21,6 @@ export class NodeTableComponent implements OnInit {
 
   }
   InitializeClick(value: number){
-    this.buttonClicker.emit(value);
+    this.buttonClicked.emit(value);
   }
 }

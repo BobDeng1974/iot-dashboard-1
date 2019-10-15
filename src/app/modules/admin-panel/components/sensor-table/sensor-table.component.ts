@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sensor-table',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sensor-table.component.scss']
 })
 export class SensorTableComponent implements OnInit {
-
+  @Output() buttonClicked = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  applyFilter(value : string){
+
+  }
+
+  InitializeClick(value: number){
+    this.buttonClicked.emit(value);
+  }
 }

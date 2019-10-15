@@ -28,6 +28,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { startWith, switchMap } from 'rxjs/operators';
 import { ViewVendorCustomerComponent } from '../../components/view-vendor-customer/view-vendor-customer.component';
 import { AddNodeComponent } from '../../components/add-node/add-node.component';
+import { AddSensorComponent } from '../../components/add-sensor/add-sensor.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -118,6 +119,9 @@ export class AdminMainComponent implements OnInit {
 
   //node create form
   addNodeForm : MatDialogRef<AddNodeComponent>;
+
+  //sensor create form
+  addSensorForm : MatDialogRef<AddSensorComponent>
   //customer name and id object
   customerNameandId: Customer;
   customerName: string;
@@ -844,6 +848,12 @@ export class AdminMainComponent implements OnInit {
       break;
       case 21:
         this.addNodeForm = this.dialog.open(AddNodeComponent)
+      break;
+      case 22:
+        this.addSensorForm = this.dialog.open(AddSensorComponent)
+      break;
+      case 23:
+        this.addSensorForm = this.dialog.open(AddSensorComponent)
       break;
     }
   }
