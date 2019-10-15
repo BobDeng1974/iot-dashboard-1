@@ -38,6 +38,9 @@ export const environment = {
    postLoginUrl : "http://34.93.22.112:8003/api/qubematics/authuser/",
 
    customerdeviceAssignUrl : "http://34.93.22.112:8002/api/qubematics/device/deviceassign/",
+
+   //qm domian sensor type
+   getSensorTypeUrl : "http://192.168.0.11:8000/qmdomain/get/sensor",
 };
 
 /*

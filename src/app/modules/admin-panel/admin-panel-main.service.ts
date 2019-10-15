@@ -112,6 +112,9 @@ export class AdminPanelMainService {
     return this.http.get<Device[]>(environment.getADevice+id+'?format=json');
   }
 
+  getSensorType() : Observable<any>{
+    return this.http.get<any>(environment.getSensorTypeUrl);
+  }
   // get error in snackbar
   getError(value : any) {
     switch (value) {

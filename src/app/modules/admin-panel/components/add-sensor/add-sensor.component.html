@@ -9,8 +9,8 @@
                     <mat-form-field class="form-field">
                         <mat-label>Sensor Type</mat-label>
                         <mat-select placeholder="Select Sensor Type Here" formControlName="sensor_type">
-                            <mat-option *ngFor="let type of sensorType" [value]="type">
-                                {{type}}
+                            <mat-option *ngFor="let type of sensorType" [value]="type.domain_code">
+                                {{type.domain_value}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -54,7 +54,7 @@
         <div mat-dialog-actions mat-elevation-z6>
             <button mat-stroked-button type="button" class="cancelbtn" (click)="closeDialog()">Cancel</button>
             <span class="example-spacer"></span>
-            <button mat-stroked-button color="primary" type="submit" class="savebtn">Save</button>
+            <button mat-stroked-button color="primary" type="submit" class="savebtn" [disabled]="sensorForm.invalid" [class.blank-panel]="sensorForm.invalid" (click)="onSubmit(sensorForm)">Save</button>
         </div>
     </form>
 </div>

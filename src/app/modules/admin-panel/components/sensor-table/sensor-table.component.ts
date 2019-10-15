@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
 
 @Component({
   selector: 'app-sensor-table',
@@ -7,9 +8,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SensorTableComponent implements OnInit {
   @Output() buttonClicked = new EventEmitter<number>();
-  constructor() { }
+  constructor(private adminPanelService: AdminPanelMainService) { }
 
   ngOnInit() {
+    
   }
 
   applyFilter(value : string){
