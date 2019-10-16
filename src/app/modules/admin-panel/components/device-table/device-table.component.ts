@@ -30,7 +30,7 @@ export class DeviceTableComponent implements OnInit {
   @Output() deviceAssign = new EventEmitter<number>();
 
   @Input() deviceData: Device[];
-  displayedColumns: string[] =['select', 'gateway_name', 'uid' ];
+  displayedColumns: string[] =['select', 'gateway_name', 'uid', 'status' ];
   dataSource = new MatTableDataSource<any>();
   selectedDevice: gateway = {
     gateway_id: 0
