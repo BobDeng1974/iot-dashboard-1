@@ -8,7 +8,7 @@ import { node } from '../../model/gateway';
 })
 export class NodeTableComponent implements OnInit {
   @Output() buttonClicked = new EventEmitter<number>();
-  displayedColumns : string[] = ['select', 'uid', 'data_collection_frequency', 'data_sending_frequency'];
+  displayedColumns : string[] = ['select', 'uid', 'data_collection_frequency', 'data_sending_frequency', 'status'];
   selectedNode : node = {
     node_id : 0
   }
