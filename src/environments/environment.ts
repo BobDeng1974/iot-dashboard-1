@@ -14,15 +14,17 @@ export const environment = {
    getCustomerBranchUrl : "http://34.93.22.112:8000/api/qubematics/customer/getbranch/",
    getCustomerandIdUrl : "http://34.93.22.112:8000/api/qubematics/customer/getcustomerandid/",
   //////////////////////////////////////////////////////////////////////////
-   createDeviceUrl : "http://34.93.22.112:8002/api/qubematics/device/create/",
-   updateDeviceUrl : "http://34.93.22.112:8002/api/qubematics/device/update/",
-   getAllDeviceUrl : "http://34.93.22.112:8002/api/qubematics/device/getall/?format=json",
-   getAssignInfoUrl : "http://34.93.22.112:8002/api/qubematics/device/assignInfo/",
-   deviceAliveUrl : "http://34.93.22.112:8002/api/qubematics/device/alive/",
-   assignDevice : "http://34.93.22.112:8002/api/qubematics/device/assign/",
-   getDeviceHealthUrl : "http://34.93.22.112:8002/api/qubematics/device/getdevicehealth/?format=json",
-   updateFreqUrl : "http://34.93.22.112:8002/api/qubematics/device/updatefreq/",
-   getADevice :  "http://34.93.22.112:8002/api/qubematics/device/get/",
+   createDeviceUrl : "http://34.93.22.112:8002/api/qubematics/gateway/create/",
+   updateDeviceUrl : "http://34.93.22.112:8002/api/qubematics/gateway/update/",
+   getAllDeviceUrl : "http://34.93.22.112:8002/api/qubematics/gateway/getall/?format=json",
+   getAssignInfoUrl : "http://34.93.22.112:8002/api/qubematics/gateway/assignInfo/",
+   deviceAliveUrl : "http://34.93.22.112:8002/api/qubematics/gateway/alive/",
+   assignDevice : "http://34.93.22.112:8002/api/qubematics/gateway/assign/",
+   getDeviceHealthUrl : "http://34.93.22.112:8002/api/qubematics/gateway/getdevicehealth/?format=json",
+   updateFreqUrl : "http://34.93.22.112:8002/api/qubematics/gateway/updatefreq/",
+   getADevice :  "http://34.93.22.112:8002/api/qubematics/gateway/get/",
+   createNodeUrl:'http://34.93.22.112:8002/api/qubematics/gateway/createnode/',
+   createSensorUrl:'http://34.93.22.112:8002/api/qubematics/gateway/createsensor/',
 
    getAllVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/getall/?format=json",
    postVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/create/?format=json",
@@ -37,10 +39,10 @@ export const environment = {
    //login url
    postLoginUrl : "http://34.93.22.112:8003/api/qubematics/authuser/",
 
-   customerdeviceAssignUrl : "http://34.93.22.112:8002/api/qubematics/device/deviceassign/",
+   customerdeviceAssignUrl : "http://34.93.22.112:8002/api/qubematics/gateway/deviceassign/",
 
    //qm domian sensor type
-   getSensorTypeUrl : "http://192.168.0.11:8000/qmdomain/get/sensor",
+   getSensorTypeUrl : "http://34.93.22.112:8004/qmdomain/get/sensor",
 };
 
 /*
