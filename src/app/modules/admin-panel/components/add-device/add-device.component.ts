@@ -4,6 +4,8 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Device } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
+import { gateway } from '../../model/gateway';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-device',
@@ -13,9 +15,9 @@ import { SuccessSnackberComponent } from 'src/app/modules/shared/components/succ
 export class AddDeviceComponent implements OnInit {
 
   adddeviceForm : FormGroup;
-  device: Device;
-  constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<AddDeviceComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminService: AdminPanelMainService, private _snackBar : MatSnackBar) { 
-    this.device = data;
+  gateway : gateway;
+  constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<AddDeviceComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminService: AdminPanelMainService, private _snackBar : MatSnackBar, private spinner : NgxSpinnerService) { 
+    // this.device = data;
   }
 
   ngOnInit() {
@@ -28,9 +30,9 @@ export class AddDeviceComponent implements OnInit {
       // sensor_threshold_min: ['', Validators.required],
     });
 
-    if (this.device && this.device.device_id > 0) {
-      this.adddeviceForm.patchValue(this.device);
-    }
+    // if (this.device && this.device.device_id > 0) {
+    //   this.adddeviceForm.patchValue(this.device);
+    // }
   }
 
   closeDialog(){
@@ -38,47 +40,51 @@ export class AddDeviceComponent implements OnInit {
   }
 
   onSubmit(form){
-    if (this.device && this.device.device_id > 0) {
-      this.device.device_name = form.controls.device_name.value,
-      this.device.device_mac = form.controls.device_mac.value
-      this.adminService.updateDevice(this.device).subscribe(
-        (data) => {
-          this.dialogRef.close("success");
-          if (data == "001") {
-            //alert('update successfull')
-            this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Device Update Successfully", duration: 3000 });
-          }
-          else {
-            this.adminService.getError(data);
-          }
-        },
-        (error) => {
-          console.log(error)
-          this.dialogRef.close()
-        }
-      );
-    } else {
-      this.device = {
-        device_name : form.controls.device_name.value,
-        device_mac: form.controls.device_mac.value,
-        sensors: []
-      }
-      this.adminService.createDevice(this.device).subscribe(
-        (data) => {
-          this.dialogRef.close("success");
-          console.log("Add device  "+data);
-          if (data == "001") {
-            //alert('post successful')
-            this._snackBar.openFromComponent(SuccessSnackberComponent, {data : "Device Add Successfully.", duration : 3000 });
-          }
-          else {
-            this.adminService.getError(data);
-          }
-        },
-        (error) => {
-          console.log(error)
-        }
-      );
+    // if (this.gateway && this.gateway.gateway_id > 0) {
+    //   this.gateway.gateway_name = form.controls.gateway_name.value,
+    //   this.gateway.uid = form.controls.uid.value
+    //   // this.adminService.updateDevice(this.gateway).subscribe(
+    //   //   (data) => {
+    //   //     this.dialogRef.close("success");
+    //   //     if (data == "001") {
+    //   //       //alert('update successfull')
+    //   //       this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Device Update Successfully", duration: 3000 });
+    //   //     }
+    //   //     else {
+    //   //       this.adminService.getError(data);
+    //   //     }
+    //   //   },
+    //   //   (error) => {
+    //   //     console.log(error)
+    //   //     this.dialogRef.close()
+    //   //   }
+    //   // );
+    // } else {
+    //   this.gateway = {
+    //     gateway_name : form.controls.gateway_name.value,
+    //     uid: form.controls.uid.value,
+
+    //   }
+    this.gateway = {
+      gateway_name : form.controls.gateway_name.value,
+      uid : form.controls.uid.value,
+      nodes : []
     }
-  }
+    console.log(this.gateway)
+    this.spinner.show();
+    this.adminService.createGateway(this.gateway).subscribe(
+      (data) => {
+        this.dialogRef.close()
+        this.spinner.hide()
+        if (data === "001") {
+          this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully created gateway', duration:3000})
+        }else{
+          this.adminService.getError(data)
+        }
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    }
 }

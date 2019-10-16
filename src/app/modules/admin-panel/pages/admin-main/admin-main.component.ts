@@ -29,6 +29,7 @@ import { startWith, switchMap } from 'rxjs/operators';
 import { ViewVendorCustomerComponent } from '../../components/view-vendor-customer/view-vendor-customer.component';
 import { AddNodeComponent } from '../../components/add-node/add-node.component';
 import { AddSensorComponent } from '../../components/add-sensor/add-sensor.component';
+import { sensor, node, gateway } from '../../model/gateway';
 
 @Component({
   selector: 'app-admin-main',
@@ -138,7 +139,7 @@ export class AdminMainComponent implements OnInit {
   vendorData : Vendor[];
 
   //Hold all the devices 
-  deviceData : Device[];
+  gateways : gateway[];
 
   //holds all the device health information
   deviceHealthData: DeviceMonitor[]
@@ -156,7 +157,10 @@ export class AdminMainComponent implements OnInit {
 
   //assignment table rowId
   rowId : number;
-
+  //sensor 
+  sensors : sensor[] = [];
+  //nodes
+  nodes : node[] = [];
   //device assign info
   deviceAssignInfo: DeviceAssignment[];
 
@@ -248,17 +252,6 @@ export class AdminMainComponent implements OnInit {
         this.spinner.hide();
       }
     );
-
-    this.adminpanelService.getAllDevice().subscribe(
-      (data) => {
-        // console.log(data)
-        this.deviceData = data.reverse()
-      },
-      (error) => {
-        console.log(error)
-      }
-    );
-
     this.adminpanelService.getAllVendor().subscribe(
       (data) => {
         this.vendorData = data.reverse();
@@ -761,9 +754,9 @@ export class AdminMainComponent implements OnInit {
         this.deviceAssignDialog.afterClosed().subscribe(result => {
           if (result) {
             this.spinner.show()
-            this.adminpanelService.getAllDevice().subscribe(
+            this.adminpanelService.gateAllGateways().subscribe(
               (data) => {
-                this.deviceData = data.reverse();
+                this.gateways = data;
                 this.spinner.hide()
               },
               (error) => {
@@ -845,12 +838,44 @@ export class AdminMainComponent implements OnInit {
       break;
       case 20:
         this.addNodeForm = this.dialog.open(AddNodeComponent)
+        this.addNodeForm.afterClosed().subscribe( result => {
+          if (result) {
+            this.spinner.show();
+            this.adminpanelService.getAllnodes().subscribe(
+              (data) => {
+                console.log(data)
+                this.nodes = data
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        })
       break;
       case 21:
         this.addNodeForm = this.dialog.open(AddNodeComponent)
       break;
       case 22:
         this.addSensorForm = this.dialog.open(AddSensorComponent)
+        this.addSensorForm.afterClosed().subscribe(result => {
+          if (result) {
+            this.spinner.show()
+            this.adminpanelService.getAllSensor().subscribe(
+              (data) => {
+                console.log(data);
+                this.sensors = data;
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
       case 23:
         this.addSensorForm = this.dialog.open(AddSensorComponent)

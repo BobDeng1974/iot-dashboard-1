@@ -6,7 +6,7 @@ import { Vendor } from './model/vendormodel';
 import { MatSnackBar } from '@angular/material';
 import { ErrorSnackberComponent } from '../shared/components/error-snackber/error-snackber.component';
 import { environment } from '../../../environments/environment';
-import { sensor } from './model/gateway';
+import { sensor, node, gateway } from './model/gateway';
 
 @Injectable({
   providedIn: 'root'
@@ -119,6 +119,26 @@ export class AdminPanelMainService {
 
   createSensor(sensor: sensor) : Observable<any> {
     return this.http.post(environment.createSensorUrl,sensor);
+  }
+
+  getAllSensor() : Observable<any> {
+    return this.http.get(environment.getallSensorUrl);
+  }
+
+  createNode(node : node) : Observable<any>{
+    return this.http.post(environment.createNodeUrl, node);
+  }
+
+  getAllnodes() : Observable<any> {
+    return this.http.get(environment.getallNodesUrl);
+  }
+
+  gateAllGateways() : Observable<any> {
+    return this.http.get(environment.getallGatewayUrl);
+  }
+
+  createGateway(gateway : gateway) : Observable<any> {
+    return this.http.post(environment.createGatewayUrl, gateway)
   }
   // get error in snackbar
   getError(value : any) {

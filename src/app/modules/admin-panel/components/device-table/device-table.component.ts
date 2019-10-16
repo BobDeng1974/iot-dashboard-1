@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Customer, Device } from '../../model/customermodel';
 import { EventManager } from '@angular/platform-browser';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { gateway } from '../../model/gateway';
+import { AdminPanelMainService } from '../../admin-panel-main.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 const ELEMENT_DATA: Device[] = [
@@ -29,20 +31,31 @@ export class DeviceTableComponent implements OnInit {
   @Output() deviceId2 = new EventEmitter<number>();
   @Output() deviceAssign = new EventEmitter<number>();
 
-  @Input() deviceData: Device[];
+  @Input() gateways: gateway[];
   displayedColumns: string[] =['select', 'gateway_name', 'uid', 'status' ];
   dataSource = new MatTableDataSource<any>();
   selectedDevice: gateway = {
     gateway_id: 0
   }
-  constructor() { }
+  constructor(private adminPanelService : AdminPanelMainService, private spinner : NgxSpinnerService, private _snackBar : MatSnackBar) { }
 
   ngOnInit() {
-    this.dataSource.data = this.deviceData;
+    this.spinner.show()
+    this.adminPanelService.gateAllGateways().subscribe(
+      (data) => {
+        console.log(data)
+        this.dataSource.data = data
+        this.spinner.hide()
+      },
+      (error) => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    );
   }
   ngOnChanges(){
     //console.log(this.deviceData)
-    this.dataSource.data = this.deviceData;
+    this.dataSource.data = this.gateways;
   }
   InitializeClick(value:number){
     this.buttonClicked.emit(value)
