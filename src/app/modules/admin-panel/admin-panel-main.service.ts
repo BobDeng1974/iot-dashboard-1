@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material';
 import { ErrorSnackberComponent } from '../shared/components/error-snackber/error-snackber.component';
 import { environment } from '../../../environments/environment';
 import { sensor, node, gateway } from './model/gateway';
+import { puts } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -125,12 +126,20 @@ export class AdminPanelMainService {
     return this.http.get(environment.getallSensorUrl);
   }
 
+  updateSensor(sensor: sensor) : Observable<any> {
+    return this.http.put(environment.updateSensorUrl, sensor);
+  }
+
   createNode(node : node) : Observable<any>{
     return this.http.post(environment.createNodeUrl, node);
   }
 
   getAllnodes() : Observable<any> {
     return this.http.get(environment.getallNodesUrl);
+  }
+
+  updateNode(node : node) : Observable<any> {
+    return this.http.put(environment.updateNodeUrl, node);
   }
 
   gateAllGateways() : Observable<any> {
