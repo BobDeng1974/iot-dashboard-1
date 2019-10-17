@@ -22,7 +22,7 @@ export interface node{
 
 export interface sensor {
     sensor_id ?: number;
-    sensor_type ?: string;
+    sensor_type ?: number;
     sensor_model ?: string;
     sensor_make ?: string;
     sensor_desc ?: string;

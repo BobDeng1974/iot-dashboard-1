@@ -74,7 +74,7 @@ export class AddDeviceComponent implements OnInit {
     this.spinner.show();
     this.adminService.createGateway(this.gateway).subscribe(
       (data) => {
-        this.dialogRef.close()
+        this.dialogRef.close('success')
         this.spinner.hide()
         if (data === "001") {
           this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully created gateway', duration:3000})

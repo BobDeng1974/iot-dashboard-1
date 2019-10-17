@@ -118,7 +118,7 @@ export interface DeviceMonitor{
 export interface Sensor {
     sensor_id ?:number;
     sensor_name ?: string;
-    sensor_type ?: string;
+    sensor_type ?: number;
     sensor_threshold_max ?:number
     sensor_threshold_min ?:number
     sensor_updated_on ?: Date;

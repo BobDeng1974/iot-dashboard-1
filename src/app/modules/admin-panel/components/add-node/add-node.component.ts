@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { node } from '../../model/gateway';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
@@ -14,7 +14,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AddNodeComponent implements OnInit {
   nodeForm: FormGroup;
   node : node;
-  constructor(private fb: FormBuilder, private dialogref : MatDialogRef<AddNodeComponent>, private adminPanelService : AdminPanelMainService, private _snackBar : MatSnackBar, private spinner : NgxSpinnerService) { }
+  constructor(private fb: FormBuilder, private dialogref : MatDialogRef<AddNodeComponent>, private adminPanelService : AdminPanelMainService, private _snackBar : MatSnackBar, private spinner : NgxSpinnerService, @Inject(MAT_DIALOG_DATA) public data : node ) {
+    this.node = data
+   }
 
   ngOnInit() {
     this.nodeForm = this.fb.group({
@@ -22,6 +24,9 @@ export class AddNodeComponent implements OnInit {
       data_collection_frequency:'',
       data_sending_frequency:''
     })
+    if (this.node && this.node.node_id > 0) {
+      this.nodeForm.patchValue(this.node);
+    }
   }
 
   closeDialog(){

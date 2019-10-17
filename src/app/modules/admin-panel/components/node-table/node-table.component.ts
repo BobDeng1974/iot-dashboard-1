@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { node } from '../../model/gateway';
+import { node, sensor } from '../../model/gateway';
 import { MatTableDataSource } from '@angular/material';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,6 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class NodeTableComponent implements OnInit {
   @Input() nodes : node[]; 
   @Output() buttonClicked = new EventEmitter<number>();
+  @Output() nodeData = new EventEmitter<sensor>();
   dataSource = new MatTableDataSource<node>();
   displayedColumns : string[] = ['select', 'uid', 'data_collection_frequency', 'data_sending_frequency', 'status'];
   selectedNode : node = {
@@ -44,5 +45,6 @@ export class NodeTableComponent implements OnInit {
   }
   viewNode(value){
     console.log(value)
+    this.nodeData.emit(value);
   }
 }

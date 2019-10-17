@@ -12,6 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class SensorTableComponent implements OnInit {
   @Input() sensors : sensor[];
   @Output() buttonClicked = new EventEmitter<number>();
+  @Output() sensorData = new EventEmitter<sensor>();
   dataSource = new MatTableDataSource<sensor>()
   selectedSensor : sensor = {
     sensor_id : 0
@@ -45,6 +46,7 @@ export class SensorTableComponent implements OnInit {
   }
 
   viewSensor(value){
-    console.log(value)
+    console.log(value);
+    this.sensorData.emit(value);
   }
 }

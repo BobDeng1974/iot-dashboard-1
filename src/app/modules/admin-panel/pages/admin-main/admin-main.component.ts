@@ -159,8 +159,10 @@ export class AdminMainComponent implements OnInit {
   rowId : number;
   //sensor 
   sensors : sensor[] = [];
+  sensorInfo : sensor;
   //nodes
   nodes : node[] = [];
+  nodeInfo : node;
   //device assign info
   deviceAssignInfo: DeviceAssignment[];
 
@@ -856,7 +858,22 @@ export class AdminMainComponent implements OnInit {
         })
       break;
       case 21:
-        this.addNodeForm = this.dialog.open(AddNodeComponent)
+        this.addNodeForm = this.dialog.open(AddNodeComponent, {data: this.nodeInfo});
+        this.addNodeForm.afterClosed().subscribe( result => {
+          if (result) {
+            this.spinner.show();
+            this.adminpanelService.getAllnodes().subscribe(
+            (data) => {
+              this.nodes = data;
+              this.spinner.hide();
+            },
+            (error) => {
+              console.error(error);
+              this.spinner.hide();
+            }
+           );
+          }
+        } );
       break;
       case 22:
         this.addSensorForm = this.dialog.open(AddSensorComponent)
@@ -878,7 +895,22 @@ export class AdminMainComponent implements OnInit {
         });
       break;
       case 23:
-        this.addSensorForm = this.dialog.open(AddSensorComponent)
+        this.addSensorForm = this.dialog.open(AddSensorComponent, {data : this.sensorInfo});
+        this.addSensorForm.afterClosed().subscribe( result => {
+          if(result) {
+            this.spinner.show();
+            this.adminpanelService.getAllSensor().subscribe(
+              (data) => {
+                this.sensors = data;
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
     }
   }
@@ -1015,5 +1047,14 @@ export class AdminMainComponent implements OnInit {
 
   VievModal() {
     this.viewVendorCustomer = this.dialog.open(ViewVendorCustomerComponent);
+  }
+
+  getSensorForEdit(value){
+    this.sensorInfo = value;
+  }
+
+  getNodeForEdit(value){
+    this.nodeInfo = value;
+    console.log(value);
   }
 }
