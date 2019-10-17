@@ -26,10 +26,11 @@ export const environment = {
    createNodeUrl:'http://34.93.22.112:8002/api/qubematics/gateway/createnode/',
    createSensorUrl:'http://34.93.22.112:8002/api/qubematics/gateway/createsensor/',
    getallSensorUrl : 'http://34.93.22.112:8002/api/qubematics/gateway/getallsensors/',
+   updateSensorUrl : 'http://34.93.22.112:8002/api/qubematics/gateway/updatesensor/',
    getallGatewayUrl : 'http://34.93.22.112:8002/api/qubematics/gateway/getallgateway/',
    createGatewayUrl : 'http://34.93.22.112:8002/api/qubematics/gateway/creategateway/',
-
    getallNodesUrl : 'http://34.93.22.112:8002/api/qubematics/gateway/getallnodes/',
+   updateNodeUrl : 'http://34.93.22.112:8002/api/qubematics/gateway/updatenode/',
    getAllVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/getall/?format=json",
    postVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/create/?format=json",
    vendorUpdateUrl : "http://34.93.22.112:8001/api/qubematics/vendor/update/",
