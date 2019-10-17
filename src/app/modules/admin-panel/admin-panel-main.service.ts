@@ -153,6 +153,14 @@ export class AdminPanelMainService {
   updateGateway(gateway : gateway) : Observable<any> {
     return this.http.put(environment.updateGatewayUrl, gateway);
   }
+
+  getSensorsByStatus() : Observable<any> {
+    return this.http.get(environment.getSensorsByStatus);
+  }
+
+  getNodeByStatus() : Observable<any> {
+    return this.http.get(environment.getNodeByStatus);
+  }
   // get error in snackbar
   getError(value : any) {
     switch (value) {

@@ -24,6 +24,27 @@
                     </mat-form-field>
                 </div>
             </div>
+            <span class="divider" fxLayout="row">Add Sensors <hr fxFlex/></span>
+            <br>
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="35px">
+                <div fxFlex="0 1 calc(100%)" fxFlex.lt-sm="100%">
+                    <mat-form-field class="form-field">
+                        <mat-chip-list #chipList aria-label="Sensors">
+                            <mat-chip *ngFor="let sensor of sensorList" [selectable]="selectable" [removable]="removable" (removed)="remove(sensor)">
+                                {{sensor.sensor_model}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <input matInput placeholder="Sensors" class="form-field" #sensorInput [matChipInputFor]="chipList"[matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matAutocomplete]="autoSensor" formControlName="sensors">
+                        </mat-chip-list>
+                        <mat-autocomplete #autoSensor="matAutocomplete" (optionSelected)="select($event)">
+                            <mat-option *ngFor="let sensor of sensorOptions" [value]="sensor">
+                                {{sensor.sensor_model}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                </div>
+            </div>
         </div>
         <div mat-dialog-actions mat-elevation-z6>
             <button mat-stroked-button type="button" class="cancelbtn" (click)="closeDialog()">Cancel</button>
