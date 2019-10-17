@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Device } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
-import { gateway } from '../../model/gateway';
+import { gateway, node } from '../../model/gateway';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -16,6 +16,11 @@ export class AddDeviceComponent implements OnInit {
 
   adddeviceForm : FormGroup;
   gateway : gateway;
+  nodeList : node[] = [];
+  nodeOptions : node[] = [];
+  removable = true;
+  selectable = true;
+  separatorKeysCodes : number[] = [];
   constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<AddDeviceComponent>, @Inject(MAT_DIALOG_DATA) public data: gateway, private adminService: AdminPanelMainService, private _snackBar : MatSnackBar, private spinner : NgxSpinnerService) { 
     this.gateway = data;
   }
@@ -29,6 +34,13 @@ export class AddDeviceComponent implements OnInit {
     if (this.gateway && this.gateway.gateway_id > 0) {
       this.adddeviceForm.patchValue(this.gateway);
     }
+    this.adminService.getNodeByStatus().subscribe(
+      (data) => {
+        this.nodeOptions = data;
+        console.log(data);
+        
+      }
+    );
   }
 
   closeDialog(){
@@ -73,5 +85,13 @@ export class AddDeviceComponent implements OnInit {
         }
       );
     }
+  }
+
+  select(value) {
+
+  }
+
+  remove(value) {
+
   }
 }
