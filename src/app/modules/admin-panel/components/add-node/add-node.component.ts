@@ -34,28 +34,45 @@ export class AddNodeComponent implements OnInit {
   }
 
   saveNode(form) {
-    this.node = {
-      uid:form.controls.uid.value,
-      data_collection_frequency : form.controls.data_collection_frequency.value,
-      data_sending_frequency : form.controls.data_sending_frequency.value,
-      sensors : []
-    }
-    console.log(this.node)
-    this.spinner.show();
-    this.adminPanelService.createNode(this.node).subscribe(
-      (data)=> {
-        this.dialogref.close('success');
-        this.spinner.hide();
-        if (data === "001") {
-          this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully saved node', duration:3000})
-        }else{
-          this.adminPanelService.getError(data);
+    if (this.node && this.node.node_id > 0) {
+      this.node.uid = form.controls.uid.value,
+      this.node.data_collection_frequency = form.controls.data_collection_frequency.value,
+      this.node.data_sending_frequency = form.controls.data_sending_frequency.value
+      this.spinner.show();
+      this.adminPanelService.updateNode(this.node).subscribe(
+        (data) => {
+          this.dialogref.close('success');
+          if (data === "001") {
+            this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully updated node', duration:3000})
+          } else {
+            this.adminPanelService.getError(data)
+          }
+        },
+        (error) => {
+          console.error(error);
         }
-      },
-      (error) => {
-        console.error(error);
-        this.spinner.hide()
+      );
+    } else {
+      this.node = {
+        uid:form.controls.uid.value,
+        data_collection_frequency : form.controls.data_collection_frequency.value,
+        data_sending_frequency : form.controls.data_sending_frequency.value,
+        sensors : []
       }
-    );
+      console.log(this.node)
+      this.adminPanelService.createNode(this.node).subscribe(
+        (data)=> {
+          this.dialogref.close('success');
+          if (data === "001") {
+            this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully saved node', duration:3000})
+          }else{
+            this.adminPanelService.getError(data);
+          }
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
   }
 }
