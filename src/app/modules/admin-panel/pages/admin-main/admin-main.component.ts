@@ -140,7 +140,7 @@ export class AdminMainComponent implements OnInit {
 
   //Hold all the devices 
   gateways : gateway[];
-
+  gateway : gateway;
   //holds all the device health information
   deviceHealthData: DeviceMonitor[]
 
@@ -773,8 +773,23 @@ export class AdminMainComponent implements OnInit {
       //open edit device form
       case 17:
         this.deviceAssignDialog = this.dialog.open(AddDeviceComponent, {
-          data: this.deviceDetail
+          data: this.gateway
         })
+        this.deviceAssignDialog.afterClosed().subscribe( result => {
+          if(result){
+            this.spinner.show();
+            this.adminpanelService.gateAllGateways().subscribe(
+              (data) => {
+                this.gateways = data;
+                this.spinner.hide();
+              },
+              (error) => {
+                console.error(error);
+                this.spinner.hide();
+              }
+            );
+          }
+        });
       break;
 
       //open sensor form
@@ -931,9 +946,9 @@ export class AdminMainComponent implements OnInit {
     this.deviceId = value
   }
 
-  getDeviceDetails(value){
-    this.deviceDetail = value
-    // console.log(value)
+  getGateway(value){
+    this.gateway = value
+    console.log(value)
   }
   getCustomerDetails(value : Customer) {
     this.customer = value;

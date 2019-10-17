@@ -149,6 +149,10 @@ export class AdminPanelMainService {
   createGateway(gateway : gateway) : Observable<any> {
     return this.http.post(environment.createGatewayUrl, gateway)
   }
+
+  updateGateway(gateway : gateway) : Observable<any> {
+    return this.http.put(environment.updateGatewayUrl, gateway);
+  }
   // get error in snackbar
   getError(value : any) {
     switch (value) {

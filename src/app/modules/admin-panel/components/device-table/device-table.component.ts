@@ -24,7 +24,7 @@ const ELEMENT_DATA: Device[] = [
 })
 export class DeviceTableComponent implements OnInit {
   @Output() buttonClicked = new EventEmitter<number>();
-  @Output() deviceDetails = new EventEmitter<Device>();
+  @Output() gatewayData = new EventEmitter<gateway>();
   @Output() deviceName = new EventEmitter<string>();
   @Output() deviceName2 = new EventEmitter<string>();
   @Output() deviceId = new EventEmitter<number>();
@@ -72,8 +72,8 @@ export class DeviceTableComponent implements OnInit {
     this.deviceAssign.emit(rowId)
   }
 
-  viewDetails(value: Device){
-    this.deviceDetails.emit(value)
+  viewDetails(value: gateway){
+    this.gatewayData.emit(value)
   }
 
   applyFilter(filterValue: string) {
