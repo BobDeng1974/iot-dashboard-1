@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatAutocompleteSelectedEvent } from '@angular/material';
 import { Device } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
@@ -87,11 +87,17 @@ export class AddDeviceComponent implements OnInit {
     }
   }
 
-  select(value) {
-
+  select(event : MatAutocompleteSelectedEvent) {
+    this.nodeList.push(event.option.value)
+    this.nodeOptions = this.nodeOptions.filter( m => m.node_id != event.option.value.node_id);
+    console.log(this.nodeOptions);
+    console.log(this.nodeList);
   }
 
-  remove(value) {
-
+  remove(node : node) {
+    this.nodeList = this.nodeList.filter( m => m.node_id != node.node_id);
+    this.nodeOptions.push(node);
+    console.log(this.nodeList);
+    console.log(this.nodeOptions);
   }
 }

@@ -62,23 +62,20 @@
                                 </div>
                             </div>
                         </mat-tab>
-                        <mat-tab label="NODE & SENSOR REGISTRY">
+                        <mat-tab label="NODE REGISTRY">
                             <div class="content" fxlayout="row" fxLayoutGap="10px" fxLayout.lt.sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 4">
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <app-node-table (buttonClicked)="openPopup($event)" [nodes]="nodes" (nodeData)="getNodeForEdit($event)"></app-node-table>
                                 </div>
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
-                                    <app-sensor-table (buttonClicked)="openPopup($event)" [sensors]="sensors" (sensorData)="getSensorForEdit($event)"></app-sensor-table>
+                                    <app-node-details></app-node-details>
                                 </div>
                             </div>
                         </mat-tab>
                         <mat-tab label="SENSOR REGISTRY">
                             <div class="content" fxlayout="row" fxLayoutGap="10px" fxLayout.lt.sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 5">
-                                <div fxFlex="calc(50% - 10px)" fxFlex.lt-sm="100%">
-                                    
-                                </div>
-                                <div fxFlex="calc(50% - 10px)" fxFlex.lt-sm="100%">
-                                    
+                                <div fxFlex="calc(100% - 10px)" fxFlex.lt-sm="100%">
+                                    <app-sensor-table (buttonClicked)="openPopup($event)" [sensors]="sensors" (sensorData)="getSensorForEdit($event)"></app-sensor-table>
                                 </div>
                             </div>
                         </mat-tab>

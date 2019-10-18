@@ -22,11 +22,13 @@ export class AddNodeComponent implements OnInit {
   removable = true;
   selectable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA]
+  title : string;
   constructor(private fb: FormBuilder, private dialogref : MatDialogRef<AddNodeComponent>, private adminPanelService : AdminPanelMainService, private _snackBar : MatSnackBar, private spinner : NgxSpinnerService, @Inject(MAT_DIALOG_DATA) public data : node ) {
     this.node = data
    }
 
   ngOnInit() {
+    this.title = 'Add Node Information';
     setTimeout(() => {this.spinner.show()}, 100);
     this.nodeForm = this.fb.group({
       uid:['', [Validators.required]],
@@ -39,6 +41,7 @@ export class AddNodeComponent implements OnInit {
       (data) => {
         this.sensorOptions = data; 
         if (this.node && this.node.node_id > 0) {
+          this.title = 'Edit Node Information';
           this.nodeForm.patchValue(this.node);
           this.sensorList = this.sensorList.concat(this.node.sensors);
           this.sensorList.forEach(element => {
@@ -66,20 +69,20 @@ export class AddNodeComponent implements OnInit {
       this.node.sensors = this.sensorList
       console.log(this.node);
       
-      // this.spinner.show();
-      // this.adminPanelService.updateNode(this.node).subscribe(
-      //   (data) => {
-      //     this.dialogref.close('success');
-      //     if (data === "001") {
-      //       this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully updated node', duration:3000})
-      //     } else {
-      //       this.adminPanelService.getError(data)
-      //     }
-      //   },
-      //   (error) => {
-      //     console.error(error);
-      //   }
-      // );
+      this.spinner.show();
+      this.adminPanelService.updateNode(this.node).subscribe(
+        (data) => {
+          this.dialogref.close('success');
+          if (data === "001") {
+            this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully updated node', duration:3000})
+          } else {
+            this.adminPanelService.getError(data)
+          }
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     } else {
       this.node = {
         uid:form.controls.uid.value,
@@ -88,19 +91,19 @@ export class AddNodeComponent implements OnInit {
         sensors : this.sensorList
       }
       console.log(this.node)
-      // this.adminPanelService.createNode(this.node).subscribe(
-      //   (data)=> {
-      //     this.dialogref.close('success');
-      //     if (data === "001") {
-      //       this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully saved node', duration:3000})
-      //     }else{
-      //       this.adminPanelService.getError(data);
-      //     }
-      //   },
-      //   (error) => {
-      //     console.error(error);
-      //   }
-      // );
+      this.adminPanelService.createNode(this.node).subscribe(
+        (data)=> {
+          this.dialogref.close('success');
+          if (data === "001") {
+            this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully saved node', duration:3000})
+          }else{
+            this.adminPanelService.getError(data);
+          }
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
   }
 

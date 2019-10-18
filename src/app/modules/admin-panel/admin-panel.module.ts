@@ -54,11 +54,12 @@ import { NodeTableComponent } from './components/node-table/node-table.component
 import { AddNodeComponent } from './components/add-node/add-node.component';
 import { SensorTableComponent } from './components/sensor-table/sensor-table.component';
 import { AddSensorComponent } from './components/add-sensor/add-sensor.component';
+import { NodeDetailsComponent } from './components/node-details/node-details.component';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, CustomerAssignFormComponent, AddSensorFormComponent, AssignmentDetialComponent, DeviceCustomerAssignComponent, DeviceMonitorDetailsComponent, CustomerBranchComponent, AssignmentDetailsComponent, GraphComponent, SidenavComponent, FooterComponent, ViewVendorCustomerComponent, NodeTableComponent, AddNodeComponent, SensorTableComponent, AddSensorComponent],
+  declarations: [AdminMainComponent, AdminViewComponent, VendorTableComponent, VendorDetailsComponent, AddVendorFormComponent, CustomerTableComponent, CustomerDetailsComponent, AddCustomerFormComponent, AddCustomerAddressComponent, AddCustomerLegalinfoComponent, AddCustomerPhoneComponent, AddCustomerEmailComponent, AddCustomerAdditionalinfoComponent, AddCustomerBranchComponent, AddVendorAddressComponent, AddVendorLegalinfoComponent, AddVendorPhoneComponent, AddVendorEmailComponent, AddVendorAdditionalinfoComponent, CustomerAssignComponent, CustomerAssignDialogComponent, DeviceTableComponent, AddDeviceComponent, DeviceDetailComponent, DeviceAssignmentComponent, DeviceManagementComponent, CustomerAssignFormComponent, AddSensorFormComponent, AssignmentDetialComponent, DeviceCustomerAssignComponent, DeviceMonitorDetailsComponent, CustomerBranchComponent, AssignmentDetailsComponent, GraphComponent, SidenavComponent, FooterComponent, ViewVendorCustomerComponent, NodeTableComponent, AddNodeComponent, SensorTableComponent, AddSensorComponent, NodeDetailsComponent],
   imports: [
     CommonModule,
     SharedModule,

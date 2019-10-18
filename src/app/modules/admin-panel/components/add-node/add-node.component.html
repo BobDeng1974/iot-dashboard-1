@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-    Node Information
+    {{title}}
 </div>
 <div mat-dialog-content>
     <form [formGroup]="nodeForm">
@@ -17,7 +17,7 @@
                         <input matInput type="number" placeholder="Type Data Collection Frequency Here" formControlName="data_collection_frequency">
                     </mat-form-field>
                 </div>
-                <div fxFlex="0 1 cal(33.3% - 35px)" fxFlex.lt-sm="100%">
+                <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Data Sending Frequency</mat-label>
                         <input matInput type="number" placeholder="Type Data Sending Frequency Here" formControlName="data_sending_frequency">
@@ -42,7 +42,6 @@
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
-
                 </div>
             </div>
         </div>
