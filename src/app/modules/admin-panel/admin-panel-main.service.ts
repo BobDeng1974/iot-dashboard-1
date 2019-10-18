@@ -161,6 +161,10 @@ export class AdminPanelMainService {
   getNodeByStatus() : Observable<any> {
     return this.http.get(environment.getNodeByStatus);
   }
+
+  getGatewayByStatus() : Observable<any> {
+    return this.http.get(environment.getGatewayByStatus);
+  }
   // get error in snackbar
   getError(value : any) {
     switch (value) {

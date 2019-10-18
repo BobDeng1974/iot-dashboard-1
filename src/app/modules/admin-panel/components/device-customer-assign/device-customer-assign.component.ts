@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Device, DeviceAssignment } from '../../model/customermodel';
 import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { gateway } from '../../model/gateway';
 
 @Component({
   selector: 'app-device-customer-assign',
@@ -19,6 +20,7 @@ export class DeviceCustomerAssignComponent implements OnInit {
   branchData: any[] = []
   title : string;
   formData: DeviceAssignment;
+  gateways: gateway[] = []
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DeviceCustomerAssignComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminMainService: AdminPanelMainService, private spinner: NgxSpinnerService) {
     this.device = data;
@@ -28,9 +30,9 @@ export class DeviceCustomerAssignComponent implements OnInit {
     this.title = "Assign Gateway to customer"
     this.customerAssignForm = this.fb.group({
       customer_id:'',
-      device_name: '',
+      gateway: '',
       customer_name: '',
-      branch_unit:'',
+      location:'',
       customer_branch_name: '',
       device_assign_effective_from: '',
       device_assign_effective_to: ''
@@ -51,6 +53,15 @@ export class DeviceCustomerAssignComponent implements OnInit {
       },
       (error) => {
         console.log(error)
+      }
+    );
+    this.adminMainService.getGatewayByStatus().subscribe(
+      (data) => {
+        console.log(data);
+        this.gateways = data
+      },
+      (error) => {
+        console.error(error);
       }
     );
 
@@ -88,5 +99,10 @@ export class DeviceCustomerAssignComponent implements OnInit {
         this.spinner.hide()
       }
     );
+  }
+
+  onGatewaySelectionChange(value){
+    console.log(value);
+    
   }
 }
