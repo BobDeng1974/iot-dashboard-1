@@ -216,6 +216,9 @@ export class AdminPanelMainService {
         this._snackBar.openFromComponent(ErrorSnackberComponent,
           { data : "Invalid Data", duration : 3000 });
       break;
+      case "901":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          {data:"Sensor Not Found", duration:3000});
     }
   }
   // getGraphData() : Observable<any> {
