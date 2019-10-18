@@ -26,19 +26,27 @@ export class AddDeviceComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(()=> {this.spinner.show()}, 100);
     this.adddeviceForm = this.fb.group({
       gateway_name : ['',[Validators.required]],
       uid : ['',[Validators.required]],
     });
-
-    if (this.gateway && this.gateway.gateway_id > 0) {
-      this.adddeviceForm.patchValue(this.gateway);
-    }
     this.adminService.getNodeByStatus().subscribe(
       (data) => {
         this.nodeOptions = data;
+        if (this.gateway && this.gateway.gateway_id > 0) {
+          this.adddeviceForm.patchValue(this.gateway);
+          this.nodeList = this.nodeList.concat(this.gateway.nodes);
+          this.nodeList.forEach(element => {
+            this.nodeOptions.filter(m => m.node_id != element.node_id)
+          });
+        }
         console.log(data);
-        
+        this.spinner.hide();
+      },
+      (error) => {
+        console.error(error);
+        this.spinner.hide()
       }
     );
   }
@@ -50,9 +58,11 @@ export class AddDeviceComponent implements OnInit {
   onSubmit(form){
     if (this.gateway && this.gateway.gateway_id > 0) {
       this.gateway.gateway_name = form.controls.gateway_name.value,
-      this.gateway.uid = form.controls.uid.value
+      this.gateway.uid = form.controls.uid.value,
+      this.gateway.nodes = this.nodeList
       this.adminService.updateGateway(this.gateway).subscribe(
         (data) => {
+          console.log(data);
           this.dialogRef.close('success');
           if (data === "001") {
             this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully updated gateway', duration:3000})
@@ -68,11 +78,12 @@ export class AddDeviceComponent implements OnInit {
       this.gateway = {
         gateway_name : form.controls.gateway_name.value,
         uid : form.controls.uid.value,
-        nodes : []
+        nodes : this.nodeList
       }
       console.log(this.gateway)
       this.adminService.createGateway(this.gateway).subscribe(
         (data) => {
+          console.log(data);
           this.dialogRef.close('success')
           if (data === "001") {
             this._snackBar.openFromComponent(SuccessSnackberComponent, {data:'Successfully created gateway', duration:3000})
