@@ -163,6 +163,7 @@ export class AdminMainComponent implements OnInit {
   //nodes
   nodes : node[] = [];
   nodeInfo : node;
+  sensorsOfNode : sensor[];
   //device assign info
   deviceAssignInfo: DeviceAssignment[];
 
@@ -1070,6 +1071,7 @@ export class AdminMainComponent implements OnInit {
 
   getNodeForEdit(value){
     this.nodeInfo = value;
+    this.sensorsOfNode = this.nodeInfo.sensors;
     console.log(value);
   }
 }
