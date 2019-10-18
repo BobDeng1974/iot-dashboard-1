@@ -17,6 +17,7 @@ export class DeviceCustomerAssignComponent implements OnInit {
   customerData: any[] = []
   customerId: number;
   branchData: any[] = []
+  title : string;
   formData: DeviceAssignment;
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DeviceCustomerAssignComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminMainService: AdminPanelMainService, private spinner: NgxSpinnerService) {
@@ -24,6 +25,7 @@ export class DeviceCustomerAssignComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title = "Assign Gateway to customer"
     this.customerAssignForm = this.fb.group({
       customer_id:'',
       device_name: '',
