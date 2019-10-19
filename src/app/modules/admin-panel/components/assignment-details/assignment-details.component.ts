@@ -22,34 +22,22 @@ export class AssignmentDetailsComponent implements OnInit {
 
   constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService) { }
 
-  frameworkComponents = {
-    dateRenderer: DateTimeRendererComponent
-  }
+  
   ngOnInit() {
-    this.columnDefs = [
-      { headerName:'Customer Name', field:'customer_name'},
-      { headerName:'Branch Name', field:'customer_branch_name'},
-      { headerName:'Unit Name', field:'branch_unit'},
-      { headerName: 'Start Date', field:'device_assign_effective_from', sortable:true, cellRenderer:'dateRenderer'},
-      { headerName: 'End Date', field:'device_assign_effective_to', sortable:true, cellRenderer:'dateRenderer'},
-    ];
-    this.rowSelection = 'single';
+    setTimeout(() => {this.spinner.show()}, 100);
+    this.adminService.getAllAssignedInfo().subscribe(
+      (data) =>{
+        console.log(data);
+        this.spinner.hide();
+      },
+      (error) => {
+        console.error(error);
+        this.spinner.hide();
+      }
+    );  
   }
   ngOnChanges(){
-    if (this.device && this.device.device_id > 0) {
-      this.spinner.show();
-      this.adminService.getAssignInfo(this.device.device_id).subscribe(
-        (data) => {
-          this.assignInfo = data
-          console.log(data)
-          this.spinner.hide();
-        },
-        (error) => {
-          console.log(error);
-          this.spinner.hide()
-        }
-      ); 
-    }
+    
   }
   InitializeClick(value){
     this.buttonClick.emit(value)
