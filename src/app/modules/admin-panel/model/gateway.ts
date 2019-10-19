@@ -34,3 +34,16 @@ export interface sensor {
     sensor_effective_to ?: Date;
     sensor_status ?: number;
 }
+
+export interface assignmentinfo {
+    gateway_id ?: number;
+    customer_id ?: number;
+    customer_branch_id ?: number;
+    customer_branch_name ?: string;
+    gateway_assign_effective_from ?: Date;
+    gateway_assign_effective_to ?: Date;
+    customer_name ?: string;
+    gateway_name ?: string;
+    branch_unit ?: string;
+    gateway_assign_id ?: number;
+}
