@@ -6,7 +6,7 @@ import { Vendor } from './model/vendormodel';
 import { MatSnackBar } from '@angular/material';
 import { ErrorSnackberComponent } from '../shared/components/error-snackber/error-snackber.component';
 import { environment } from '../../../environments/environment';
-import { sensor, node, gateway } from './model/gateway';
+import { sensor, node, gateway, assignmentinfo } from './model/gateway';
 import { puts } from 'util';
 
 @Injectable({
@@ -91,9 +91,9 @@ export class AdminPanelMainService {
     return this.http.put(environment.assignDevice, form)
   }
 
-  getAssignInfo(id:number): Observable<DeviceAssignment[]>{
-    return this.http.get<DeviceAssignment[]>(environment.getAssignInfoUrl+id+'?format=json');
-  }
+  // getAssignInfo(id:number): Observable<DeviceAssignment[]>{
+  //   return this.http.get<DeviceAssignment[]>(environment.getAssignInfoUrl+id+'?format=json');
+  // }
   getVendorNameId(): Observable<any[]>{
     return this.http.get<any[]>(environment.getVendorNameIdUrl);
   }
@@ -165,6 +165,14 @@ export class AdminPanelMainService {
   getGatewayByStatus() : Observable<any> {
     return this.http.get(environment.getGatewayByStatus);
   }
+
+  getAllAssignedInfo() : Observable<any> {
+    return this.http.get(environment.getAllAssignedInfo);
+  }
+
+  assignGateway(assignInfo  : assignmentinfo) : Observable<any> {
+   return this.http.post(environment.assignedGatewayUrl, assignInfo); 
+  }
   // get error in snackbar
   getError(value : any) {
     switch (value) {
@@ -223,6 +231,11 @@ export class AdminPanelMainService {
       case "901":
         this._snackBar.openFromComponent(ErrorSnackberComponent,
           {data:"Sensor Not Found", duration:3000});
+      break;
+      case "902":
+        this._snackBar.openFromComponent(ErrorSnackberComponent,
+          { data:'Gateway is not available', duration : 3000});
+      break;
     }
   }
   // getGraphData() : Observable<any> {
