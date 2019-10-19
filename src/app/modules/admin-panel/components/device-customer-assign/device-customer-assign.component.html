@@ -72,7 +72,7 @@
                 <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Select customer</mat-label>
-                        <mat-select placeholder="select customer" formControlName="customer_name" (selectionChange)="onSelectionChange($event)">
+                        <mat-select placeholder="select customer" formControlName="customer" (selectionChange)="onSelectionChange($event)">
                             <mat-option *ngFor="let customer of customerData" [value]="customer">
                             {{customer.customer_name}}
                             </mat-option>
@@ -82,8 +82,8 @@
                 <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Select branch</mat-label>
-                        <mat-select formControlName="customer_branch_name">
-                            <mat-option *ngFor="let branch of branchData" [value]="branch.branch_name">
+                        <mat-select formControlName="branch">
+                            <mat-option *ngFor="let branch of branchData" [value]="branch">
                             {{branch.branch_name}}
                             </mat-option>
                         </mat-select>
@@ -122,6 +122,18 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
+                </div>
+            </div>
+            <div *ngIf="selectedGateway && selectedGateway.gateway_id > 0" [style.height.vh]="45">
+                <span class="divider" fxLayout="row">Gateway Informations<hr fxFlex/></span>
+                <br>
+                <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start" fxLayoutGap="10px">
+                    <div fxFlex="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                        <app-node-array [nodes]="gatewayNodes" (selected)="getSelectedNode($event)"></app-node-array>
+                    </div>
+                    <div fxFlex="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                        <app-sensor-array-view [node]="selectedNode"></app-sensor-array-view>
+                    </div>
                 </div>
             </div>
         </div>
