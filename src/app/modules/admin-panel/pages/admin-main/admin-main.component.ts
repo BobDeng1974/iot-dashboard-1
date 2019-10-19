@@ -825,30 +825,18 @@ export class AdminMainComponent implements OnInit {
         this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent,{
           data:this.deviceDetail
         });
+
         this.deviceCustomerDialog.afterClosed().subscribe(result => {
           if (result) {
-            console.log(result)
-            this.spinner.show()
-            this.adminpanelService.updatedDeviceAssign(result).subscribe(
+            this.spinner.show();
+            this.adminpanelService.getAllAssignedInfo().subscribe(
               (data) => {
-                if (data === "001") {
-                  //alert('updated successfully')
-                  this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Device Add successfully", duration: 3000});
-                  this.adminpanelService.getAssignInfo(result.device_id).subscribe(
-                    (data) => {
-                      this.deviceAssignInfo = data;
-                      //console.log(data)
-                    }
-                  );
-                } 
-                else {
-                  this.adminpanelService.getError(data);
-                }
-                this.spinner.hide()
+                console.log(data);
+                this.spinner.hide();
               },
               (error) => {
-                console.log(error)
-                this.spinner.hide()
+                console.error(error);
+                this.spinner.hide();
               }
             );
           }
