@@ -82,7 +82,7 @@
                         <mat-tab label="GATEWAY ASSIGNMENT">
                             <div class="content" fxlayout="row" fxLayoutGap="10px" fxLayout.lt.sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 6">
                                 <div fxFlex="calc(100% - 10px)" fxFlex.lt-sm="100%">
-                                    <app-assignment-details (buttonClick)="openPopup($event)" [assignInfo]="deviceAssignInfo" [device]="deviceDetail" (editClicked)="openAssignEditPopup($event)"></app-assignment-details>
+                                    <app-assignment-details (buttonClick)="openPopup($event)" [device]="deviceDetail" (assignData)="getAssignInfo($event)"></app-assignment-details>
                                 </div>
                             </div>
                         </mat-tab>

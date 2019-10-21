@@ -29,7 +29,8 @@ import { startWith, switchMap } from 'rxjs/operators';
 import { ViewVendorCustomerComponent } from '../../components/view-vendor-customer/view-vendor-customer.component';
 import { AddNodeComponent } from '../../components/add-node/add-node.component';
 import { AddSensorComponent } from '../../components/add-sensor/add-sensor.component';
-import { sensor, node, gateway } from '../../model/gateway';
+import { sensor, node, gateway, assignmentinfo } from '../../model/gateway';
+import { DeviceAssignmentComponent } from '../../components/device-assignment/device-assignment.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -165,7 +166,7 @@ export class AdminMainComponent implements OnInit {
   nodeInfo : node;
   sensorsOfNode : sensor[];
   //device assign info
-  deviceAssignInfo: DeviceAssignment[];
+  selectedAssignmentInfo : assignmentinfo;
 
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
@@ -823,7 +824,6 @@ export class AdminMainComponent implements OnInit {
       //open device assignment form
       case 19:
         this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent,{
-          data:this.deviceDetail
         });
 
         this.deviceCustomerDialog.afterClosed().subscribe(result => {
@@ -916,6 +916,8 @@ export class AdminMainComponent implements OnInit {
           }
         });
       break;
+      case 24:
+          this.deviceCustomerDialog = this.dialog.open(DeviceCustomerAssignComponent, {data: this.selectedAssignmentInfo});
     }
   }
 
@@ -1061,5 +1063,11 @@ export class AdminMainComponent implements OnInit {
     this.nodeInfo = value;
     this.sensorsOfNode = this.nodeInfo.sensors;
     console.log(value);
+  }
+
+  getAssignInfo(value){
+    this.selectedAssignmentInfo = value;
+    console.log(this.selectedAssignmentInfo);
+    
   }
 }

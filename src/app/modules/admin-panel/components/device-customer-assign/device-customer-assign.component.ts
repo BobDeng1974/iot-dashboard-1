@@ -26,20 +26,21 @@ export class DeviceCustomerAssignComponent implements OnInit {
   gatewayNodes : node[] = []
   selectedNode : node;
   assignInfo : assignmentinfo;
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DeviceCustomerAssignComponent>, @Inject(MAT_DIALOG_DATA) public data: Device, private adminMainService: AdminPanelMainService, private spinner: NgxSpinnerService, private _snackBar : MatSnackBar) {
-    this.device = data;
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DeviceCustomerAssignComponent>, @Inject(MAT_DIALOG_DATA) public data: assignmentinfo, private adminMainService: AdminPanelMainService, private spinner: NgxSpinnerService, private _snackBar : MatSnackBar) {
+    this.assignInfo = data;
   }
 
   ngOnInit() {
+    console.log(this.assignInfo);
     this.gatewayNodes = [];
     this.title = "Assign Gateway to customer"
     this.customerAssignForm = this.fb.group({
       gateway: '',
       customer: '',
-      location:'',
+      branch_unit:'',
       branch: '',
-      device_assign_effective_from: ['', [Validators.required]],
-      device_assign_effective_to: ''
+      gateway_assign_effective_from: ['', [Validators.required]],
+      gateway_assign_effective_to: ''
     });
 
 
@@ -48,12 +49,12 @@ export class DeviceCustomerAssignComponent implements OnInit {
         console.log(data);
         
         this.customerData = data
-        if (this.device && this.device.device_id > 0) {
-          this.customerAssignForm.patchValue(this.device);
+        if (this.assignInfo && this.assignInfo.gateway_assign_id > 0) {
+          this.customerAssignForm.patchValue(this.assignInfo);
 
         }
         else {
-          this.customerAssignForm.patchValue(this.device);
+          
         }
       },
       (error) => {

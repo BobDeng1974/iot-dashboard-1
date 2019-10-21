@@ -92,19 +92,19 @@
                 <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
                         <mat-label>Location Name</mat-label>
-                        <input matInput placeholder="Type Unit Name" formControlName="location">
+                        <input matInput placeholder="Type Unit Name" formControlName="branch_unit">
                     </mat-form-field>
                 </div>
                 <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
-                        <input matInput [matDatepicker]="picker" placeholder="Allocation start date" formControlName="device_assign_effective_from">
+                        <input matInput [matDatepicker]="picker" placeholder="Allocation start date" formControlName="gateway_assign_effective_from">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
                 <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
                     <mat-form-field class="form-field">
-                        <input matInput [matDatepicker]="picker2" placeholder="Allocation end date" formControlName="device_assign_effective_to">
+                        <input matInput [matDatepicker]="picker2" placeholder="Allocation end date" formControlName="gateway_assign_effective_to">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
