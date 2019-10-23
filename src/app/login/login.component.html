@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="start" class="outer-container">
+<div fxLayout="row" fxLayoutAlign="start" class="outer-container" *ngIf="isDesktop">
     <div fxFlex="40%" class="image-container">
         <img src="../../assets/images/login.png" class="login-photo">
     </div>
@@ -47,4 +47,7 @@
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="isMobile || isTablet">
+    
 </div>
