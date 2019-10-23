@@ -6,6 +6,7 @@ import { IUser } from '../modules/admin-panel/model/usermodel';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ApplicationStateService } from '../service/application-state.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,13 +16,19 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   formData: IUser;
-  constructor(private fb: FormBuilder, private appState: ApplicationStateService, private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService) { }
+  isMobile : boolean = false;
+  isDesktop : boolean = false;
+  isTablet: boolean = false;
+  constructor(private fb: FormBuilder, private appState: ApplicationStateService, private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService, private deviceDetector : DeviceDetectorService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       user_name:['', [Validators.required]],
       user_password:['', [Validators.required]]
     })
+    this.isMobile = this.deviceDetector.isMobile();
+    this.isDesktop = this.deviceDetector.isDesktop();
+    this.isTablet = this.deviceDetector.isTablet();
   }
 
   onSubmit(form){
@@ -54,6 +61,7 @@ export class LoginComponent implements OnInit {
       },
       (error) =>{
         console.log(error)
+        this.spinner.hide()
       }
     );
   }
