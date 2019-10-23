@@ -13,11 +13,10 @@ import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { VendorPanelModule } from './modules/vendor-panel/vendor-panel.module';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SidenavComponent,
     FooterComponent,
     LoginComponent
   ],
@@ -29,7 +28,8 @@ import { VendorPanelModule } from './modules/vendor-panel/vendor-panel.module';
     DashboardModule,
     AgGridModule.withComponents([]),
     HttpClientModule,
-    VendorPanelModule
+    VendorPanelModule,
+    DeviceDetectorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

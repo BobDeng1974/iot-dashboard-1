@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-root',
@@ -34,11 +35,17 @@ export class AppComponent {
   title = 'iot-dashboard';
   sidenavState: string = 'open';
   router: string;
+  isMobile : boolean = false;
+  isDesktop : boolean = false;
+  isTablet : boolean = false;
   shrinkSidenav(){
     this.sidenavState = this.sidenavState === 'open' ? 'shrunk' : 'open';
   }
 
-  constructor(private _router: Router){
+  constructor(private _router: Router, private deviceDetector : DeviceDetectorService){
     this.router = _router.url;
+    this.isMobile = deviceDetector.isMobile();
+    this.isTablet = deviceDetector.isTablet();
+    this.isDesktop = deviceDetector.isDesktop();
   }
 }
