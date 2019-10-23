@@ -61,3 +61,13 @@
     background: #DF0C5F;
     color: white
 }
+
+.mobile-outer-container{
+    background: white;
+    height: calc(100vh - 30px);
+}
+
+.mobile-login-banner{
+    position: relative;
+    top: 50%;
+}
