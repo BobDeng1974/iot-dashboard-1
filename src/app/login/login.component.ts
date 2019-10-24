@@ -41,11 +41,20 @@ export class LoginComponent implements OnInit {
         console.log(data)
         this.spinner.show()
         if (data.user_type == 'customer') {
-          this.router.navigate(['/dashboard']);
-          this.appState.userLoggedIn = true;
-          this.appState.userType = data.user_type;
-          this.appState.userId = data.user_id;
-          this.spinner.hide()
+          if (this.isDesktop) {
+            this.router.navigate(['/dashboard']);
+            this.appState.userLoggedIn = true;
+            this.appState.userType = data.user_type;
+            this.appState.userId = data.user_id;
+            this.spinner.hide()
+          } else if ( this.isMobile || this.isTablet) {
+            this.router.navigate(['/mobile-dashboard']);
+            this.appState.userLoggedIn = true;
+            this.appState.userType = data.user_type;
+            this.appState.userId = data.user_id;
+            this.spinner.hide()
+          }
+          
         } else if (data.user_type == 'vendor'){
           this.router.navigate(['/vendor-panel']);
           this.appState.userLoggedIn = true;
