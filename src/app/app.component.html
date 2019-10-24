@@ -8,5 +8,6 @@
       </div>
     </div>
   </div>
-  <app-footer class="footer"></app-footer>
+  <app-footer class="footer" *ngIf="isDesktop"></app-footer>
+  <!-- <app-mobile-bottom-nav-bar *ngIf="isMobile"></app-mobile-bottom-nav-bar> -->
 </div>

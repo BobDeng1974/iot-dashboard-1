@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile-bottom-nav-bar.component.scss']
 })
 export class MobileBottomNavBarComponent implements OnInit {
-
+  routerLink0 = "/mobile-locations" 
+  routerLink1 = "/mobile-devices" 
+  routerLink2 = "/mobile-notifications" 
+  routerLink3 = "/mobile-contact" 
+  routerLink4 = "/mobile-dashboard" 
   constructor() { }
 
   ngOnInit() {

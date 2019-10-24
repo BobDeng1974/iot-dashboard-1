@@ -44,6 +44,8 @@ export class AppComponent {
 
   constructor(private _router: Router, private deviceDetector : DeviceDetectorService){
     this.router = _router.url;
+    console.log(this.router);
+    
     this.isMobile = deviceDetector.isMobile();
     this.isTablet = deviceDetector.isTablet();
     this.isDesktop = deviceDetector.isDesktop();

@@ -17,10 +17,15 @@ import { AllPinGraphComponent } from './components/all-pin-graph/all-pin-graph.c
 import { MobileDashboardMainComponent } from './pages/mobile-dashboard-main/mobile-dashboard-main.component';
 import { MobileBottomNavBarComponent } from 'src/app/common/mobile-bottom-nav-bar/mobile-bottom-nav-bar.component';
 import { MobileTopNavBarComponent } from 'src/app/common/mobile-top-nav-bar/mobile-top-nav-bar.component';
+import { MobileLocationsComponent } from './components/mobile-locations/mobile-locations.component';
+import { MobileDevicesComponent } from './components/mobile-devices/mobile-devices.component';
+import { MobileNotificationsComponent } from './components/mobile-notifications/mobile-notifications.component';
+import { MobileContactComponent } from './components/mobile-contact/mobile-contact.component';
+import { MobileProfileComponent } from './components/mobile-profile/mobile-profile.component';
 
 
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent, MobileDashboardMainComponent, MobileBottomNavBarComponent, MobileTopNavBarComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent, MobileDashboardMainComponent, MobileTopNavBarComponent, MobileLocationsComponent, MobileDevicesComponent, MobileNotificationsComponent, MobileContactComponent, MobileProfileComponent, MobileBottomNavBarComponent],
   imports: [
     CommonModule,
     NgxChartsModule,
