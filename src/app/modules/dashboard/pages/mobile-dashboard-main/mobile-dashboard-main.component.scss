@@ -1,0 +1,12 @@
+
+
+.mobile-view-container {
+    display: flex !important;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.mobile-main-content {
+    flex: 1 0 auto;
+    background-color: #eeeeee;
+}
