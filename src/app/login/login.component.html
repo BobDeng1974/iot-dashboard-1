@@ -51,18 +51,18 @@
 <div *ngIf="isMobile || isTablet">
     <div class="mobile-outer-container">
         <div fxLayout="column" fxLayoutGap=10px fxLayoutAlign="start" [style.height.%]="100">
-            <div fxFlex="0 1 calc(30% - 10px)" fxLayout="row" fxLayoutAlign="center">
+            <div fxFlex="0 1 calc(30% - 10px)" fxLayout="row" fxLayoutAlign="center" class="banner-container">
                 <div class="mobile-login-banner" fxFlex="60">
-                    <img src="../../assets/images/QM-LogoAW[PNG].png" class="login-image" alt="banner">
+                    <img src="../../assets/images/QubeMaticsIcon.svg" class="login-image" alt="banner">
                 </div>
             </div>
             <div fxFlex="0 1 calc(70% - 10px)">
                 <div class="container" fxLayout="column">
-                    <div fxFlex="30%" class="avatar-container">
-                        <div class="avatar">
-                        </div>
+                    <div fxFlex="10%" class="avatar-container">
+                        <!-- <div class="avatar">
+                        </div> -->
                     </div>
-                    <div fxFlex="70%">
+                    <div fxFlex="80%">
                         <form [formGroup]="loginForm">
                             <div class="form-container">
                                 <div fxLayout="column" fxLayoutGap="10px">
