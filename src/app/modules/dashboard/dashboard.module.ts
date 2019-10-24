@@ -14,10 +14,13 @@ import { SensorCardComponent } from './components/sensor-card/sensor-card.compon
 import { ViewPinGraphComponent } from './components/view-pin-graph/view-pin-graph.component';
 import { PinViewSensorCardComponent } from './components/pin-view-sensor-card/pin-view-sensor-card.component';
 import { AllPinGraphComponent } from './components/all-pin-graph/all-pin-graph.component';
+import { MobileDashboardMainComponent } from './pages/mobile-dashboard-main/mobile-dashboard-main.component';
+import { MobileBottomNavBarComponent } from 'src/app/common/mobile-bottom-nav-bar/mobile-bottom-nav-bar.component';
+import { MobileTopNavBarComponent } from 'src/app/common/mobile-top-nav-bar/mobile-top-nav-bar.component';
 
 
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent, MobileDashboardMainComponent, MobileBottomNavBarComponent, MobileTopNavBarComponent],
   imports: [
     CommonModule,
     NgxChartsModule,
