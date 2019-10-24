@@ -14,11 +14,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { VendorPanelModule } from './modules/vendor-panel/vendor-panel.module';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { MobileTopNavBarComponent } from './common/mobile-top-nav-bar/mobile-top-nav-bar.component';
+// import { MobileBottomNavBarComponent } from './common/mobile-bottom-nav-bar/mobile-bottom-nav-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
