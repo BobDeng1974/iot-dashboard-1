@@ -167,7 +167,7 @@ export class AdminMainComponent implements OnInit {
   sensorsOfNode : sensor[];
   //device assign info
   selectedAssignmentInfo : assignmentinfo;
-
+  assignmentInformations : assignmentinfo [] = [];
   constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
@@ -832,6 +832,7 @@ export class AdminMainComponent implements OnInit {
             this.adminpanelService.getAllAssignedInfo().subscribe(
               (data) => {
                 console.log(data);
+                this.assignmentInformations = data
                 this.spinner.hide();
               },
               (error) => {

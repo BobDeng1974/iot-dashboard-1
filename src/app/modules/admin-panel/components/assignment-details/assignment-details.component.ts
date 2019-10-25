@@ -16,7 +16,7 @@ export class AssignmentDetailsComponent implements OnInit {
   @Output() buttonClick = new EventEmitter<number>();
   @Output() assignData = new EventEmitter<assignmentinfo>();
   @Input() device:Device;
-  @Input() assignInfo: DeviceAssignment[] = [];
+  @Input() assignInfos: assignmentinfo[];
   private rowSelection: string;
   private columnDefs;
   private selectedRow: DeviceAssignment;
@@ -46,7 +46,7 @@ export class AssignmentDetailsComponent implements OnInit {
     );  
   }
   ngOnChanges(){
-    
+    this.dataSource.data = this.assignInfos
   }
   InitializeClick(value){
     this.buttonClick.emit(value)

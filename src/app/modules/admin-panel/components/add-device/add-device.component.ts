@@ -26,7 +26,7 @@ export class AddDeviceComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(()=> {this.spinner.show()}, 100);
+    // setTimeout(()=> {this.spinner.show()}, 100);
     this.adddeviceForm = this.fb.group({
       gateway_name : ['',[Validators.required]],
       uid : ['',[Validators.required]],
