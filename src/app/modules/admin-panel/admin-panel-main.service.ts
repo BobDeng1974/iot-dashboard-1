@@ -173,6 +173,10 @@ export class AdminPanelMainService {
   assignGateway(assignInfo  : assignmentinfo) : Observable<any> {
    return this.http.post(environment.assignedGatewayUrl, assignInfo); 
   }
+
+  getIndustrytype() : Observable<any> {
+    return this.http.get(environment.getIndustryTypeUrl);
+  }
   // get error in snackbar
   getError(value : any) {
     switch (value) {
