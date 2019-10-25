@@ -23,6 +23,16 @@
                         <input matInput type="number" placeholder="Type Data Sending Frequency Here" formControlName="data_sending_frequency">
                     </mat-form-field>
                 </div>
+                <div fxFlex = "0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
+                    <mat-form-field class="form-field">
+                        <mat-label>Industry type</mat-label>
+                        <mat-select placeholder="Select Industry Type Here" formControlName="industry_type">
+                            <mat-option *ngFor="let i of industryType" [value]="i.domain_code">
+                                {{i.domain_value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
             <span class="divider" fxLayout="row">Add Sensors <hr fxFlex/></span>
             <br>

@@ -6,7 +6,7 @@ import { AdminPanelMainService } from '../../admin-panel-main.service';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-add-node',
@@ -23,6 +23,7 @@ export class AddNodeComponent implements OnInit {
   selectable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA]
   title : string;
+  industryType = [];
   constructor(private fb: FormBuilder, private dialogref : MatDialogRef<AddNodeComponent>, private adminPanelService : AdminPanelMainService, private _snackBar : MatSnackBar, private spinner : NgxSpinnerService, @Inject(MAT_DIALOG_DATA) public data : node ) {
     this.node = data
    }
@@ -34,13 +35,48 @@ export class AddNodeComponent implements OnInit {
       uid:['', [Validators.required]],
       data_collection_frequency:'',
       data_sending_frequency:'',
-      sensors:''
+      sensors:'',
+      industry_type:''
     })
     
-    this.adminPanelService.getSensorsByStatus().subscribe(
+    // this.adminPanelService.getSensorsByStatus().subscribe(
+    //   (data) => {
+    //     this.sensorOptions = data; 
+    //     if (this.node && this.node.node_id > 0) {
+    //       this.title = 'Edit Node Information';
+    //       this.nodeForm.patchValue(this.node);
+    //       this.sensorList = this.sensorList.concat(this.node.sensors);
+    //       this.sensorList.forEach(element => {
+    //         this.sensorOptions.filter(m => m.sensor_id != element.sensor_id);
+    //       });
+    //     }
+    //     this.spinner.hide();
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //     this.spinner.hide();
+    //   }
+    // );
+    // this.adminPanelService.getIndustrytype().subscribe(
+    //   (data) =>{
+    //     this.industryType = data
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
+    forkJoin(
+      [this.adminPanelService.getSensorsByStatus(),
+      this.adminPanelService.getIndustrytype()]
+    ).subscribe(
       (data) => {
-        this.sensorOptions = data; 
+        console.log(data);
+        
+        this.sensorOptions = data[0];
+        this.industryType = data[1] 
         if (this.node && this.node.node_id > 0) {
+          console.log(this.node);
+          
           this.title = 'Edit Node Information';
           this.nodeForm.patchValue(this.node);
           this.sensorList = this.sensorList.concat(this.node.sensors);
@@ -48,9 +84,9 @@ export class AddNodeComponent implements OnInit {
             this.sensorOptions.filter(m => m.sensor_id != element.sensor_id);
           });
         }
-        this.spinner.hide();
+        this.spinner.hide()
       },
-      (error) => {
+      (error)=> {
         console.error(error);
         this.spinner.hide();
       }
@@ -66,7 +102,8 @@ export class AddNodeComponent implements OnInit {
       this.node.uid = form.controls.uid.value,
       this.node.data_collection_frequency = form.controls.data_collection_frequency.value,
       this.node.data_sending_frequency = form.controls.data_sending_frequency.value,
-      this.node.sensors = this.sensorList
+      this.node.sensors = this.sensorList,
+      this.node.industry_type = form.controls.industry_type.value
       console.log(this.node);
       
       this.spinner.show();
@@ -88,7 +125,8 @@ export class AddNodeComponent implements OnInit {
         uid:form.controls.uid.value,
         data_collection_frequency : form.controls.data_collection_frequency.value,
         data_sending_frequency : form.controls.data_sending_frequency.value,
-        sensors : this.sensorList
+        sensors : this.sensorList,
+        industry_type : form.controls.industry_type.value
       }
       console.log(this.node)
       this.adminPanelService.createNode(this.node).subscribe(

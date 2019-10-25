@@ -17,7 +17,8 @@ export interface node{
     node_effective_to ?: Date,
     data_collection_frequency ?: number,
     data_sending_frequency ?: number
-    sensors ?: sensor[]
+    sensors ?: sensor[],
+    industry_type ?: number
 }
 
 export interface sensor {
