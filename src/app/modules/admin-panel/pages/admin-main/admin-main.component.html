@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="view-container">
     <div class="main-content">
         <div class="main-flex" fxLayout="row" fxLayoutAlign="flex-start">
@@ -47,10 +46,10 @@
                         </mat-tab>
                         <mat-tab label="GATEWAY REGISTRY">
                             <div class="content" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 3">
-                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
+                                <div fxFlex="calc(100% - 16px)" fxFlex.lt-sm="100%">
                                     <app-device-table [gateways]="gateways" (buttonClicked)="openPopup($event)" (deviceId2)="getDeviceID($event)" (deviceId)="getDeviceID($event)" (deviceName)="getDeviceName($event)" (deviceName2)="getDeviceName($event)" (deviceAssign)="toDeviceAssign($event)" (gatewayData)="getGateway($event)"></app-device-table>
                                 </div>
-                                <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
+                                <!-- <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <div fxLayout="column" fxLayout.lt-sm="row" [style.height.%]="100">
                                         <div fxFlex="50%" fxFlex.lt-sm="100%" [style.height.%]="100">
                                             <app-device-detail [device]="deviceDetail" (buttonClicked)="openPopup($event)"></app-device-detail>
@@ -60,7 +59,7 @@
                                         </div>
                                     </div>
                                     
-                                </div>
+                                </div> -->
                             </div>
                         </mat-tab>
                         <mat-tab label="NODE REGISTRY">
@@ -94,7 +93,7 @@
     </div>
 </div>
 
-<button mat-flat-button color="warn" class='dashboardbtn' (click)="VievModal()">Go To DashBoard</button>
+<button mat-flat-button color="warn" class='dashboardbtn' (click)="goToDashboard()">Go To DashBoard</button>
 <ngx-spinner color="rgba(223,12,95,0.9)" bdOpacity="0.9" type="ball-atom">
 </ngx-spinner>
 

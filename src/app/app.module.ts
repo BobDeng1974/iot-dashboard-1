@@ -20,7 +20,8 @@ import { MobileBottomNavBarComponent } from './common/mobile-bottom-nav-bar/mobi
   declarations: [
     AppComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

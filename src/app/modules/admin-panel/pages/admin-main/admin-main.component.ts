@@ -31,6 +31,7 @@ import { AddNodeComponent } from '../../components/add-node/add-node.component';
 import { AddSensorComponent } from '../../components/add-sensor/add-sensor.component';
 import { sensor, node, gateway, assignmentinfo } from '../../model/gateway';
 import { DeviceAssignmentComponent } from '../../components/device-assignment/device-assignment.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-main',
@@ -168,7 +169,7 @@ export class AdminMainComponent implements OnInit {
   //device assign info
   selectedAssignmentInfo : assignmentinfo;
   assignmentInformations : assignmentinfo [] = [];
-  constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService) { }
+  constructor(public dialog: MatDialog, private adminpanelService: AdminPanelMainService, private _snackBar: MatSnackBar, private spinner : NgxSpinnerService, private router : Router) { }
 
   ngOnInit() {
     this.customer = {
@@ -1070,5 +1071,9 @@ export class AdminMainComponent implements OnInit {
     this.selectedAssignmentInfo = value;
     console.log(this.selectedAssignmentInfo);
     
+  }
+
+  goToDashboard(){
+    this.router.navigate(["/dashboard"])
   }
 }
