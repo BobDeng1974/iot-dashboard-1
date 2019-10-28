@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="view-container">
-  <app-header></app-header>
+  <app-header *ngIf="userDetails.user_id != 0 && isDesktop"></app-header>
   <div class="main-content">
     <div class="main-flex" fxLayout="row" fxLayoutAlign="flex-strat">
       <div class="main-content-flex">
@@ -9,5 +9,5 @@
     </div>
   </div>
   <app-footer class="footer" *ngIf="isDesktop"></app-footer>
-  <!-- <app-mobile-bottom-nav-bar *ngIf="isMobile"></app-mobile-bottom-nav-bar> -->
+  <app-mobile-bottom-nav-bar *ngIf="userDetails.user_id !=0 && userDetails.user_type == 'customer' && isMobile"></app-mobile-bottom-nav-bar>
 </div>

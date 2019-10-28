@@ -38,11 +38,18 @@ export class LoginComponent implements OnInit {
       userDetail => {
         if (userDetail.user_id != 0) {
           console.log(userDetail);
-          
-          if (this.isMobile) {
-            this.router.navigateByUrl("//mobile-dashboard")
-          } else {
-            this.router.navigateByUrl("/dashboard")
+          if (userDetail.user_type == "admin") {
+            console.log(userDetail.user_type);
+            
+            this.router.navigateByUrl("/admin-panel")
+          } else if (userDetail.user_type == "vendor"){
+            this.router.navigateByUrl("/vendor-panel")
+          }else if (userDetail.user_type == "customer") {
+            if (this.isMobile) {
+              this.router.navigateByUrl("/mobile-dashboard")
+            } else if (this.isDesktop){
+              this.router.navigateByUrl("/dashboard")
+            }
           }
         }
       }

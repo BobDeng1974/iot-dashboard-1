@@ -3,7 +3,7 @@
 .mobile-view-container {
     display: flex !important;
     flex-direction: column;
-    height: 100vh;
+    height: (100vh -30px);
 }
 
 .mobile-main-content {
