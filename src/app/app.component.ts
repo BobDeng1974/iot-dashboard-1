@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
-
+import * as fromLogin from './state/app.reducer';
+import { Store, select } from '@ngrx/store';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -41,13 +42,23 @@ export class AppComponent {
   shrinkSidenav(){
     this.sidenavState = this.sidenavState === 'open' ? 'shrunk' : 'open';
   }
+  userDetails : fromLogin.UserDetailState;
 
-  constructor(private _router: Router, private deviceDetector : DeviceDetectorService){
+  constructor(private _router: Router, private deviceDetector : DeviceDetectorService, private store: Store<fromLogin.State>){
     this.router = _router.url;
     console.log(this.router);
     
     this.isMobile = deviceDetector.isMobile();
     this.isTablet = deviceDetector.isTablet();
     this.isDesktop = deviceDetector.isDesktop();
+
+    this.store.pipe(select(fromLogin.getUserDetail)).subscribe( 
+      userDetail => {
+        if (userDetail) {
+          this.userDetails = userDetail
+          console.log(userDetail)
+        }
+      }
+    )
   }
 }

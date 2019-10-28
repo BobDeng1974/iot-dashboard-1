@@ -16,6 +16,12 @@ import { VendorPanelModule } from './modules/vendor-panel/vendor-panel.module';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MobileTopNavBarComponent } from './common/mobile-top-nav-bar/mobile-top-nav-bar.component';
 import { MobileBottomNavBarComponent } from './common/mobile-bottom-nav-bar/mobile-bottom-nav-bar.component';
+import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { environment } from 'src/environments/environment';
+import { reducer } from './state/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { LoginEffects } from './state/app.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +38,14 @@ import { MobileBottomNavBarComponent } from './common/mobile-bottom-nav-bar/mobi
     AgGridModule.withComponents([]),
     HttpClientModule,
     VendorPanelModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    StoreModule.forRoot({'user' : reducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge:25,
+      logOnly: environment.production,
+      name:"QubeMatics"
+    }),
+    EffectsModule.forRoot([LoginEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
