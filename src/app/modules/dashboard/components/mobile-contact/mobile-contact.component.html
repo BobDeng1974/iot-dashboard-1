@@ -1,1 +1,32 @@
-<p>mobile-contact works!</p>
+<mat-expansion-panel disabled expanded class="customer-panel">
+    <mat-expansion-panel-header class="panel-header">
+        <mat-panel-title class="panel-title">
+            Contact Us
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+</mat-expansion-panel>
+<div class="main-content">
+    <div fxLayout="column" class="contact-us">
+            <h2>MSQube Technology Solutions Pvt Ltd</h2>
+            <h5> Pinnacle Tower, 4th Floor, Chinar Park, Newtown, Kolkata, West Bengal 700156</h5>
+    </div>
+    <div class="sample-space">
+    </div>
+    <div fxLayout="column" class="mat-elevation-z6 contact-form">
+        <div [formGroup]="contactForm">
+            <mat-form-field class="form-full-width">
+                <input matInput formControlName="Name" placeholder="Name" class="form-control">
+            </mat-form-field>
+            <mat-form-field class="form-full-width">
+                <input matInput formControlName="Email" placeholder="Email">
+            </mat-form-field>
+            <mat-form-field class="form-full-width">
+                <textarea matInput formControlName="Message" placeholder="Leave a message"></textarea>
+            </mat-form-field>
+            <div class="Submit-button">
+                <button mat-raised-button color="primary">Submit</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

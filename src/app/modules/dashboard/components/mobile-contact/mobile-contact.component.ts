@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mobile-contact',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile-contact.component.scss']
 })
 export class MobileContactComponent implements OnInit {
-
-  constructor() { }
+  contactForm:FormGroup;
+  constructor(private fb: FormBuilder) {  }
 
   ngOnInit() {
+    this.contactForm=this.fb.group({
+      Name:[''],
+      Email:[''],
+      Message:['']
+    })
   }
 
 }

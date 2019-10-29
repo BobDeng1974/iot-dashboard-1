@@ -1,0 +1,46 @@
+.panel-header{
+    background-color:#6183FF;
+    color:white;
+}
+.profile-cover img{
+    width: 100%;
+    height: 30vh;
+    padding: 0;
+    border: 2px solid #F1F1F1;
+}
+
+.profile-cover {
+    height: calc(30vh) !important;
+}
+
+.cover-image{
+    height: 100% !important;
+}
+
+.customer-panel{
+    width: 100vw;
+    
+}
+.profile-picture img{
+    width: 150px;
+    height: 150px;
+    float:center;
+    position: absolute;
+    //left: calc((100vw/2) - 75px) !important;;
+    top: 30vh;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #F1F1F1;
+}
+.top-section{
+    padding: 0%;
+}
+.profile-info{
+    float:left;
+    padding: 20px;
+    position: relative;
+    left: 150px;
+}
+.main-content{
+    height: 100vh;
+}

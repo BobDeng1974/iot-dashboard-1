@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile-top-nav-bar.component.scss']
 })
 export class MobileTopNavBarComponent implements OnInit {
+  routerLink1 = "/mobile-profile"
 
   constructor() { }
 
