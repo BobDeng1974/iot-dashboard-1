@@ -28,7 +28,8 @@ import { LoginEffects } from './state/app.effects';
     FooterComponent,
     LoginComponent,
     HeaderComponent,
-    MobileBottomNavBarComponent
+    MobileBottomNavBarComponent,
+    MobileTopNavBarComponent
   ],
   imports: [
     BrowserModule,
