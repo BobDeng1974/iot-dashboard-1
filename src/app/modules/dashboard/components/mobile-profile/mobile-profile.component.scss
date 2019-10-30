@@ -2,11 +2,12 @@
     background-color:#6183FF;
     color:white;
 }
-.profile-cover img{
+.profile-cover{
     width: 100%;
     height: 30vh;
     padding: 0;
     border: 2px solid #F1F1F1;
+    background-color: #08B4CB;
 }
 
 .profile-cover {
@@ -22,25 +23,33 @@
     
 }
 .profile-picture img{
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     float:center;
     position: absolute;
     //left: calc((100vw/2) - 75px) !important;;
-    top: 30vh;
+    top: 25vh;
     border-radius: 50%;
     border-style: solid;
     border-color: #F1F1F1;
+}
+.profile-picture{
+    padding-left: 16px;
 }
 .top-section{
     padding: 0%;
 }
 .profile-info{
     float:left;
-    padding: 20px;
+    padding-left: 20px;
+    padding-top: 0px;
     position: relative;
     left: 150px;
 }
 .main-content{
-    height: 100vh;
+    //height: 100vh;
+    width: 100vw;
+}
+.profile-Content{
+    padding: 16px;
 }
