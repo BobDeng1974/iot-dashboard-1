@@ -7,7 +7,7 @@
     height: 30vh;
     padding: 0;
     border: 2px solid #F1F1F1;
-    background-color: #08B4CB;
+    background: linear-gradient(135deg, rgba(225,30,98,1) 35%, rgba(41,34,104,1) 100%);
 }
 
 .profile-cover {
@@ -25,16 +25,15 @@
 .profile-picture img{
     width: 140px;
     height: 140px;
-    float:center;
-    position: absolute;
     //left: calc((100vw/2) - 75px) !important;;
-    top: 25vh;
+    //top: 25vh;
     border-radius: 50%;
     border-style: solid;
     border-color: #F1F1F1;
 }
 .profile-picture{
     padding-left: 16px;
+    margin-top: -60px;
 }
 .top-section{
     padding: 0%;
@@ -45,11 +44,22 @@
     padding-top: 0px;
     position: relative;
     left: 150px;
+    margin-top: -70px;
 }
 .main-content{
-    //height: 100vh;
+    height: calc(100vh - 120px);
     width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
 }
 .profile-Content{
     padding: 16px;
+}
+.example-card{
+    padding: 16px;
+    border-radius:10px;
+}
+.sample-Padding{
+    padding-top: 20px;
 }

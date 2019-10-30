@@ -6,17 +6,39 @@
                     <img src="https://acc.edu.ai/assets/images/no-staff-image.png">
                 </div>
                 <div  class="profile-info">
-                        <h2>User Name</h2>
-                        <p>Profile details....</p>
+                        <h2>{{customerData.customer_name}}</h2>
+                        <p>{{customerData.customer_type}}</p>
                 </div>
             </div>
         </div>
-        <div fxLayout="row" fxLayoutGap="10px" class="profile-Content">
-            <div fxFlex="calc(50% - 10px)" class="mat-elevation-z6">
-                hello
-            </div>
-            <div fxFlex="calc(50% - 10px)" class="mat-elevation-z6">
-                hello
-            </div>
+        <div fxLayout="column" class="sample-Padding">
+            <mat-card class="example-card mat-elevation-z6">
+                <mat-card-header>
+                    <mat-card-title class="card-title">Address</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxLayout="column" class="sample-Padding">
+            <mat-card class="example-card mat-elevation-z6">
+                <mat-card-header>
+                    <mat-card-title class="card-title">Contact</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+    
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxLayout="column" class="sample-Padding">
+                <mat-card class="example-card mat-elevation-z6">
+                <mat-card-header>
+                    <mat-card-title class="card-title">Branch</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+        
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>

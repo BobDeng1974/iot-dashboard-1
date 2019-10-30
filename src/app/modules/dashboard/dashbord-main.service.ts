@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { CustomerDashBoard, customerSupport } from './model/customerDashboard';
+import { Customer } from '../admin-panel/model/customermodel';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,5 +27,8 @@ export class DashbordMainService {
   }
   postSupport(data: customerSupport):Observable<any>{
     return this.http.post<any>(environment.postSupportUrl,data);
+  }
+  getACustomer(id:number):Observable<Customer>{
+    return this.http.get<Customer>(environment.getACustomerUrl+id+'?format=json');
   }
 }

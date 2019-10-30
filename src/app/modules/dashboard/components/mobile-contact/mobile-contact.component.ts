@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import{DashbordMainService} from '../../dashbord-main.service'
-import * as formLogin from '../../../../state/app.reducer'
+import{DashbordMainService} from '../../dashbord-main.service';
+import * as formLogin from '../../../../state/app.reducer';
 import { customerSupport } from '../../model/customerDashboard';
 import { MatSnackBar } from '@angular/material';
 import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
