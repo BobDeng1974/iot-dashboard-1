@@ -14,7 +14,8 @@ export const environment = {
    getCustomerBranchUrl : "http://34.93.22.112:8000/api/qubematics/customer/getbranch/",
    getCustomerandIdUrl : "http://34.93.22.112:8000/api/qubematics/customer/getcustomerandid/",
   //////////////////////////contact us//////////////////////////////////
-  //getNodeUrl:"http://",
+  getNodeUrl:"http://34.93.22.112:8002/api/qubematics/gateway/getallnodes/customer/",
+  postSupport:"",
 
   /////////////////////////////////////////////////////////////////////////
    createDeviceUrl : "http://34.93.22.112:8002/api/qubematics/gateway/create/",
