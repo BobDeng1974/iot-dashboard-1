@@ -4,6 +4,8 @@ import { Store, select } from '@ngrx/store';
 import{DashbordMainService} from '../../dashbord-main.service'
 import * as formLogin from '../../../../state/app.reducer'
 import { customerSupport } from '../../model/customerDashboard';
+import { MatSnackBar } from '@angular/material';
+import { SuccessSnackberComponent } from 'src/app/modules/shared/components/success-snackber/success-snackber.component';
 @Component({
   selector: 'app-mobile-contact',
   templateUrl: './mobile-contact.component.html',
@@ -14,7 +16,7 @@ export class MobileContactComponent implements OnInit {
   customerId : number;
   CustomerNode: any
   newSupport : customerSupport;
-  constructor(private fb: FormBuilder, private store : Store<formLogin.State>, private dashbordMainService: DashbordMainService) {  }
+  constructor(private fb: FormBuilder, private store : Store<formLogin.State>, private dashbordMainService: DashbordMainService,private _snackBar: MatSnackBar) {  }
 
   ngOnInit() {
     this.contactForm=this.fb.group({
@@ -48,7 +50,18 @@ export class MobileContactComponent implements OnInit {
       node_id : form.controls.Node.value,
       details : form.controls.Message.value
     }
-    
+    console.log(this.newSupport);
+    this.dashbordMainService.postSupport(this.newSupport).subscribe(
+      (data) => {
+        if(data == "001") {
+            this._snackBar.openFromComponent(SuccessSnackberComponent,{data: "Successfully Submit", duration: 3000});
+            this.contactForm.reset();
+        }
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
     
   }
 
