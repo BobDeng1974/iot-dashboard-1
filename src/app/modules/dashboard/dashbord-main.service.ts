@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { CustomerDashBoard } from './model/customerDashboard';
+import { CustomerDashBoard, customerSupport } from './model/customerDashboard';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +23,8 @@ export class DashbordMainService {
   }
   getCustomerNode(customer_id: number):Observable<any[]>{
     return this.http.post<any[]>(environment.getNodeUrl, { customer_id: customer_id });
+  }
+  postSupport(data: customerSupport):Observable<any>{
+    return this.http.post<any>(environment.postSupportUrl,data);
   }
 }

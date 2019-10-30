@@ -4,7 +4,7 @@
         <mat-card-header>
           <mat-card-title class="card-title">Contact Us</mat-card-title>
         </mat-card-header>
-        <div [formGroup]="contactForm" class="example-form">
+        <form [formGroup]="contactForm" (ngSubmit)="OnSubmit(contactForm)" class="example-form">
         <mat-card-content>
             <mat-form-field class="example-full-width">
                 <input matInput formControlName="Name" placeholder="Name" class="form-control">
@@ -23,10 +23,10 @@
         </mat-card-content>
         <mat-card-actions>
             <div class="Submit-button">
-                <button mat-raised-button (click)="OnSubmit(contactForm)" color="primary">Submit</button>
+                <button mat-raised-button class="btn-submit" type="submit" color="primary">Submit</button>
             </div>
         </mat-card-actions>
-        </div>
+        </form>
       </mat-card>
     </div>
 </div>
