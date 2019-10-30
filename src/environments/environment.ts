@@ -13,7 +13,10 @@ export const environment = {
   //////////////////////////////////////////////////////////////////////////
    getCustomerBranchUrl : "http://34.93.22.112:8000/api/qubematics/customer/getbranch/",
    getCustomerandIdUrl : "http://34.93.22.112:8000/api/qubematics/customer/getcustomerandid/",
-  //////////////////////////////////////////////////////////////////////////
+  //////////////////////////contact us//////////////////////////////////
+  //getNodeUrl:"http://",
+
+  /////////////////////////////////////////////////////////////////////////
    createDeviceUrl : "http://34.93.22.112:8002/api/qubematics/gateway/create/",
    updateDeviceUrl : "http://34.93.22.112:8002/api/qubematics/gateway/update/",
    getAllDeviceUrl : "http://34.93.22.112:8002/api/qubematics/gateway/getall/?format=json",

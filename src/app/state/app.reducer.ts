@@ -9,6 +9,7 @@ export interface UserDetailState{
     user_name ?: string;
     user_id ?: number;
     user_type ?: string;
+    customer_id ?: number;
 }
 
 export interface State {
@@ -21,7 +22,8 @@ const initialState : UserState = {
      userDetail : {
          user_id : 0,
          user_name : 'noname',
-         user_type : 'none'
+         user_type : 'none',
+         customer_id : 0
      }
 }
 
@@ -41,7 +43,8 @@ export function reducer(state : UserState = initialState, action : LoginActions)
                 userDetail : {
                     user_id : 0,
                     user_name :'noname',
-                    user_type :'none'
+                    user_type :'none',
+                    customer_id : 0
                 } 
             }
         default:
