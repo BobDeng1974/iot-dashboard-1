@@ -1,32 +1,32 @@
-<mat-expansion-panel disabled expanded class="customer-panel">
-    <mat-expansion-panel-header class="panel-header">
-        <mat-panel-title class="panel-title">
-            Contact Us
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-</mat-expansion-panel>
 <div class="main-content">
-    <div fxLayout="column" class="contact-us">
-            <h2>MSQube Technology Solutions Pvt Ltd</h2>
-            <h5> Pinnacle Tower, 4th Floor, Chinar Park, Newtown, Kolkata, West Bengal 700156</h5>
-    </div>
-    <div class="sample-space">
-    </div>
-    <div fxLayout="column" class="mat-elevation-z6 contact-form">
-        <div [formGroup]="contactForm">
-            <mat-form-field class="form-full-width">
+    <div fxLayout="column">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Contact Us</mat-card-title>
+        </mat-card-header>
+        <div [formGroup]="contactForm" class="example-form">
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
                 <input matInput formControlName="Name" placeholder="Name" class="form-control">
             </mat-form-field>
-            <mat-form-field class="form-full-width">
-                <input matInput formControlName="Email" placeholder="Email">
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="Email" placeholder="Email" class="form-control">
             </mat-form-field>
-            <mat-form-field class="form-full-width">
-                <textarea matInput formControlName="Message" placeholder="Leave a message"></textarea>
+            <mat-form-field class="example-full-width">
+                <mat-select formControlName="Node" placeholder="Select Node" class="form-control">
+                  <mat-option value="option">Option</mat-option>
+                </mat-select>
             </mat-form-field>
+            <mat-form-field class="example-full-width text-Expand">
+                <textarea matInput formControlName="Message" class="form-control-text" placeholder="Leave a Message"></textarea>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
             <div class="Submit-button">
                 <button mat-raised-button color="primary">Submit</button>
             </div>
-            
+        </mat-card-actions>
         </div>
+      </mat-card>
     </div>
 </div>

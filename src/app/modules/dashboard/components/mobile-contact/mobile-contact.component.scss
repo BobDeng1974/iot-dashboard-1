@@ -1,37 +1,35 @@
-.panel-header{
-    background-color:#6183FF;
-    color:white;
-}
-.contact-us{
-    width: 100%;
-    height: 30vh;
-    background-color: #C187F8;
-    border-radius: 2px;
-    text-align: center;
-}
-.contact-us h5{
-    margin-top: 5px;;
-}
-.contact-form{
-    padding: 10px;
-    border-radius: 2px;
-}
-.form-control {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+.example-container {
+    display: flex;
+    flex-direction: column;
   }
   
-  .form-full-width {
+  .example-container {
     width: 100%;
   }
-  .sample-space{
-      height: 20px;
+  .example-card {
+    width: calc(100vw - 60px) !important;
+    margin: 30px;
+    position: absolute;
+    top: 10vh;
   }
-.example-button-row button,
-.example-button-row a {
-  margin-right: 8px;
-}
-.Submit-button{
-    text-align: left;
-}
+  .main-content{
+    height: 100vh;
+    background-color: #7b3374;
+  }
+
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .form-control{
+      height: 30px;
+  }
+  .form-control-text{
+    height: 80px;
+  }
+  .Submit-button{
+      text-align: center;
+  }
+  .card-title{
+      text-align: center;
+  }
