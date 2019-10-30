@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatExpansionModule, MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatDatepickerModule, MatNativeDateModule, MatCardModule, MatSlideToggleModule, MatChipsModule, MatRippleModule, MatAutocompleteModule} from '@angular/material';
+import {MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatExpansionModule, MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatDatepickerModule, MatNativeDateModule, MatCardModule, MatSlideToggleModule, MatChipsModule, MatRippleModule, MatAutocompleteModule, MatDividerModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
@@ -50,7 +50,8 @@ import {CalendarModule} from 'primeng/calendar';
     MatSlideToggleModule,
     MatChipsModule,
     MatRippleModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDividerModule
   ]
 
 })
