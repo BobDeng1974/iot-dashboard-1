@@ -14,7 +14,7 @@
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-select formControlName="Node" placeholder="Select Node" class="form-control">
-                  <mat-option value="option">Option</mat-option>
+                  <mat-option *ngFor='let node of CustomerNode' [value]="node.node_id">{{node.uid}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class="example-full-width text-Expand">
@@ -23,7 +23,7 @@
         </mat-card-content>
         <mat-card-actions>
             <div class="Submit-button">
-                <button mat-raised-button color="primary">Submit</button>
+                <button mat-raised-button (click)="OnSubmit(contactForm)" color="primary">Submit</button>
             </div>
         </mat-card-actions>
         </div>

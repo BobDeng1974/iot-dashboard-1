@@ -7,3 +7,12 @@ export interface CustomerDashBoard {
     device_mac? : string;
     no_device?: number;
 }
+
+export interface customerSupport{
+    customer_id ?: number;
+    node_id ?: number;
+    details ?: string;
+    creation_date ?: Date
+    status ?: number;
+    support_id ?: number
+}

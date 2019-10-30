@@ -21,4 +21,7 @@ export class DashbordMainService {
   getSensorData(id : number) : Observable<any[]> {
     return this.http.get<any[]>(environment.getADevice+id+'?format=json');
   }
+  getCustomerNode(customer_id: number):Observable<any[]>{
+    return this.http.post<any[]>(environment.getNodeUrl, { customer_id: customer_id });
+  }
 }
