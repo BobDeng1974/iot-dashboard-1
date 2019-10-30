@@ -25,15 +25,24 @@
     padding-top: 8px;
     padding-bottom: 8px;
 }
-// .card-icon{
-    
-// }
+.card-icon{
+    color: linear-gradient(135deg, rgba(225,30,98,1) 35%, rgba(41,34,104,1) 100%);
+}
 
 .card-details{
     text-align: center;
 }
 
 .card-border{
-    border: 8px solid;
-    border-image: linear-gradient();
+    border: 4px solid;
+    border-image-source: linear-gradient(135deg, rgba(225,30,98,1) 35%, rgba(41,34,104,1) 100%);
+    border-image-slice: 1;
+}
+
+mat-card{
+    padding: 8px !important;
+}
+
+.card-caption{
+    text-align: center;
 }
