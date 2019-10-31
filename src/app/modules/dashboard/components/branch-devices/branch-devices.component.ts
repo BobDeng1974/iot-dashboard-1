@@ -4,6 +4,7 @@ import { Store, select } from '@ngrx/store';
 import * as fromLogin from '../../../../state/app.reducer';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { payload } from '../../model/customerDashboard';
+import { node } from 'src/app/modules/admin-panel/model/gateway';
 @Component({
   selector: 'app-branch-devices',
   templateUrl: './branch-devices.component.html',
@@ -14,7 +15,9 @@ export class BranchDevicesComponent implements OnInit {
   branch_id;
   customer_id : number;
   payload : payload;
-  constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService) { }
+  nodes : node[] = []
+  message : string;
+  constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router) { }
 
   ngOnInit() {
     this.branch_id = this.route.snapshot.queryParamMap.get('branch_id');
@@ -32,7 +35,8 @@ export class BranchDevicesComponent implements OnInit {
     this.dashboardService.getAllNodesByBranch(this.payload).subscribe(
       (data) => {
         console.log(data);
-        
+        this.nodes = data;
+        this.message = "No nodes to show"
       },
       (error) => {
         console.log(error);
@@ -41,6 +45,12 @@ export class BranchDevicesComponent implements OnInit {
     
   }
 
+  goBack(){
+    this.router.navigate(['/mobile-locations'])
+  }
+  gotoGraph(node : node){
+    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid}});
+  }
 }
 
 

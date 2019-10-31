@@ -1,3 +1,15 @@
-<div class="box" [style.height.%]="100">
-
+<div fxLayout="column" class="box" [style.height.%]="100">
+    <div fxFlex="10%">
+        <button mat-icon-button (click)="goBack()" class="back_button">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+    </div>
+    <div fxFlex="90%">
+        <div *ngIf="nodes.length === 0" class="message">
+            {{message}}
+        </div>
+        <div *ngFor="let node of nodes">
+            <app-node [node]="node" (click)="gotoGraph(node)"></app-node>
+        </div>
+    </div>
 </div>

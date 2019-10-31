@@ -24,9 +24,10 @@ import { MobileContactComponent } from './components/mobile-contact/mobile-conta
 import { MobileProfileComponent } from './components/mobile-profile/mobile-profile.component';
 import { BranchDevicesComponent } from './components/branch-devices/branch-devices.component';
 import { NodeComponent } from './node/node.component';
+import { GraphMainComponent } from './components/graph-main/graph-main.component';
 
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent, MobileDashboardMainComponent, MobileLocationsComponent, MobileDevicesComponent, MobileNotificationsComponent, MobileContactComponent, MobileProfileComponent, NodeComponent, BranchDevicesComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent, MobileDashboardMainComponent, MobileLocationsComponent, MobileDevicesComponent, MobileNotificationsComponent, MobileContactComponent, MobileProfileComponent, NodeComponent, BranchDevicesComponent, GraphMainComponent],
   imports: [
     CommonModule,
     NgxChartsModule,
