@@ -11,5 +11,7 @@ export class GraphMainComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  goBack(){
+    
+  }
 }

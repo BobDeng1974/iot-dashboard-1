@@ -1,6 +1,8 @@
 <div [style.height.%]="100" fxLayout="column" class="box">
     <div fxFlex="10%">
-
+        <button mat-icon-button (click)="goBack()" class="back_button">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
     </div>
     <div fxFlex="90%">
         <mat-card [style.height.%]="100">
