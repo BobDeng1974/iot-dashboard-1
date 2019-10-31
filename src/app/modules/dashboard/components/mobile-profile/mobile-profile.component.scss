@@ -30,6 +30,7 @@
     border-radius: 50%;
     border-style: solid;
     border-color: #F1F1F1;
+    margin: 0%;
 }
 .profile-picture{
     padding-left: 16px;
@@ -46,6 +47,12 @@
     left: 150px;
     margin-top: -70px;
 }
+.profile-info h2{
+    margin:0%;
+}
+.profile-info p{
+    margin-top:0%;
+}
 .main-content{
     height: calc(100vh - 120px);
     width: 100vw;
@@ -59,7 +66,12 @@
 .example-card{
     padding: 16px;
     border-radius:10px;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 .sample-Padding{
     padding-top: 20px;
+}
+.card-title{
+    margin-left: -16px;
 }
