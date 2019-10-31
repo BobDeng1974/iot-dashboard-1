@@ -1,0 +1,31 @@
+<mat-card class="example-card mat-elevation-z6">
+        <mat-card-header>
+            <mat-card-title class="card-title">{{node.uid}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="none" fxLayoutGa="16px">
+                <div fxFlex="30%" class="box">
+
+                </div>
+                <div fxFlex="70%" class="box">
+                    <div fxLayout="row wrap" fxLayoutAlign="start" [style.height.%]="100">
+                        <div fxFlex="calc(50% - 16px)" *ngFor='let sensor of node.sensors'>
+                            <mat-card class="example-card-inner">
+                                <div fxLayout="row" class="card-border">
+                                    <div fxFlex="20%" class="card-details">
+                                        <mat-icon class="card-icon">memory</mat-icon>
+                                    </div>
+                                    <div fxFlex="40%" class="card-caption">
+                                        <span>{{sensor.sensor_model}}</span>
+                                    </div>
+                                    <div fxFlex="40%" class="card-caption">
+                                        <span>Sensor value</span>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
