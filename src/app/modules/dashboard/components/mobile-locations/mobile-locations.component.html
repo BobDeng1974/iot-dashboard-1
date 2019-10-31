@@ -1,1 +1,14 @@
-<p>mobile-locations works!</p>
+<div fxLayout="column" fxLayoutAlign="none" [style.height.%]="100" class="location-background">
+    <div fxFlex="10%" class="box">
+        <span>Locations</span>
+    </div>
+    <div fxFlex="90%" class="box">
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item *ngFor="let branch of branches" class="list-items" (click)="getBranch(branch)">
+                {{branch.branch_name}}
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </div>  
+</div>

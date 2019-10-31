@@ -31,6 +31,12 @@ export class DashbordMainService {
   getACustomer(id:number):Observable<Customer>{
     return this.http.get<Customer>(environment.getACustomerUrl+id+'?format=json');
   }
+  getCustomerBranch(customer_id : number) : Observable<any> {
+    return this.http.post<any>(environment.getCustomerBranchUrlforMobile, {customer_id : customer_id});
+  }
+  getAllNodesByBranch( data) : Observable<any>{
+    return this.http.post(environment.getAllNodesByBranchUrl, data);
+  }
   getAllNodeSensorGateway(id: number):Observable<any>{
     return this.http.post<any>(environment.GetAllGateWayNodeSensonUrl, { customer_id : id });
   }

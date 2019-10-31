@@ -22,11 +22,11 @@ import { MobileDevicesComponent } from './components/mobile-devices/mobile-devic
 import { MobileNotificationsComponent } from './components/mobile-notifications/mobile-notifications.component';
 import { MobileContactComponent } from './components/mobile-contact/mobile-contact.component';
 import { MobileProfileComponent } from './components/mobile-profile/mobile-profile.component';
+import { BranchDevicesComponent } from './components/branch-devices/branch-devices.component';
 import { NodeComponent } from './node/node.component';
 
-
 @NgModule({
-  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent, MobileDashboardMainComponent, MobileLocationsComponent, MobileDevicesComponent, MobileNotificationsComponent, MobileContactComponent, MobileProfileComponent, NodeComponent],
+  declarations: [DashboardMainComponent, GraphComponent, CustomerBranchDetailsComponent, CustomerBranchDeviceDetailsComponent, VideoWindowComponent, DeviceListComponent, SensorCardComponent, ViewPinGraphComponent, PinViewSensorCardComponent, AllPinGraphComponent, MobileDashboardMainComponent, MobileLocationsComponent, MobileDevicesComponent, MobileNotificationsComponent, MobileContactComponent, MobileProfileComponent, NodeComponent, BranchDevicesComponent],
   imports: [
     CommonModule,
     NgxChartsModule,
