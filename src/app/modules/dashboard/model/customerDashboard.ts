@@ -16,3 +16,9 @@ export interface customerSupport{
     status ?: number;
     support_id ?: number
 }
+
+export interface payload{
+    customer_id ?: number;
+    customer_branch_id ?: number;
+  }
+  

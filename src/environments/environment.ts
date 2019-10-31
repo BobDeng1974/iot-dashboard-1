@@ -14,6 +14,7 @@ export const environment = {
    postSupportUrl:"http://34.93.22.112:8000/api/qubematics/customer/createsupport/",
   //////////////////////////////////////////////////////////////////////////
    getCustomerBranchUrl : "http://34.93.22.112:8000/api/qubematics/customer/getbranch/",
+   getCustomerBranchUrlforMobile : "http://34.93.22.112:8000/api/qubematics/customer/getbranch/customerid/",
    getCustomerandIdUrl : "http://34.93.22.112:8000/api/qubematics/customer/getcustomerandid/",
   //////////////////////////contact us//////////////////////////////////
   getNodeUrl:"http://34.93.22.112:8002/api/qubematics/gateway/getallnodes/customer/",
@@ -43,6 +44,8 @@ export const environment = {
    getGatewayByStatus :'http://34.93.22.112:8002/api/qubematics/gateway/gatewaybystatus/',
    assignedGatewayUrl :'http://34.93.22.112:8002/api/qubematics/gateway/createassignedgateway/',
    getAllAssignedInfo : 'http://34.93.22.112:8002/api/qubematics/gateway/getallassignedgateway/',
+   getAllNodesByBranchUrl :'http://34.93.22.112:8002/api/qubematics/gateway/getallnodes/customer/branch/',
+
 
    getAllVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/getall/?format=json",
    postVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/create/?format=json",
