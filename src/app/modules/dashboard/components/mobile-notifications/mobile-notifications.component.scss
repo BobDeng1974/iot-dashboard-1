@@ -1,5 +1,11 @@
-.box{
-    padding-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
+.example-card{
+    margin-top: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+.notification-card{
+    height: calc(100vh - 120px);
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }

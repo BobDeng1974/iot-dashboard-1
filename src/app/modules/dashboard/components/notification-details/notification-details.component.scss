@@ -1,0 +1,14 @@
+.back_button{
+    background: linear-gradient(135deg, rgba(225,30,98,1) 35%, rgba(41,34,104,1) 100%);
+    color: #fff;
+}
+.box{
+    padding: 16px;
+}
+.examplecard{
+    height: 50vh;
+}
+.box{
+    height: calc(100vh - 120px);
+    //padding-top:calc(50% - 25vh) ;
+}

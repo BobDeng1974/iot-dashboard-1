@@ -17,13 +17,37 @@
     <div fxFlex="60%" class="card-container">
         <div fxLayout="row wrap" fxLayoutAlign="start" [style.height.%]="100">
             <div fxFlex="calc(33.33% - 16px)" class="card-container">
-                <mat-card class="example-card">
+                <mat-card class="example-card" (click)="branch()">
                     <div fxLayout="column" class="card-border">
                         <div fxFlex="60%" class="card-details">
                             <mat-icon class="card-icon">rooms</mat-icon>
                         </div>
                         <div fxFlex="40%" class="card-caption">
-                            Locations
+                                Branch
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div fxFlex="calc(33.33% - 16px)" class="card-container">
+                <mat-card class="example-card" (click)="device()">
+                    <div fxLayout="column" class="card-border">
+                        <div fxFlex="60%" class="card-details">
+                            <mat-icon class="card-icon">device_hub</mat-icon>
+                        </div>
+                        <div fxFlex="40%" class="card-caption">
+                            Device
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div fxFlex="calc(33.33% - 16px)" class="card-container">
+                <mat-card class="example-card" (click)="notification()">
+                    <div fxLayout="column" class="card-border">
+                        <div fxFlex="60%" class="card-details">
+                            <mat-icon class="card-icon">add_alert</mat-icon>
+                        </div>
+                        <div fxFlex="40%" class="card-caption">
+                            Notification
                         </div>
                     </div>
                 </mat-card>
@@ -32,58 +56,34 @@
                 <mat-card class="example-card">
                     <div fxLayout="column" class="card-border">
                         <div fxFlex="60%" class="card-details">
-                            <mat-icon class="card-icon">rooms</mat-icon>
+                            <mat-icon class="card-icon">search</mat-icon>
                         </div>
                         <div fxFlex="40%" class="card-caption">
-                            Locations
+                            Search
                         </div>
                     </div>
                 </mat-card>
             </div>
             <div fxFlex="calc(33.33% - 16px)" class="card-container">
-                <mat-card class="example-card">
+                <mat-card class="example-card" (click)="contactUs()">
                     <div fxLayout="column" class="card-border">
                         <div fxFlex="60%" class="card-details">
-                            <mat-icon class="card-icon">rooms</mat-icon>
+                            <mat-icon class="card-icon">contact_support</mat-icon>
                         </div>
                         <div fxFlex="40%" class="card-caption">
-                            Locations
+                            Contact Us
                         </div>
                     </div>
                 </mat-card>
             </div>
             <div fxFlex="calc(33.33% - 16px)" class="card-container">
-                <mat-card class="example-card">
+                <mat-card class="example-card" (click)="profile()">
                     <div fxLayout="column" class="card-border">
                         <div fxFlex="60%" class="card-details">
-                            <mat-icon class="card-icon">rooms</mat-icon>
+                            <mat-icon class="card-icon">account_circle</mat-icon>
                         </div>
                         <div fxFlex="40%" class="card-caption">
-                            Locations
-                        </div>
-                    </div>
-                </mat-card>
-            </div>
-            <div fxFlex="calc(33.33% - 16px)" class="card-container">
-                <mat-card class="example-card">
-                    <div fxLayout="column" class="card-border">
-                        <div fxFlex="60%" class="card-details">
-                            <mat-icon class="card-icon">rooms</mat-icon>
-                        </div>
-                        <div fxFlex="40%" class="card-caption">
-                            Locations
-                        </div>
-                    </div>
-                </mat-card>
-            </div>
-            <div fxFlex="calc(33.33% - 16px)" class="card-container">
-                <mat-card class="example-card">
-                    <div fxLayout="column" class="card-border">
-                        <div fxFlex="60%" class="card-details">
-                            <mat-icon class="card-icon">rooms</mat-icon>
-                        </div>
-                        <div fxFlex="40%" class="card-caption">
-                            Locations
+                            Profile
                         </div>
                     </div>
                 </mat-card>
