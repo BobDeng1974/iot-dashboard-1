@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as formLogin from '../../../../state/app.reducer';
 import { DashbordMainService } from '../../dashbord-main.service';
+import { node } from 'src/app/modules/admin-panel/model/gateway';
 
 @Component({
   selector: 'app-mobile-devices',
@@ -32,5 +33,7 @@ export class MobileDevicesComponent implements OnInit {
       }
     );
   }
-
+  goToGraph(node : node){
+    
+  }
 }
