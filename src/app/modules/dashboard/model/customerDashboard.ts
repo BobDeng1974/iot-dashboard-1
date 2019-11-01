@@ -20,5 +20,9 @@ export interface customerSupport{
 export interface payload{
     customer_id ?: number;
     customer_branch_id ?: number;
-  }
-  
+}
+
+export interface sensorData {
+    name: Date;
+    value: number;
+}
