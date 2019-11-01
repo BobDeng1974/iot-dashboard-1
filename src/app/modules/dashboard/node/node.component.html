@@ -8,8 +8,7 @@
 
                 </div>
                 <div fxFlex="70%" class="box">
-                    <div fxLayout="row wrap" fxLayoutAlign="start" [style.height.%]="100">
-                        <div fxFlex="calc(50% - 16px)" *ngFor='let sensor of node.sensors'>
+                        <div  *ngFor='let sensor of node.sensors'>
                             <mat-card class="example-card-inner">
                                 <div fxLayout="row" class="card-border">
                                     <div fxFlex="10%" class="card-details">
@@ -24,7 +23,6 @@
                                 </div>
                             </mat-card>
                         </div>
-                    </div>
                 </div>
             </div>
         </mat-card-content>
