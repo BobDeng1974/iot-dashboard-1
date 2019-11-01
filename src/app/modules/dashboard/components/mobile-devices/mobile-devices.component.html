@@ -4,7 +4,7 @@
             <span>{{allData.gateway_name}}</span>
         </div>
         <div class="card-container" *ngFor='let node of allData.nodes'>
-            <app-node [node]="node"></app-node>
+            <app-node [node]="node" (click)="goToGraph(node)"></app-node>
         </div>
     </div>
 </div>
