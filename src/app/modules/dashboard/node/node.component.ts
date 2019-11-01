@@ -32,6 +32,7 @@ export class NodeComponent implements OnInit {
           this.formatedData = [];
           this.graphData = data.results[0].series[0].values;
           this.graphData.forEach( element => {
+            console.log(element[0])
             this.formatedData.push({
               name:new Date(element[0]),
               value: element[element.length - 2]
