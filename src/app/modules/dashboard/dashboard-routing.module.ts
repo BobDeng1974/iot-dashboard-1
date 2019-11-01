@@ -10,6 +10,7 @@ import { MobileContactComponent } from './components/mobile-contact/mobile-conta
 import { MobileProfileComponent } from './components/mobile-profile/mobile-profile.component';
 import { BranchDevicesComponent } from './components/branch-devices/branch-devices.component';
 import { GraphMainComponent } from './components/graph-main/graph-main.component';
+import{ NotificationDetailsComponent } from './components/notification-details/notification-details.component';
 
 const routes:Routes = [
   { path:"dashboard", component:DashboardMainComponent},
@@ -20,7 +21,8 @@ const routes:Routes = [
   { path:"mobile-contact", component:MobileContactComponent},
   { path:"mobile-profile", component:MobileProfileComponent},
   { path:"mobile-devices-branches", component:BranchDevicesComponent},
-  { path:"mobile-graphs", component:GraphMainComponent}
+  { path:"mobile-graphs", component:GraphMainComponent},
+  { path:"mobile-devices-notification", component:NotificationDetailsComponent}
 ]
 
 @NgModule({
