@@ -41,7 +41,25 @@ export class DashbordMainService {
     return this.http.post<any>(environment.GetAllGateWayNodeSensonUrl, { customer_id : id });
   }
 
-  getNodeData(node_uid) : Observable<any> {
-    return this.http.get(environment.nodeDataUrl+"'"+node_uid+"'");
+  getNodeData(payload) : Observable<any> {
+    let d: any[] = ["'2000000'", "'5'"]
+    let statement = "select * from test where node_uid={0} and sensor_type={1}";
+    statement = this.formatString(statement, payload);
+    console.log(statement);
+    return this.http.get(environment.nodeDataUrl+statement);
+  }
+
+  formatString(mainString: string, args: string[]): string {
+    var tags = Array.prototype.slice.call(args, 1);
+    return mainString.replace(/{(\d+)}/g, function(match, number) { 
+      return typeof args[number] != 'undefined'
+        ? args[number] 
+        : match
+      ;
+    });
+  }
+
+  getSensorsByUID(node_uid): Observable<any> {
+    return this.http.post(environment.getSensorsByNodeUidUrl, {"uid" : node_uid})
   }
 }

@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import * as formLogin from '../../../../state/app.reducer';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { node } from 'src/app/modules/admin-panel/model/gateway';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mobile-devices',
@@ -12,7 +13,7 @@ import { node } from 'src/app/modules/admin-panel/model/gateway';
 export class MobileDevicesComponent implements OnInit {
   customerId : number;
   allDatas: any;
-  constructor(private store : Store<formLogin.State>,private dashbordMainService: DashbordMainService) { }
+  constructor(private store : Store<formLogin.State>,private dashbordMainService: DashbordMainService, private router : Router) { }
 
   ngOnInit() {
     this.store.pipe(select(formLogin.getUserDetail)).subscribe(
@@ -34,6 +35,6 @@ export class MobileDevicesComponent implements OnInit {
     );
   }
   goToGraph(node : node){
-    
+    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid}});
   }
 }

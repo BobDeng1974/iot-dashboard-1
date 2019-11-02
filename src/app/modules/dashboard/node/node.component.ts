@@ -21,29 +21,29 @@ export class NodeComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.node.uid);
-    this.node_uid = this.node.uid;
-    interval(20000)
-      .pipe(
-        startWith(0),
-        untilDestroyed(this),
-        switchMap( () => this.dashboardMainService.getNodeData(this.node_uid))
-      ).subscribe(
-        (data) => {
-          this.formatedData = [];
-          this.graphData = data.results[0].series[0].values;
-          this.graphData.forEach( element => {
-            console.log(element[0])
-            this.formatedData.push({
-              name:new Date(element[0]),
-              value: element[element.length - 2]
-            })
-          })
-          console.log(this.formatedData);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    // this.node_uid = this.node.uid;
+    // interval(20000)
+      // .pipe(
+        // startWith(0),
+        // untilDestroyed(this),
+        // switchMap( () => this.dashboardMainService.getNodeData(this.node_uid))
+      // ).subscribe(
+        // (data) => {
+          // this.formatedData = [];
+          // this.graphData = data.results[0].series[0].values;
+          // this.graphData.forEach( element => {
+            // console.log(element[0])
+            // this.formatedData.push({
+              // name:new Date(element[0]),
+              // value: element[element.length - 2]
+            // })
+          // })
+          // console.log(this.formatedData);
+        // },
+        // (error) => {
+          // console.log(error);
+        // }
+      // );
   }
 
   ngOnDestroy(){

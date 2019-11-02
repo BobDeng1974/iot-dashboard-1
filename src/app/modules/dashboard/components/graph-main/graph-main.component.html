@@ -6,7 +6,9 @@
     </div>
     <div fxFlex="90%">
         <mat-card [style.height.%]="100">
-
+            <div *ngFor="let sensor of sensors">
+                <app-graph-mobile [sensor]="sensor" [node_uid]="node_uid"></app-graph-mobile>
+            </div>
         </mat-card>
     </div>
 </div>
