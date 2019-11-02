@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { sensor } from 'src/app/modules/admin-panel/model/gateway';
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { sensorData } from '../../model/customerDashboard';
+import { MatRipple } from '@angular/material';
 
 @Component({
   selector: 'app-sensor-mobile',
@@ -18,6 +19,7 @@ export class SensorMobileComponent implements OnInit {
   formatedData : sensorData[] = [];
   graphData : any[][];
   currentReading : sensorData;
+  @ViewChild(MatRipple, {static: false}) ripple : MatRipple;
   constructor(private dashboardService : DashbordMainService) { }
 
   ngOnInit() {
