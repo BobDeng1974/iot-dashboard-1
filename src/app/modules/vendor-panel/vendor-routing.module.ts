@@ -5,7 +5,7 @@ import { VendorMainComponent } from './pages/vendor-main/vendor-main.component';
 import { VendorGuardService } from 'src/app/service/vendor-guard.service';
 
 const routes:Routes = [
-  { path:"vendor-panel", component:VendorMainComponent, canActivate:[VendorGuardService]}
+  { path:"vendor-panel", component:VendorMainComponent, } //canActivate:[VendorGuardService]
 ]
 
 @NgModule({

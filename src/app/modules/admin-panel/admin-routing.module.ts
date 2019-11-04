@@ -5,7 +5,7 @@ import { AdminMainComponent } from './pages/admin-main/admin-main.component';
 import { AdminGuardService } from 'src/app/service/admin-guard.service';
 
 const routes: Routes = [
-  { path:"admin-panel", component:AdminMainComponent, canActivate: [AdminGuardService] },
+  { path:"admin-panel", component:AdminMainComponent,  }, //canActivate: [AdminGuardService]
   { path:'', redirectTo:'/login', pathMatch: "full" },
 ]
 
