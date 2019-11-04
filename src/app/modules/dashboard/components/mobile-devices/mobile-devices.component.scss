@@ -21,6 +21,12 @@
     border-image-slice: 1;
     margin-bottom: 10px;
 }
+.main-contain{
+    height: calc(100vh - 120px);
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 // .card-icon{
 //     color: rgba(41,34,104,1);
 //     font-size: 25px;

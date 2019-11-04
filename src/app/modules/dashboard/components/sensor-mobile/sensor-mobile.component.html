@@ -1,7 +1,8 @@
-<mat-card class="example-card-inner" matRipple>
-    <div fxLayout="row" class="card-border">
+<mat-card class="example-card-inner mat-elevation-z8" matRipple>
+    <div fxLayout="row" fxLayoutGap="20px">
         <div fxFlex="10%" class="card-details">
-            <mat-icon class="card-icon">memory</mat-icon>
+            <img *ngIf="sensorType==1" class="sensor-temp" src="../../../../../assets/images/temp_sensor_logo.svg">
+            <mat-icon *ngIf="sensorType==5" class="sensor-humidity">opacity</mat-icon>
         </div>
         <div fxFlex="20%" class="card-caption">
             <span>{{sensor.sensor_model}}</span>

@@ -15,6 +15,7 @@ import { MatRipple } from '@angular/material';
 export class SensorMobileComponent implements OnInit {
   @Input() sensor : sensor;
   @Input() nodeUid : string;
+  sensorType:any;
   payload : any[] = [];
   formatedData : sensorData[] = [];
   graphData : any[][];
@@ -23,7 +24,8 @@ export class SensorMobileComponent implements OnInit {
   constructor(private dashboardService : DashbordMainService) { }
 
   ngOnInit() {
-    
+    this.sensorType=this.sensor.sensor_type;
+    console.log(this.sensorType);
     let data1 = this.payloadFormater(this.nodeUid); 
     let data2 = this.payloadFormater(String(this.sensor.sensor_type));
     this.payload[0] = data1;

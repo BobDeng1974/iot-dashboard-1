@@ -1,5 +1,8 @@
 .box{
-    padding: 8px;
+    height: calc(100vh - 120px);
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .message{
@@ -9,4 +12,5 @@
 .back_button{
     background: linear-gradient(135deg, rgba(225,30,98,1) 35%, rgba(41,34,104,1) 100%);
     color: #fff;
+    
 }
