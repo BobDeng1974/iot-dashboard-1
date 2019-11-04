@@ -49,6 +49,7 @@ export class SensorMobileComponent implements OnInit {
         })
         console.log(this.formatedData);
         this.currentReading = this.formatedData[this.formatedData.length - 3]
+        console.log("current reading",this.currentReading);
       },
       (error) => {
         console.log(error);

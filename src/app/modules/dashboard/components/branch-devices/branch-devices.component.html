@@ -1,15 +1,31 @@
-<div fxLayout="column" class="box">
+<div fxLayout="column" class="main-container">
     <div fxFlex="10%">
-        <button mat-icon-button (click)="goBack()" class="back_button">
-            <mat-icon>arrow_back</mat-icon>
-        </button>
+        <div fxLayout="row wrap" fxLayoutAlign="start">
+            <div>
+                <button mat-icon-button (click)="goBack()" class="back_button">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+            </div>
+            <div class="search-bar-container">
+                <mat-icon class="search-icon">search</mat-icon>
+                <input class="search-bar" matInput placeholder="Search">
+            </div>
+        </div>
     </div>
-    <div fxFlex="90%">
-        <div *ngIf="nodes.length === 0" class="message">
-            {{message}}
-        </div>
-        <div *ngFor="let node of nodes">
-            <app-node [node]="node" (click)="gotoGraph(node)"></app-node>
-        </div>
+    <div fxFlex="90%" class="box">
+        <p-accordion>
+            <div *ngFor="let segment of segments">
+                <p-accordionTab header={{segment.segment_name}}>
+                    <div *ngFor="let gateways of segment.gateway">
+                        <div *ngIf="segments.length === 0" class="message">
+                            {{message}}
+                        </div>
+                        <div *ngFor="let node of gateways.nodes">
+                            <app-node [node]="node"[gateway]="gateways.gateway_name" (click)="gotoGraph(node)"></app-node>
+                        </div>
+                    </div>
+                </p-accordionTab>
+            </div>
+        </p-accordion>
     </div>
 </div>

@@ -14,6 +14,7 @@ import { element } from 'protractor';
 })
 export class NodeComponent implements OnInit {
   @Input() node : node
+  @Input() gateway :string;
   node_uid: string ;
   formatedData : sensorData[] = [];
   graphData : any[][];

@@ -12,17 +12,18 @@ import { DeviceHealthRendererComponent } from './components/device-health-render
 import { MatErrorComponent } from './components/mat-error/mat-error.component';
 import { ErrorDirective } from './directives/error/error.directive';
 import { DateTimeRendererComponent } from './components/date-time-renderer/date-time-renderer.component';
+import { TemperaturePipePipe } from './pipes/temperature-pipe.pipe';
 
 
 
 
 @NgModule({
-  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, MatErrorComponent, ErrorDirective, DateTimeRendererComponent],
+  declarations: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, DeviceActiveRendererComponent, DeviceHealthRendererComponent, MatErrorComponent, ErrorDirective, DateTimeRendererComponent, TemperaturePipePipe],
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule
   ],
-  exports: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, ErrorDirective, MatErrorComponent ]
+  exports: [ErrorSnackberComponent, SuccessSnackberComponent, NumericEditorComponent, NullValueComponent, EmailEditorComponent, ErrorDirective, MatErrorComponent,TemperaturePipePipe ]
 })
 export class SharedModule { }

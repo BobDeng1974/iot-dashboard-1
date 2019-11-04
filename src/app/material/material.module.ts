@@ -12,6 +12,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { TempPipePipe } from './pipes/temp-pipe.pipe';
 import {CalendarModule} from 'primeng/calendar';
+import { AccordionModule }from 'primeng/accordion';
 
 @NgModule({
   declarations: [TempPipePipe],
@@ -51,7 +52,8 @@ import {CalendarModule} from 'primeng/calendar';
     MatChipsModule,
     MatRippleModule,
     MatAutocompleteModule,
-    MatDividerModule
+    MatDividerModule,
+    AccordionModule
   ]
 
 })

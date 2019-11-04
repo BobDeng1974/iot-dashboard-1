@@ -8,7 +8,8 @@
             <span>{{sensor.sensor_model}}</span>
         </div>
         <div fxFlex="70%" class="card-caption">
-            <span>Reading: {{currentReading.value}}</span>
+            <span *ngIf="sensorType==1">Reading: {{currentReading.value | temperaturePipe: 'C'}}</span>
+            <span *ngIf="sensorType==5">Reading: {{currentReading.value}}%</span>
         </div>
     </div>
 </mat-card>

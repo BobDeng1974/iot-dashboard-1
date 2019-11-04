@@ -15,7 +15,7 @@ export class BranchDevicesComponent implements OnInit {
   branch_id;
   customer_id : number;
   payload : payload;
-  nodes : node[] = []
+  segments : any;
   message : string;
   constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router) { }
 
@@ -34,8 +34,8 @@ export class BranchDevicesComponent implements OnInit {
 
     this.dashboardService.getAllNodesByBranch(this.payload).subscribe(
       (data) => {
-        console.log(data);
-        this.nodes = data;
+        console.log("=>",data);
+        this.segments = data;
         this.message = "No nodes to show"
       },
       (error) => {
