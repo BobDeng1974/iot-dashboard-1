@@ -10,11 +10,15 @@ import { sensor } from 'src/app/modules/admin-panel/model/gateway';
 })
 export class GraphMainComponent implements OnInit {
   node_uid ;
-  sensors : sensor[] = []
+  sensors : sensor[] = [];
+  branch_id;
   constructor(private router : Router, private route : ActivatedRoute, private dashboardService : DashbordMainService) { }
 
   ngOnInit() {
     this.node_uid = this.route.snapshot.queryParamMap.get('node_id');
+    this.branch_id = this.route.snapshot.queryParamMap.get('branch_id');
+    this.branch_id = +this.branch_id;
+    console.log(this.branch_id);
     this.dashboardService.getSensorsByUID(this.node_uid).subscribe(
       (data) => {
         console.log(data);
@@ -26,6 +30,11 @@ export class GraphMainComponent implements OnInit {
     );
   }
   goBack(){
-    this.router.navigate(['/'])
+    if(this.branch_id){
+      this.router.navigate(['/mobile-devices-branches'], {queryParams: {branch_id : this.branch_id}});
+    }
+    else{
+      this.router.navigate(['/mobile-devices']);
+    }
   }
 }

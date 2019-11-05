@@ -22,6 +22,7 @@ export class BranchDevicesComponent implements OnInit {
   ngOnInit() {
     this.branch_id = this.route.snapshot.queryParamMap.get('branch_id');
     this.branch_id = +this.branch_id;
+    console.log("branchid",this.branch_id);
     this.store.pipe(select(fromLogin.getUserDetail)).subscribe(
       userDetails => {
         this.customer_id = userDetails.customer_id;
@@ -49,7 +50,7 @@ export class BranchDevicesComponent implements OnInit {
     this.router.navigate(['/mobile-locations'])
   }
   gotoGraph(node : node){
-    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid}});
+    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid,branch_id:this.branch_id}});
   }
 }
 

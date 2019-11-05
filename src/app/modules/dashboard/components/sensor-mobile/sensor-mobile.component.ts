@@ -38,7 +38,7 @@ export class SensorMobileComponent implements OnInit {
       switchMap( () => this.dashboardService.getNodeData(this.payload))
     ).subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.formatedData = [];
         this.graphData = data.results[0].series[0].values;
         this.graphData.forEach( element => {
@@ -47,8 +47,8 @@ export class SensorMobileComponent implements OnInit {
             value : element[element.length - 3]
           })
         })
-        console.log(this.formatedData);
-        this.currentReading = this.formatedData[this.formatedData.length - 3]
+        console.log(this.formatedData.length);
+        this.currentReading = this.formatedData[this.formatedData.length - 1]
         console.log("current reading",this.currentReading);
       },
       (error) => {
