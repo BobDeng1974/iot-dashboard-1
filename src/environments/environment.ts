@@ -64,8 +64,8 @@ export const environment = {
 
    customerdeviceAssignUrl : "http://34.93.22.112:8002/api/qubematics/gateway/deviceassign/",
    //get all gateway,node,sensor
-   GetAllGateWayNodeSensonUrl:"http://34.93.22.112:8002/api/qubematics/gateway/getallgateway/customerid/",
-
+   //GetAllGateWayNodeSensonUrl:"http://34.93.22.112:8002/api/qubematics/gateway/getallgateway/customerid/",
+   GetAllGateWayNodeSensonUrl:"http://34.93.22.112:8002/api/qubematics/gateway/gatewaydetails/segment/customer/",
    //qm domian sensor type
    getSensorTypeUrl : "http://34.93.22.112:8004/qmdomain/get/sensor",
    getIndustryTypeUrl :'http://34.93.22.112:8004/qmdomain/get/industry',

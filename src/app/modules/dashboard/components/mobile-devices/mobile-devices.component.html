@@ -5,10 +5,12 @@
 <div class="main-contain">
     <div fxLayout="column" fxLayoutAlign="none" fxLayoutGa="16px" *ngFor='let allData of allDatas'>
         <div class="gateway-Title">
-            <span>{{allData.gateway_name}}</span>
+            <span>{{allData.segment_name}}</span>
         </div>
-        <div class="card-container" *ngFor='let node of allData.nodes'>
-            <app-node [node]="node" (click)="goToGraph(node)"></app-node>
+        <div class="card-container" *ngFor='let gateway of allData.gateway'>
+            <div *ngFor='let node of gateway.nodes'>
+                <app-node [node]="node" [gateway]="gateway.gateway_name" (click)="goToGraph(node)"></app-node>
+            </div>
         </div>
     </div>
 </div>

@@ -21,13 +21,13 @@ export class GraphMobileComponent implements OnInit {
   single: any[];
   multi: any[];
   view: any[] = [900, 200];
-  minDate = new Date(); 
+  minDate = new Date('2019-11-03'); 
   maxDate = new Date(); 
   // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
-  showLegend = true;
+  showLegend = false;
   showXAxisLabel = true;
   legendPosition = "below"
   xAxisLabel = 'timestamp';
@@ -66,6 +66,7 @@ export class GraphMobileComponent implements OnInit {
           name: this.sensor.sensor_model,
           series: this.formatedData
         }];
+        console.log(this.single);
         console.log(this.formatedData);
       },
       (error) => {

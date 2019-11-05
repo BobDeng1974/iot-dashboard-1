@@ -20,15 +20,15 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   formData: IUser;
-  isMobile : boolean = false;
-  isDesktop : boolean = false;
+  isMobile: boolean = false;
+  isDesktop: boolean = false;
   isTablet: boolean = false;
-  constructor(private fb: FormBuilder, private appState: ApplicationStateService, private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService, private deviceDetector : DeviceDetectorService, private store : Store<fromLogin.State>) { }
+  constructor(private fb: FormBuilder, private appState: ApplicationStateService, private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService, private deviceDetector: DeviceDetectorService, private store: Store<fromLogin.State>) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      user_name:['', [Validators.required]],
-      user_password:['', [Validators.required]]
+      user_name: ['', [Validators.required]],
+      user_password: ['', [Validators.required]]
     })
     this.isMobile = this.deviceDetector.isMobile();
     this.isDesktop = this.deviceDetector.isDesktop();
@@ -40,14 +40,21 @@ export class LoginComponent implements OnInit {
           console.log(userDetail);
           if (userDetail.user_type == "admin") {
             console.log(userDetail.user_type);
-            
+
             this.router.navigateByUrl("/admin-panel")
-          } else if (userDetail.user_type == "vendor"){
+          } else if (userDetail.user_type == "vendor") {
             this.router.navigateByUrl("/vendor-panel")
-          }else if (userDetail.user_type == "customer") {
+          } else if (userDetail.user_type == "customer") {
             if (this.isMobile) {
+              //full screen
+              let elem = document.documentElement;
+              let methodToBeInvoked = elem.requestFullscreen ||
+                elem.webkitRequestFullScreen || elem['mozRequestFullscreen']
+                ||
+                elem['msRequestFullscreen'];
+              if (methodToBeInvoked) methodToBeInvoked.call(elem);
               this.router.navigateByUrl("/mobile-dashboard")
-            } else if (this.isDesktop){
+            } else if (this.isDesktop) {
               this.router.navigateByUrl("/dashboard")
             }
           }
@@ -56,7 +63,7 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  onSubmit(form){
+  onSubmit(form) {
     this.formData = {
       user_name: form.controls.user_name.value,
       user_password: form.controls.user_password.value
@@ -79,7 +86,7 @@ export class LoginComponent implements OnInit {
     //         this.appState.userId = data.user_id;
     //         this.spinner.hide()
     //       }
-          
+
     //     } else if (data.user_type == 'vendor'){
     //       this.router.navigate(['/vendor-panel']);
     //       this.appState.userLoggedIn = true;
