@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as formLogin from '../../../../state/app.reducer';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-mobile-notifications',
   templateUrl: './mobile-notifications.component.html',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MobileNotificationsComponent implements OnInit {
   customerId : number;
-  constructor(private store : Store<formLogin.State>,private router : Router) { }
+  constructor(private store : Store<formLogin.State>,private router : Router, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
     this.store.pipe(select(formLogin.getUserDetail)).subscribe(

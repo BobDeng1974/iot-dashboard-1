@@ -5,6 +5,7 @@ import * as fromLogin from '../../../../state/app.reducer';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { payload } from '../../model/customerDashboard';
 import { node } from 'src/app/modules/admin-panel/model/gateway';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-branch-devices',
   templateUrl: './branch-devices.component.html',
@@ -17,9 +18,10 @@ export class BranchDevicesComponent implements OnInit {
   payload : payload;
   segments : any;
   message : string;
-  constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router) { }
+  constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
+    // setTimeout( ()=> this.spinner.show(), 100);
     this.branch_id = this.route.snapshot.queryParamMap.get('branch_id');
     this.branch_id = +this.branch_id;
     console.log("branchid",this.branch_id);
@@ -32,15 +34,18 @@ export class BranchDevicesComponent implements OnInit {
         }
       }
     )
-
+    this.spinner.show()
     this.dashboardService.getAllNodesByBranch(this.payload).subscribe(
+    
       (data) => {
         console.log("=>",data);
         this.segments = data;
         this.message = "No nodes to show"
+        this.spinner.hide()
       },
       (error) => {
         console.log(error);
+        this.spinner.hide()
       }
     );
     

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           } else if (userDetail.user_type == "customer") {
             if (this.isMobile) {
               //full screen
-              let elem = document.documentElement;
+              let elem : any = document.documentElement;
               let methodToBeInvoked = elem.requestFullscreen ||
                 elem.webkitRequestFullScreen || elem['mozRequestFullscreen']
                 ||
