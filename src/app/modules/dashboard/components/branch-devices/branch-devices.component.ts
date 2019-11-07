@@ -3,9 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import * as fromLogin from '../../../../state/app.reducer';
 import { DashbordMainService } from '../../dashbord-main.service';
-import { payload } from '../../model/customerDashboard';
+import { payload, segment } from '../../model/customerDashboard';
 import { node } from 'src/app/modules/admin-panel/model/gateway';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-branch-devices',
   templateUrl: './branch-devices.component.html',
@@ -16,8 +17,9 @@ export class BranchDevicesComponent implements OnInit {
   branch_id;
   customer_id : number;
   payload : payload;
-  segments : any;
+  segments : segment[];
   message : string;
+  datatoFilter : Observable<segment[]>;
   constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
@@ -56,6 +58,11 @@ export class BranchDevicesComponent implements OnInit {
   }
   gotoGraph(node : node){
     this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid,branch_id:this.branch_id}});
+  }
+
+  applyFilter(value : string){
+    console.log(value);
+    
   }
 }
 

@@ -1,3 +1,5 @@
+import { gateway } from '../../admin-panel/model/gateway';
+
 export interface CustomerDashBoard {
     device_id? : number;
     device_name? : string;
@@ -25,4 +27,12 @@ export interface payload{
 export interface sensorData {
     name: Date;
     value: number;
+}
+
+export interface segment{
+    customer_branch_id ?: number;
+    segment_id ?: number;
+    segment_name ?: string;
+    gateway ?: gateway[];
+     
 }
