@@ -3,6 +3,11 @@ import { Store, select } from '@ngrx/store';
 import * as formLogin from '../../../../state/app.reducer';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
+import { untilDestroyed } from 'ngx-take-until-destroy';
+import { DashbordMainService } from '../../dashbord-main.service';
+import { Notifications } from '../../model/customerDashboard';
 @Component({
   selector: 'app-mobile-notifications',
   templateUrl: './mobile-notifications.component.html',
@@ -10,9 +15,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class MobileNotificationsComponent implements OnInit {
   customerId : number;
-  constructor(private store : Store<formLogin.State>,private router : Router, private spinner : NgxSpinnerService) { }
+  notifications : Notifications[];
+  notificationData: any[][];
+
+  constructor(private store : Store<formLogin.State>,private router : Router, private spinner : NgxSpinnerService,private dashboardService : DashbordMainService) { }
 
   ngOnInit() {
+    setTimeout( () => this.spinner.show(), 100)
+    this.notifications = [];
     this.store.pipe(select(formLogin.getUserDetail)).subscribe(
       userDetails=>{
         if(userDetails){
@@ -21,6 +31,44 @@ export class MobileNotificationsComponent implements OnInit {
         }
       }
     );
+
+  //get notification from inflax db
+  interval(20000).pipe(
+    startWith(0),
+    untilDestroyed(this),
+    switchMap( () => this.dashboardService.getAllNotification(this.customerId))
+    ).subscribe(
+      (data)=>{
+        console.log(data);
+        this.notifications=[];
+        this.notificationData=data.results[0].series[0].values;
+        
+          this.notificationData.forEach(element => {
+            this.notifications.push({
+              customer_id : element[1],
+              time : new Date(element[0]),
+              mac_address: element[2],
+              node_uid: element[3],
+              reading: element[4],
+              sensor : element[5],
+              sensor_type : element[6],
+              tmax : element[7],
+              tmin : element[8]
+            })
+            this.spinner.hide()
+          });
+
+        console.log(this.notifications);
+        
+      },
+      (error)=>{
+        console.error(error);
+        this.spinner.hide();
+      }
+    )
+  }
+  ngOnDestroy(){
+
   }
   getNotificationDetails(){
     this.router.navigate(['/mobile-devices-notification']);

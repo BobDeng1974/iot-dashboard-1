@@ -34,5 +34,16 @@ export interface segment{
     segment_id ?: number;
     segment_name ?: string;
     gateway ?: gateway[];
-     
+}
+export interface Notifications {
+    time ?: Date;
+    customer_id? : number;
+    mac_address? : string;
+    node_uid? : string;
+    reading? : number;
+    sensor? : string;
+    sensor_type? : number;
+    tmax? : number;
+    tmin? : number;
+
 }

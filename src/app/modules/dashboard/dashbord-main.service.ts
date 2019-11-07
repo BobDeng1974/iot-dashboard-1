@@ -48,6 +48,13 @@ export class DashbordMainService {
     console.log(statement);
     return this.http.get(environment.nodeDataUrl+statement);
   }
+  getAllNotification(customer) :Observable<any> {
+    let statement = "select*from notification where customer_id='"+customer+"'";
+    console.log(statement);
+    return this.http.get(environment.getNotification+statement);
+  }
+
+
 
   formatString(mainString: string, args: string[]): string {
     var tags = Array.prototype.slice.call(args, 1);
