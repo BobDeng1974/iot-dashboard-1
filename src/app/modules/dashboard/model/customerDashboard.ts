@@ -26,3 +26,15 @@ export interface sensorData {
     name: Date;
     value: number;
 }
+export interface Notifications {
+    time ?: Date;
+    customer_id? : number;
+    mac_address? : string;
+    node_uid? : string;
+    reading? : number;
+    sensor? : string;
+    sensor_type? : number;
+    tmax? : number;
+    tmin? : number;
+
+}
