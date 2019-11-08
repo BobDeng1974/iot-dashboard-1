@@ -3,6 +3,7 @@ import { SensorData } from '../../pages/dashboard-main/dashboard-main.component'
 import { CustomerDashBoard } from '../../model/customerDashboard';
 import { Router } from '@angular/router';
 import { ApplicationStateService } from 'src/app/service/application-state.service';
+import { sensor } from 'src/app/modules/admin-panel/model/gateway';
 
 @Component({
   selector: 'app-customer-branch-device-details',
@@ -12,7 +13,7 @@ import { ApplicationStateService } from 'src/app/service/application-state.servi
 export class CustomerBranchDeviceDetailsComponent implements OnInit {
 
   @Input() CurrentReading: SensorData;
-  @Input() SensorList: any;
+  @Input() nodeList: any;
   @Input() sensordata : any[];
   @Input() deviceName : string;
   @Input() deviceData : CustomerDashBoard;
@@ -23,6 +24,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   pinValueSet = new Set();
   selectable = true;
   removable = true;
+  sensors : sensor[];
   // @Output() sensorType = new EventEmitter<string>();
   // @Output() deviceMac = new EventEmitter<string>();
   // temp: string = "";
@@ -56,7 +58,8 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     //   }
     // }
     console.log("this is form customer branch device details");
-    console.log(this.SensorList);
+    console.log(this.nodeList);
+    this.sensors = this.nodeList.sensor;
     console.log("List of pin value:  ");
     //console.log(this.listOfPinValue);
   }
