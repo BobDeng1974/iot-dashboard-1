@@ -1,49 +1,49 @@
-<mat-card class="example_card"  [class.temp_header]="sensor.sensor_type.toLowerCase() == sensorTypes[0].toLowerCase()"
-[class.ph_header]="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()"
-[class.humidity_header]="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()"
-[class.alcohol_header]="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()">
+<mat-card class="example_card"  [class.temp_header]="sensor.sensor_type == 1"
+[class.ph_header]="sensor.sensor_type == 2"
+[class.humidity_header]="sensor.sensor_type == 3"
+[class.alcohol_header]="sensor.sensor_type == 5">
     <mat-card-content>
         <div fxLayout="row" class="image_container">
             <div fxFlex="45">
                 <div class="sensor-style">
-                    <div [class.temp_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[0].toLowerCase()"
-                        [class.ph_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()"
-                        [class.humidity_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()"
-                        [class.alcohol_sensor]="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()"
+                    <div [class.temp_sensor]="sensor.sensor_type == 1"
+                        [class.ph_sensor]="sensor.sensor_type == 2"
+                        [class.humidity_sensor]="sensor.sensor_type == 3"
+                        [class.alcohol_sensor]="sensor.sensor_type == 5"
                         [style.width.px]="40" [style.height.px]="40"></div>
                 </div>
             </div>
             <div fxFlex="55">
                 <div>
                     <div class="reading-header">Current Reading:</div><br>
-                    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[0].toLowerCase()" class="color-temp">{{newReadding.value | tempPipe}}</div>
-                    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()" class="color-humidity">{{newReadding.value}}%</div>
-                    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()" class="color-ph">{{newReadding.value}}%</div>
-                    <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()" class="color-alcohol">{{newReadding.value}}%</div>
+                    <div *ngIf="sensor.sensor_type == 1" class="color-temp">{{currentReading.value | tempPipe}}</div>
+                    <div *ngIf="sensor.sensor_type == 2" class="color-humidity">{{currentReading.value}}%</div>
+                    <div *ngIf="sensor.sensor_type == 3" class="color-ph">{{currentReading.value}}%</div>
+                    <div *ngIf="sensor.sensor_type == 5" class="color-alcohol">{{currentReading.value}}%</div>
                 </div>
             </div>
         </div>
     </mat-card-content>
     <div>
-        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[0].toLowerCase()" class="toggle-style" style="background-color: #F6A74B">
+        <div *ngIf="sensor.sensor_type == 1" class="toggle-style" style="background-color: #F6A74B">
             <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
             </mat-slide-toggle>
             <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
         </div>
 
-        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[1].toLowerCase()" class="toggle-style" style="background-color: #28BACF">
+        <div *ngIf="sensor.sensor_type == 2" class="toggle-style" style="background-color: #28BACF">
             <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
             </mat-slide-toggle>
             <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
         </div>
 
-        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[2].toLowerCase()" class="toggle-style" style="background-color: #AD79B4">
+        <div *ngIf="sensor.sensor_type == 3" class="toggle-style" style="background-color: #AD79B4">
             <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
             </mat-slide-toggle>
             <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
         </div>
 
-        <div *ngIf="sensor.sensor_type.toLowerCase() == sensorTypes[3].toLowerCase()" class="toggle-style" style="background-color: #94B966">
+        <div *ngIf="sensor.sensor_type == 5" class="toggle-style" style="background-color: #94B966">
             <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
             </mat-slide-toggle>
             <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>

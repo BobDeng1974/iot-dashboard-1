@@ -6,9 +6,19 @@
     padding: 16px;
 }
 .examplecard{
-    height: 50vh;
+    height: 30vh;
 }
 .box{
     height: calc(100vh - 120px);
     //padding-top:calc(50% - 25vh) ;
+}
+.date{
+    font-size: 16px;
+    color: red;
+}
+.sample-padding{
+    padding-left: 10px;
+}
+.padding-span{
+    padding:5px;
 }

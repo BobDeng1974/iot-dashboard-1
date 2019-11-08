@@ -156,3 +156,10 @@ export interface CustomerAssignment{
     assign_effective_from ?: Date;
     assign_effective_to ?: Date;
 }
+
+export interface Devices{
+    uid ?: number;
+    node_effective_from ?: Date;
+    list_of_node ?: number;
+    sensor ?: any;
+}

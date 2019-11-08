@@ -20,7 +20,8 @@ export class DashboardMainComponent implements OnInit {
   deviceName : string;
 
   deviceData : CustomerDashBoard;
-
+  DeviceList : any;
+  SensorList: any;
   //deviceType and MAC from output
   sensorType: string;
   deviceMac: string;
@@ -97,6 +98,14 @@ export class DashboardMainComponent implements OnInit {
   sensorDetails(value) {
     console.log("form main: ");
     console.log(value);
+  }
+
+  getDeviceList(value: any) {
+    this.DeviceList=value;
+  }
+
+  getSensorData(value: any){
+    this.SensorList=value;
   }
 
 }
