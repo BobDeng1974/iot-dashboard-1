@@ -12,7 +12,7 @@ import { ApplicationStateService } from 'src/app/service/application-state.servi
 export class CustomerBranchDeviceDetailsComponent implements OnInit {
 
   @Input() CurrentReading: SensorData;
-
+  @Input() SensorList: any;
   @Input() sensordata : any[];
   @Input() deviceName : string;
   @Input() deviceData : CustomerDashBoard;
@@ -56,7 +56,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     //   }
     // }
     console.log("this is form customer branch device details");
-    console.log(this.sensordata);
+    console.log(this.SensorList);
     console.log("List of pin value:  ");
     //console.log(this.listOfPinValue);
   }

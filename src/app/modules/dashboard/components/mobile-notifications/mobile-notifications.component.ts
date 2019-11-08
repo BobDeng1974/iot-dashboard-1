@@ -70,8 +70,10 @@ export class MobileNotificationsComponent implements OnInit {
   ngOnDestroy(){
 
   }
-  getNotificationDetails(){
-    this.router.navigate(['/mobile-devices-notification']);
+  getNotificationDetails(notification: Notifications){
+    console.log(notification);
+    this.router.navigate(['/mobile-devices-notification'],{queryParams: {node_uid : notification.node_uid, mac_address : notification.mac_address, reading : notification.reading
+    ,sensor : notification.sensor, sensor_type : notification.sensor_type, time : notification.time, tmax : notification.tmax, tmin : notification.tmin}});
   }
 
 }

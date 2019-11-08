@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { CustomerDashBoard } from '../../model/customerDashboard';
+import { CustomerDashBoard, segment, payload } from '../../model/customerDashboard';
+import { DashbordMainService } from '../../dashbord-main.service';
+import { Store, select } from '@ngrx/store';
+import * as fromLogin from '../../../../state/app.reducer';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Branch } from 'src/app/modules/admin-panel/model/customermodel';
 
 @Component({
   selector: 'app-customer-branch-details',
@@ -11,44 +15,57 @@ export class CustomerBranchDetailsComponent implements OnInit {
 
   @Input() customerAssignData : CustomerDashBoard[]; 
 
-  @Output() ButtonClick = new EventEmitter<number>();
 
-  @Output() DeviceData = new EventEmitter<CustomerDashBoard>();
-
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
-  
-  displayedColumns: string[] = ['select', 'customer_branch_name', 'no_device'];
-  dataSource = new MatTableDataSource<CustomerDashBoard>();
-  SelectedBranch: CustomerDashBoard = {
-    device_id : 0
-  };
-
-  constructor() { }
+  customerId : number;
+  branches : Branch[];
+  segments : segment[];
+  payload : payload;
+  @Output() DeviceList = new EventEmitter<any>();
+  constructor(private store : Store<fromLogin.State>, private dashboardService : DashbordMainService,private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
-    // this.dataSource.data = this.customerAssignData;
-    // console.log("this is form branches:  "+this.customerAssignData);
+    this.store.pipe(select(fromLogin.getUserDetail)).subscribe(
+      userDetails => {
+        if (userDetails) {
+          console.log(userDetails);
+          this.customerId = userDetails.customer_id;
+          this.spinner.show();
+          this.dashboardService.getCustomerBranch(this.customerId).subscribe(
+            (data) => {
+              console.log(data);
+              this.branches = data
+              this.spinner.hide()
+            },
+            (error) => {
+              console.log(error);
+              this.spinner.hide();
+            }
+          );
+        }
+      }
+    );
+  }
+  getBranch(branch: number){
+    this.payload = {
+      customer_branch_id : branch,
+      customer_id : this.customerId
+    }
+    this.spinner.show();
+    this.dashboardService.getAllNodesByBranch(this.payload).subscribe(
+      (data) => {
+        this.segments = data;
+        this.spinner.hide()
+      },
+      (error) => {
+        console.log(error);
+        this.spinner.hide()
+      }
+    );
+  }
+  getGateway(gateWay: any){
+    //console.log(gateWay);
+    this.DeviceList.emit(gateWay);
+
   }
 
-  ngOnChanges() {
-    this.dataSource.data =  this.customerAssignData;
-    console.log("this is form branches:  "+ this.customerAssignData[0]);
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  SelectBranch(value: any, id:number) {
-    this.SelectedBranch = value;
-    console.log("thisis form click on branch:  "+value);
-    this.DeviceData.emit(value);
-    this.ButtonClick.emit(id);
-  }
 }

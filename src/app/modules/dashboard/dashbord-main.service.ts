@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { CustomerDashBoard, customerSupport, segment } from './model/customerDashboard';
+import { CustomerDashBoard, customerSupport, segment, Notifications } from './model/customerDashboard';
 import { Customer } from '../admin-panel/model/customermodel';
 @Injectable({
   providedIn: 'root'
@@ -54,7 +54,9 @@ export class DashbordMainService {
     return this.http.get(environment.getNotification+statement);
   }
 
-
+  getNotificationDetails(data):Observable<Notifications>{
+    return this.http.post(environment.getNotificationDetails,{"node_uid":data.node_uid,"mac":data.mac_address})
+  }
 
   formatString(mainString: string, args: string[]): string {
     var tags = Array.prototype.slice.call(args, 1);
