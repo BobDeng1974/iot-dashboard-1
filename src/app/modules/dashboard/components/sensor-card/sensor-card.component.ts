@@ -9,6 +9,7 @@ import { ApplicationStateService } from 'src/app/service/application-state.servi
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { sensor } from 'src/app/modules/admin-panel/model/gateway';
 import { sensorData } from '../../model/customerDashboard';
+import { Sensor } from 'src/app/modules/admin-panel/model/customermodel';
 
 @Component({
   selector: 'app-sensor-card',
@@ -27,6 +28,7 @@ export class SensorCardComponent implements OnInit {
     "Humidity",
     "Alcohol"
   ];
+  forGraphData : graphView;
   graphPopup: MatDialogRef<GraphComponent>;
   formattedData: SensorData[] = [];
   graphData: any[][];
@@ -35,7 +37,7 @@ export class SensorCardComponent implements OnInit {
   payload : any[] = [];
   formatedData : sensorData[] = [];
   currentReading : sensorData;
-  @Output() PinValue = new EventEmitter<string>();
+  @Output() PinValue = new EventEmitter<number>();
   @ViewChild(MatRipple, {static: false})ripple:MatRipple;
   constructor(private dialog: MatDialog, private dashBoardService: DashbordMainService, private appState: ApplicationStateService) { }
 
@@ -75,15 +77,19 @@ export class SensorCardComponent implements OnInit {
     )
 
   }
-  getSensorId(toggle: boolean, value) {
+  getSensorId(toggle: boolean, value: number) {
     //console.log(value);
+    this.forGraphData = {
+      sensor : this.sensor,
+      nodeUid : this.nodeUid
+    }
     if (toggle == true) {
       this.sensorType = value;
       this.checked=true;
       this.graphPopup = this.dialog.open(GraphComponent,
         {
           //data: value.toLowerCase(),
-          data:this.sensor,
+          data:this.forGraphData,
           width: "90%",
           disableClose: true
         }
@@ -96,7 +102,7 @@ export class SensorCardComponent implements OnInit {
     }
   }
 
-  pinSensorType(value: string) {
+  pinSensorType(value: number) {
     console.log("sensor value form pin");
     console.log(value);
     this.PinValue.emit(value);
@@ -107,4 +113,9 @@ export class SensorCardComponent implements OnInit {
   payloadFormater(value){
     return "'"+value+"'"
   }
+}
+
+export interface graphView{
+  sensor : Sensor;
+  nodeUid : string;
 }

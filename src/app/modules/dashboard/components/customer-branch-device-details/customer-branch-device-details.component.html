@@ -56,9 +56,13 @@
                 </div>
                 <div fxFlex="10">
                     <div class="chip">
-                        <mat-chip-list #chipList aria-label="Fruit selection">
+                        <mat-chip-list #chipList aria-label="sensor type">
                             <mat-chip *ngFor="let sensoptype of pinValueSet" [removable]="removable" [selectable]="selectable" (removed)="remove(sensoptype)">
-                                {{sensoptype}}
+                                <span *ngIf="sensoptype === 1">Temperature</span>
+                                <span *ngIf="sensoptype === 2">pH</span>
+                                <span *ngIf="sensoptype === 3">Dissolved Oxygen</span>
+                                <span *ngIf="sensoptype === 4">Alcohol</span>
+                                <span *ngIf="sensoptype === 5">Humidity</span>
                                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                             </mat-chip>
                             <button mat-raised-button class="view-all-button" *ngIf="pinValueSet.size > 0" (click)="viewAllSensorvalue(pinValueSet)">View All</button>

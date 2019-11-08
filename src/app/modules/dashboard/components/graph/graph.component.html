@@ -7,7 +7,7 @@
   </span>
 </div>
 <div mat-dialog-content>
-  <div *ngIf=" sensorType == 'temperature'" fxLayout="row" fxLayoutGap="10px">
+  <div *ngIf=" sensorType == 1" fxLayout="row" fxLayoutGap="10px">
     <div class="graph" fxFlex="70">
       <ngx-charts-line-chart [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
@@ -39,12 +39,12 @@
             <div fxFlex="25%" style="font-size:85%;">
                 <span fxFlex='40' ms3DisplayError>Sensor Name</span>
                 <span fxFlex='2'>:</span>
-                <span fxFlex='58'><b>{{sensorValue.sensor_name}}</b></span>
+                <span fxFlex='58'><b>{{sensorName}}</b></span>
             </div><br>
             <div fxFlex="25%" style="font-size:85%;">
                 <span fxFlex='40' ms3DisplayError>Sensor Type</span>
                 <span fxFlex='2'>:</span>
-                <span fxFlex='58'><b>{{sensorValue.sensor_type}}</b></span>
+                <span fxFlex='58'><b>{{sensorType}}</b></span>
             </div><br>
             <div fxFlex="25%" style="font-size:85%;">
                 <span fxFlex='40' ms3DisplayError>Reading</span>
@@ -65,7 +65,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="sensorType == 'humidity'" fxLayout="row" fxLayoutGap="10px">
+  <div *ngIf="sensorType == 5" fxLayout="row" fxLayoutGap="10px">
     <div class="graph" fxFlex="70">
       <ngx-charts-line-chart [scheme]="colorScheme2" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
@@ -97,12 +97,12 @@
               <div fxFlex="25%" style="font-size:85%;">
                   <span fxFlex='40' ms3DisplayError>Sensor Name</span>
                   <span fxFlex='2'>:</span>
-                  <span fxFlex='58'><b>{{sensorValue.sensor_name}}</b></span>
+                  <span fxFlex='58'><b>{{sensorName}}</b></span>
               </div><br>
               <div fxFlex="25%" style="font-size:85%;">
                   <span fxFlex='40' ms3DisplayError>Sensor Type</span>
                   <span fxFlex='2'>:</span>
-                  <span fxFlex='58'><b>{{sensorValue.sensor_type}}</b></span>
+                  <span fxFlex='58'><b>{{sensorType}}</b></span>
               </div><br>
               <div fxFlex="25%" style="font-size:85%;">
                   <span fxFlex='40' ms3DisplayError>Reading</span>
@@ -123,7 +123,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf=" sensorType == 'alcohol'" fxLayout="row" fxLayoutGap="10px">
+  <div *ngIf=" sensorType == 4" fxLayout="row" fxLayoutGap="10px">
     <div class="graph" fxFlex="70">
       <ngx-charts-line-chart [scheme]="colorScheme3" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [legend]="showLegend" [trimXAxisTicks]="trimXAxisTicks"
@@ -155,12 +155,12 @@
               <div fxFlex="20%" style="font-size:85%;">
                   <span fxFlex='40' ms3DisplayError>Sensor Name</span>
                   <span fxFlex='2'>:</span>
-                  <span fxFlex='58'><b>{{sensorValue.sensor_name}}</b></span>
+                  <span fxFlex='58'><b>{{sensorName}}</b></span>
               </div><br>
               <div fxFlex="25%" style="font-size:85%;">
                   <span fxFlex='40' ms3DisplayError>Sensor Type</span>
                   <span fxFlex='2'>:</span>
-                  <span fxFlex='58'><b>{{sensorValue.sensor_type}}</b></span>
+                  <span fxFlex='58'><b>{{sensorType}}</b></span>
               </div><br>
               <div fxFlex="25%" style="font-size:85%;">
                   <span fxFlex='40' ms3DisplayError>Reading</span>
