@@ -14,9 +14,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class MobileDevicesComponent implements OnInit {
   customerId : number;
   allDatas: any;
+  message : string;
   constructor(private store : Store<formLogin.State>,private dashbordMainService: DashbordMainService, private router : Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    
     this.store.pipe(select(formLogin.getUserDetail)).subscribe(
       userDetail => {
         if (userDetail) {
@@ -27,6 +29,7 @@ export class MobileDevicesComponent implements OnInit {
             (data)=>{
               this.allDatas=data;
               console.log(this.allDatas);
+              this.message = "No nodes to show";
               this.spinner.hide();
             },
             (error)=>{
