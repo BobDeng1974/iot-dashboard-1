@@ -1,17 +1,27 @@
-<div class="search-bar-container">
-    <mat-icon class="search-icon">search</mat-icon>
-    <input class="search-bar" matInput placeholder="Search">
-</div>
-<div class="main-contain">
-    <div fxLayout="column" fxLayoutAlign="none" fxLayoutGa="16px" *ngFor='let allData of allDatas'>
-        <div class="gateway-Title">
-            <span>{{allData.segment_name}}</span>
-        </div>
-        <div class="card-container" *ngFor='let gateway of allData.gateway'>
-            <div *ngFor='let node of gateway.nodes'>
-                <app-node [node]="node" [gateway]="gateway.gateway_name" (click)="goToGraph(node)"></app-node>
+<div fxLayout="column" class="main-contain">
+    <div fxFlex="10%">
+        <div fxLayout="row wrap" fxLayoutAlign="start">
+            <div class="search-bar-container">
+                <mat-icon class="search-icon">search</mat-icon>
+                <input class="search-bar" matInput placeholder="Search">
             </div>
         </div>
+    </div>
+    <div fxFlex="90%" class="box">
+        <p-accordion>
+            <div *ngFor="let segment of allDatas">
+                <p-accordionTab header="{{segment.segment_name}}">
+                    <div *ngFor="let gateway of segment.gateway">
+                        <div *ngIf="allDatas.length === 0" class="message">
+                            {{message}}
+                        </div>
+                        <div *ngFor="let node of gateway.nodes">
+                            <app-node [node]="node" [gateway]="gateway.gateway_name" (click)="goToGraph(node)"></app-node>
+                        </div>
+                    </div>
+                </p-accordionTab>
+            </div>
+        </p-accordion>
     </div>
 </div>
 <ngx-spinner color="rgba(223,12,95,0.9)" bdOpacity="0.9" type="ball-atom">
