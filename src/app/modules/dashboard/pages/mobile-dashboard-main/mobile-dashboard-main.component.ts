@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DashbordMainService } from '../../dashbord-main.service';
+import { Store, select } from '@ngrx/store';
+import * as fromLogin from '../../../../state/app.reducer';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-mobile-dashboard-main',
@@ -8,9 +12,28 @@ import { Router } from '@angular/router';
 })
 export class MobileDashboardMainComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  customerId : number;
+  constructor(private router : Router, private dashboardService : DashbordMainService, private store : Store<fromLogin.State>, private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
+    this.store.pipe(select(fromLogin.getUserDetail)).subscribe(
+      userDetails => {
+        if (userDetails) {
+          this.customerId = userDetails.customer_id;
+          this.spinner.show();
+          this.dashboardService.getSummaryView(this.customerId).subscribe(
+            (data) => {
+              console.log(data);
+              this.spinner.hide()
+            },
+            (error) => {
+              console.log(error);
+              this.spinner.hide();
+            }
+          );
+        }
+      }
+    );
   }
   branch(){
     this.router.navigate(['/mobile-locations']);

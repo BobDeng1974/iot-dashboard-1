@@ -41,6 +41,9 @@ export class DashbordMainService {
     return this.http.post<any>(environment.GetAllGateWayNodeSensonUrl, { customer_id : id });
   }
 
+  getSummaryView(id: number) : Observable<any> {
+    return this.http.get(environment.summaryViewUrl+id);
+  }
   getNodeData(payload) : Observable<any> {
     let d: any[] = ["'2000000'", "'5'"]
     let statement = "select * from test where node_uid={0} and sensor_type={1}";

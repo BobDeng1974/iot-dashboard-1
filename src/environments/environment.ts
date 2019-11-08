@@ -47,6 +47,7 @@ export const environment = {
    //getAllNodesByBranchUrl :'http://34.93.22.112:8002/api/qubematics/gateway/getallnodes/customer/branch/',
    getAllNodesByBranchUrl :'http://34.93.22.112:8002/api/qubematics/gateway/gatewaydetails/segment/',
    getSensorsByNodeUidUrl : "http://34.93.22.112:8002/api/qubematics/gateway/getsensor/nodeuid/",
+   summaryViewUrl : "http://34.93.22.112:8002/api/qubematics/gateway/allnodescount/",
 
    getAllVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/getall/?format=json",
    postVendorUrl : "http://34.93.22.112:8001/api/qubematics/vendor/create/?format=json",
