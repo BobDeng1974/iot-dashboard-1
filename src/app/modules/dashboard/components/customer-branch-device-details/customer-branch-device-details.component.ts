@@ -86,14 +86,9 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   pinValue(value){
-    // if (this.listOfPinValue.length != 4) {
-    //   this.listOfPinValue.push(value);
-    //   console.log(this.listOfPinValue);
-    // }
-    if (this.pinValueSet.size != 4) {
-      this.pinValueSet.add(value);
-      console.log(this.pinValueSet.values());
-    }
+    this.pinValueSet.add(value);
+    console.log(this.pinValueSet);
+    
   }
 
   remove(value)  {

@@ -5,6 +5,7 @@ import { startWith, switchMap } from 'rxjs/operators';
 import { SensorData } from './../../pages/dashboard-main/dashboard-main.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { graphView } from '../sensor-card/sensor-card.component';
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
@@ -14,15 +15,20 @@ export class GraphComponent implements OnInit {
 
   @Output() NewReading = new EventEmitter<SensorData>();
   newReading: any;
-  sensorType: string;
+  sensorType: number;
+  sensorName : string;
   sensorValue: any;
+  payload : any[] = [];
   @Input() type: string;
+  
+  payloadForGraph : graphView;
   constructor(private dashBoardService: DashbordMainService, @Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<GraphComponent>) { 
     //this.sensorType = data.;
     console.log("form graph component:  ");
     console.log(data);
-    this.sensorType = data.sensor_type.toLowerCase();
-    this.sensorValue = data;
+    this.payloadForGraph = data;
+    this.sensorType = this.payloadForGraph.sensor.sensor_type;
+    this.sensorName = this.payloadForGraph.sensor.sensor_name;
   }
 
   graphData: any[][];
@@ -106,13 +112,17 @@ export class GraphComponent implements OnInit {
     domain: ['#94B966']
   }
   ngOnInit() {
-
-    if (this.sensorType) {
+    let data1 = this.payloadFormater(this.payloadForGraph.nodeUid); 
+    let data2 = this.payloadFormater(String(this.payloadForGraph.sensor.sensor_type));
+    this.payload[0] = data1;
+    this.payload[1] = data2
+    console.log(this.payload);
+    if (this.payloadForGraph.sensor.sensor_type) {
       interval(20000)
       .pipe(
         startWith(0),
         untilDestroyed(this),
-        switchMap(() => this.dashBoardService.getGraphData(this.sensorType))
+        switchMap(() => this.dashBoardService.getNodeData(this.payload))
       ).subscribe(
         (data) => {
           console.log(data);
@@ -121,13 +131,13 @@ export class GraphComponent implements OnInit {
           this.graphData.forEach(element => {
             this.formattedData.push({
               name: new Date(element[0]),
-              value: element[element.length - 2]
+              value: element[element.length - 3]
             });
-            // console.log(this.formattedData)
+            console.log(this.formattedData)
           });
 
           this.single = [{
-            name: this.sensorValue.sensor_name,
+            name: this.payloadForGraph.sensor.sensor_name,
             series: this.formattedData
           }];
 
@@ -164,6 +174,9 @@ export class GraphComponent implements OnInit {
 
   ngOnDestroy() {
 
+  }
+  payloadFormater(value){
+    return "'"+value+"'"
   }
 }
 
