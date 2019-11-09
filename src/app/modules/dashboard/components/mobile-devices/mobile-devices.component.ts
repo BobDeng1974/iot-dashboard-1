@@ -5,6 +5,10 @@ import { DashbordMainService } from '../../dashbord-main.service';
 import { node } from 'src/app/modules/admin-panel/model/gateway';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { segment } from '../../model/customerDashboard';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mobile-devices',
@@ -15,10 +19,15 @@ export class MobileDevicesComponent implements OnInit {
   customerId : number;
   allDatas: any;
   message : string;
-  constructor(private store : Store<formLogin.State>,private dashbordMainService: DashbordMainService, private router : Router, private spinner: NgxSpinnerService) { }
+  segments : segment[];
+  searchForm : FormGroup;
+  filteredSegment : Observable<segment[]>;
+  constructor(private store : Store<formLogin.State>,private dashbordMainService: DashbordMainService, private router : Router, private spinner: NgxSpinnerService,private fb : FormBuilder) { }
 
   ngOnInit() {
-    
+    this.searchForm = this.fb.group({
+      searchField : ''
+    });
     this.store.pipe(select(formLogin.getUserDetail)).subscribe(
       userDetail => {
         if (userDetail) {
@@ -28,8 +37,13 @@ export class MobileDevicesComponent implements OnInit {
           this.dashbordMainService.getAllNodeSensorGateway(this.customerId).subscribe(
             (data)=>{
               this.allDatas=data;
+              this.segments = data;
               console.log(this.allDatas);
               this.message = "No nodes to show";
+              this.filteredSegment = this.searchField.valueChanges.pipe(
+                startWith(''),
+                map( value => value ? this._filterSegment(value) : this.segments.slice())
+              )
               this.spinner.hide();
             },
             (error)=>{
@@ -43,5 +57,20 @@ export class MobileDevicesComponent implements OnInit {
   }
   goToGraph(node : node){
     this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid}});
+  }
+  applyFilter(value : string){
+    console.log(value);
+    
+  }
+  private _filterSegment( value ?: string) : segment[] {
+    if (value) {
+      const filterValue = value.toLowerCase();
+      return this.segments.filter( m => (m.segment_name).toLowerCase().includes(filterValue));
+    }
+  }
+
+  
+  public get searchField() : FormControl {
+    return <FormControl>this.searchForm.get('searchField')
   }
 }
