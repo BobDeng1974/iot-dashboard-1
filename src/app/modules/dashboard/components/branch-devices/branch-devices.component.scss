@@ -12,23 +12,28 @@
     color: #fff;
     
 }
-.search-bar-container {
-    display: inline-flex;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    width: 70%;
-    position: sticky;
-    margin-top: 8px;
-    margin-left:10px;
-    margin-bottom: 5px;
 
+.from-control{
+    width: 80%;
+    .search-bar-container {
+        display: inline-flex;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        width: 70%;
+        position: sticky;
+        margin-top: 8px;
+        margin-left:10px;
+        margin-bottom: 5px;
+        width: 100%;
     
-    .search-icon {
-        padding-top: 4px;
-        padding-left: 4px;
-        padding-right: 4px;
-        color: rgba(225,30,98,1);
+        
+        .search-icon {
+            padding-top: 4px;
+            padding-left: 4px;
+            padding-right: 4px;
+            color: rgba(225,30,98,1);
+        }
     }
 }
 .main-container{
