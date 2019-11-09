@@ -6,12 +6,12 @@
                     <mat-icon>arrow_back</mat-icon>
                 </button>
             </div>
+            <form [formGroup]="searchForm" class="from-control">
             <div class="search-bar-container">
-                <form [formGroup]="searchForm">
                     <mat-icon class="search-icon">search</mat-icon>
                     <input class="search-bar" matInput placeholder="Search" (keyup)="applyFilter($event.target.value)" formControlName="searchField">
-                </form>
             </div>
+            </form>
         </div>
     </div>
     <div fxFlex="90%" class="box">
