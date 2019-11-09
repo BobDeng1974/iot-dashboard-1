@@ -7,6 +7,8 @@ import { payload, segment } from '../../model/customerDashboard';
 import { node } from 'src/app/modules/admin-panel/model/gateway';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, of } from 'rxjs';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'app-branch-devices',
   templateUrl: './branch-devices.component.html',
@@ -19,11 +21,15 @@ export class BranchDevicesComponent implements OnInit {
   payload : payload;
   segments : segment[];
   message : string;
-  datatoFilter : Observable<segment[]>;
-  constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router, private spinner : NgxSpinnerService) { }
+  searchForm : FormGroup;
+  filteredSegment : Observable<segment[]>;
+  constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router, private spinner : NgxSpinnerService, private fb : FormBuilder) { }
 
   ngOnInit() {
     // setTimeout( ()=> this.spinner.show(), 100);
+    this.searchForm = this.fb.group({
+      searchField : ''
+    });
     this.branch_id = this.route.snapshot.queryParamMap.get('branch_id');
     this.branch_id = +this.branch_id;
     console.log("branchid",this.branch_id);
@@ -43,6 +49,10 @@ export class BranchDevicesComponent implements OnInit {
         console.log("=>",data);
         this.segments = data;
         this.message = "No nodes to show"
+        this.filteredSegment = this.searchField.valueChanges.pipe(
+          startWith(''),
+          map( value => value ? this._filterSegment(value) : this.segments.slice())
+        )
         this.spinner.hide()
       },
       (error) => {
@@ -64,6 +74,18 @@ export class BranchDevicesComponent implements OnInit {
     console.log(value);
     
   }
+  private _filterSegment( value ?: string) : segment[] {
+    if (value) {
+      const filterValue = value.toLowerCase();
+      return this.segments.filter( m => (m.segment_name).toLowerCase().includes(filterValue));
+    }
+  }
+
+  
+  public get searchField() : FormControl {
+    return <FormControl>this.searchForm.get('searchField')
+  }
+  
 }
 
 
