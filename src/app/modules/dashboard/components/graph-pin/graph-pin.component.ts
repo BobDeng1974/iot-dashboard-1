@@ -1,36 +1,25 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, Inject } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DashbordMainService } from '../../dashbord-main.service';
-import { interval } from 'rxjs';
+import { SensorData } from '../../pages/dashboard-main/dashboard-main.component';
 import { startWith, switchMap } from 'rxjs/operators';
-import { SensorData } from './../../pages/dashboard-main/dashboard-main.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { interval } from 'rxjs';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { graphView } from '../sensor-card/sensor-card.component';
-@Component({
-  selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.scss']
-})
-export class GraphComponent implements OnInit {
 
-  @Output() NewReading = new EventEmitter<SensorData>();
+@Component({
+  selector: 'app-graph-pin',
+  templateUrl: './graph-pin.component.html',
+  styleUrls: ['./graph-pin.component.scss']
+})
+export class GraphPinComponent implements OnInit {
   newReading: any;
   sensorType: number;
   sensorName : string;
   sensorValue: any;
   payload : any[] = [];
-  @Input() type: string;
-  
   payloadForGraph : any;
-  constructor(private dashBoardService: DashbordMainService, @Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<GraphComponent>) { 
-    //this.sensorType = data.;
-    console.log("form graph component:  ");
-    console.log(data);
-    this.payloadForGraph = data;
-    this.sensorType = this.payloadForGraph.sensor.sensor_type;
-    this.sensorName = this.payloadForGraph.sensor.sensor_model;
+  @Input() graph: any;
+  constructor(private dashBoardService: DashbordMainService) { 
   }
-
   graphData: any[][];
   formattedData: SensorData[] = [];
   single: any[];
@@ -79,11 +68,11 @@ export class GraphComponent implements OnInit {
   referenceLinesHumidity = [
     {
       name: "minimum",
-      value: 40
+      value: 70
     },
     {
       name: "maximum",
-      value: 80
+      value: 10
     }
   ]
   //reference line
@@ -112,6 +101,10 @@ export class GraphComponent implements OnInit {
     domain: ['#F6A74B', '#A10A28', '#C7B42C', '#AAAAAA']
   }
   ngOnInit() {
+    console.log(this.graph);
+    this.payloadForGraph = this.graph;
+    this.sensorType = this.payloadForGraph.sensor.sensor_type;
+    this.sensorName = this.payloadForGraph.sensor.sensor_model;
     let data1 = this.payloadFormater(this.payloadForGraph.nodeUid); 
     let data2 = this.payloadFormater(String(this.payloadForGraph.sensor.sensor_type));
     this.payload[0] = data1;
@@ -140,8 +133,6 @@ export class GraphComponent implements OnInit {
             name: this.payloadForGraph.sensor.sensor_model,
             series: this.formattedData
           }];
-
-          this.NewReading.emit(this.formattedData[this.formattedData.length - 1]);
           this.newReading = this.formattedData[this.formattedData.length - 1];
         },
         (error) => {
@@ -150,14 +141,10 @@ export class GraphComponent implements OnInit {
       ) 
     }
 
-    console.log(this.type);
   }
-
-  onSelect(event) {
-    console.log(event);
-
+  payloadFormater(value){
+    return "'"+value+"'"
   }
-
   setYMinTemperature(){
     this.yScaleMin = -5;
   }
@@ -167,16 +154,11 @@ export class GraphComponent implements OnInit {
   setYMinHumid(){
     this.yScaleMinHumidity = 30;
   }
+  onSelect(event) {
+    console.log(event);
 
-  CancelOperation() {
-    this.dialogRef.close('result');
   }
-
   ngOnDestroy() {
 
   }
-  payloadFormater(value){
-    return "'"+value+"'"
-  }
 }
-

@@ -29,6 +29,7 @@ export class SensorCardComponent implements OnInit {
     "Alcohol"
   ];
   forGraphData : graphView;
+  forGraphPin: any;
   graphPopup: MatDialogRef<GraphComponent>;
   formattedData: SensorData[] = [];
   graphData: any[][];
@@ -104,8 +105,12 @@ export class SensorCardComponent implements OnInit {
 
   pinSensorType(value: number) {
     console.log("sensor value form pin");
-    console.log(value);
-    this.PinValue.emit(value);
+    this.forGraphPin = {
+      sensor : this.sensor,
+      nodeUid : this.nodeUid,
+      value: value
+    }
+    this.PinValue.emit(this.forGraphPin);
   }
   ngOnDestroy() {
 

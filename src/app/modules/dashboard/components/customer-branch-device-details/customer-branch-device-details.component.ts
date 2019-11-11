@@ -4,6 +4,7 @@ import { CustomerDashBoard } from '../../model/customerDashboard';
 import { Router } from '@angular/router';
 import { ApplicationStateService } from 'src/app/service/application-state.service';
 import { sensor } from 'src/app/modules/admin-panel/model/gateway';
+import { Sensor } from 'src/app/modules/admin-panel/model/customermodel';
 
 @Component({
   selector: 'app-customer-branch-device-details',
@@ -25,6 +26,7 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   selectable = true;
   removable = true;
   sensors : sensor[];
+  graphPin : graphView[];
   // @Output() sensorType = new EventEmitter<string>();
   // @Output() deviceMac = new EventEmitter<string>();
   // temp: string = "";
@@ -41,9 +43,11 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   constructor(private router: Router, private appState: ApplicationStateService) { }
 
   ngOnInit() {
+    this.graphPin = []
   }
 
   ngOnChanges() {
+    this.graphPin = []
     // console.log(this.type)
     // if (this.CurrentReading) {
     //   if (this.type == 'temperature') {
@@ -86,9 +90,14 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   pinValue(value){
-    this.pinValueSet.add(value);
+    console.log(value);
+    this.pinValueSet.add(value.value);
     console.log(this.pinValueSet);
-    
+    this.graphPin.push({
+      nodeUid: value.nodeUid,
+      sensor: value.sensor
+    })
+    console.log("graph pin",this.graphPin);
   }
 
   remove(value)  {
@@ -99,11 +108,13 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
     //console.log(this.listOfPinValue);
   }
 
-  viewAllSensorvalue(value) {
+  viewAllSensorvalue() {
     //console.log(value);
-    this.EmitSenseorValue.emit(value);
     this.router.navigate(['/allGraph']);
-    console.log(value)
-    this.appState.pinnedSensors = value;
+    this.appState.pinnedSensors = this.graphPin;
   }
+}
+export interface graphView{
+  sensor : Sensor;
+  nodeUid : string;
 }

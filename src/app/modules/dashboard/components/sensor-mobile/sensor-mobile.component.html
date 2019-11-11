@@ -2,7 +2,7 @@
     <div fxLayout="row" fxLayoutGap="20px">
         <div fxFlex="10%" class="card-details">
             <img *ngIf="sensorType==1" class="sensor" src="../../../../../assets/images/temp_sensor_logo.svg">
-            <img *ngIf="sensorType==2" class="sensor" src="../../../../../assets/images/Group_67.svg">
+            <img *ngIf="sensorType==6" class="sensor" src="../../../../../assets/images/Group_67.svg">
             <img *ngIf="sensorType==3" class="sensor" src="../../../../../assets/images/Group_66.svg">
             <img *ngIf="sensorType==4" class="sensor" src="../../../../../assets/images/Group_66.svg">
             <img *ngIf="sensorType==5" class="sensor" src="../../../../../assets/images/Group_65.svg">
@@ -14,6 +14,7 @@
             <span *ngIf="sensorType==1">Reading: {{currentReading.value | temperaturePipe: 'C'}}</span>
             <span *ngIf="sensorType==5">Reading: {{currentReading.value}}%</span>
             <span *ngIf="sensorType==2 ||sensorType==3||sensorType==4">Reading: {{currentReading.value}}%</span>
+            <span *ngIf="sensorType==6">Reading: {{currentReading.value}}Amp</span>
         </div>
     </div>
 </mat-card>

@@ -65,7 +65,7 @@
                                 <span *ngIf="sensoptype === 5">Humidity</span>
                                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                             </mat-chip>
-                            <button mat-raised-button class="view-all-button" *ngIf="pinValueSet.size > 0" (click)="viewAllSensorvalue(pinValueSet)">View All</button>
+                            <button mat-raised-button class="view-all-button" *ngIf="pinValueSet.size > 0" (click)="viewAllSensorvalue()">View All</button>
                         </mat-chip-list>
                     </div>
                 </div>

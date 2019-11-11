@@ -1,7 +1,7 @@
 <div style="padding: 16px">
-    <div fxLayout="row wrap" fxLayoutGap="10px">
-        <div *ngFor="let sensor of sensorType" fxFlex="0 1 calc(50% - 10px)">
-            <app-pin-view-sensor-card [sensor]="sensor.toLowerCase()"></app-pin-view-sensor-card><br>
+    <div fxLayout="row wrap" class="sample-padding" fxLayoutAlign="start">
+        <div fxFlex="50%" class="graph" *ngFor="let graph of graphPins">
+            <app-graph-pin [graph]="graph"></app-graph-pin>
         </div>
     </div>
 </div>
