@@ -7,13 +7,13 @@
             <img *ngIf="sensorType==4" class="sensor" src="../../../../../assets/images/Group_66.svg">
             <img *ngIf="sensorType==5" class="sensor" src="../../../../../assets/images/Group_65.svg">
         </div>
-        <div fxFlex="20%" class="card-caption">
+        <div fxFlex="20%" class="card-caption" *ngIf="!!sensor.sensor_model">
             <span>{{sensor.sensor_model}}</span>
         </div>
-        <div fxFlex="70%" class="card-caption">
+        <div fxFlex="70%" class="card-caption" *ngIf="!!currentReading.value">
             <span *ngIf="sensorType==1">Reading: {{currentReading.value | temperaturePipe: 'C'}}</span>
             <span *ngIf="sensorType==5">Reading: {{currentReading.value}}%</span>
-            <span *ngIf="sensorType==2 ||sensorType==3||sensorType==4">Reading: {{currentReading.value}}%</span>
+            <span *ngIf="sensorType==4">Reading: {{currentReading.value}}%</span>
             <span *ngIf="sensorType==6">Reading: {{currentReading.value}}Amp</span>
         </div>
     </div>
