@@ -16,7 +16,7 @@ import { SuccessSnackberComponent } from 'src/app/modules/shared/components/succ
 })
 export class CustomerDetailsComponent implements OnChanges {
   // selected tab value
-  private currentTab = 0;
+  currentTab = 0;
   @Output() ButtonClicked = new EventEmitter<number>();
   // input for customer data
   @Input() customerData : Customer;
@@ -27,35 +27,35 @@ export class CustomerDetailsComponent implements OnChanges {
 
   @Input() isd_code : Domaindata[];
 
-  private nullvalueFrameworkComponents: any;
-  private phoneFrameworkComponents;
-  private emailFrameworkComponents;
-  private addressData: Address[] = [];
-  private legalData: LegalInfo[] =[];
-  private additionalData: AdditionalAttributes[] = [];
-  private emailData: Email[] = [];
-  private phoneData: Phone[] = [];
+   phoneFrameworkComponents;
+   emailFrameworkComponents;
+   addressData: Address[] = [];
+   nullvalueFrameworkComponents: any;
+   legalData: LegalInfo[] =[];
+   additionalData: AdditionalAttributes[] = [];
+   emailData: Email[] = [];
+   phoneData: Phone[] = [];
 
-  private addressColumnDefs;
-  private legalColumnDefs;
-  private additionalColumnDefs;
-  private emailColumnDef;
-  private phoneColumnDef;
+   addressColumnDefs;
+   legalColumnDefs;
+   additionalColumnDefs;
+   emailColumnDef;
+   phoneColumnDef;
 
   private addressGridApi;
-  private addressGridColumnApi;
+   addressGridColumnApi;
   private legalGridApi;
-  private legalGridColumnApi;
+   legalGridColumnApi;
   private phoneGridApi;
-  private phoneGridColumnApi;
+   phoneGridColumnApi;
   private emailGridApi;
-  private emailGridColumnApi;
+   emailGridColumnApi;
   private additionalGridApi;
-  private additionalGridColumnApi;
-  private rowSelection : string;
-  private selectedRow : Address;
+   additionalGridColumnApi;
+   rowSelection : string;
+   selectedRow : Address;
 
-  private addressDataCopy: Address[] = [];
+   addressDataCopy: Address[] = [];
 
   constructor(private adminService : AdminPanelMainService, private spinner: NgxSpinnerService, private _sanckBar : MatSnackBar) { }
 

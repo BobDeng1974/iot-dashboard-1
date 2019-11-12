@@ -17,7 +17,7 @@ import { SuccessSnackberComponent } from 'src/app/modules/shared/components/succ
 export class VendorDetailsComponent implements OnInit {
 
   // selected tab value
-  private currentTab = 0;
+  currentTab = 0;
   @Output() ButtonClicked = new EventEmitter<number>();
 
   // input for vendor data
@@ -28,35 +28,35 @@ export class VendorDetailsComponent implements OnInit {
   @Input() isd_code : Domaindata[];
   @Output() editClicked = new EventEmitter<Address>();
 
-  private nullvalueFrameworkComponents: any;
-  private phoneFrameworkComponents;
-  private emailFrameworkComponents;
-  private addressData: Address[] = [];
-  private legalData: LegalInfo[] =[];
-  private additionalData: AdditionalAttributes[] = [];
-  private emailData: Email[] = [];
-  private phoneData: Phone[] = [];
+   nullvalueFrameworkComponents: any;
+    phoneFrameworkComponents;
+  emailFrameworkComponents;
+  addressData: Address[] = [];
+   legalData: LegalInfo[] =[];
+   additionalData: AdditionalAttributes[] = [];
+   emailData: Email[] = [];
+   phoneData: Phone[] = [];
 
-  private addressColumnDefs;
-  private legalColumnDefs;
-  private additionalColumnDefs;
-  private emailColumnDef;
-  private phoneColumnDef;
+  addressColumnDefs;
+   legalColumnDefs;
+   additionalColumnDefs;
+   emailColumnDef;
+    phoneColumnDef;
 
-  private addressGridApi;
-  private addressGridColumnApi;
-  private legalGridApi;
-  private legalGridColumnApi;
-  private phoneGridApi;
-  private phoneGridColumnApi;
-  private emailGridApi;
-  private emailGridColumnApi;
-  private additionalGridApi;
-  private additionalGridColumnApi;
-  private rowSelection : string;
-  private selectedRow : Address;
+   addressGridApi;
+   addressGridColumnApi;
+   legalGridApi;
+   legalGridColumnApi;
+   phoneGridApi;
+   phoneGridColumnApi;
+   emailGridApi;
+   emailGridColumnApi;
+   additionalGridApi;
+   additionalGridColumnApi;
+  rowSelection : string;
+  selectedRow : Address;
 
-  private addressDataCopy: Address[] = [];
+  addressDataCopy: Address[] = [];
 
   constructor(private spinner: NgxSpinnerService, private adminService : AdminPanelMainService, private _sanckBar : MatSnackBar) { }
 

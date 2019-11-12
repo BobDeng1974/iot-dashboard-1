@@ -9,7 +9,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 export class DeviceActiveRendererComponent implements ICellRendererAngularComp {
 
   private params: any;
-  private active: boolean;
+  active: boolean;
 
   refresh(params: any): boolean{
     this.params = params;

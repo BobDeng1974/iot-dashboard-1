@@ -7,7 +7,7 @@
     <div class="main-content">
         <mat-tab-group [style.height.%]="100" (selectedTabChange)="resizeGrid($event)">
             <mat-tab label="Address" [style.height.%]="100">
-                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="addressDataCopy" [columnDefs]="addressColumnDefs" (gridReady)="onAddressGridReady($event)" (columnResized)="onColumnResized($event)" [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged($event)" (cellValueChanged)="onCellValueChange($event)">
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="addressDataCopy" [columnDefs]="addressColumnDefs" (gridReady)="onAddressGridReady($event)" (columnResized)="onColumnResized()" [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged($event)" (cellValueChanged)="onCellValueChange($event)">
 
                 </ag-grid-angular>
             </mat-tab>

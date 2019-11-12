@@ -5,7 +5,7 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="main-content">
-        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="addressDataCopy" [columnDefs]="branchesColumnDef" [rowSelection]="rowSelection" (gridReady)="onBranchGridReady($event)" (columnResized)="onColumnResized($event)" (selectionChanged)="onSelectionChanged($event)" >
+        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [paginationAutoPageSize]="true" [pagination]="true" [rowData]="addressDataCopy" [columnDefs]="branchesColumnDef" [rowSelection]="rowSelection" (gridReady)="onBranchGridReady($event)" (columnResized)="onColumnResized()" (selectionChanged)="onSelectionChanged($event)" >
 
         </ag-grid-angular>
     </div>

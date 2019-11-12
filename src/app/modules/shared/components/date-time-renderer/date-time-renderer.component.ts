@@ -8,7 +8,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 })
 export class DateTimeRendererComponent implements ICellRendererAngularComp {
   private params: any;
-  private date: Date;
+  date: Date;
 
   refresh(params: any):boolean{
     this.params = params;

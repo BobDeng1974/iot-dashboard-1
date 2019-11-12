@@ -8,7 +8,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 })
 export class DeviceHealthRendererComponent implements ICellRendererAngularComp {
   private params: any;
-  private health: string;
+  health: string;
 
   refresh(params: any): boolean{
     this.params = params

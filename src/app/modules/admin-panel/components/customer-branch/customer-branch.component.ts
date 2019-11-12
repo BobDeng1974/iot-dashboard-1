@@ -15,22 +15,22 @@ export class CustomerBranchComponent implements OnChanges {
 
   // input for customer data
   @Input() customerData : Customer;
-  private branchesData : Branch[] = [];
+  branchesData : Branch[] = [];
   @Output() editClicked =  new EventEmitter<Branch>();
 
   @Output() ButtonClicked = new EventEmitter<number>();
 
-  private nullvalueFrameworkComponents: any;
+  nullvalueFrameworkComponents: any;
 
-  private branchesColumnDef;
+  branchesColumnDef;
 
   private branchGridApi;
-  private branchGridApiColoumnApi;
+  branchGridApiColoumnApi;
 
-  private rowSelection : string;
-  private selectedRow : Branch;
+  rowSelection : string;
+  selectedRow : Branch;
 
-  private addressDataCopy: Branch[] = [];
+  addressDataCopy: Branch[] = [];
 
   constructor(private adminService : AdminPanelMainService, private spinner: NgxSpinnerService, private _sanckBar : MatSnackBar) { }
 

@@ -13,9 +13,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class CustomerAssignDialogComponent implements OnInit {
   
   customerassignForm  : FormGroup;
-  private customerAssignment: CustomerAssignment
+  customerAssignment: CustomerAssignment
   private customer: Customer;
-  private vendorData: any[] = [];
+  vendorData: any[] = [];
   constructor(private fb : FormBuilder, public dialogRef : MatDialogRef<CustomerAssignDialogComponent>, @Inject(MAT_DIALOG_DATA)private data: Customer, private adminService: AdminPanelMainService, private spinner: NgxSpinnerService) {
     this.customer = data;
    }

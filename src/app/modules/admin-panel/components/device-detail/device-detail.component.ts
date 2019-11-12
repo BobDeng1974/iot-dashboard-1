@@ -15,12 +15,12 @@ export class DeviceDetailComponent implements OnInit {
   @Output() buttonClicked = new EventEmitter<number>();
 
   @Input() device: Device;
-  private sensors: Sensor[] = [];
-  private sensorColumnDefs;
-  private sensorGridApi;
-  private sensorGridColumnApi;
+  sensors: Sensor[] = [];
+  sensorColumnDefs;
+  sensorGridApi;
+  sensorGridColumnApi;
 
-  private nullvalueFrameworkComponents: any;
+  nullvalueFrameworkComponents: any;
   constructor(private adminService: AdminPanelMainService, private spinner: NgxSpinnerService, private _sanckBar : MatSnackBar) { }
 
   ngOnInit() {

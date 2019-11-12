@@ -3,8 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-
+   production: false,
    createCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/create/",
    updateCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/update/",
    getAllCustomerUrl : "http://34.93.22.112:8000/api/qubematics/customer/getall/?format=json",

@@ -44,4 +44,7 @@ export class CustomerAssignComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.customerData.filter = filterValue.trim().toLowerCase();
   }
+  InitializeEdit(){
+    
+  }
 }

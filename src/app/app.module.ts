@@ -22,10 +22,14 @@ import { environment } from 'src/environments/environment';
 import { reducer } from './state/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from './state/app.effects';
+import { ServiceWorkerModule } from '@angular/service-worker';
+//import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
+    SidenavComponent,
     LoginComponent,
     HeaderComponent,
     MobileBottomNavBarComponent,
@@ -44,10 +48,11 @@ import { LoginEffects } from './state/app.effects';
     StoreModule.forRoot({'user' : reducer}),
     StoreDevtoolsModule.instrument({
       maxAge:25,
-      logOnly: environment.production,
+      logOnly: true,
       name:"QubeMatics"
     }),
-    EffectsModule.forRoot([LoginEffects])
+    EffectsModule.forRoot([LoginEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
