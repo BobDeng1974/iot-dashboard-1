@@ -28,7 +28,7 @@
                             {{message}}
                         </div>
                         <div *ngFor="let node of gateways.nodes">
-                            <app-node [node]="node"[gateway]="gateways.gateway_name" [autoRefresh]="autoRefresh" (click)="gotoGraph(node)"></app-node>
+                            <app-node [node]="node"[gateway]="gateways.gateway_name" [autoRefresh]="autoRefresh"></app-node>
                         </div>
                     </div>
                 </p-accordionTab>

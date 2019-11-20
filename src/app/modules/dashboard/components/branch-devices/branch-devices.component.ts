@@ -68,9 +68,9 @@ export class BranchDevicesComponent implements OnInit {
   goBack(){
     this.router.navigate(['/mobile-locations'])
   }
-  gotoGraph(node : node){
-    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid,branch_id:this.branch_id}});
-  }
+  // gotoGraph(node : node){
+  //   this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid,branch_id:this.branch_id}});
+  // }
 
   applyFilter(value : string){
     console.log(value);

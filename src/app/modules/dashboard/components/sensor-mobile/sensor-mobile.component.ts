@@ -7,6 +7,7 @@ import { DashbordMainService } from '../../dashbord-main.service';
 import { sensorData } from '../../model/customerDashboard';
 import { MatRipple } from '@angular/material';
 import { id } from '@swimlane/ngx-charts/release/utils';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sensor-mobile',
@@ -22,8 +23,10 @@ export class SensorMobileComponent implements OnInit {
   formatedData : any;
   currentReading : sensorData;
   currentTime: any;
+  maxValue: any;
+  minValue: any;
   @ViewChild(MatRipple, {static: false}) ripple : MatRipple;
-  constructor(private dashboardService : DashbordMainService) { }
+  constructor(private dashboardService : DashbordMainService,private router : Router) { }
 
   ngOnInit() {
     this.sensorType=this.sensor.sensor_type;
@@ -33,7 +36,8 @@ export class SensorMobileComponent implements OnInit {
     this.payload[0] = data1;
     this.payload[1] = data2
     console.log(this.payload);
-    
+    this.maxValue = this.sensor.sensor_threshold_max;
+    this.minValue = this.sensor.sensor_threshold_min;
     interval(20000).pipe(
       startWith(0),
       untilDestroyed(this),
@@ -65,5 +69,8 @@ export class SensorMobileComponent implements OnInit {
   }
   payloadFormater(value){
     return "'"+value+"'"
+  }
+  goToGraph(){
+    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : this.nodeUid}});
   }
 }

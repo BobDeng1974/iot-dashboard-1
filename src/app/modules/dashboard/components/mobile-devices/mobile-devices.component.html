@@ -15,7 +15,7 @@
         <mat-slide-toggle (change)="sensorRefresh($event.checked)" [checked]="checked">
         </mat-slide-toggle>
     </div>
-    <div fxFlex="90%" class="box">
+    <div fxFlex="85%" class="box">
         <p-accordion>
             <div *ngFor="let segment of filteredSegment | async">
                 <p-accordionTab header="{{segment.segment_name}}">
@@ -24,7 +24,7 @@
                             {{message}}
                         </div>
                         <div *ngFor="let node of gateway.nodes">
-                            <app-node [node]="node" [gateway]="gateway.gateway_name" (click)="goToGraph(node)">
+                            <app-node [node]="node" [autoRefresh]="autoRefresh" [gateway]="gateway.gateway_name">
                             </app-node>
                         </div>
                     </div>

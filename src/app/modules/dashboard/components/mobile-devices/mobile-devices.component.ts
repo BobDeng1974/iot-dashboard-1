@@ -57,9 +57,9 @@ export class MobileDevicesComponent implements OnInit {
       }
     );
   }
-  goToGraph(node : node){
-    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid}});
-  }
+  // goToGraph(node : node){
+  //   this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : node.uid}});
+  // }
   applyFilter(value : string){
     console.log(value);
     

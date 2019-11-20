@@ -7,7 +7,7 @@
                     <span>{{notification.node_uid}}</span><br><span class="date">{{notification.time | date:'medium' }}</span></mat-card-title>
             </mat-card-header> -->
             <mat-card-content (click)="getNotificationDetails(notification)">
-                <div fxLayout="row" fxLayoutGap="10px">
+                <div fxLayout="row" fxLayoutGap="20px">
                     <div fxFlex="10%">
                         <img *ngIf="notification.sensor_type==1" class="sensor"
                             src="../../../../../assets/images/temp_sensor_logo.svg">
