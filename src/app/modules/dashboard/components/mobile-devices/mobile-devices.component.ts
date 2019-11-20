@@ -21,6 +21,8 @@ export class MobileDevicesComponent implements OnInit {
   message : string;
   segments : segment[];
   searchForm : FormGroup;
+  checked: boolean = true;
+  autoRefresh: boolean=true;
   filteredSegment : Observable<segment[]>;
   constructor(private store : Store<formLogin.State>,private dashbordMainService: DashbordMainService, private router : Router, private spinner: NgxSpinnerService,private fb : FormBuilder) { }
 
@@ -72,5 +74,8 @@ export class MobileDevicesComponent implements OnInit {
   
   public get searchField() : FormControl {
     return <FormControl>this.searchForm.get('searchField')
+  }
+  sensorRefresh(toggle: boolean){
+    this.autoRefresh=toggle;
   }
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { sensor } from 'src/app/modules/admin-panel/model/gateway';
-import { interval } from 'rxjs';
+import { interval, Observable } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { sensorData } from '../../model/customerDashboard';
 import { MatRipple } from '@angular/material';
+import { id } from '@swimlane/ngx-charts/release/utils';
 
 @Component({
   selector: 'app-sensor-mobile',
@@ -15,11 +16,12 @@ import { MatRipple } from '@angular/material';
 export class SensorMobileComponent implements OnInit {
   @Input() sensor : sensor;
   @Input() nodeUid : string;
+  @Input() autoRefresh: boolean;
   sensorType:any;
   payload : any[] = [];
-  formatedData : sensorData[] = [];
-  graphData : any[][];
+  formatedData : any;
   currentReading : sensorData;
+  currentTime: any;
   @ViewChild(MatRipple, {static: false}) ripple : MatRipple;
   constructor(private dashboardService : DashbordMainService) { }
 
@@ -35,21 +37,21 @@ export class SensorMobileComponent implements OnInit {
     interval(20000).pipe(
       startWith(0),
       untilDestroyed(this),
-      switchMap( () => this.dashboardService.getNodeData(this.payload))
+      switchMap(() => {
+        if(this.autoRefresh){
+          return this.dashboardService.getNodeData(this.payload)
+        }
+        else {
+          return new Observable<any>();
+        }
+      })
     ).subscribe(
       (data) => {
-        // console.log(data);
-        this.formatedData = [];
-        this.graphData = data.results[0].series[0].values;
-        this.graphData.forEach( element => {
-          this.formatedData.push({
-            name: new Date(element[0]),
-            value : element[element.length - 3]
-          })
-        })
-        console.log(this.formatedData.length);
-        this.currentReading = this.formatedData[this.formatedData.length - 1]
-        console.log("current reading",this.currentReading);
+        if(data) {
+          this.formatedData = data.results[0].series[0].values[0];
+          this.currentReading = this.formatedData[1];
+          this.currentTime = new Date(this.formatedData[0]);
+        }
       },
       (error) => {
         console.log(error);

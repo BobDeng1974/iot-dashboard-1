@@ -14,7 +14,12 @@
             </form>
         </div>
     </div>
-    <div fxFlex="90%" class="box">
+    <div fxFlex="5%" class="autoRefresh">
+        <span>Auto Refresh</span>
+        <mat-slide-toggle (change)="sensorRefresh($event.checked)" [checked]="checked">
+        </mat-slide-toggle>
+    </div>
+    <div fxFlex="85%" class="box">
         <p-accordion>
             <div *ngFor="let segment of filteredSegment | async">
                 <p-accordionTab header={{segment.segment_name}}>
@@ -23,7 +28,7 @@
                             {{message}}
                         </div>
                         <div *ngFor="let node of gateways.nodes">
-                            <app-node [node]="node"[gateway]="gateways.gateway_name" (click)="gotoGraph(node)"></app-node>
+                            <app-node [node]="node"[gateway]="gateways.gateway_name" [autoRefresh]="autoRefresh" (click)="gotoGraph(node)"></app-node>
                         </div>
                     </div>
                 </p-accordionTab>

@@ -10,11 +10,12 @@
         <div fxFlex="20%" class="card-caption" *ngIf="!!sensor.sensor_model">
             <span>{{sensor.sensor_model}}</span>
         </div>
-        <div fxFlex="70%" class="card-caption" *ngIf="!!currentReading.value">
-            <span *ngIf="sensorType==1">Reading: {{currentReading.value | temperaturePipe: 'C'}}</span>
-            <span *ngIf="sensorType==5">Reading: {{currentReading.value}}%</span>
-            <span *ngIf="sensorType==4">Reading: {{currentReading.value}}%</span>
-            <span *ngIf="sensorType==6">Reading: {{currentReading.value}}Amp</span>
+        <div fxFlex="70%" class="card-caption">
+            <span *ngIf="sensorType==1">Reading: {{currentReading | temperaturePipe: 'C'}}</span>
+            <span *ngIf="sensorType==5">Reading: {{currentReading}}%</span>
+            <span *ngIf="sensorType==4">Reading: {{currentReading}}%</span>
+            <span *ngIf="sensorType==6">Reading: {{currentReading}}Amp</span><br>
+            <span class="sensorDate">{{currentTime | date:'medium'}}</span>
         </div>
     </div>
 </mat-card>

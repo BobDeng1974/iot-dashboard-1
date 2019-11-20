@@ -2,12 +2,18 @@
     <div fxFlex="10%">
         <div fxLayout="row wrap" fxLayoutAlign="start">
             <form [formGroup]="searchForm" class="from-control">
-            <div class="search-bar-container">
-                <mat-icon class="search-icon">search</mat-icon>
-                <input class="search-bar" matInput placeholder="Search" (keyup)="applyFilter($event.target.value)" formControlName="searchField">
-            </div>
-        </form>
+                <div class="search-bar-container">
+                    <mat-icon class="search-icon">search</mat-icon>
+                    <input class="search-bar" matInput placeholder="Search" (keyup)="applyFilter($event.target.value)"
+                        formControlName="searchField">
+                </div>
+            </form>
         </div>
+    </div>
+    <div fxFlex="5%" class="autoRefresh">
+        <span>Auto Refresh</span>
+        <mat-slide-toggle (change)="sensorRefresh($event.checked)" [checked]="checked">
+        </mat-slide-toggle>
     </div>
     <div fxFlex="90%" class="box">
         <p-accordion>
@@ -18,7 +24,8 @@
                             {{message}}
                         </div>
                         <div *ngFor="let node of gateway.nodes">
-                            <app-node [node]="node" [gateway]="gateway.gateway_name" (click)="goToGraph(node)"></app-node>
+                            <app-node [node]="node" [gateway]="gateway.gateway_name" (click)="goToGraph(node)">
+                            </app-node>
                         </div>
                     </div>
                 </p-accordionTab>

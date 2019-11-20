@@ -46,6 +46,13 @@ export class DashbordMainService {
   }
   getNodeData(payload) : Observable<any> {
     let d: any[] = ["'2000000'", "'5'"]
+    let statement = "select last(*) from test where node_uid={0} and sensor_type={1}";
+    statement = this.formatString(statement, payload);
+    console.log(statement);
+    return this.http.get(environment.nodeDataUrl+statement);
+  }
+  getNodeDatas(payload) : Observable<any> {
+    let d: any[] = ["'2000000'", "'5'"]
     let statement = "select * from test where node_uid={0} and sensor_type={1}";
     statement = this.formatString(statement, payload);
     console.log(statement);

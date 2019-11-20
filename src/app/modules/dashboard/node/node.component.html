@@ -9,7 +9,7 @@
                 </div>
                 <div fxFlex="70%" class="box">
                         <div  *ngFor='let sensor of node.sensors'>
-                            <app-sensor-mobile [sensor]="sensor" [nodeUid]="node.uid"></app-sensor-mobile>
+                            <app-sensor-mobile [sensor]="sensor" [autoRefresh]="autoRefresh" [nodeUid]="node.uid"></app-sensor-mobile>
                         </div>
                 </div>
             </div>

@@ -21,6 +21,8 @@ export class BranchDevicesComponent implements OnInit {
   payload : payload;
   segments : segment[];
   message : string;
+  checked: boolean = true;
+  autoRefresh: boolean=true;
   searchForm : FormGroup;
   filteredSegment : Observable<segment[]>;
   constructor(private route : ActivatedRoute, private store : Store<fromLogin.State>, private dashboardService : DashbordMainService, private router: Router, private spinner : NgxSpinnerService, private fb : FormBuilder) { }
@@ -84,6 +86,9 @@ export class BranchDevicesComponent implements OnInit {
   
   public get searchField() : FormControl {
     return <FormControl>this.searchForm.get('searchField')
+  }
+  sensorRefresh(toggle: boolean){
+    this.autoRefresh=toggle;
   }
   
 }

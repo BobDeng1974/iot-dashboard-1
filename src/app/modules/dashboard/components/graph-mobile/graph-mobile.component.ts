@@ -51,7 +51,7 @@ export class GraphMobileComponent implements OnInit {
     interval(20000).pipe(
       startWith(0),
       untilDestroyed(this),
-      switchMap( () => this.dashboardService.getNodeData(this.payload))
+      switchMap( () => this.dashboardService.getNodeDatas(this.payload))
     ).subscribe(
       (data) => {
         this.formatedData = [];
