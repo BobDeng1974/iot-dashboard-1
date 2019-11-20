@@ -16,6 +16,7 @@ export class NodeComponent implements OnInit {
   @Input() node : node
   @Input() gateway :string;
   @Input() autoRefresh: boolean;
+  @Input() branch_id: any;
   node_uid: string ;
   formatedData : sensorData[] = [];
   graphData : any[][];

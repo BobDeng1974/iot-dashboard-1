@@ -5,8 +5,8 @@
         </button>
     </div>
     <div fxFlex="90%" class="graphs">
-            <div *ngFor="let sensor of sensors">
-                <app-graph-mobile [sensor]="sensor" [node_uid]="node_uid"></app-graph-mobile>
+            <div>
+                <app-graph-mobile [sensor_Type]="sensor_Type" [sensor_model]="sensor_model" [node_uid]="node_uid"></app-graph-mobile>
             </div>
     </div>
 </div>

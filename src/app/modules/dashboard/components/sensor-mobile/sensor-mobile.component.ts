@@ -18,6 +18,7 @@ export class SensorMobileComponent implements OnInit {
   @Input() sensor : sensor;
   @Input() nodeUid : string;
   @Input() autoRefresh: boolean;
+  @Input() branch_id: any;
   sensorType:any;
   payload : any[] = [];
   formatedData : any;
@@ -71,6 +72,11 @@ export class SensorMobileComponent implements OnInit {
     return "'"+value+"'"
   }
   goToGraph(){
-    this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : this.nodeUid}});
+    if(this.branch_id){
+      this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : this.nodeUid, sensor_Type : this.sensor.sensor_type, sensor_model: this.sensor.sensor_model, branch_id: this.branch_id}});
+    }
+    else{
+      this.router.navigate(['/mobile-graphs'], {queryParams : {node_id : this.nodeUid, sensor_Type : this.sensor.sensor_type, sensor_model: this.sensor.sensor_model}});
+    }
   }
 }

@@ -12,7 +12,8 @@ import { sensorData } from '../../model/customerDashboard';
   styleUrls: ['./graph-mobile.component.scss']
 })
 export class GraphMobileComponent implements OnInit {
-  @Input() sensor : sensor;
+  @Input() sensor_model : any;
+  @Input() sensor_Type: any;
   @Input() node_uid;
   payload : any[] = [];
   formatedData : sensorData[] = [];
@@ -44,7 +45,7 @@ export class GraphMobileComponent implements OnInit {
   };
     ngOnInit() {
     let data1 = this.payloadFormater(this.node_uid); 
-    let data2 = this.payloadFormater(String(this.sensor.sensor_type));
+    let data2 = this.payloadFormater(String(this.sensor_Type));
     this.payload[0] = data1;
     this.payload[1] = data2
     console.log(this.payload);
@@ -63,7 +64,7 @@ export class GraphMobileComponent implements OnInit {
           })
         });
         this.single = [{
-          name: this.sensor.sensor_model,
+          name: this.sensor_model,
           series: this.formatedData
         }];
         console.log(this.single);
