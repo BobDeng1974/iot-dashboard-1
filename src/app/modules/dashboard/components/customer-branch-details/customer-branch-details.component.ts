@@ -20,6 +20,8 @@ export class CustomerBranchDetailsComponent implements OnInit {
   branches : Branch[];
   segments : segment[];
   payload : payload;
+  branchClick: number;
+  segmentClick: number;
   @Output() DeviceList = new EventEmitter<any>();
   constructor(private store : Store<fromLogin.State>, private dashboardService : DashbordMainService,private spinner : NgxSpinnerService) { }
 
@@ -46,6 +48,7 @@ export class CustomerBranchDetailsComponent implements OnInit {
     );
   }
   getBranch(branch: number){
+    this.branchClick=branch;
     this.payload = {
       customer_branch_id : branch,
       customer_id : this.customerId
@@ -64,6 +67,7 @@ export class CustomerBranchDetailsComponent implements OnInit {
   }
   getGateway(gateWay: any){
     //console.log(gateWay);
+    this.segmentClick=gateWay.segment_id;
     this.DeviceList.emit(gateWay);
 
   }

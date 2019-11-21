@@ -1,8 +1,9 @@
 <mat-expansion-panel class="detail-panel" expanded disabled>
     <mat-expansion-panel-header class="panel-header">
-        <mat-panel-title>
+        <mat-panel-title class="sample-padding">
             Device Details
         </mat-panel-title>
+        <button mat-icon-button (click)="openVideo()"><div class="video-icon" [style.height.px]="24" [style.width.px]="24"></div></button>
     </mat-expansion-panel-header>
     <div>
         <div>
@@ -32,13 +33,13 @@
                 <div fxFlex="30">
                     
                 </div> -->
-                <div fxFlex="10" class="device-name-video">
-                    <div fxFlex='100' class="device-name">Device Name : <b>{{deviceName}}</b></div><br>
+                <!-- <div fxFlex="10" class="device-name-video">
+                    <div fxFlex='100' class="device-name"></div><br>
                     <div class="video-button">
                         <button mat-icon-button (click)="openVideo()"><div class="video-icon" [style.height.px]="24" [style.width.px]="24"></div></button>
                     </div>
-                </div>
-                <div fxFlex="80" style="padding: 20px">
+                </div> -->
+                <div fxFlex="90" style="padding: 20px">
                     <div fxLayout="row wrap" fxLayoutGap="10px">
                         <div fxFlex="0 1 calc(25% - 10px)" *ngFor="let sensor of sensors; let i=index"  class="mat-elevation-z5">
                             <app-sensor-card [sensor]="sensor" [nodeUid]="nodeList.uid" [cardNo]="i" (PinValue)="pinValue($event)"></app-sensor-card>

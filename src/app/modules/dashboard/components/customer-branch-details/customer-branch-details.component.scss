@@ -87,7 +87,22 @@ table {
     color: black;
     font-size: 40px;
 }
-.btn-class{
-    width: 100%;
+.btn-class-one{
+    width: calc(100% - 10px);
+    background-color: #7FFFF9;
+    margin: 5px;
+    border-radius: 0;
+}
+.backgroundChangeOne{
+    background-color: rgb(89, 179, 174);
+}
+.btn-class-two{
+    width: calc(100% - 10px);
+    background-color: #7FD8FF;
+    margin: 5px;
+    border-radius: 0;
+}
+.backgroundChangeTwo{
+    background-color: rgb(80, 135, 158);
 }
 

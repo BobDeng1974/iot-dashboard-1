@@ -47,7 +47,7 @@ export class GraphMobileComponent implements OnInit {
     let data1 = this.payloadFormater(this.node_uid); 
     let data2 = this.payloadFormater(String(this.sensor_Type));
     this.payload[0] = data1;
-    this.payload[1] = data2
+    this.payload[1] = data2;
     console.log(this.payload);
     interval(20000).pipe(
       startWith(0),

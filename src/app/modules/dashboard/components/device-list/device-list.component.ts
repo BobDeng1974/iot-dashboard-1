@@ -4,6 +4,8 @@ import { CustomerDashBoard } from '../../model/customerDashboard';
 import { DashbordMainService } from '../../dashbord-main.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DeviceAssignment, Devices} from 'src/app/modules/admin-panel/model/customermodel';
+import { Store, select } from '@ngrx/store';
+import * as formLogin from '../../../../state/app.reducer';
 
 @Component({
   selector: 'app-device-list',
@@ -22,7 +24,7 @@ export class DeviceListComponent implements OnInit {
   @Input() customerAssignData: CustomerDashBoard[];
   devices: Devices[];
   allNodes: any;
-
+  customerId: number;
   displayedColumns: string[] = ['select', 'uid', 'node_effective_from', 'list_of_node',];
   dataSource = new MatTableDataSource<Devices>();
   sensorValue: any[];
@@ -30,10 +32,28 @@ export class DeviceListComponent implements OnInit {
     device_id : 0
   };
 
-  constructor(private dashbordmainService : DashbordMainService,  private spinner: NgxSpinnerService) { }
+  constructor(private dashbordmainService : DashbordMainService,  private spinner: NgxSpinnerService,private store : Store<formLogin.State>) { }
 
   ngOnInit() {
     this.devices=[];
+    this.store.pipe(select(formLogin.getUserDetail)).subscribe(
+      userDetail => {
+        if (userDetail) {
+          this.customerId = userDetail.customer_id;
+          console.log(this.customerId);
+          this.spinner.show()
+          this.dashbordmainService.getAllNodesByCustomerId(this.customerId).subscribe(
+            (data)=>{
+              this.dataSource.data=data;
+              console.log("data Source 1",data);
+            },
+            (error)=>{
+              console.log(error)
+            }
+          ) 
+        }
+      }
+    );
   }
 
   ngOnChanges() {
@@ -51,7 +71,7 @@ export class DeviceListComponent implements OnInit {
       })
     })
     this.dataSource.data=this.devices;
-    console.log(this.devices);
+    console.log("data source 2",this.devices);
   }
 
   ngAfterViewInit() {

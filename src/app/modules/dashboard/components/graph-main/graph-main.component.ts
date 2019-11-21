@@ -14,6 +14,8 @@ export class GraphMainComponent implements OnInit {
   sensor_model;
   sensors : sensor[] = [];
   branch_id;
+  checked: boolean = true;
+  sensorDataHistory :  boolean =true;
   constructor(private router : Router, private route : ActivatedRoute, private dashboardService : DashbordMainService) { }
 
   ngOnInit() {
@@ -33,6 +35,9 @@ export class GraphMainComponent implements OnInit {
     //     console.log(error);
     //   }
     // );
+  }
+  sensorHistory(toggle: boolean){
+    this.sensorDataHistory=toggle;
   }
   goBack(){
     if(this.branch_id){

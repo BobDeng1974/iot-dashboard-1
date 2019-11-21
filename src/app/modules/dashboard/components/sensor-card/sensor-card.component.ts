@@ -36,7 +36,8 @@ export class SensorCardComponent implements OnInit {
   checked: boolean = false;
   newReadding: SensorData;
   payload : any[] = [];
-  formatedData : sensorData[] = [];
+  currentTime: any;
+  formatedData : any;
   currentReading : sensorData;
   @Output() PinValue = new EventEmitter<number>();
   @ViewChild(MatRipple, {static: false})ripple:MatRipple;
@@ -59,18 +60,9 @@ export class SensorCardComponent implements OnInit {
       switchMap( () => this.dashBoardService.getNodeData(this.payload))
     ).subscribe(
       (data) => {
-        console.log(data);
-        this.formatedData = [];
-        this.graphData = data.results[0].series[0].values;
-        this.graphData.forEach( element => {
-          this.formatedData.push({
-            name: new Date(element[0]),
-            value : element[element.length - 3]
-          })
-        })
-        console.log(this.formatedData.length);
-        this.currentReading = this.formatedData[this.formatedData.length - 1]
-        console.log("current reading",this.currentReading);
+        this.formatedData = data.results[0].series[0].values[0];
+          this.currentReading = this.formatedData[1];
+          this.currentTime = new Date(this.formatedData[0]);
       },
       (error) => {
         console.log(error);

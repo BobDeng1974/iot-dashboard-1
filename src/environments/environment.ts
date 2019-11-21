@@ -61,6 +61,7 @@ export const environment = {
    nodeDataUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=",
    getNotification: "http://34.93.221.249:8086/query?db=sensorReading&q=",
    getNotificationDetails:"http://34.93.22.112:8002/api/qubematics/gateway/getalldetails/node/",
+   getAllNodesByCustomerId:"http://34.93.22.112:8002/api/qubematics/gateway/nodes/customer/",
    //login url
    postLoginUrl : "http://34.93.22.112:8003/api/qubematics/authuser/",
 

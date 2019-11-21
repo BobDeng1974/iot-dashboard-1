@@ -16,11 +16,12 @@
             <div fxFlex="55">
                 <div>
                     <div class="reading-header">Current Reading:</div><br>
-                    <div *ngIf="sensor.sensor_type == 1" class="color-temp">{{currentReading.value | tempPipe}}</div>
-                    <div *ngIf="sensor.sensor_type == 6" class="color-ph">{{currentReading.value}} Amp</div>
-                    <div *ngIf="sensor.sensor_type == 3" class="color-ph">{{currentReading.value}}%</div>
-                    <div *ngIf="sensor.sensor_type == 4" class="color-alcohol">{{currentReading.value}}%</div>
-                    <div *ngIf="sensor.sensor_type == 5" class="color-humidity">{{currentReading.value}}%</div>
+                    <div *ngIf="sensor.sensor_type == 1" class="color-temp">{{currentReading | tempPipe}}</div>
+                    <div *ngIf="sensor.sensor_type == 6" class="color-ph">{{currentReading}} Amp</div>
+                    <div *ngIf="sensor.sensor_type == 3" class="color-ph">{{currentReading}}%</div>
+                    <div *ngIf="sensor.sensor_type == 4" class="color-alcohol">{{currentReading}}%</div>
+                    <div *ngIf="sensor.sensor_type == 5" class="color-humidity">{{currentReading}}%</div><br>
+                    <span>{{currentTime | date:'medium'}}</span>
                 </div>
             </div>
         </div>

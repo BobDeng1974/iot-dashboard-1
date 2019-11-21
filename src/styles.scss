@@ -325,3 +325,15 @@ input::placeholder {
 .ui-datepicker-touch-ui, .ui-calendar .ui-datepicker-touch-ui{
     min-width: 475px;
 }
+
+.reduced-paginators .mat-paginator-range-label {
+    margin: 0px !important;
+}
+
+.reduced-paginators .mat-icon-button{
+    width: 20px !important;
+}
+.paginator{
+    width: 100% !important;
+    float: left;
+}

@@ -26,14 +26,14 @@
         </div>
         <hr>
         <div fxLayout="row" fxLayoutGap="10px">
-            <div fxFlex="50%" fxLayoutGap="10px">
+            <div fxFlex="50%">
                 <div *ngFor="let branch of branches">
-                    <button class="btn-class" mat-button (click)="getBranch(branch.branch_id)">{{branch.branch_name}}</button>
+                    <button class="btn-class-one" mat-button [class.backgroundChangeOne]="branch.branch_id==branchClick" (click)="getBranch(branch.branch_id)">{{branch.branch_name}}</button>
                 </div>
             </div>
-            <div fxFlex="50%" fxLayoutGap="10px">
+            <div fxFlex="50%">
                 <div *ngFor="let segment of segments">
-                    <button class="btn-class" mat-button (click)="getGateway(segment)">{{segment.segment_name}}</button>
+                    <button class="btn-class-two" mat-button [class.backgroundChangeTwo]="segment.segment_id==segmentClick" (click)="getGateway(segment)">{{segment.segment_name}}</button>
                 </div>
             </div>
         </div>
