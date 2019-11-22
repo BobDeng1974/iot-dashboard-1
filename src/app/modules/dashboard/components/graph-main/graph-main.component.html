@@ -3,17 +3,18 @@
         <button mat-icon-button (click)="goBack()" class="back_button">
             <mat-icon>arrow_back</mat-icon>
         </button>
-            <span class="sample-right">
-                Graph
-            </span>
-            <mat-slide-toggle class="sample-right" (change)="sensorHistory($event.checked)" [checked]="checked">
-            </mat-slide-toggle>
-            <span class="sample-right">
-                Data 
-            </span>
-
     </div>
-    <div fxFlex="90%">
+    <div fxFlex="10%">
+        <span class="sample-right">
+            Graph
+        </span>
+        <mat-slide-toggle class="sample-right" (change)="sensorHistory($event.checked)" [checked]="checked">
+        </mat-slide-toggle>
+        <span class="sample-right">
+            Data 
+        </span>
+    </div>
+    <div fxFlex="80%">
         <div *ngIf="sensorDataHistory">
             <app-graph-mobile [sensor_Type]="sensor_Type" [sensor_model]="sensor_model" [node_uid]="node_uid">
             </app-graph-mobile>
