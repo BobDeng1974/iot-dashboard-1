@@ -18,12 +18,9 @@ export class GraphMobileComponent implements OnInit {
   payload : any[] = [];
   formatedData : sensorData[] = [];
   graphData : any[][];
-  constructor(private dashboardService : DashbordMainService) { }
   single: any[];
   multi: any[];
-  view: any[] = [900, 200];
-  minDate = new Date('2019-11-03'); 
-  maxDate = new Date(); 
+  view: any[] = [600, 300];
   // options
   showXAxis = true;
   showYAxis = true;
@@ -38,12 +35,20 @@ export class GraphMobileComponent implements OnInit {
   trimXAxisTicks = true;
   autoScale = true;
   roundDomains = true;
+  _12hrsinms = 43200000;
+  maxDate = new Date();
+  diff : any = <any>this.maxDate - this._12hrsinms;
+  minDate = new Date(this.diff);
   xScaleMax = this.maxDate;
   xScaleMin = this.minDate;
+ 
   colorScheme = {
     domain: ['#F6A74B', '#A10A28', '#C7B42C', '#AAAAAA']
   };
+  constructor(private dashboardService : DashbordMainService) { }
     ngOnInit() {
+      console.log(this.maxDate);
+      console.log(this.minDate);
     let data1 = this.payloadFormater(this.node_uid); 
     let data2 = this.payloadFormater(String(this.sensor_Type));
     this.payload[0] = data1;
