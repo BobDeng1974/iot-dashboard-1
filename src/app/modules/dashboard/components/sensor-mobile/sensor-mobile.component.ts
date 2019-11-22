@@ -31,7 +31,7 @@ export class SensorMobileComponent implements OnInit {
 
   ngOnInit() {
     this.sensorType=this.sensor.sensor_type;
-    console.log(this.sensorType);
+    console.log("sensor type",this.sensorType);
     let data1 = this.payloadFormater(this.nodeUid); 
     let data2 = this.payloadFormater(String(this.sensor.sensor_type));
     this.payload[0] = data1;
@@ -56,6 +56,7 @@ export class SensorMobileComponent implements OnInit {
           this.formatedData = data.results[0].series[0].values[0];
           this.currentReading = this.formatedData[1];
           this.currentTime = new Date(this.formatedData[0]);
+          console.log("current",this.currentReading,"sensor type",this.sensorType,"node id",this.nodeUid);
         }
       },
       (error) => {
