@@ -8,8 +8,10 @@
                 <div class="sensor-style">
                     <div [class.temp_sensor]="sensor.sensor_type == 1"
                         [class.ph_sensor]="sensor.sensor_type == 6"
+                        [class.ph_sensor]="sensor.sensor_type == 2"
                         [class.humidity_sensor]="sensor.sensor_type == 5"
                         [class.alcohol_sensor]="sensor.sensor_type == 4"
+                        [class.do_sensor]="sensor.sensor_type == 3"
                         [style.width.px]="40" [style.height.px]="40"></div>
                 </div>
             </div>
@@ -18,8 +20,9 @@
                     <div class="reading-header">Current Reading:</div><br>
                     <div *ngIf="sensor.sensor_type == 1" class="color-temp">{{currentReading | tempPipe}}</div>
                     <div *ngIf="sensor.sensor_type == 6" class="color-ph">{{currentReading}} Amp</div>
-                    <div *ngIf="sensor.sensor_type == 3" class="color-ph">{{currentReading}}%</div>
+                    <div *ngIf="sensor.sensor_type == 3" class="color-do">{{currentReading}}%</div>
                     <div *ngIf="sensor.sensor_type == 4" class="color-alcohol">{{currentReading}}%</div>
+                    <div *ngIf="sensor.sensor_type == 2" class="color-ph">{{currentReading}}%</div>
                     <div *ngIf="sensor.sensor_type == 5" class="color-humidity">{{currentReading}}%</div><br>
                     <span>{{currentTime | date:'medium'}}</span>
                 </div>
@@ -40,6 +43,16 @@
         </div>
 
         <div *ngIf="sensor.sensor_type == 5" class="toggle-style" style="background-color: #AD79B4">
+            <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
+            </mat-slide-toggle>
+            <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
+        </div>
+        <div *ngIf="sensor.sensor_type == 2" class="toggle-style" style="background-color: #28BACF">
+            <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
+            </mat-slide-toggle>
+            <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
+        </div>
+        <div *ngIf="sensor.sensor_type == 3" class="toggle-style" style="background-color: rgb(121, 97, 231)">
             <mat-slide-toggle (change)="getSensorId($event.checked,sensor.sensor_type)" [checked]="checked">
             </mat-slide-toggle>
             <button mat-icon-button class="pin-logo" (click)="pinSensorType(sensor.sensor_type)"></button>
