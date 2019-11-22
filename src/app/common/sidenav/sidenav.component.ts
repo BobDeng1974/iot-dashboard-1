@@ -27,6 +27,13 @@ export class SidenavComponent implements OnInit {
     }
   ];
 
+  sidenavData2 : Isidenav[] = [
+    {
+      displayName:"Device Management",
+      iconClass: "devices",
+      redirectLink: "/device-management"
+    }
+  ];
   constructor() { }
 
   ngOnInit() {

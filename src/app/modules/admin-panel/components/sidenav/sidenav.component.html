@@ -20,4 +20,10 @@
         </a>
     </div>
 
+    <div *ngFor="let navitem of sidenavData2">
+        <a [class.selected]="navitem.displayName === selectedNavItem" mat-list-item routerLink={{navitem.redirectLink}} (click)="selectedNavItem = navitem.displayName">
+            <mat-icon class="material-icons-round">supervisor_account</mat-icon><span class="nav-caption">{{navitem.displayName}}</span>
+        </a>
+    </div>
+    
 </mat-nav-list>

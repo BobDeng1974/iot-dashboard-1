@@ -79,7 +79,7 @@ export class BranchDevicesComponent implements OnInit {
   private _filterSegment( value ?: string) : segment[] {
     if (value) {
       const filterValue = value.toLowerCase();
-      return this.segments.filter( m => (m.segment_name).toLowerCase().includes(filterValue));
+      return this.segments.filter( m => ((m.segment_name).toLowerCase().includes(filterValue)));
     }
   }
 
