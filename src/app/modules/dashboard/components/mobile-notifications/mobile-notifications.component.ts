@@ -75,5 +75,8 @@ export class MobileNotificationsComponent implements OnInit {
     this.router.navigate(['/mobile-devices-notification'],{queryParams: {node_uid : notification.node_uid, mac_address : notification.mac_address, reading : notification.reading
     ,sensor : notification.sensor, sensor_type : notification.sensor_type, time : notification.time, tmax : notification.tmax, tmin : notification.tmin}});
   }
+  sync(){
+    console.log("called");
+  }
 
 }

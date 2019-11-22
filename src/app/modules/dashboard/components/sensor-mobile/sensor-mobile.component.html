@@ -11,13 +11,13 @@
         <div fxFlex="20%" class="card-caption" *ngIf="!!sensor.sensor_model">
             <span>{{sensor.sensor_model}}</span>
         </div>
-        <div fxFlex="70%" class="card-caption" [class.redClass]="minValue > currentReading"  [class.redClass]="currentReading > maxValue">
-            <span *ngIf="sensorType==1">Reading: {{currentReading | temperaturePipe: 'C'}}</span>
-            <span *ngIf="sensorType==5">Reading: {{currentReading}}%</span>
-            <span *ngIf="sensorType==4">Reading: {{currentReading}}%</span>
-            <span *ngIf="sensorType==2">Reading: {{currentReading}}</span>
-            <span *ngIf="sensorType==3">Reading: {{currentReading}}ppm</span>
-            <span *ngIf="sensorType==6">Reading: {{currentReading}}Amp</span><br>
+        <div fxFlex="70%" class="card-caption"[class.greenClass]="currentReading > minValue && maxValue> currentReading" [class.redClass]="minValue > currentReading"  [class.redClass]="currentReading > maxValue">
+            <span *ngIf="sensorType==1">{{currentReading | temperaturePipe: 'C'}}</span>
+            <span *ngIf="sensorType==5">{{currentReading}}%</span>
+            <span *ngIf="sensorType==4">{{currentReading}}%</span>
+            <span *ngIf="sensorType==2">{{currentReading}}</span>
+            <span *ngIf="sensorType==3">{{currentReading}}ppm</span>
+            <span *ngIf="sensorType==6">{{currentReading}}Amp</span><br>
             <span class="sensorDate">{{currentTime | date:'medium'}}</span>
         </div>
     </div>
