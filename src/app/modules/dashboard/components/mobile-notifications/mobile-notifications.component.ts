@@ -17,6 +17,7 @@ export class MobileNotificationsComponent implements OnInit {
   customerId : number;
   notifications : Notifications[];
   notificationData: any[][];
+  index: number= 0;
 
   constructor(private store : Store<formLogin.State>,private router : Router, private spinner : NgxSpinnerService,private dashboardService : DashbordMainService) { }
 
@@ -36,7 +37,7 @@ export class MobileNotificationsComponent implements OnInit {
   interval(20000).pipe(
     startWith(0),
     untilDestroyed(this),
-    switchMap( () => this.dashboardService.getAllNotification(this.customerId))
+    switchMap( () => this.dashboardService.getAllNotification(this.customerId,this.index))
     ).subscribe(
       (data)=>{
         console.log(data);
@@ -76,7 +77,30 @@ export class MobileNotificationsComponent implements OnInit {
     ,sensor : notification.sensor, sensor_type : notification.sensor_type, time : notification.time, tmax : notification.tmax, tmin : notification.tmin}});
   }
   sync(){
-    console.log("called");
+    this.index=this.index+20;
+    this.dashboardService.getAllNotification(this.customerId,this.index).subscribe(
+      (data)=>{
+        this.notifications=[];
+        this.notificationData=data.results[0].series[0].values;
+        
+          this.notificationData.forEach(element => {
+            this.notifications.push({
+              customer_id : element[1],
+              time : new Date(element[0]),
+              mac_address: element[2],
+              node_uid: element[3],
+              reading: element[4],
+              sensor : element[5],
+              sensor_type : element[6],
+              tmax : element[7],
+              tmin : element[8]
+            })
+            this.spinner.hide()
+          });
+      },(error)=>{
+        console.error(error);
+      }
+    )
   }
 
 }

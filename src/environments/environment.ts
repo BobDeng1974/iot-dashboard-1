@@ -59,7 +59,7 @@ export const environment = {
    //graphUrl : "http://127.22.112:8086/query?db=sensor&q=select*from",
    dataGraphUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=select * from DeviceSensorReading where sensor_type='\"",
    nodeDataUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=",
-   getNotification: "http://34.93.221.249:8086/query?db=sensorReading&q=",
+   getNotification: "http://34.93.22.112:8002/api/qubematics/gateway/notifications/",
    getNotificationDetails:"http://34.93.22.112:8002/api/qubematics/gateway/getalldetails/node/",
    getAllNodesByCustomerId:"http://34.93.22.112:8002/api/qubematics/gateway/nodes/customer/",
    //login url
