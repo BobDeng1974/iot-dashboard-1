@@ -34,6 +34,12 @@
     height: auto;
     width: auto;   
 }
+.do_sensor{
+    background: url("../../../../../assets/images/Group_66.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
 
 .image_container{
     min-height: 10vh;
@@ -74,6 +80,11 @@
 
 .color-ph {
     color: #28BACF;
+    font-weight: 600;
+    font-size: 2.5em;
+}
+.color-do{
+    color: rgb(121, 97, 231);
     font-weight: 600;
     font-size: 2.5em;
 }

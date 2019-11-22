@@ -1,7 +1,7 @@
 <div class="main-Contain">
     <div class="notification-card">
         <mat-card class="example-card mat-elevation-z6"
-            *ngFor="let notification of notifications.slice().reverse()">
+            *ngFor="let notification of notifications">
             <!-- <mat-card-header>
                 <mat-card-title class="card-title">
                     <span>{{notification.node_uid}}</span><br><span class="date">{{notification.time | date:'medium' }}</span></mat-card-title>
@@ -26,7 +26,7 @@
                 </div>
             </mat-card-content>
         </mat-card>
-        <div>
+        <div class="loadMore">
             <span (click)="sync()">Load more...</span>
         </div>
     </div>

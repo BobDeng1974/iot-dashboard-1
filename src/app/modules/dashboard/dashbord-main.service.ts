@@ -61,10 +61,8 @@ export class DashbordMainService {
     console.log(statement);
     return this.http.get(environment.nodeDataUrl+statement);
   }
-  getAllNotification(customer) :Observable<any> {
-    let statement = "select*from notification where customer_id='"+customer+"'";
-    console.log(statement);
-    return this.http.get(environment.getNotification+statement);
+  getAllNotification(customer, index) :Observable<any> {
+    return this.http.post(environment.getNotification,{index:index , customer_id:customer});
   }
 
   getNotificationDetails(data):Observable<Notifications>{
