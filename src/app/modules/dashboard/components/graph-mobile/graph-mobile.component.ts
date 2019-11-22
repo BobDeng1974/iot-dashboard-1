@@ -18,6 +18,8 @@ export class GraphMobileComponent implements OnInit {
   @Input() threshold;
   payload : any[] = [];
   formatedData : sensorData[] = [];
+  formattedMax : any [] = [];
+  formattedMin : any [] = [];
   graphData : any[][];
   single: any[];
   multi: any[];
@@ -43,9 +45,10 @@ export class GraphMobileComponent implements OnInit {
   minDate = new Date(this.diff);
   xScaleMax = this.maxDate;
   xScaleMin = this.minDate;
- 
+  sensorMax;
+  sensorMin;
   colorScheme = {
-    domain: ['#F6A74B', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#e6005c', '#A10A28', '#00805e', '#AAAAAA']
   };
   referenceLines = [];
   constructor(private dashboardService : DashbordMainService) { }
@@ -70,11 +73,33 @@ export class GraphMobileComponent implements OnInit {
             name: new Date(element[0]),
             value : element[element.length - 3]
           })
+          this.formattedMax.push({
+            name: new Date(element[0]),
+            value : this.sensorMax
+          })
+          this.formattedMin.push({
+            name : new Date(element[0]),
+            value : this.sensorMin
+          })
         });
         this.single = [{
           name: this.sensor_model,
           series: this.formatedData
         }];
+        this.multi = [
+          {
+            name : this.sensor_model,
+            series : this.formatedData
+          },
+          {
+            name : "Threshold Max",
+            series : this.formattedMax
+          },
+          {
+            name : "Threshold Min",
+            series : this.formattedMin
+          }
+        ]
         console.log(this.single);
         console.log(this.formatedData);
       },
@@ -90,7 +115,17 @@ export class GraphMobileComponent implements OnInit {
     // console.log(this.threshold);
     // console.log(this.sensor_Type);
     // console.log(this.referenceLines);
-    
+    if (this.sensor_Type == "3") {
+      console.log()
+      this.sensorMax = this.threshold.DO[0]["T.Max"];
+      this.sensorMin = this.threshold.DO[0]["T.Min"];
+    }else if (this.sensor_Type == "1"){
+      this.sensorMax = this.threshold.TEMP[0]["T.Max"];
+      this.sensorMin = this.threshold.TEMP[0]["T.Min"];
+    }else if (this.sensor_Type == "2"){
+      this.sensorMax = this.threshold.PH[0]["T.Max"];
+      this.sensorMin = this.threshold.PH[0]["T.Min"];
+    }
   }
   payloadFormater(value){
     return "'"+value+"'"

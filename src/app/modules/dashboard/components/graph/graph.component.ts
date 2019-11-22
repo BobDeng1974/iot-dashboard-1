@@ -36,8 +36,8 @@ export class GraphComponent implements OnInit {
   single: any[];
   multi: any[];
   view: any[] = [900, 200];
-  minDate = new Date(2019, 7, 27, 20); //2019, 7, 27, 20
-  maxDate = new Date(); //2019, 7, 27, 21
+  //2019, 7, 27, 20
+   //2019, 7, 27, 21
   // options
   showXAxis = true;
   showYAxis = true;
@@ -52,6 +52,11 @@ export class GraphComponent implements OnInit {
   trimXAxisTicks = true;
   autoScale = true;
   roundDomains = true;
+  _12hrsinms = 43200000;
+  _6hrsinms = 21600000;
+  maxDate = new Date();
+  diff : any = <any>this.maxDate - this._6hrsinms;
+  minDate = new Date(this.diff);
   xScaleMax = this.maxDate;
   xScaleMin = this.minDate;
   //temperature y scale
