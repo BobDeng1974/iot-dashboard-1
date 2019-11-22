@@ -115,7 +115,7 @@ export class GraphPinComponent implements OnInit {
       .pipe(
         startWith(0),
         untilDestroyed(this),
-        switchMap(() => this.dashBoardService.getNodeData(this.payload))
+        switchMap(() => this.dashBoardService.getNodeDatas(this.payload))
       ).subscribe(
         (data) => {
           console.log(data);

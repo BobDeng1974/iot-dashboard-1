@@ -64,6 +64,7 @@
                                 <span *ngIf="sensoptype === 3">Dissolved Oxygen</span>
                                 <span *ngIf="sensoptype === 4">Alcohol</span>
                                 <span *ngIf="sensoptype === 5">Humidity</span>
+                                <span *ngIf="sensoptype === 6">Current</span>
                                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                             </mat-chip>
                             <button mat-raised-button class="view-all-button" *ngIf="pinValueSet.size > 0" (click)="viewAllSensorvalue()">View All</button>

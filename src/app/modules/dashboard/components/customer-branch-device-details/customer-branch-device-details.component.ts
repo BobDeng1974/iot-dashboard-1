@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApplicationStateService } from 'src/app/service/application-state.service';
 import { sensor } from 'src/app/modules/admin-panel/model/gateway';
 import { Sensor } from 'src/app/modules/admin-panel/model/customermodel';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-customer-branch-device-details',
@@ -47,7 +48,8 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.graphPin = []
+    this.graphPin = [];
+    this.pinValueSet.clear();
     // console.log(this.type)
     // if (this.CurrentReading) {
     //   if (this.type == 'temperature') {
@@ -90,22 +92,39 @@ export class CustomerBranchDeviceDetailsComponent implements OnInit {
   }
 
   pinValue(value){
-    console.log(value);
+    let flag: Boolean=true;
+    console.log("value",value);
     this.pinValueSet.add(value.value);
     console.log(this.pinValueSet);
-    this.graphPin.push({
-      nodeUid: value.nodeUid,
-      sensor: value.sensor
+    if(this.graphPin.length==0){
+      this.graphPin.push({
+        nodeUid: value.nodeUid,
+        sensor: value.sensor
+      })
+    }
+    this.graphPin.forEach(element=>{
+      if(element.sensor.sensor_type==value.value){
+       flag=false;
+      }
     })
+    if(flag){
+      this.graphPin.push({
+        nodeUid: value.nodeUid,
+        sensor: value.sensor
+      })
+    }
     console.log("graph pin",this.graphPin);
   }
 
   remove(value)  {
     this.pinValueSet.delete(value);
-    // if (index >= 0) {
-    //   this.listOfPinValue.splice(index, 1);
-    // }
-    //console.log(this.listOfPinValue);
+    for(let i=0;i<this.graphPin.length;i++){
+      if(this.graphPin[i].sensor.sensor_type==value){
+        this.graphPin.splice(i,1);
+        console.log("delete",i);
+      }
+    }
+    console.log(this.graphPin);
   }
 
   viewAllSensorvalue() {
