@@ -30,6 +30,8 @@ export class AddCustomerBranchComponent implements OnInit {
       branch_add_state : ['',[Validators.required]],
       branch_add_pin : ['',[Validators.required,Validation.pincode]],
       branch_add_country : ['',[Validators.required]],
+      branch_latt:'',
+      branch_long : ''
     });
 
     this.adminpnalService.getCountryCode().subscribe(
@@ -59,7 +61,9 @@ export class AddCustomerBranchComponent implements OnInit {
       this.formData.branch_add_city = form.controls.branch_add_city.value,
       this.formData.branch_add_state = form.controls.branch_add_state.value,
       this.formData.branch_add_country = form.controls.branch_add_country.value,
-      this.formData.branch_add_pin = form.controls.branch_add_pin.value
+      this.formData.branch_add_pin = form.controls.branch_add_pin.value,
+      this.formData.longitude = form.controls.branch_long,
+      this.formData.latitude = form.controls.branch_latt
     } 
     
     else {
@@ -71,6 +75,8 @@ export class AddCustomerBranchComponent implements OnInit {
         branch_add_state : form.controls.branch_add_state.value,
         branch_add_country : form.controls.branch_add_country.value,
         branch_add_pin : form.controls.branch_add_pin.value,
+        latitude : form.controls.branch_latt.value,
+        longitude : form.controls.branch_long.value
       }  
     }
     this.dialogRef.close(this.formData);

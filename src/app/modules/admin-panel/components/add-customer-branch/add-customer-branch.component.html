@@ -45,6 +45,16 @@
                                     </mat-select>
                                 </mat-form-field>
                     </div>
+                    <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
+                        <mat-form-field class="form-field">
+                            <input placeholder="Latitude" matInput formControlName="branch_latt">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(33.3% - 35px)" fxFlex.lt-sm="100%">
+                        <mat-form-field class="form-field">
+                            <input placeholder="Longitude" matInput formControlName="branch_long">
+                        </mat-form-field>
+                    </div>
                 </div>
                 <mat-action-row>
                     <button mat-stroked-button type="button" (click)="closeDialog()" class="cancelbtn">Cancel</button>

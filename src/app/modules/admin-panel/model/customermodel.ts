@@ -71,6 +71,8 @@ export interface Branch {
     branch_updated_by? : string;
     branch_effective_from? : Date;
     branch_effective_to? : Date;
+    longitude ?: string;
+    latitude ?: string;
 }
 
 export interface Customer {
