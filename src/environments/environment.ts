@@ -72,6 +72,7 @@ export const environment = {
    //qm domian sensor type
    getSensorTypeUrl : "http://34.93.22.112:8004/qmdomain/get/sensor",
    getIndustryTypeUrl :'http://34.93.22.112:8004/qmdomain/get/industry',
+   getSensorThresholdUrl : "http://34.93.22.112:8002/api/qubematics/gateway/getsensorthresold/"
 };
 
 /*
