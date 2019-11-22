@@ -86,6 +86,26 @@ export class GraphPinComponent implements OnInit {
       value: 2
     }
   ]
+  referenceLinesPh = [
+    {
+      name: "minimum",
+      value: 1
+    },
+    {
+      name: "maximum",
+      value: 10
+    }
+  ]
+  referenceLinesDo = [
+    {
+      name: "minimum",
+      value: 1
+    },
+    {
+      name: "maximum",
+      value: 10
+    }
+  ]
   showRefLines = true;
   showRefLabels = true;
 

@@ -86,6 +86,27 @@ export class GraphComponent implements OnInit {
       value: 80
     }
   ]
+  referenceLinesPh = [
+    {
+      name: "minimum",
+      value: 1
+    },
+    {
+      name: "maximum",
+      value: 10
+    }
+  ]
+  referenceLinesDo = [
+    {
+      name: "minimum",
+      value: 1
+    },
+    {
+      name: "maximum",
+      value: 10
+    }
+  ]
+
   //reference line
   referenceLinesAlcohol = [
     {
@@ -122,7 +143,7 @@ export class GraphComponent implements OnInit {
       .pipe(
         startWith(0),
         untilDestroyed(this),
-        switchMap(() => this.dashBoardService.getNodeData(this.payload))
+        switchMap(() => this.dashBoardService.getNodeDatas(this.payload))
       ).subscribe(
         (data) => {
           console.log(data);
