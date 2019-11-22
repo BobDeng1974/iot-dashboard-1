@@ -69,6 +69,10 @@ export class DashbordMainService {
     return this.http.post(environment.getNotificationDetails,{"node_uid":data.node_uid,"mac":data.mac_address})
   }
 
+  getNodeThreshold(node_uid : string) : Observable<any> {
+    return this.http.get(environment.getSensorThresholdUrl+node_uid);
+  }
+
   formatString(mainString: string, args: string[]): string {
     var tags = Array.prototype.slice.call(args, 1);
     return mainString.replace(/{(\d+)}/g, function(match, number) { 

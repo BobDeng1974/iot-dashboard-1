@@ -15,6 +15,7 @@ export class GraphMobileComponent implements OnInit {
   @Input() sensor_model : any;
   @Input() sensor_Type: any;
   @Input() node_uid;
+  @Input() threshold;
   payload : any[] = [];
   formatedData : sensorData[] = [];
   graphData : any[][];
@@ -36,8 +37,9 @@ export class GraphMobileComponent implements OnInit {
   autoScale = true;
   roundDomains = true;
   _12hrsinms = 43200000;
+  _6hrsinms = 21600000;
   maxDate = new Date();
-  diff : any = <any>this.maxDate - this._12hrsinms;
+  diff : any = <any>this.maxDate - this._6hrsinms;
   minDate = new Date(this.diff);
   xScaleMax = this.maxDate;
   xScaleMin = this.minDate;
@@ -45,6 +47,7 @@ export class GraphMobileComponent implements OnInit {
   colorScheme = {
     domain: ['#F6A74B', '#A10A28', '#C7B42C', '#AAAAAA']
   };
+  referenceLines = [];
   constructor(private dashboardService : DashbordMainService) { }
     ngOnInit() {
       console.log(this.maxDate);
@@ -53,7 +56,7 @@ export class GraphMobileComponent implements OnInit {
     let data2 = this.payloadFormater(String(this.sensor_Type));
     this.payload[0] = data1;
     this.payload[1] = data2;
-    console.log(this.payload);
+    
     interval(20000).pipe(
       startWith(0),
       untilDestroyed(this),
@@ -82,6 +85,12 @@ export class GraphMobileComponent implements OnInit {
   }
   ngOnDestroy(){
 
+  }
+  ngOnChanges(){
+    // console.log(this.threshold);
+    // console.log(this.sensor_Type);
+    // console.log(this.referenceLines);
+    
   }
   payloadFormater(value){
     return "'"+value+"'"

@@ -16,7 +16,7 @@
     </div>
     <div fxFlex="80%">
         <div *ngIf="sensorDataHistory">
-            <app-graph-mobile [sensor_Type]="sensor_Type" [sensor_model]="sensor_model" [node_uid]="node_uid">
+            <app-graph-mobile [sensor_Type]="sensor_Type" [sensor_model]="sensor_model" [node_uid]="node_uid" [threshold]="threshold">
             </app-graph-mobile>
         </div>
         <div *ngIf="!sensorDataHistory">

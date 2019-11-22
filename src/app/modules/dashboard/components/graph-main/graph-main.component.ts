@@ -16,6 +16,8 @@ export class GraphMainComponent implements OnInit {
   branch_id;
   checked: boolean = true;
   sensorDataHistory :  boolean =true;
+  threshold : any;
+
   constructor(private router : Router, private route : ActivatedRoute, private dashboardService : DashbordMainService) { }
 
   ngOnInit() {
@@ -24,7 +26,6 @@ export class GraphMainComponent implements OnInit {
     this.branch_id = +this.branch_id;
     this.sensor_Type = this.route.snapshot.queryParamMap.get('sensor_Type');
     this.sensor_model = this.route.snapshot.queryParamMap.get('sensor_model');
-
     // console.log(this.branch_id);
     // this.dashboardService.getSensorsByUID(this.node_uid).subscribe(
     //   (data) => {
@@ -35,6 +36,17 @@ export class GraphMainComponent implements OnInit {
     //     console.log(error);
     //   }
     // );
+    this.dashboardService.getNodeThreshold(this.node_uid).subscribe(
+      (data) => {
+        console.log(data);
+        this.threshold = data;
+      },
+      (error) => {
+        console.log(error);
+        
+      }
+
+    );
   }
   sensorHistory(toggle: boolean){
     this.sensorDataHistory=toggle;

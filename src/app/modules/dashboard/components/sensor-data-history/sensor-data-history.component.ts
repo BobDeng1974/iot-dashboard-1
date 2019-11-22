@@ -36,8 +36,8 @@ export class SensorDataHistoryComponent implements OnInit {
             value : element[element.length - 3]
           })
         });
-        this.dataSource.data=this.formatedData;
-        console.log(this.formatedData);
+        this.dataSource.data=this.formatedData.reverse();
+        // console.log(this.formatedData);
         
       },(error)=>{
         console.error(error);
