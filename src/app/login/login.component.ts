@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
     //     this.spinner.hide()
     //   }
     // );
-    this.store.dispatch(new LoginActions.Login(this.loginForm.value));
+    this.store.dispatch(new LoginActions.Login(this.formData));
   }
 
 }

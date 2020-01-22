@@ -60,6 +60,7 @@ export class AddDeviceComponent implements OnInit {
       this.gateway.gateway_name = form.controls.gateway_name.value,
       this.gateway.uid = form.controls.uid.value,
       this.gateway.nodes = this.nodeList
+      console.log('add device',this.gateway);
       this.adminService.updateGateway(this.gateway).subscribe(
         (data) => {
           console.log(data);

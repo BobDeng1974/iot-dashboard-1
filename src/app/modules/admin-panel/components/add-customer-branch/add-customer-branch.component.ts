@@ -46,6 +46,7 @@ export class AddCustomerBranchComponent implements OnInit {
     if(this.formData) {
       this.title= "Edit Branch";
       this.branchForm.patchValue(this.formData);
+      console.log('Edit Data',this.formData);
     }
   }
 

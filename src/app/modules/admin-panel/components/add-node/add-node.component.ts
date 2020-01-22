@@ -84,11 +84,11 @@ export class AddNodeComponent implements OnInit {
             this.sensorOptions.filter(m => m.sensor_id != element.sensor_id);
           });
         }
-        this.spinner.hide()
+        setTimeout(() => { this.spinner.hide(); },100);
       },
       (error)=> {
         console.error(error);
-        this.spinner.hide();
+        setTimeout(() => { this.spinner.hide(); },100);
       }
     );
   }

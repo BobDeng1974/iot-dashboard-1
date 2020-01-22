@@ -42,11 +42,11 @@ export class AddSensorComponent implements OnInit {
           
           this.sensorForm.patchValue(this.sensor)
         }
-        this.spinner.hide();
+        setTimeout(() => {this.spinner.hide();},100);
       },
       (error) => {
         console.error(error);
-        this.spinner.hide()
+        setTimeout(() => {this.spinner.hide();},100);
       }
     );
 
@@ -64,6 +64,7 @@ export class AddSensorComponent implements OnInit {
       this.sensor.sensor_desc = form.controls.sensor_desc.value,
       this.sensor.sensor_threshold_max = form.controls.sensor_threshold_max.value,
       this.sensor.sensor_threshold_min = form.controls.sensor_threshold_min.value
+      console.log(this.sensor);
       this.adminPanelService.updateSensor(this.sensor).subscribe(
         (data) => {
           this.dialogref.close('success');

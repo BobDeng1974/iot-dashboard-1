@@ -25,6 +25,7 @@ export class AdminPanelMainService {
   }
 
   updateCustomer(form : Customer){
+    console.log('data',form);
     return this.http.put(environment.updateCustomerUrl, form)
   }
 
@@ -33,19 +34,19 @@ export class AdminPanelMainService {
   }
 
   getAddressType() : Observable<Domaindata[]> {
-    return this.http.get<Domaindata[]>(environment.getdomainUrl+'Address');
+    return this.http.post<Domaindata[]>(environment.getdomainUrl,{domain_type: 'Address'});
   } 
 
   getCountryCode() : Observable<Domaindata[]> {
-    return this.http.get<Domaindata[]>(environment.getdomainUrl+'country_code');
+    return this.http.post<Domaindata[]>(environment.getdomainUrl,{domain_type: 'country_code'});
   }
 
   getLegalInfoType() : Observable<Domaindata[]> {
-    return this.http.get<Domaindata[]>(environment.getdomainUrl+'Legal_info');
+    return this.http.post<Domaindata[]>(environment.getdomainUrl,{domain_type: 'Legal_info'});
   }
 
   getCustomerType() : Observable<Domaindata[]> {
-    return this.http.get<Domaindata[]>(environment.getdomainUrl+'Customer_type');
+    return this.http.post<Domaindata[]>(environment.getdomainUrl,{domain_type: 'Customer_type'});
   }
   getAllDevice():Observable<Device[]>{
     return this.http.get<Device[]>(environment.getAllDeviceUrl)
@@ -115,7 +116,7 @@ export class AdminPanelMainService {
   }
 
   getSensorType() : Observable<any>{
-    return this.http.get<any>(environment.getSensorTypeUrl);
+    return this.http.post<any>(environment.getdomainUrl,{domain_type: "sensor"});
   }
 
   createSensor(sensor: sensor) : Observable<any> {
@@ -175,7 +176,7 @@ export class AdminPanelMainService {
   }
 
   getIndustrytype() : Observable<any> {
-    return this.http.get(environment.getIndustryTypeUrl);
+    return this.http.post(environment.getdomainUrl, {domain_type: "industry"});
   }
   // get error in snackbar
   getError(value : any) {
