@@ -38,7 +38,7 @@ export class GraphMainComponent implements OnInit {
     // );
     this.dashboardService.getNodeThreshold(this.node_uid).subscribe(
       (data) => {
-        console.log(data);
+        console.log('thresholddddddddd......',data);
         this.threshold = data;
       },
       (error) => {

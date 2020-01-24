@@ -81,11 +81,11 @@ export class AdminPanelMainService {
   }
 
   getCustomerBranch(id: number) : Observable<any[]>{
-    return this.http.get<any[]>(environment.getCustomerBranchUrl+id+'?format=json');
+    return this.http.post<any[]>(environment.getCustomerBranchUrl, {customer_id: id});
   }
 
   getCustomerNameandId() : Observable<any[]>{
-    return this.http.get<any[]>(environment.getCustomerandIdUrl+'?format=json');
+    return this.http.get<any[]>(environment.getCustomerandIdUrl);
   }
 
   updatedDeviceAssign(form: DeviceAssignment) {

@@ -70,7 +70,8 @@ export class DashbordMainService {
   }
 
   getNodeThreshold(node_uid : string) : Observable<any> {
-    return this.http.get(environment.getSensorThresholdUrl+node_uid);
+    console.log('node id from service: ',node_uid);
+    return this.http.post(environment.getSensorThresholdUrl,{"node_uid": node_uid});
   }
 
   formatString(mainString: string, args: string[]): string {

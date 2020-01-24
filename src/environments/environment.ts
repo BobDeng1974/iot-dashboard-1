@@ -1,7 +1,8 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const baseServiceUrl = "http://192.168.0.30:8000/";
+//const baseServiceUrl = "http://192.168.0.30:8000/";
+const baseServiceUrl = "https://wzlhgc9o13.execute-api.ap-south-1.amazonaws.com/dev/";
 export const environment = {
    production: false,
    createCustomerUrl : baseServiceUrl + "qubematics/customer/create/",
@@ -12,9 +13,9 @@ export const environment = {
 
    postSupportUrl: baseServiceUrl + "qubematics/customer/createsupport/",
   //////////////////////////////////////////////////////////////////////////
-   getCustomerBranchUrl : baseServiceUrl + "qubematics/customer/getbranch/",
-   getCustomerBranchUrlforMobile : baseServiceUrl + "qubematics/customer/getbranch/customerid/",
-   getCustomerandIdUrl : baseServiceUrl + "qubematics/customer/getcustomerandid/",
+   getCustomerBranchUrl : baseServiceUrl + "qubematics/customer/getbranchbycustomer/",
+   getCustomerBranchUrlforMobile : baseServiceUrl + "qubematics/customer/getbranchbycustomer/",
+   getCustomerandIdUrl : baseServiceUrl + "qubematics/customer/getidname/",
   //////////////////////////contact us//////////////////////////////////
   getNodeUrl:baseServiceUrl + "qubematics/gateway/getallnodes/customer/",
   
@@ -57,22 +58,22 @@ export const environment = {
    assignMentHistory : baseServiceUrl + "qubematics/vendor/gethistory/",
    customerManageUrl : baseServiceUrl + "qubematics/vendor/customerassign/",
    //graphUrl : "http://127.22.112:8086/query?db=sensor&q=select*from",
-   dataGraphUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=select * from DeviceSensorReading where sensor_type='\"",
-   nodeDataUrl : "http://34.93.221.249:8086/query?db=sensorReading&q=",
+   dataGraphUrl : "http://3.6.89.8:8086/query?db=sensorReading&q=select * from DeviceSensorReading where sensor_type='\"",
+   nodeDataUrl : "http://3.6.89.8:8086/query?db=sensorReading&q=",
    getNotification: baseServiceUrl + "qubematics/gateway/notifications/",
-   getNotificationDetails:baseServiceUrl + "qubematics/gateway/getalldetails/node/",
-   getAllNodesByCustomerId:baseServiceUrl + "qubematics/gateway/nodes/customer/",
+   getNotificationDetails:baseServiceUrl + "qubematics/device/getalldetails/node/",
+   getAllNodesByCustomerId:baseServiceUrl + "qubematics/device/nodes/customer/",
    //login url
    postLoginUrl : baseServiceUrl + "qubematics/user/authuser/",
 
-   customerdeviceAssignUrl : baseServiceUrl + "qubematics/gateway/deviceassign/",
+   customerdeviceAssignUrl : baseServiceUrl + "qubematics/device/deviceassign/",
    //get all gateway,node,sensor
    //GetAllGateWayNodeSensonUrl:"http://34.93.22.112:8002/api/qubematics/gateway/getallgateway/customerid/",
-   GetAllGateWayNodeSensonUrl:baseServiceUrl + "qubematics/gateway/gatewaydetails/segment/customer/",
+   GetAllGateWayNodeSensonUrl:baseServiceUrl + "qubematics/device/gatewaydetails/segment/customer/",
    //qm domian sensor type
    //getSensorTypeUrl : baseServiceUrl + "qubematics/qmdomain/get/sensor",
    //getIndustryTypeUrl : baseServiceUrl + 'qubematics/qmdomain/get/industry',
-   getSensorThresholdUrl : baseServiceUrl + "qubematics/gateway/getsensorthresold/"
+   getSensorThresholdUrl : baseServiceUrl + "qubematics/device/getsensorthresold/"
 };
 
 /*

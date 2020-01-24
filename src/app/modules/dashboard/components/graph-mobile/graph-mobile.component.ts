@@ -55,7 +55,8 @@ export class GraphMobileComponent implements OnInit {
     ngOnInit() {
       console.log(this.maxDate);
       console.log(this.minDate);
-    let data1 = this.payloadFormater(this.node_uid); 
+      console.log('from inputtttttttttt.....',this.threshold);
+    let data1 = this.payloadFormater(String(this.node_uid)); 
     let data2 = this.payloadFormater(String(this.sensor_Type));
     this.payload[0] = data1;
     this.payload[1] = data2;
@@ -66,8 +67,10 @@ export class GraphMobileComponent implements OnInit {
       switchMap( () => this.dashboardService.getNodeDatas(this.payload))
     ).subscribe(
       (data) => {
+        console.log('graph dataaaaaaaaaaaaa...........',data);
         this.formatedData = [];
         this.graphData = data.results[0].series[0].values;
+        console.log('graph dataxxxxxxxxxxxxxxxxxxxxxxxxxx',this.graphData);
         this.graphData.forEach( element => {
           this.formatedData.push({
             name: new Date(element[0]),
@@ -115,8 +118,8 @@ export class GraphMobileComponent implements OnInit {
     // console.log(this.threshold);
     // console.log(this.sensor_Type);
     // console.log(this.referenceLines);
+    console.log('sensor typeeeeeeeeeeeeee',this.threshold.DO[0]);
     if (this.sensor_Type == "3") {
-      console.log()
       this.sensorMax = this.threshold.DO[0]["T.Max"];
       this.sensorMin = this.threshold.DO[0]["T.Min"];
     }else if (this.sensor_Type == "1"){
