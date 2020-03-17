@@ -29,7 +29,7 @@ export class DashbordMainService {
     return this.http.post<any>(environment.postSupportUrl,data);
   }
   getACustomer(id:number):Observable<Customer>{
-    return this.http.get<Customer>(environment.getACustomerUrl+id+'?format=json');
+    return this.http.post<Customer>(environment.getACustomerUrl, {customer_id : id});
   }
   getCustomerBranch(customer_id : number) : Observable<any> {
     return this.http.post<any>(environment.getCustomerBranchUrlforMobile, {customer_id : customer_id});

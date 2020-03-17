@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 //const baseServiceUrl = "http://192.168.0.30:8000/";
-const baseServiceUrl = "https://wzlhgc9o13.execute-api.ap-south-1.amazonaws.com/dev/";
+const baseServiceUrl = "http://192.168.0.30:8000/";
 export const environment = {
    production: false,
    createCustomerUrl : baseServiceUrl + "qubematics/customer/create/",

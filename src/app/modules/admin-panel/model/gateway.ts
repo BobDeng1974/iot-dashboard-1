@@ -18,7 +18,9 @@ export interface node{
     data_collection_frequency ?: number,
     data_sending_frequency ?: number
     sensors ?: sensor[],
-    industry_type ?: number
+    industry_type ?: number,
+    latitude ?: number,
+    longitude ?: number
 }
 
 export interface sensor {

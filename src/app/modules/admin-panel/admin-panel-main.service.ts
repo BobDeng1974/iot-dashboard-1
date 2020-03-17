@@ -30,7 +30,7 @@ export class AdminPanelMainService {
   }
 
   getACustomer(id:number):Observable<Customer>{
-    return this.http.get<Customer>(environment.getACustomerUrl+id+'?format=json');
+    return this.http.post<Customer>(environment.getACustomerUrl, {customer_id: id});
   }
 
   getAddressType() : Observable<Domaindata[]> {
@@ -73,7 +73,7 @@ export class AdminPanelMainService {
   }
 
   getAVendorDetails(id : number) : Observable<Vendor> {
-    return this.http.get<Vendor>(environment.getAvendorUrl+id+'?format=json');
+    return this.http.post<Vendor>(environment.getAvendorUrl, {vendor_id : id});
   }
 
   getDeviceHealth() : Observable<DeviceMonitor[]>{

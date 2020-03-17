@@ -30,7 +30,8 @@ export class AddSensorComponent implements OnInit {
       sensor_make:['', [Validators.required]],
       sensor_desc:[''],
       sensor_threshold_max:[''],
-      sensor_threshold_min:['']
+      sensor_threshold_min:[''],
+      calibration_time: ''
     })
     setTimeout(() => {this.spinner.show();},100);
     this.adminPanelService.getSensorType().subscribe(

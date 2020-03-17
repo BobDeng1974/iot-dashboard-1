@@ -62,7 +62,7 @@
                                 </div> -->
                             </div>
                         </mat-tab>
-                        <mat-tab label="NODE REGISTRY">
+                        <mat-tab label="DEVICE REGISTRY">
                             <div class="content" fxlayout="row" fxLayoutGap="10px" fxLayout.lt.sm="column" [style.height.%]="100" *ngIf="selectedTabIndex == 4">
                                 <div fxFlex="calc(50% - 16px)" fxFlex.lt-sm="100%">
                                     <app-node-table (buttonClicked)="openPopup($event)" [nodes]="nodes" (nodeData)="getNodeForEdit($event)"></app-node-table>

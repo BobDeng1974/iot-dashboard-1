@@ -36,7 +36,9 @@ export class AddNodeComponent implements OnInit {
       data_collection_frequency:'',
       data_sending_frequency:'',
       sensors:'',
-      industry_type:''
+      industry_type:'',
+      latitude: '',
+      longitude: ''
     })
     
     // this.adminPanelService.getSensorsByStatus().subscribe(
@@ -103,7 +105,9 @@ export class AddNodeComponent implements OnInit {
       this.node.data_collection_frequency = form.controls.data_collection_frequency.value,
       this.node.data_sending_frequency = form.controls.data_sending_frequency.value,
       this.node.sensors = this.sensorList,
-      this.node.industry_type = form.controls.industry_type.value
+      this.node.industry_type = form.controls.industry_type.value,
+      this.node.latitude = +form.controls.latitude.value,
+      this.node.longitude = +form.controls.longitude.value
       console.log(this.node);
       
       this.spinner.show();
@@ -126,7 +130,9 @@ export class AddNodeComponent implements OnInit {
         data_collection_frequency : form.controls.data_collection_frequency.value,
         data_sending_frequency : form.controls.data_sending_frequency.value,
         sensors : this.sensorList,
-        industry_type : form.controls.industry_type.value
+        industry_type : form.controls.industry_type.value,
+        latitude : form.controls.latitude.value,
+        longitude : form.controls.longitude.value
       }
       console.log(this.node)
       this.adminPanelService.createNode(this.node).subscribe(
